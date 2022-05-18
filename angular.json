@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "dfdc5e2e-e38d-4186-8836-8a5f659bc5ae"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -31,6 +34,8 @@
               "src/assets"
             ],
             "styles": [
+              "src/sass/_fontes.scss",
+              "src/sass/_fonte-icone.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -99,6 +104,8 @@
               "src/assets"
             ],
             "styles": [
+              "src/sass/_fontes.scss",
+              "src/sass/_fonte-icone.scss",
               "src/styles.scss"
             ],
             "scripts": []
