@@ -28,6 +28,7 @@ export class AutenticarService {
   ) { }
 
   criarConta(req: NovaConta) {
+    
     this.incrementa ++
     this.cadastro.get('email')?.setValue(`contato.0${this.incrementa}@v8sites.com.br`)
 
@@ -49,7 +50,7 @@ export class AutenticarService {
         }
         , requisicao: {
           ambiente: "ambienteTesteV8"
-          , idModulo: "usuario-adm"
+          , idModulo: 'conta-adm'
           , idItem: req.idItem
           , acao: "set"
           , funcao: "criarAutenticacao"

@@ -1,5 +1,6 @@
+/* import { DadosEntidades } from "../../../construtor/src/construtor/01-dados/dados.export";
+
 import { Injectable } from '@angular/core';
-import { Credencial_Construtor} from './app.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -7,3 +8,4 @@ import { Credencial_Construtor} from './app.interface';
 export class M_CredencialService extends Credencial_Construtor {
 
 }
+{ DadosEntidades} */

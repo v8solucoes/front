@@ -31,7 +31,7 @@ export class CriarContaComponent implements OnInit {
     private routerAtivo: ActivatedRoute,
     public dados: DadosService,
     public autenticar: AutenticarService,
-    public windowDom: WindowDom
+    public windowDom: WindowDom,
   ) 
   { 
     
@@ -78,7 +78,7 @@ export class CriarContaComponent implements OnInit {
         }
         , requisicao: {
           ambiente: "ambienteTesteV8"
-          , idModulo: "usuario-adm"
+          , idModulo: 'conta-adm'
           , idItem: req.idItem
           , acao: "set"
           , funcao: "criarAutenticacao"
