@@ -1,8 +1,19 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
+/*     "@library-v8/*":["./src/app/shared/*"] */
 {
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths":{
+      "@shared-library/*":["./../library-shared/src/shared/*"],
+      "@shared-angular/*":["./src/app/shared/*"],
+      "@css/*":["./src/sass/*"],
+      "@view/*":["./src/app/view/*"],
+      "@method/*":["./src/app/method/*"],
+      "@module/*":["./src/app/module/*"],
+      "@component/*":["./src/app/component/*"],
+      "@repository/*":["./src/app/repository/*"],
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,

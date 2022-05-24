@@ -11,5 +11,16 @@
   ],
   "include": [
     "src/**/*.d.ts"
-  ]
+  ],
+  "baseUrl": "./",
+  "paths":{
+    "@shared-library/*":["./../library-shared/src/shared/*"],
+    "@shared-angular/*":["./src/app/shared/*"],
+    "@css/*":["./src/sass/*"],
+    "@view/*":["./src/app/view/*"],
+    "@method/*":["./src/app/method/*"],
+    "@module/*":["./src/app/module/*"],
+    "@component/*":["./src/app/component/*"],
+    "@repository/*":["./src/app/repository/*"],
+  }
 }

@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CriarContaComponent } from './00-pagina/criar-conta/criar-conta.component';
-import { IndexComponent } from './00-pagina/index/index.component';
-import { PaginaNaoEncontradaComponent } from './07-componente/pagina-nao-encontrada/pagina-nao-encontrada.component';
+import { PageNotFoundComponent } from './view/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-    { path: '', pathMatch: 'full', component: IndexComponent },
-    { path: 'criar-conta/:tipoAcesso', component: CriarContaComponent },
-    { path: '**', component: PaginaNaoEncontradaComponent },
+    { path: '', pathMatch: 'full', redirectTo:'account' },
+    { path: '**', component: PageNotFoundComponent },
   /*   { path: 'login/:tipo', component: LoginComponent },
     { path: 'interface', 
       canActivate:[AutenticarGuard],

@@ -36,7 +36,7 @@
             "styles": [
               "src/sass/_fontes.scss",
               "src/sass/_fonte-icone.scss",
-              "src/styles.scss"
+              "src/sass/_styles.scss"
             ],
             "scripts": []
           },
@@ -106,7 +106,7 @@
             "styles": [
               "src/sass/_fontes.scss",
               "src/sass/_fonte-icone.scss",
-              "src/styles.scss"
+              "src/sass/_styles.scss"
             ],
             "scripts": []
           }
