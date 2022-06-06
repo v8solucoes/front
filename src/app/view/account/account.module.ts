@@ -5,6 +5,7 @@ import { AccountRoutingModule } from './account.routing.module';
 import { AccountIndexComponent } from './account-index/account-index.component';
 import { AccountCreateComponent } from './account-create/account-create.component';
 import { AccountNotFoundComponent } from './account-not-found/account-not-found.component';
+import { FormModule } from '@component/form/form.module';
 
 @NgModule({
   declarations: [
@@ -14,8 +15,9 @@ import { AccountNotFoundComponent } from './account-not-found/account-not-found.
   ],
   imports: [
     CommonModule,
-    AccountRoutingModule,
     MaterialDesign,
+    AccountRoutingModule,
+    FormModule
   ]
 })
 export class AccountModule { }

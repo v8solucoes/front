@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormCreateComponent } from './form-create.component';
+import { InputGenerecComponent } from './input-generec.component';
 
-describe('FormCreateComponent', () => {
-  let component: FormCreateComponent;
-  let fixture: ComponentFixture<FormCreateComponent>;
+describe('InputGenerecComponent', () => {
+  let component: InputGenerecComponent;
+  let fixture: ComponentFixture<InputGenerecComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormCreateComponent ]
+      declarations: [ InputGenerecComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormCreateComponent);
+    fixture = TestBed.createComponent(InputGenerecComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

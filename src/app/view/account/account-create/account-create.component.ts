@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { FormService, IFormData } from '@component/form/form.service';
 import { IrequestData, Iresponse } from '@shared-library/interface';
 import { WindowDom } from 'src/app/method/window.dom';
 import { DataAPI } from 'src/app/repository/data.API';
 
-import { dados, Idados, Imodelo, Ipermissao, modelo, permissao} from '../../../repository/data-biblioteca-v8'
 import { Iconta, InewAccount } from './account-create.interface';
-
-
 
 @Component({
   selector: 'app-account-create',
@@ -18,32 +15,22 @@ import { Iconta, InewAccount } from './account-create.interface';
   
 export class AccountCreateComponent implements OnInit {
 
-  dados: Idados;
-  modelo: Imodelo;
-  permissao: Ipermissao[];
-
   rota = {} as InewAccount;
   exibir = true;
   incrementa = 1;
-  cadastro = new FormGroup({
-    nome: new FormControl('Emerson', Validators.required),
-    email: new FormControl(`teste@v8sites.com.br`, [Validators.required, Validators.email]),
-    telefone: new FormControl('1111111', Validators.required),
-    cpf: new FormControl('283.0000.00-14', Validators.required),
-    senha: new FormControl('123456', [Validators.required, Validators.minLength(6)]),
-    confirmaSenha: new FormControl('123456', [Validators.required, Validators.minLength(6)])
-  });
+  formData: IFormData;
 
   constructor(
     private routerAtivo: ActivatedRoute,
     public dataAPI: DataAPI,
     public windowDom: WindowDom,
+    public form: FormService
   ) 
-  { 
-    this.dados = dados
-    this.modelo = modelo
-    this.permissao = permissao
-   }
+  {
+    this.formData = this.form.exe()
+
+  /*   console.log(this.formData.form) */
+  }
 
   ngOnInit(): void {
 
@@ -66,15 +53,16 @@ export class AccountCreateComponent implements OnInit {
   criarConta(req: InewAccount) {
 
     this.incrementa++
+    const form = this.formData.form
 
-    this.cadastro.get('email')?.setValue(`contato.0${this.incrementa}@v8sites.com.br`)
+    form.get('email')?.setValue(`contato.0${this.incrementa}@v8sites.com.br`)
 
     const dados: Iconta = {
-      'cpf': this.cadastro.get('nome')?.value,
-      'email': this.cadastro.get('email')?.value,
-      'nome': this.cadastro.get('nome')?.value,
-      'senha': this.cadastro.get('senha')?.value,
-      'telefone': this.cadastro.get('telefone')?.value,
+      'cpf': form.get('nome')?.value,
+      'email': form.get('email')?.value,
+      'nome': form.get('nome')?.value,
+      'senha': form.get('senha')?.value,
+      'telefone': form.get('telefone')?.value,
     }
 
     const requisicaoDados: IrequestData = {

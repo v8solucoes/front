@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 // OUTROS
 import { WindowDom } from './method/window.dom';
@@ -21,7 +22,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AccountModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
+        
    /*  MaterialDesign, */
     /*  HttpClientModule, */
     /*  RouterModule, */
@@ -31,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
 
   providers: [
+    
     WindowDom,
     {
       provide: USE_AUTH_EMULATOR,
