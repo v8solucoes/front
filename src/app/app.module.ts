@@ -42,6 +42,7 @@ import { HttpClientModule } from '@angular/common/http';
         ? ['http://localhost:9099']
         : undefined,
     },
+    
   ],
 
   bootstrap: [AppComponent],

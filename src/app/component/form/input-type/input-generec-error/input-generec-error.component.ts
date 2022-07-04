@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-input-generec-error',
@@ -13,6 +12,7 @@ export class InputGenerecErrorComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.erros)
   }
 
 }

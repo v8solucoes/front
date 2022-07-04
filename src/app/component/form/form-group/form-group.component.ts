@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Imodel, ImodelUndefinedProperty, Ipermission } from '@shared-library/interface';
+import { FormGroup } from '@angular/forms';
+import { DataLocalService } from '@repository/data-local.service';
+import { Imodel, ImodelUndefinedProperty, ImoduleId, Ipermission, Irequest } from '@shared-library/interface';
+import { FormService } from '../form.service';
 
 export interface FormConstructor{
   permission: Ipermission[] | null, model: Imodel | null, data?: any 
@@ -11,22 +13,24 @@ export interface FormConstructor{
   templateUrl: './form-group.component.html',
   styleUrls: ['./form-group.component.scss']
 })
+  
 export class FormGroupComponent implements OnInit {
-
   @Input() form?: FormGroup;
   @Input() permission?: Ipermission[];
   @Input() model?: ImodelUndefinedProperty;
- 
-  constructor() {  }
-
+  
+  constructor() { 
+    
+  }
+  
   ngOnInit(): void { 
- 
+   /*  this.formService.get(this.moduleId) */
   }
   getFormObject(id: string): FormGroup {
     return this.form?.get(id) as FormGroup
   }
+
   getFormValue():FormGroup {
-    
     return this.form as FormGroup
   }
   

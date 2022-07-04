@@ -1,9 +1,11 @@
+<div *ngIf="loading">
 
+  <section>
+    <app-form-group
+    [form]="form?.form"
+    [permission]="form?.permission"
+    [model]="form?.model"
+  ></app-form-group>
+  </section>
 
-<section>
-  <app-form-group
-  [form]="formData.form"
-  [permission]="formData.permission"
-  [model]="formData.model"
-></app-form-group>
-</section>
+</div>

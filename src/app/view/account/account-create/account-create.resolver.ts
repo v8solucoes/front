@@ -9,13 +9,14 @@ import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AccountCreateResolver implements Resolve<boolean> {
+export class AccountCreateResolver implements Resolve<any> {
 
-  constructor( ){}
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+  constructor(  ){}
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
+   
     route.data = {
-      teste: 'felix'
+      dataLocal: 'teste'
     }
-    return of(true);
+    return of('teste');
   }
 }

@@ -1,22 +1,11 @@
-import { ComponentFactoryResolver, Injectable } from '@angular/core';
-import {
-  AbstractControl,
-  AsyncValidatorFn,
-  FormArray,
-  FormControl,
-  FormGroup,
-  ValidatorFn,
-} from '@angular/forms';
-import {
-  Ilanguage,
-  ImodelUndefinedProperty,
-  InameValidator,
-  Ipermission,
-  ValidatorReponse,
-  ValidatorRequest,
-} from '@shared-library/interface';
-import { ValidatorMethod } from '@shared-library/validator';
-import { delay, first, map, Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { AbstractControl, AsyncValidatorFn, FormArray, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
+import { DataLocalService } from '@repository/data-local.service';
+import { Ilanguage, ImodelUndefinedProperty, InameValidator, Ipermission, Irequest, ValidatorResponse } from '@shared-library/interface';
+import { ValidateCompose } from '@shared-library/validator';
+import { delay, first, map, Observable, of, take } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 export interface IFormData {
   permission: Ipermission[];
@@ -28,160 +17,59 @@ export interface IFormData {
   providedIn: 'root',
 })
 export class FormService {
-  data: any = {
-    ['account-adm']: {
-      name: 'DB Emeson Felix',
-    },
-  };
 
-  permission: Ipermission[] = [
-    {
-      id: 'account-adm',
-      view: {
-        form: true,
-        title: true,
-        subTitle: true,
-      },
-      _group: [
-        {
-          id: 'name',
-          view: {
-            form: true,
-            title: true,
-            subTitle: true,
-          },
-        },
-      ],
-    },
-  ];
+  constructor(
+    private dataLocal: DataLocalService,
+    private http: HttpClient,
+  ) { }
 
-  model: ImodelUndefinedProperty = {
-    'account-adm': {
-      id: 'account-adm',
-      typeData: 'object',
-      typeInput: 'group',
-      text: {
-        en: {
-          label: 'New Account',
-          valueTest: 'Valor Teste',
-          placeholder: 'Faça su conta',
-          clearInput: 'Clear',
-        },
-      },
-      validate: {
-        sync: ['namePersonal'],
-        async: [],
-        updateOn:'change',
-        disabled: false,
-        valueMin: 8,
-        valueMax: 35,
-        required: false,
-        front: 'string',
-        back: 'string',
-        teste: 'string',
-      },
-      design: {
-        css: {
-          materialDesign: {
-            appearance: 'fill',
-          },
-          form: {
-            container: 'f-total',
-          },
-        },
-      },
-      _group: {
-        name: {
-          id: 'name',
-          typeData: 'value',
-          typeInput: 'input',
-          text: {
-            en: {
-              label: 'Personal Name',
-              valueTest: 'Test Name',
-              placeholder: 'Fill in you name',
-              clearInput: 'Clear',
-            },
-          },
-          validate: {
-            sync: [],
-            async: [],
-            updateOn:'change',
-            disabled: false,
-            valueMin: 8,
-            valueMax: 35,
-            required: true,
-            front: 'string',
-            back: 'string',
-            teste: 'string',
-          },
-          design: {
-            tools: {
-              accont: true,
-              clear: true,
-            },
-            css: {
-              materialDesign: {
-                appearance: 'fill',
-              },
-              form: {
-                container: 'f-total',
-              },
-            },
-          },
-        },
-      },
-    },
-  };
-
-  constructor() { }
-
-  exe(): IFormData {
+  get(document: Irequest['document']): IFormData {
 
     let form: FormGroup;
+    const permission = this.dataLocal.permission.filter(acess => acess.id == document)
+    const model = this.dataLocal.model
+    const data = this.dataLocal.document[document]
 
-    form = this.createFormGroup(this.permission, this.model, this.data);
-
-    console.log(form);
+    form = this.createFormGroup(permission, model, data);
 
     return {
       form,
-      permission: this.permission,
-      model: this.model,
+      permission,
+      model
     };
   }
 
-  createFormGroup(permission: Ipermission[], model: ImodelUndefinedProperty, data?: any): FormGroup {
+  createFormGroup(permission: Ipermission[], model: ImodelUndefinedProperty, data: any = null as any): FormGroup {
 
     let group: any = {};
     let language: Ilanguage = 'en'
 
     permission?.forEach((acess: Ipermission) => {
-      const modelText = model[acess.id].text[language]
-      const dataValue = data ? data[acess.id] : modelText?.valueTest;
-      const dataRecurive = data ? data[acess.id] : undefined;
+
       const modelControl = model[acess.id];
       const recursive = () =>
         this.createFormGroup(
           acess._group as Ipermission[],
           model[acess.id]._group as ImodelUndefinedProperty,
-          dataRecurive
+          data ? data[acess.id] : null
         );
-      const validators = () => modelControl.validate.sync.map(nameValidator => this.validator(nameValidator, language))
-      const validatorsAsync = () => modelControl.validate.async.map(nameValidator => this.validatorAsync(nameValidator, language))
+      const validators = () => modelControl.validate.sync.map(
+        nameValidator => this.validator(nameValidator, language, acess.id))
+      const validatorsAsync = () => modelControl.validate.async.map(
+        nameValidator => this.validatorAsync(nameValidator, language, acess.id))
 
       switch (model[acess.id].typeData) {
         case 'value':
           group[acess.id] = new FormControl(
             {
-              value: dataValue,
+              value: data ? data[acess.id] : null,
               disabled: modelControl.validate.disabled,
             },
             {
               validators: validators(),
               asyncValidators: validatorsAsync(),
               updateOn: modelControl.validate.updateOn,
-            }
+            },
           );
           break;
 
@@ -200,33 +88,9 @@ export class FormService {
 
     return new FormGroup(group);
   }
+  validator(nameValidator: InameValidator, language: Ilanguage, valueId: string): ValidatorFn {
 
-  validatorAsync(nameValidator: InameValidator, language: Ilanguage): AsyncValidatorFn {
-    return (control: AbstractControl): Observable<ValidatorReponse> => {
-
-      const controle = control.root as FormGroup;
-
-      return of(control.value).pipe(
-        delay(200),
-        first(),
-        map((res: any) => {
-          if (
-            !!controle.controls &&
-            controle.get(control.value)?.pristine !== true &&
-            control.value !== null
-          ) {
-            console.log('async');
-            return new ValidatorMethod({ value: control.value, language})[nameValidator]
-          } else {
-            return null;
-          }
-        })
-      );
-    };
-  }
-  validator(nameValidator: InameValidator, language: Ilanguage): ValidatorFn {
-
-    return (control: AbstractControl): ValidatorReponse => {
+    return (control: AbstractControl): ValidatorResponse => {
 
       const controle = control.root as FormGroup;
 
@@ -236,19 +100,117 @@ export class FormService {
         control.value !== null
       ) {
         console.log('sync')
-        return new ValidatorMethod({ value: control.value, language })[nameValidator]
+        /*        return this.functionSync(control.value) */
+        return new ValidateCompose(
+          {
+            language,
+            value: control.value,
+            valueId,
+            valueAll: control.root.value,
+            nameValidator
+          })[nameValidator].validate
       } else {
         return null;
       }
     };
   }
+  validatorAsync(nameValidator: InameValidator, language: Ilanguage, valueId:string): AsyncValidatorFn {
 
-  functionSync(text: string): ValidatorReponse {
-    return new ValidatorMethod({
+    return (control: AbstractControl): Observable<ValidatorResponse> | Promise<ValidatorResponse> => {
+
+      const controle = control.root as FormGroup;
+
+      if (
+        !!controle.controls &&
+        controle.get(control.value)?.pristine !== true &&
+        control.value !== null
+      ) {
+        let request = this.dataLocal.request as Required<Irequest>
+        request.validator = {
+          language,
+          value: control.value,
+          valueId,
+          valueAll: control.root.value,
+          nameValidator
+        }
+
+        console.log('async');
+        console.log(request);
+
+        return this.http.post<ValidatorResponse>(`${environment.api}/validator`, request).pipe(
+          delay(200),
+          first(),
+          map(res => res)
+        );
+
+      } else {
+        return of(control.value).pipe(
+          delay(200),
+          first(),
+          map(res => null))
+      }
+    };
+  }
+
+
+  validatorAsyncXX(nameValidator: InameValidator, language: Ilanguage): AsyncValidatorFn {
+
+    return (control: AbstractControl): Promise<ValidatorResponse> => {
+
+      const controle = control.root as FormGroup;
+
+      if (
+        !!controle.controls &&
+        controle.get(control.value)?.pristine !== true &&
+        control.value !== null
+      ) {
+        console.log('async');
+        return this.testPromises()
+
+      } else {
+        return Promise.resolve(null)
+      }
+    }
+  }
+
+  private validZipcodes = ['00001', '00002', '00003', '00004'];
+
+  fakeHttp(value: string) {
+
+    return of(this.validZipcodes.includes(value)).pipe(delay(5000));
+  }
+
+ 
+
+  async testPromises(): Promise<ValidatorResponse> {
+
+    try {
+      const promise1 = Promise.resolve({ proa: 'first' });
+      const promise2 = { prob: 'secund' }
+      const promise3 = new Promise((resolve, reject) => {
+        setTimeout(resolve, 2000, { proc: 'terceira' });
+      });
+      /*     const test = await Promise.all<ValidatorResponse>([promise1]) */
+      return Promise.all<ValidatorResponse>([promise1, promise2, promise3]).then((values: ValidatorResponse) => {
+        console.log(values)
+        return { values: JSON.stringify(values) }
+      });
+
+    } catch (error) {
+      return null
+    }
+  }
+/* 
+  functionSync(text: string): ValidatorResponse {
+    return new TestCompose({
       language: 'en',
       value: text,
     }).namePersonal
-  }
+  } */
+  httpApi(req: any): Observable<ValidatorResponse> {
 
+    return this.http.post<ValidatorResponse>(`${environment.api}/api`, req).pipe(take(1))
+  
+  }
 
 }

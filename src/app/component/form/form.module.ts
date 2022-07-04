@@ -9,6 +9,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InputGenerecErrorComponent } from './input-type/input-generec-error/input-generec-error.component';
 import { FormMaskDirective } from './form-mask.directive';
 import { FormPipePipe } from './form-pipe.pipe';
+import { NgxMaskModule } from 'ngx-mask'
+
+/* export const options: Partial<IConfig> | (() => Partial<IConfig>) = null; */
 
 @NgModule({
   declarations: [
@@ -26,8 +29,8 @@ import { FormPipePipe } from './form-pipe.pipe';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    MaterialDesign,
-    
+    NgxMaskModule.forRoot(),
+    MaterialDesign
   ]
 })
 export class FormModule { }

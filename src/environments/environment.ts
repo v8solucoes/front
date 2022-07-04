@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  environment: 'test',
   production: false,
   api: 'http://127.0.0.1:5001/v8app-888cd/us-central1/credenciais',
   emuladorFirebase: true,

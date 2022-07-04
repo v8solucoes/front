@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './view/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-    { path: '', pathMatch: 'full', redirectTo:'account' },
+    { path: '', pathMatch: 'full', redirectTo:'en/account' },
     { path: '**', component: PageNotFoundComponent },
   /*   { path: 'login/:tipo', component: LoginComponent },
     { path: 'interface', 

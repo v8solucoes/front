@@ -1,5 +1,7 @@
-import { Directive, ElementRef, forwardRef, HostListener, InjectionToken, Input, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, forwardRef, HostListener, Input, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Imodel, IValidatorRequest } from '@shared-library/interface';
+import { ValidateCompose } from '@shared-library/validator';
 
 @Directive({
   selector: '[appFormMask]',
@@ -13,57 +15,52 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class FormMaskDirective implements ControlValueAccessor {
 
-  innerValue: any
-  
+  @Input() model?: Imodel;
+ 
   constructor(
     private _renderer: Renderer2,
-    private _elementRef: ElementRef) { }
-  
-  get value() {
-    return this.innerValue
-  }
-  set value(v: any) {
-    if (v !== this.innerValue) {
-      this.innerValue = v
-      this.onChangCb(v)
+    private _elementRef: ElementRef) { 
+    
+    console.log('Directive')
+    console.log(this.model)
     }
+  
+  set value(v: string) {
+    console.log(v)
+    console.log(this.model)
 
+    const nameValidator = this.model?.validate.test as Imodel['validate']['test']
+    const valueId = this.model?.id as Imodel['id']
+    const req: IValidatorRequest = {
+      value: v,
+      valueAll: null,
+      valueId,
+      nameValidator,
+      language: 'en'
+    }
+    const validator = new ValidateCompose(req)
+  
+    this.writeValue(validator[nameValidator].applyMaskView)
+    this.onChangeCb(validator[nameValidator].applyMaskData)
   }
 
   onTouchedCb: (_: any) => void = ()=> {};
-  onChangCb: (_: any) => void = () => { };
-  protected setProperty(key: string, value: any): void {
-    this._renderer.setProperty(this._elementRef.nativeElement, key, value);
-  }
-  setDisabledState(isDisabled: boolean): void {
-    this.setProperty('disabled', isDisabled);
-  }
+  onChangeCb: (_: any) => void = () => { };
 
   writeValue(v: any): void {
-    this.value = v
+    this._elementRef.nativeElement.value = v
   }
   registerOnChange(fn:any): void {
-    this.onChangCb = fn;
+    this.onChangeCb = fn;
   }
   registerOnTouched(fn:any): void {
     this.onTouchedCb = fn;
   }
 
   @HostListener('keyup', ['$event'])
-  onKeyup($event: KeyboardEvent) { 
-
-    this._elementRef.nativeElement.value.toLocaleUpperCase()
-    this.value = this._elementRef.nativeElement.value.toLocaleUpperCase()
-
-   /*  console.log(this._elementRef.nativeElement.value.toLocaleUpperCase())
-    this.value(this._elementRef.nativeElement.value.toLocaleUpperCase()) */
+  onKeyup($event: KeyboardEvent) {
+    console.log(this.model)
+    this.value = this._elementRef.nativeElement.value
   }
-  
-/*   @HostListener('blur', ['$event'])
-  onBlur($event: any) {
-
-    console.log(this._elementRef.nativeElement.value.toLocaleUpperCase())
-    this.writeValue(this._elementRef.nativeElement.value.toLocaleUpperCase())
-  } */
 }
 
