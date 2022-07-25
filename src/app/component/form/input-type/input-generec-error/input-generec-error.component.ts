@@ -12,7 +12,7 @@ export class InputGenerecErrorComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.erros)
+ /*    console.log(this.erros) */
   }
 
 }

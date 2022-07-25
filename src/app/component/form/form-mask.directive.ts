@@ -1,7 +1,7 @@
 import { Directive, ElementRef, forwardRef, HostListener, Input, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Imodel, IValidatorRequest } from '@shared-library/interface';
-import { ValidateCompose } from '@shared-library/validator';
+import { Validators } from '@shared-library/validator';
 
 @Directive({
   selector: '[appFormMask]',
@@ -21,13 +21,13 @@ export class FormMaskDirective implements ControlValueAccessor {
     private _renderer: Renderer2,
     private _elementRef: ElementRef) { 
     
-    console.log('Directive')
-    console.log(this.model)
+  /*   console.log('Directive')
+    console.log(this.model) */
     }
   
   set value(v: string) {
     console.log(v)
-    console.log(this.model)
+   /*  console.log(this.model) */
 
     const nameValidator = this.model?.validate.test as Imodel['validate']['test']
     const valueId = this.model?.id as Imodel['id']
@@ -38,7 +38,7 @@ export class FormMaskDirective implements ControlValueAccessor {
       nameValidator,
       language: 'en'
     }
-    const validator = new ValidateCompose(req)
+    const validator = new Validators(req)
   
     this.writeValue(validator[nameValidator].applyMaskView)
     this.onChangeCb(validator[nameValidator].applyMaskData)
@@ -59,7 +59,7 @@ export class FormMaskDirective implements ControlValueAccessor {
 
   @HostListener('keyup', ['$event'])
   onKeyup($event: KeyboardEvent) {
-    console.log(this.model)
+   /*  console.log(this.model) */
     this.value = this._elementRef.nativeElement.value
   }
 }

@@ -9,6 +9,7 @@
           [form]="getFormObject(acess.id)"
           [permission]="acess._group"
           [model]="model?.[acess.id]?._group"
+          [language]="language"
         >
         </app-form-group>
       </ng-container>
@@ -18,6 +19,7 @@
           [form]="getFormValue()"
           [permission]="acess._group"
           [model]="model?.[acess.id]"
+          [language]="language"
       ></app-form-value>
     </ng-container>
   </ng-container>

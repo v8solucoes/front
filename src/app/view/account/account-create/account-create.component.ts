@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { FormService, IFormData } from '@component/form/form.service';
+import { FormGroup } from '@angular/forms';
 import { DataLocalService } from '@repository/data-local.service';
+import { DataService } from '@repository/data.service';
+import { IFormData, Irequest } from '@shared-library/interface';
 
 @Component({
   selector: 'app-account-create',
@@ -12,28 +13,56 @@ import { DataLocalService } from '@repository/data-local.service';
 export class AccountCreateComponent {
 
   loading = false
-
-  form?: IFormData;
+  invalid = true
+  valid = false
+  processing = false;
+  sucess = false;
+  formData: IFormData;
+  form: FormGroup;
 
   constructor(
-    private activatedRoute: ActivatedRoute,
-    public formService: FormService,
-    public dataLocal: DataLocalService
+/*     private activatedRoute: ActivatedRoute, */
+    public dataLocal: DataLocalService,
+    public data: DataService
   ) {
+    
+    this.formData = this.data.getLocal('account-adm')
+    this.form = this.formData.form
+    this.loading = true;
+ /*    this.form = this.formService.get('account-adm').form */
+  /*   this.activatedRoute.data.subscribe(params => {
+      this.form = this.formService.get('account-adm').form
+     }) */
 
-    this.activatedRoute.data.subscribe(params => {
+/*     console.log(this.dataLocal) */
+  }
+  
 
-      this.form = this.formService.get('account-adm')
-      this.loading = true;
+  createAccount() {
 
+    this.processing = true
+
+    this.dataLocal.request!.data = this.formData.form.value
+
+    console.log(this.formData.form.value)
+    console.log(this.dataLocal.request)
+
+    this.data.httpCRUD(this.dataLocal.request as Irequest).subscribe(o => {
+      console.log(o)
+      if (o == null) {
+
+        setTimeout(() => {
+          this.sucess = true
+         
+        }, 2000);
+       /*  this.processing = false */
+      }
+      return 
     })
-  }
 
-  onSubmit() {
-  }
-
-
-  criarConta(req: any) {
+    /*     let reques: Irequest
+    
+        this.dataLocal.request?.data = this.form?.form.value */
 
     /*     this.incrementa++
         const form = this.formData.form
@@ -70,11 +99,16 @@ export class AccountCreateComponent {
           dados
         }
      */
-  /*   this.dataAPI.httpApi('requisicaoDados').subscribe(
-      (resposta: Iresponse<any>) => {
-        console.log(resposta)
-        return resposta
-      }) */
+    /*  this.dataAPI.httpCRUD('requisicaoDados').subscribe(
+       (resposta: ValidatorResponse ) => {
+         console.log(resposta)
+         return resposta
+       }) */
+
+    /*     httpCRUD(req: Irequest): Observable<ValidatorResponse> {
+
+          return this.http.post<ValidatorResponse>(`${environment.api}/CRUD`, req)
+        } */
   }
 
 }

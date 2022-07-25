@@ -1,11 +1,40 @@
 <div *ngIf="loading">
 
   <section>
-    <app-form-group
-    [form]="form?.form"
-    [permission]="form?.permission"
-    [model]="form?.model"
-  ></app-form-group>
+    <app-form-group [form]="form" [permission]="formData.permission" [model]="formData.model"
+      [language]="formData.language">
+    </app-form-group>
+  
+    <!-- INVALID - disabled -->
+    <button *ngIf="form?.valid && form?.get(['account-adm','acceptTerms'])?.value ? false: true"
+    type="submit" mat-raised-button color="primary" disabled>
+ <!--    <div class="processing">
+      <mat-spinner class="spinner" [diameter]="20"></mat-spinner>
+      <mat-label>Processing</mat-label>
+    </div> -->
+    
+    <mat-label>Create New Account</mat-label>
+  </button>
+    <!-- VALID -->
+    <button type="submit" mat-raised-button class="color-sucess"
+    (click)="createAccount()"
+      *ngIf="!processing && form?.valid && form?.get(['account-adm','acceptTerms'])?.value">
+      <mat-label>Create New Account</mat-label> 
+    </button>
+  <!-- Processing -->
+    <button *ngIf="processing && form?.valid && form?.get(['account-adm','acceptTerms'])?.value"
+      type="submit" mat-raised-button >
+      <div class="processing">
+        <mat-spinner class="spinner" [diameter]="20"></mat-spinner>
+        <mat-label>Processing</mat-label>
+      </div>
+    </button>
+     <!-- SUCESS -->
+     <button type="submit" mat-raised-button class="color-sucess"
+       *ngIf="sucess">
+       <mat-label>Create Sucess!</mat-label> 
+     </button>
+
   </section>
 
 </div>

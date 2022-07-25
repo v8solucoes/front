@@ -1,0 +1,23 @@
+section {
+  padding: 16px;
+  background-color: white;
+  color: black;
+  height: 70px;
+  width: 300px;
+  margin-left: 0;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+button {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  float: right;
+}
+.true {
+
+  background-color: black;
+}
+.false {
+  color: white
+}

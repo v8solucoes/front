@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Imodel, Ipermission } from '@shared-library/interface';
+import { Ilanguage, Imodel, Ipermission } from '@shared-library/interface';
 
 @Component({
   selector: 'app-form-value',
@@ -11,6 +11,7 @@ export class FormValueComponent implements OnInit {
   @Input() form?: FormGroup;
   @Input() permission?: Ipermission[];
   @Input() model?: Imodel;
+  @Input() language?: Ilanguage;
 
   constructor() { }
 

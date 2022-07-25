@@ -1,15 +1,26 @@
-<section>
-  <button type="submit" mat-raised-button color="primary" routerLink=''>
-      <mat-label>Conta</mat-label>
-    </button><br><br>
-  <button type="submit" mat-raised-button color="primary" routerLink='account-adm/create/x'>
-      <mat-label>New Administrator</mat-label>
-    </button><br><br>
-  <button type="submit" mat-raised-button color="primary" routerLink='account-agency/create/xx'>
-      <mat-label>New Agency</mat-label>
-    </button><br><br>
-  <button type="submit" mat-raised-button color="primary" routerLink='account-client/create/xxx'>
-      <mat-label>New Client</mat-label>
-    </button>
-</section>
+
+<ng-container [ngSwitch]="dataLocal.request?.language">
+
+  <ng-container *ngSwitchCase="'en'">
+    <section>
+      <button type="submit" mat-raised-button color="primary" routerLink=''>
+          <mat-label>Account</mat-label>
+        </button><br><br>
+      <button type="submit" mat-raised-button color="primary" routerLink='terms'>
+          <mat-label>Terms</mat-label>
+        </button><br><br>
+      <button type="submit" mat-raised-button color="primary" routerLink='account-adm/create/x'>
+          <mat-label>New Administrator</mat-label>
+        </button><br><br>
+      <button type="submit" mat-raised-button color="primary" routerLink='account-agency/create/xx'>
+          <mat-label>New Agency</mat-label>
+        </button><br><br>
+      <button type="submit" mat-raised-button color="primary" routerLink='account-client/create/xxx'>
+          <mat-label>New Client</mat-label>
+        </button>
+    </section>
+   
+  </ng-container>
+
+</ng-container>
 <router-outlet></router-outlet>

@@ -1,4 +1,4 @@
-import { Idata, Irequest, Iuser } from '@shared-library/interface'
+import { Idata, Irequest } from '@shared-library/interface'
 
 /* export type Iconta = Idata['adm']['conta']
 

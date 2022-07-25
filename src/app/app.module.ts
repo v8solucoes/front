@@ -16,8 +16,9 @@ import { PageNotFoundComponent } from './view/page-not-found/page-not-found.comp
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { TermsComponent } from './view/terms/terms.component';
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent],
+  declarations: [AppComponent, PageNotFoundComponent, TermsComponent],
   imports: [
     BrowserModule,
     AccountModule,
