@@ -39,6 +39,8 @@ Delete Past: `rm -rf node_modules .angular` and `rm package-lock.json`
 
 `npm instal @angular/fire` (é preciso instalar o firebase local e Global)
 
+`npm install --save firebase-functions@latest` (acesse a pasta appBack e execute)
+
 
 # Setup
 
