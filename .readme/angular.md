@@ -3,7 +3,7 @@
 
 ## Last Update 24-05-22
 
-`ng --version` (Angula CLI: 13.3.8)
+`ng --version` (Angula CLI: 13.3.9)
 
 `npm view @angular/cli`(Versions LTS Angular)
 
@@ -11,7 +11,7 @@
 
 `npm install -g @angular/cli` 
 
-`npm install -g @angular/cli@13.3.8`
+`npm install -g @angular/cli@13.3.9`
 
 `npm upgrade -g @angular/cli`(last version)
 
@@ -25,9 +25,9 @@
 
 `ng update` (Update Last Version)
 
-`npm install -g @angular/cli@13.3.8` (Update LTS version)
+`npm install -g @angular/cli@13.3.9` (Update LTS version)
 
-Delete Past: `rm -rf node_modules .angular` and `rmdir package-lock.json`
+Delete Past: `rm -rf node_modules .angular` and `rm package-lock.json`
 
 `npm install`
 
@@ -35,9 +35,10 @@ Delete Past: `rm -rf node_modules .angular` and `rmdir package-lock.json`
 
 # Dependecy
 
+`npm instal firebase` (é preciso instalar o firebase local e Global)
+
 `npm instal @angular/fire` (é preciso instalar o firebase local e Global)
 
-`npm instal firebase` (é preciso instalar o firebase local e Global)
 
 # Setup
 

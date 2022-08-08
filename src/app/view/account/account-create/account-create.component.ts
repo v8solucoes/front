@@ -13,8 +13,7 @@ import { IFormData, Irequest } from '@shared-library/interface';
 export class AccountCreateComponent {
 
   loading = false
-  invalid = true
-  valid = false
+  valid = true
   processing = false;
   sucess = false;
   formData: IFormData;
@@ -29,7 +28,7 @@ export class AccountCreateComponent {
     this.formData = this.data.getLocal('account-adm')
     this.form = this.formData.form
     this.loading = true;
- /*    this.form = this.formService.get('account-adm').form */
+
   /*   this.activatedRoute.data.subscribe(params => {
       this.form = this.formService.get('account-adm').form
      }) */
@@ -39,8 +38,8 @@ export class AccountCreateComponent {
   
 
   createAccount() {
-
-    this.processing = true
+    this.valid = false
+    this.processing = true;
 
     this.dataLocal.request!.data = this.formData.form.value
 
@@ -52,6 +51,8 @@ export class AccountCreateComponent {
       if (o == null) {
 
         setTimeout(() => {
+    /*       this.form.reset() */
+          this.processing = false 
           this.sucess = true
          
         }, 2000);

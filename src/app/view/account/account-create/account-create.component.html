@@ -18,11 +18,11 @@
     <!-- VALID -->
     <button type="submit" mat-raised-button class="color-sucess"
     (click)="createAccount()"
-      *ngIf="!processing && form?.valid && form?.get(['account-adm','acceptTerms'])?.value">
+      *ngIf="valid && form?.valid && form?.get(['account-adm','acceptTerms'])?.value">
       <mat-label>Create New Account</mat-label> 
     </button>
   <!-- Processing -->
-    <button *ngIf="processing && form?.valid && form?.get(['account-adm','acceptTerms'])?.value"
+    <button *ngIf="processing && !sucess && form?.valid && form?.get(['account-adm','acceptTerms'])?.value"
       type="submit" mat-raised-button >
       <div class="processing">
         <mat-spinner class="spinner" [diameter]="20"></mat-spinner>

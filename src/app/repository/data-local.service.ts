@@ -502,6 +502,7 @@ export class DataLocalService {
       name: 'Emerson Felix',
       email: 'contato@v8sitesV.com.br',
       telephone: '11981231970',
+      acceptTerms: true
     },
   }
   colection:{[keyof:string]: any[]} = {
