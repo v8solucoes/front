@@ -2,20 +2,22 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormService } from '@component/form/form.service';
-import { IFormData, Ilanguage, Ipermission, Irequest, ValidatorResponse } from '@shared-library/interface';
+import { IcreateForm, IFormData, Ilanguage, Ipermission, Irequest, ValidatorResponse } from '@shared-library/interface';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { DataLocalService } from './data-local.service';
+import { DataLocal } from '@shared-angular/class'
+/* import { DataLocalService } from './data-local.service'; */
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-
+  errorResolve: any = null
+  request!: Irequest
 
   constructor(
     public http: HttpClient,
-    public dataLocal: DataLocalService,
+    public dataDomain: DataLocal,
     private form: FormService
 /*     public autenticar: AutenticarService */
   ) {
@@ -30,15 +32,35 @@ export class DataService {
 
     return this.http.post<ValidatorResponse>(`${environment.api}/CRUD`, req)
   }
-  getLocal(document: Irequest['document']): IFormData {
+  models(document: Irequest['document']) {
+    const module = this.dataDomain.getModule(document)
+    return {
+      request: this.request,
+      language: this.request.language,
+      model: module.model,
+      document: module.document,
+      permission: module.permission,
+    }
+  }
+  createForm(document: Irequest['document']): IcreateForm {
+   
+    const model = this.models(document)
+   
+    return {
+      ...model,
+      form: this.form.createForm(model.request, model.permission, model.model, model.language, model.document)
+    }
+  
+  }
+  getLocal(document: Irequest['document'], request: Irequest): IFormData {
 
     let form: FormGroup;
-    const permission = this.dataLocal.permission.filter((acess:Ipermission) => acess.id == document)
-    const model = this.dataLocal.model
-    const data = {[document]: this.dataLocal.document[document]}
-    const language: Ilanguage = this.dataLocal.request?.language || 'en'
+    const permission = this.dataDomain.permission.filter((acess:Ipermission) => acess.id == document)
+    const model = this.dataDomain.model
+    const data = {[document]: this.dataDomain.document[document]}
+    const language: Ilanguage = this.request?.language || 'en'
 
-    form = this.form.createForm(permission, model, language, data)
+    form = this.form.createForm(request, permission, model, language, data)
 
     return {
       form,

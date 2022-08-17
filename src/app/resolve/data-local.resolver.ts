@@ -9,7 +9,7 @@ import { Iaction, Ipage, Irequest } from '@shared-library/interface';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { WindowDom } from '@method/window.dom';
-import { OptionsValidator } from '@shared-library/validator';
+import { OptionsValidator } from '@shared-library/validator-local';
 import { DataService } from '@repository/data.service';
 
 @Injectable({
@@ -27,7 +27,7 @@ export class DataLocalResolver implements Resolve<Irequest> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Irequest> {
    
     // Request
-    this.data.dataLocal.request = {
+    this.data.request = {
       language: this.language(route),
       page: this.page(route),
       domain: this.domain(route),
@@ -42,11 +42,11 @@ export class DataLocalResolver implements Resolve<Irequest> {
       item: null,
       data: null
     }
-    let local = this.data.dataLocal.data[this.data.dataLocal.request.document]
+/*     let local = this.data.dataLocal.document[this.data.dataLocal.request.document]
     local.request = this.data.dataLocal.request
-    local.form = this.data.getLocal(this.data.dataLocal.document)
+    local.form = this.data.getLocal(this.data.dataLocal.document, this.data.dataLocal.request) */
     
-    return of(this.data.dataLocal.request);
+    return of(this.data.request);
   }
 
   document(route: ActivatedRouteSnapshot): Irequest['document'] {
@@ -58,7 +58,7 @@ export class DataLocalResolver implements Resolve<Irequest> {
     if (test == null) {
 
     } else {
-      this.data.dataLocal.errorResolve = `Document: "${document}" not option valid.`
+      this.data.errorResolve = `Document: "${document}" not option valid.`
       this.router.navigate([
         `${route.parent?.url[0].path}/${route.parent?.url[1].path}/${document}`])
      
@@ -74,7 +74,7 @@ export class DataLocalResolver implements Resolve<Irequest> {
     if (test == null) {
 
     } else {
-      this.data.dataLocal.errorResolve = `Colection: "${colection}" not option valid.`
+      this.data.errorResolve = `Colection: "${colection}" not option valid.`
       this.router.navigate([
         `${route.parent?.url[0].path}/${route.parent?.url[1].path}/${colection}`])
     }
@@ -88,7 +88,7 @@ export class DataLocalResolver implements Resolve<Irequest> {
     if (test == null) {
 
     } else {
-      this.data.dataLocal.errorResolve = `Language: "${language}" not option valid.`
+      this.data.errorResolve = `Language: "${language}" not option valid.`
       this.router.navigate([
         `${route.parent?.url[0].path}/${route.parent?.url[1].path}`])
     }
@@ -102,7 +102,7 @@ export class DataLocalResolver implements Resolve<Irequest> {
     if (test == null) {
 
     } else {
-      this.data.dataLocal.errorResolve =  `Page: "${page}" not option valid.`
+      this.data.errorResolve =  `Page: "${page}" not option valid.`
       this.router.navigate([
         `${route.parent?.url[0].path}/${route.parent?.url[1].path}`])
     }
@@ -117,7 +117,7 @@ export class DataLocalResolver implements Resolve<Irequest> {
     if (test == null) {
 
     } else {
-      this.data.dataLocal.errorResolve = `Action: "${action}" not option valid.`
+      this.data.errorResolve = `Action: "${action}" not option valid.`
       this.router.navigate([
         `${route.parent?.url[0].path}/${route.parent?.url[1].path}`])
     }
@@ -130,7 +130,7 @@ export class DataLocalResolver implements Resolve<Irequest> {
     if (test == null) {
 
     } else {
-      this.data.dataLocal.errorResolve = `Environment: "${env}" not option valid.`
+      this.data.errorResolve = `Environment: "${env}" not option valid.`
       this.router.navigate([
         `${route.parent?.url[0].path}/${route.parent?.url[1].path}`])
     }
@@ -143,7 +143,7 @@ export class DataLocalResolver implements Resolve<Irequest> {
     if (test == null) {
 
     } else {
-      this.data.dataLocal.errorResolve = `Domain: "${domain}" not option valid.`
+      this.data.errorResolve = `Domain: "${domain}" not option valid.`
       this.router.navigate([
         `${route.parent?.url[0].path}/${route.parent?.url[1].path}`])
     }

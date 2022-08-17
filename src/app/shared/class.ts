@@ -1,9 +1,8 @@
-/* import { Injectable } from '@angular/core';
-import { Credencial_Construtor} from './interface';
+import { Injectable } from '@angular/core';
+import { DataLocalDomain } from '@shared-library/repository'
 
 @Injectable({
   providedIn: 'root'
 })
-export class M_CredencialService extends Credencial_Construtor {
 
-} */
+export class DataLocal extends DataLocalDomain {}

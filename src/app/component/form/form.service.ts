@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormArray, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
-import { DataLocalService } from '@repository/data-local.service';
-import { Ilanguage, ImodelUndefinedProperty, InameValidator, InameValidatorBack, Ipermission, Irequest, ValidatorResponse, ValidatorType, ValidatorTypeAsync } from '@shared-library/interface';
-import { Validators } from '@shared-library/validator';
+import { Ilanguage, ImodelUndefinedProperty, InameValidatorLocal, InameValidatorRemote, Ipermission, Irequest, IValidatorRequest, ValidatorResponse } from '@shared-library/interface';
+import { ValidatorsLocal } from '@shared-library/validator-local';
 import { delay, first, map, Observable, of, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -13,34 +12,50 @@ import { environment } from 'src/environments/environment';
 export class FormService {
 
   constructor(
-    public dataLocal: DataLocalService,
     private http: HttpClient,
   ) { }
 
- createForm(permission: Ipermission[], model: ImodelUndefinedProperty, language: Ilanguage, data: any = null as any): FormGroup {
+  createForm(request: Irequest, permissions: Ipermission[], model: ImodelUndefinedProperty, language: Ilanguage, data: any = null as any): FormGroup {
 
     let group: any = {};
 
-    permission?.forEach((acess: Ipermission) => {
+    permissions?.forEach((permission: Ipermission) => {
 
-      const modelControl = model[acess.id];
+      const modelControl = model[permission.id];
+
       const recursive = () =>
         this.createForm(
-          acess._group as Ipermission[],
-          model[acess.id]._group as ImodelUndefinedProperty,
+          request,
+          permission._group as Ipermission[],
+          model[permission.id]._group as ImodelUndefinedProperty,
           language,
-          data[acess.id]
+          data[permission.id]
         );
+      const validatorRequest = (validator: InameValidatorLocal | InameValidatorRemote): Irequest => {
+
+        const req: IValidatorRequest = {
+          id: permission.id,
+          label: model[permission.id].text[language]!.label,
+          value: data[permission.id] ? data[permission.id] : null,
+          language: language,
+          name: validator,
+          typeExecute: 'front'
+        }
+        request.validator = req
+        return request
+      }
+
       const validators = () => modelControl.validate.sync.map(
-        nameValidator => this.validatorType(nameValidator, language, acess.id))
+        validator => this.local(validatorRequest(validator)))
+
       const validatorsAsync = () => modelControl.validate.async.map(
-        nameValidatorAsync => this.validatorTypeAsync(nameValidatorAsync, language, acess.id))
-        
-      switch (model[acess.id].typeData) {
+        validator => this.remote(validatorRequest(validator)))
+
+      switch (model[permission.id].typeData) {
         case 'value':
-          group[acess.id] = new FormControl(
+          group[permission.id] = new FormControl(
             {
-              value: data[acess.id] ? data[acess.id] : null,
+              value: data[permission.id] ? data[permission.id] : null,
               disabled: modelControl.validate.disabled,
             },
             {
@@ -52,11 +67,11 @@ export class FormService {
           break;
 
         case 'object':
-          group[acess.id] = recursive();
+          group[permission.id] = recursive();
           break;
 
         case 'array':
-          group[acess.id] = new FormArray([recursive()]);
+          group[permission.id] = new FormArray([recursive()]);
           break;
 
         default:
@@ -66,29 +81,8 @@ export class FormService {
 
     return new FormGroup(group);
   }
- 
 
-  validatorType(validate: ValidatorType, language: Ilanguage, valueId: string) {
-
-    const types = {
-      validator: this.validator(validate.validator, language, valueId),
-      back: this.validator(validate.validator, language, valueId),
-    }
-
-    return types[validate.type] as ValidatorFn
-
-  }
-  validatorTypeAsync(validate: ValidatorTypeAsync, language: Ilanguage, valueId: string) {
-
-    const types = {
-      validator: this.validatorBack(validate.validator, language, valueId),
-      back: this.validatorBack(validate.validator, language, valueId),
-    }
-
-    return types[validate.type]
-
-  }
-  validator(nameValidator: InameValidator | InameValidatorBack, language: Ilanguage, valueId: string): ValidatorFn {
+  local(req: Irequest): ValidatorFn {
 
     return (control: AbstractControl): ValidatorResponse => {
 
@@ -99,23 +93,17 @@ export class FormService {
         controle.get(control.value)?.pristine !== true &&
         control.value !== null
       ) {
-        console.log('sync')
 
-        return new Validators(
-          {
-            language,
-            value: control.value,
-            valueId,
-            valueAll: control.root.value,
-            nameValidator
-          })[nameValidator as InameValidator].validate
+        req.validator!.value = control.value
+
+        return new ValidatorsLocal(req)[req.validator!.name as InameValidatorLocal].validate
       } else {
         return null;
       }
     };
   }
 
-  validatorBack(nameValidator: InameValidatorBack | InameValidator, language: Ilanguage, valueId: string): AsyncValidatorFn {
+  remote(req: Irequest): AsyncValidatorFn {
 
     return (control: AbstractControl): Observable<ValidatorResponse> | Promise<ValidatorResponse> => {
 
@@ -126,24 +114,16 @@ export class FormService {
         controle.get(control.value)?.pristine !== true &&
         control.value !== null
       ) {
-        let request = this.dataLocal.request as Required<Irequest>
-        request.validator = {
-          language,
-          value: control.value,
-          valueId,
-          valueAll: control.root.value,
-          nameValidator
-        }
 
-        console.log('Valid Back');
-        console.log(request.validator);
+        /* console.log('Valid Remote Req'); */
+        req.validator!.value = control.value
 
-        return this.http.post<ValidatorResponse>(`${environment.api}/validator`, request).pipe(
+        return this.http.post<ValidatorResponse>(`${environment.api}/validator`, req).pipe(
           delay(200),
           first(),
           map(res => {
-            console.log('Resp Back')
-            console.log(res)
+          /*   console.log('Valid Remote Response')
+            console.log(res) */
             return res
           })
         );
@@ -156,73 +136,6 @@ export class FormService {
       }
     };
   }
-  validatorAsync(nameValidator: InameValidator, language: Ilanguage, valueId: string): AsyncValidatorFn {
-
-    return (control: AbstractControl): Observable<ValidatorResponse> | Promise<ValidatorResponse> => {
-
-      const controle = control.root as FormGroup;
-
-      if (
-        !!controle.controls &&
-        controle.get(control.value)?.pristine !== true &&
-        control.value !== null
-      ) {
-        let request = this.dataLocal.request as Required<Irequest>
-        request.validator = {
-          language,
-          value: control.value,
-          valueId,
-          valueAll: control.root.value,
-          nameValidator
-        }
-
-        console.log('Form async');
-        console.log(request.validator);
-
-        return this.http.post<ValidatorResponse>(`${environment.api}/validator`, request).pipe(
-          delay(200),
-          first(),
-          map(res => res)
-        );
-
-      } else {
-        return of(control.value).pipe(
-          delay(200),
-          first(),
-          map(res => null))
-      }
-    };
-  }
-
-
-  validatorAsyncXX(nameValidator: InameValidator, language: Ilanguage): AsyncValidatorFn {
-
-    return (control: AbstractControl): Promise<ValidatorResponse> => {
-
-      const controle = control.root as FormGroup;
-
-      if (
-        !!controle.controls &&
-        controle.get(control.value)?.pristine !== true &&
-        control.value !== null
-      ) {
-        console.log('async');
-        return this.testPromises()
-
-      } else {
-        return Promise.resolve(null)
-      }
-    }
-  }
-
-  private validZipcodes = ['00001', '00002', '00003', '00004'];
-
-  fakeHttp(value: string) {
-
-    return of(this.validZipcodes.includes(value)).pipe(delay(5000));
-  }
-
-
 
   async testPromises(): Promise<ValidatorResponse> {
 
@@ -242,13 +155,7 @@ export class FormService {
       return null
     }
   }
-  /* 
-    functionSync(text: string): ValidatorResponse {
-      return new TestCompose({
-        language: 'en',
-        value: text,
-      }).namePersonal
-    } */
+
   httpApi(req: any): Observable<ValidatorResponse> {
 
     return this.http.post<ValidatorResponse>(`${environment.api}/api`, req).pipe(take(1))

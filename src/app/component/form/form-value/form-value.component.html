@@ -1,14 +1,15 @@
 <ng-container [ngSwitch]="model?.typeInput">
 
   <app-input-generec *ngSwitchCase="'input'"
-  [form]="form" [model]="model" [language]="language"></app-input-generec>
+  [form]="form" [model]="model" [language]="language" [request]="request"></app-input-generec>
   
   <app-input-generec *ngSwitchCase="'email'"
-  [form]="form" [model]="model" [language]="language"></app-input-generec>
+  [form]="form" [model]="model" [language]="language" [request]="request"></app-input-generec>
  
   <app-accept-terms *ngSwitchCase="'acceptTerms'"
   [form]="form" [model]="model" [language]="language"></app-accept-terms>
   
 </ng-container>
+
 <!-- <input type="password"> -->
 

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { DataLocalService } from '@repository/data-local.service';
 import { DataService } from '@repository/data.service';
-import { IFormData, Irequest } from '@shared-library/interface';
+import { IcreateForm, Irequest } from '@shared-library/interface';
 
 @Component({
   selector: 'app-account-create',
@@ -16,37 +14,30 @@ export class AccountCreateComponent {
   valid = true
   processing = false;
   sucess = false;
-  formData: IFormData;
-  form: FormGroup;
+
+  createForm: IcreateForm;
 
   constructor(
 /*     private activatedRoute: ActivatedRoute, */
-    public dataLocal: DataLocalService,
     public data: DataService
   ) {
+
+    this.createForm = this.data.createForm('account-adm')
     
-    this.formData = this.data.getLocal('account-adm')
-    this.form = this.formData.form
-    this.loading = true;
-
-  /*   this.activatedRoute.data.subscribe(params => {
-      this.form = this.formService.get('account-adm').form
-     }) */
-
-/*     console.log(this.dataLocal) */
   }
   
-
+  ngOnInit() {
+    this.loading = true;
+}
   createAccount() {
     this.valid = false
     this.processing = true;
 
-    this.dataLocal.request!.data = this.formData.form.value
+    this.data.request.data = this.createForm.form.value
 
-    console.log(this.formData.form.value)
-    console.log(this.dataLocal.request)
+    console.log(this.data.request)
 
-    this.data.httpCRUD(this.dataLocal.request as Irequest).subscribe(o => {
+    this.data.httpCRUD(this.data.request as Irequest).subscribe(o => {
       console.log(o)
       if (o == null) {
 

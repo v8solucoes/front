@@ -14,7 +14,8 @@
       matInput
       appFormMask
       [formControl]="control"
-      [model]="model"
+      [request]="createRequest"
+      [validatorName]="validatorName"
       [errorStateMatcher]="matcher"
       required="{{ model?.validate?.required }}"
     />

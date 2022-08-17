@@ -1,7 +1,7 @@
 import { Directive, ElementRef, forwardRef, HostListener, Input, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Imodel, IValidatorRequest } from '@shared-library/interface';
-import { Validators } from '@shared-library/validator';
+import { InameValidatorLocal, Irequest } from '@shared-library/interface';
+import { ValidatorsLocal } from '@shared-library/validator-local';
 
 @Directive({
   selector: '[appFormMask]',
@@ -15,33 +15,29 @@ import { Validators } from '@shared-library/validator';
 })
 export class FormMaskDirective implements ControlValueAccessor {
 
-  @Input() model?: Imodel;
+  @Input() request?: Irequest;
+  @Input() validatorName?: InameValidatorLocal;
  
   constructor(
     private _renderer: Renderer2,
     private _elementRef: ElementRef) { 
-    
-  /*   console.log('Directive')
-    console.log(this.model) */
+
     }
   
   set value(v: string) {
+    console.log('MASK')
     console.log(v)
-   /*  console.log(this.model) */
+    console.log(this.validatorName)
 
-    const nameValidator = this.model?.validate.test as Imodel['validate']['test']
-    const valueId = this.model?.id as Imodel['id']
-    const req: IValidatorRequest = {
-      value: v,
-      valueAll: null,
-      valueId,
-      nameValidator,
-      language: 'en'
-    }
-    const validator = new Validators(req)
+    const req = this.request!
+    req.validator!.value = v
+    req.validator!.name = this.validatorName!
+    
+    console.log(req.validator!)
+    const validator = new ValidatorsLocal(req)
   
-    this.writeValue(validator[nameValidator].applyMaskView)
-    this.onChangeCb(validator[nameValidator].applyMaskData)
+    this.writeValue(validator[this.validatorName!].applyMaskView)
+    this.onChangeCb(validator[this.validatorName!].applyMaskData)
   }
 
   onTouchedCb: (_: any) => void = ()=> {};
@@ -59,7 +55,6 @@ export class FormMaskDirective implements ControlValueAccessor {
 
   @HostListener('keyup', ['$event'])
   onKeyup($event: KeyboardEvent) {
-   /*  console.log(this.model) */
     this.value = this._elementRef.nativeElement.value
   }
 }

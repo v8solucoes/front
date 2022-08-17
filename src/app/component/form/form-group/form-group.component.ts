@@ -17,14 +17,17 @@ export interface FormConstructor{
 export class FormGroupComponent implements OnInit {
   @Input() form?: FormGroup;
   @Input() permission?: Ipermission[];
-  @Input() model?: ImodelUndefinedProperty
+  @Input() model?: ImodelUndefinedProperty;
   @Input() language?: Ilanguage;
+  @Input() request?: Irequest
   
   constructor() { 
     
   }
   
   ngOnInit(): void { 
+/*     console.log('group')
+    console.log(this.request) */
     /*  this.formService.get(this.moduleId) */
     
   }
