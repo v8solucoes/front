@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ImodelUndefinedProperty, Ipermission, Irequest } from '@shared-library/interface';
+import { ImodelUndefinedProperty, Ipermission, Irequest } from '@domain/interface';
 
 @Injectable({
   providedIn: 'root'

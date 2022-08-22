@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DataLocalDomain } from '@shared-library/repository'
+import { DataLocalDomain } from '@domain/repository'
 
 @Injectable({
   providedIn: 'root'

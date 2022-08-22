@@ -5,11 +5,11 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 
-import { Iaction, Ipage, Irequest } from '@shared-library/interface';
+import { Iaction, Ipage, Irequest } from '@domain/interface';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { WindowDom } from '@method/window.dom';
-import { OptionsValidator } from '@shared-library/validator-local';
+import { OptionsValidator } from '@domain/validator-local';
 import { DataService } from '@repository/data.service';
 
 @Injectable({

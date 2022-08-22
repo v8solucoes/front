@@ -52,7 +52,7 @@ Modify files
 ```json
 "baseUrl": "./",
 "paths": {
-    "@shared-library/*":["./../library-shared/src/shared/*"],
+    "@domain/*":["./../domain/src/shared/*"],
     "@shared-angular/*":["./src/app/shared/*"],
     "@css/*":["./src/sass/*"],
     "@view/*":["./src/app/view/*"],

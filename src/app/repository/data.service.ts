@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormService } from '@component/form/form.service';
-import { IcreateForm, IFormData, Ilanguage, Ipermission, Irequest, ValidatorResponse } from '@shared-library/interface';
+import { IcreateForm, IFormData, Ilanguage, Ipermission, Irequest, ValidatorResponse } from '@domain/interface';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DataLocal } from '@shared-angular/class'

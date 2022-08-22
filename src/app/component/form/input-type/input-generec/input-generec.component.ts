@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { FormControl, FormGroup, FormGroupDirective, NgForm } from '@angular/forms';
-import { Ilanguage, Imodel, InameValidatorLocal, Irequest, IValidatorRequest } from '@shared-library/interface';
+import { Ilanguage, Imodel, InameValidatorLocal, Irequest, IValidatorRequest } from '@domain/interface';
 
 @Component({
   selector: 'app-input-generec',

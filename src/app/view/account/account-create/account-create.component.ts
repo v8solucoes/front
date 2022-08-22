@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DataService } from '@repository/data.service';
-import { IcreateForm, Irequest } from '@shared-library/interface';
+import { IcreateForm, Irequest } from '@domain/interface';
 
 @Component({
   selector: 'app-account-create',

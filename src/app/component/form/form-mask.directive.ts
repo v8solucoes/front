@@ -1,7 +1,7 @@
 import { Directive, ElementRef, forwardRef, HostListener, Input, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { InameValidatorLocal, Irequest } from '@shared-library/interface';
-import { ValidatorsLocal } from '@shared-library/validator-local';
+import { InameValidatorLocal, Irequest } from '@domain/interface';
+import { ValidatorsLocal } from '@domain/validator-local';
 
 @Directive({
   selector: '[appFormMask]',

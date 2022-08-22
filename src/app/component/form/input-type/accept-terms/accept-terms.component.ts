@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Ilanguage, Imodel } from '@shared-library/interface';
+import { Ilanguage, Imodel } from '@domain/interface';
 
 @Component({
   selector: 'app-accept-terms',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 /* import { DataLocalService } from '@repository/data-local.service'; */
-import { Ilanguage } from '@shared-library/interface';
+import { Ilanguage } from '@domain/interface';
 
 @Component({
   selector: 'app-terms',

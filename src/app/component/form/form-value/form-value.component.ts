@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Ilanguage, Imodel, Ipermission, Irequest } from '@shared-library/interface';
+import { Ilanguage, Imodel, Ipermission, Irequest } from '@domain/interface';
 
 @Component({
   selector: 'app-form-value',
