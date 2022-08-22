@@ -12,6 +12,7 @@ import { DataLocal } from '@shared-angular/class'
   providedIn: 'root'
 })
 export class DataService {
+  
   errorResolve: any = null
   request!: Irequest
 
@@ -34,6 +35,7 @@ export class DataService {
   }
   models(document: Irequest['document']) {
     const module = this.dataDomain.getModule(document)
+
     return {
       request: this.request,
       language: this.request.language,
@@ -45,29 +47,15 @@ export class DataService {
   createForm(document: Irequest['document']): IcreateForm {
    
     const model = this.models(document)
+
+/*     console.log('Create MODEL')
+    console.log(model.request) */
    
     return {
       ...model,
-      form: this.form.createForm(model.request, model.permission, model.model, model.language, model.document)
+      form: this.form.createForm(model.language, model.request, model.permission, model.model, model.document)
     }
   
-  }
-  getLocal(document: Irequest['document'], request: Irequest): IFormData {
-
-    let form: FormGroup;
-    const permission = this.dataDomain.permission.filter((acess:Ipermission) => acess.id == document)
-    const model = this.dataDomain.model
-    const data = {[document]: this.dataDomain.document[document]}
-    const language: Ilanguage = this.request?.language || 'en'
-
-    form = this.form.createForm(request, permission, model, language, data)
-
-    return {
-      form,
-      permission,
-      model,
-      language
-    };
   }
 
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormArray, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
-import { Ilanguage, ImodelUndefinedProperty, InameValidatorLocal, InameValidatorRemote, Ipermission, Irequest, IValidatorRequest, ValidatorResponse } from '@shared-library/interface';
+import { Ilanguage, ImodelUndefinedProperty, InameValidatorLocal, InameValidatorRemote, Ipermission, Irequest, IValidatorRequest, ValidatorResponse, ValidatorResponseCompose } from '@shared-library/interface';
 import { ValidatorsLocal } from '@shared-library/validator-local';
 import { delay, first, map, Observable, of, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -9,40 +9,41 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
+  
 export class FormService {
 
-  constructor(
-    private http: HttpClient,
-  ) { }
+  constructor(private http: HttpClient) { }
 
-  createForm(request: Irequest, permissions: Ipermission[], model: ImodelUndefinedProperty, language: Ilanguage, data: any = null as any): FormGroup {
+  createForm(language: Ilanguage, request: Irequest, permissions: Ipermission[], model: ImodelUndefinedProperty, data: any = null as any): FormGroup {
 
     let group: any = {};
 
-    permissions?.forEach((permission: Ipermission) => {
+    for (const permission of permissions) {
 
       const modelControl = model[permission.id];
 
       const recursive = () =>
         this.createForm(
+          language,
           request,
           permission._group as Ipermission[],
           model[permission.id]._group as ImodelUndefinedProperty,
-          language,
           data[permission.id]
         );
-      const validatorRequest = (validator: InameValidatorLocal | InameValidatorRemote): Irequest => {
-
-        const req: IValidatorRequest = {
+      
+      const validatorRequest = (validatorName: InameValidatorLocal | InameValidatorRemote): Irequest => {
+        const  req = {...request}
+        const validator: IValidatorRequest = {
           id: permission.id,
           label: model[permission.id].text[language]!.label,
           value: data[permission.id] ? data[permission.id] : null,
           language: language,
-          name: validator,
+          name: validatorName,
           typeExecute: 'front'
         }
-        request.validator = req
-        return request
+        req.validator = validator
+
+        return req
       }
 
       const validators = () => modelControl.validate.sync.map(
@@ -54,15 +55,18 @@ export class FormService {
       switch (model[permission.id].typeData) {
         case 'value':
           group[permission.id] = new FormControl(
+
             {
               value: data[permission.id] ? data[permission.id] : null,
               disabled: modelControl.validate.disabled,
             },
+
             {
               validators: validators(),
               asyncValidators: validatorsAsync(),
               updateOn: modelControl.validate.updateOn,
             },
+
           );
           break;
 
@@ -77,7 +81,7 @@ export class FormService {
         default:
           break;
       }
-    });
+    };
 
     return new FormGroup(group);
   }
@@ -96,7 +100,13 @@ export class FormService {
 
         req.validator!.value = control.value
 
-        return new ValidatorsLocal(req)[req.validator!.name as InameValidatorLocal].validate
+        const response = new ValidatorsLocal(req)[req.validator!.name as InameValidatorLocal].validate
+
+        if (response == null) {
+          return null
+        }
+        return response!['error'] as ValidatorResponse
+
       } else {
         return null;
       }
@@ -114,17 +124,21 @@ export class FormService {
         controle.get(control.value)?.pristine !== true &&
         control.value !== null
       ) {
-
-        /* console.log('Valid Remote Req'); */
         req.validator!.value = control.value
+   /*      console.log('Valid Remote Req');
+        console.log(req); */
 
-        return this.http.post<ValidatorResponse>(`${environment.api}/validator`, req).pipe(
+        return this.http.post<ValidatorResponseCompose>(`${environment.api}/validator`, req).pipe(
           delay(200),
           first(),
-          map(res => {
-          /*   console.log('Valid Remote Response')
+          map((res: ValidatorResponseCompose) => {
+            const response = res as ValidatorResponse 
+       /*      console.log('Valid Remote Response')
             console.log(res) */
-            return res
+            if (res == null) {
+              return null
+            }
+            return response!['error'] as ValidatorResponse
           })
         );
 

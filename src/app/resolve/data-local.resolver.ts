@@ -25,7 +25,7 @@ export class DataLocalResolver implements Resolve<Irequest> {
   ) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Irequest> {
-   
+   /*  console.log(this.data.request) */
     // Request
     this.data.request = {
       language: this.language(route),
@@ -42,10 +42,8 @@ export class DataLocalResolver implements Resolve<Irequest> {
       item: null,
       data: null
     }
-/*     let local = this.data.dataLocal.document[this.data.dataLocal.request.document]
-    local.request = this.data.dataLocal.request
-    local.form = this.data.getLocal(this.data.dataLocal.document, this.data.dataLocal.request) */
-    
+  /*   console.log(this.data.request) */
+
     return of(this.data.request);
   }
 
