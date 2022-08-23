@@ -13,14 +13,13 @@ import { DataLocal } from '@shared-angular/class'
 })
 export class DataService {
   
-  errorResolve: any = null
+ public errorResolve: any = null
   request!: Irequest
 
   constructor(
     public http: HttpClient,
     public dataDomain: DataLocal,
     private form: FormService
-/*     public autenticar: AutenticarService */
   ) {
     
   }

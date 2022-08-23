@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { DataLocalService } from '@repository/data-local.service';
-import { Ilanguage, Imodel, ImodelUndefinedProperty, ImoduleId, Ipermission, Irequest } from '@domain/interface';
-import { FormService } from '../form.service';
+import { Ilanguage, Imodel, ImodelUndefinedProperty, Ipermission, Irequest } from '@domain/interface';
 
 export interface FormConstructor{
   permission: Ipermission[] | null, model: Imodel | null, data?: any 

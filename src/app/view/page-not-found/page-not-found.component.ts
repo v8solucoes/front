@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DataLocalService } from '@repository/data-local.service';
+import { DataService } from '@repository/data.service';
 
 @Component({
   selector: 'app-page-not-found',
@@ -14,7 +14,7 @@ export class PageNotFoundComponent implements OnInit {
   language: any
 
   constructor(
-    public dataLocal: DataLocalService,
+    public dataLocal: DataService,
     private activatedRoute: ActivatedRoute
   ) { }
 

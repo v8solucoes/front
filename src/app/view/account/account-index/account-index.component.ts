@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DataLocalService } from '@repository/data-local.service';
+import { DataService } from '@repository/data.service';
 
 @Component({
   selector: 'app-account-index',
@@ -10,7 +10,7 @@ import { DataLocalService } from '@repository/data-local.service';
 export class AccountIndexComponent implements OnInit {
 
   constructor(
-    public dataLocal: DataLocalService,
+    public dataLocal: DataService,
     private activatedRoute: ActivatedRoute
   ) { 
     
