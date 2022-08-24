@@ -25,13 +25,13 @@ export class FormMaskDirective implements ControlValueAccessor {
     }
   
   set value(v: string) {
-  /*   console.log('MASK')
+/*     console.log('MASK')
     console.log(v)
     console.log(this.request) */
 
     const req = this.request!
     req.validator!.value = v
-    req.validator!.name = this.validatorName!
+/*     req.validator!.name = this.validatorName! */
     
 /*     console.log(req.validator!) */
     const validator = new ValidatorsLocal(req)

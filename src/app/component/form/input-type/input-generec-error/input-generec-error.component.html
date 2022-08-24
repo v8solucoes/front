@@ -1,8 +1,8 @@
 <ng-container  *ngFor="let erro of erros | keyvalue">
 
   {{ erro.value == true ? 'Obrigatorio': erro.value }} <br>
-<!--  <app-input-generec-error *ngIf="erro.value == '[object Object]'"
+ <app-input-generec-error *ngIf="erro.value == '[object Object]'"
  [erros]=erro.value>
-</app-input-generec-error> -->
+</app-input-generec-error>
  </ng-container>
  

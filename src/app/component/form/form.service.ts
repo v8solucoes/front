@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormArray, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
-import { Ilanguage, ImodelUndefinedProperty, InameValidatorLocal, InameValidatorRemote, Ipermission, Irequest, IValidatorRequest, ValidatorResponse, ValidatorResponseCompose } from '@domain/interface';
+import { Ilanguage, ImodelUndefinedProperty, InameValidatorLocal, InameValidatorRemote, Ipermission, Irequest, Ivalidator, IvalidatorResponse } from '@domain/interface';
 import { ValidatorsLocal } from '@domain/validator-local';
 import { delay, first, map, Observable, of, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -12,11 +12,14 @@ import { environment } from 'src/environments/environment';
   
 export class FormService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+
+   }
 
   createForm(language: Ilanguage, request: Irequest, permissions: Ipermission[], model: ImodelUndefinedProperty, data: any = null as any): FormGroup {
 
     let group: any = {};
+   /*  console.log(request) */
 
     for (const permission of permissions) {
 
@@ -33,13 +36,14 @@ export class FormService {
       
       const validatorRequest = (validatorName: InameValidatorLocal | InameValidatorRemote): Irequest => {
         const  req = {...request}
-        const validator: IValidatorRequest = {
+        const validator: Ivalidator = {
           id: permission.id,
           label: model[permission.id].text[language]!.label,
           value: data[permission.id] ? data[permission.id] : null,
           language: language,
           name: validatorName,
-          typeExecute: 'front'
+          typeExecute: 'front',
+          error: null
         }
         req.validator = validator
 
@@ -88,7 +92,7 @@ export class FormService {
 
   local(req: Irequest): ValidatorFn {
 
-    return (control: AbstractControl): ValidatorResponse => {
+    return (control: AbstractControl): IvalidatorResponse => {
 
       const controle = control.root as FormGroup;
 
@@ -98,15 +102,11 @@ export class FormService {
         control.value !== null
       ) {
         
-
         req.validator!.value = control.value
 
         const response = new ValidatorsLocal(req)[req.validator!.name as InameValidatorLocal].validate
 
-        if (response == null) {
-          return null
-        }
-        return response!['error'] as ValidatorResponse
+        return response
 
       } else {
         return null;
@@ -116,7 +116,7 @@ export class FormService {
 
   remote(req: Irequest): AsyncValidatorFn {
 
-    return (control: AbstractControl): Observable<ValidatorResponse> | Promise<ValidatorResponse> => {
+    return (control: AbstractControl): Observable<IvalidatorResponse> | Promise<IvalidatorResponse> => {
 
       const controle = control.root as FormGroup;
 
@@ -129,17 +129,12 @@ export class FormService {
    /*      console.log('Valid Remote Req');
         console.log(req); */
 
-        return this.http.post<ValidatorResponseCompose>(`${environment.api}/validator`, req).pipe(
+        return this.http.post<IvalidatorResponse>(`${environment.api}/validator`, req).pipe(
           delay(200),
           first(),
-          map((res: ValidatorResponseCompose) => {
-            const response = res as ValidatorResponse 
-       /*      console.log('Valid Remote Response')
-            console.log(res) */
-            if (res == null) {
-              return null
-            }
-            return response!['error'] as ValidatorResponse
+          map((response: IvalidatorResponse) => {
+ 
+            return response
           })
         );
 
@@ -152,7 +147,7 @@ export class FormService {
     };
   }
 
-  async testPromises(): Promise<ValidatorResponse> {
+  async testPromises(): Promise<IvalidatorResponse> {
 
     try {
       const promise1 = Promise.resolve({ proa: 'first' });
@@ -160,8 +155,8 @@ export class FormService {
       const promise3 = new Promise((resolve, reject) => {
         setTimeout(resolve, 2000, { proc: 'terceira' });
       });
-      /*     const test = await Promise.all<ValidatorResponse>([promise1]) */
-      return Promise.all<ValidatorResponse>([promise1, promise2, promise3]).then((values: ValidatorResponse) => {
+      /*     const test = await Promise.all<IvalidatorResponse>([promise1]) */
+      return Promise.all<IvalidatorResponse>([promise1, promise2, promise3]).then((values: IvalidatorResponse) => {
         console.log(values)
         return { values: JSON.stringify(values) }
       });
@@ -171,9 +166,9 @@ export class FormService {
     }
   }
 
-  httpApi(req: any): Observable<ValidatorResponse> {
+  httpApi(req: any): Observable<IvalidatorResponse> {
 
-    return this.http.post<ValidatorResponse>(`${environment.api}/api`, req).pipe(take(1))
+    return this.http.post<IvalidatorResponse>(`${environment.api}/api`, req).pipe(take(1))
 
   }
 

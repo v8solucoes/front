@@ -1,43 +1,50 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { FormService } from '@component/form/form.service';
-import { IcreateForm, IFormData, Ilanguage, Ipermission, Irequest, ValidatorResponse } from '@domain/interface';
+import { IcreateForm, Ilanguage, Irequest, IvalidatorResponse } from '@domain/interface';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DataLocal } from '@shared-angular/class'
-/* import { DataLocalService } from './data-local.service'; */
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
   
- public errorResolve: any = null
-  request!: Irequest
+  public errorResolve: any = null
+  language!: Ilanguage
+  request!: {[key:string]:Irequest}
 
   constructor(
     public http: HttpClient,
     public dataDomain: DataLocal,
     private form: FormService
   ) {
-    
+   
   }
 
   httpApi(req: Irequest): Observable<any> {
 
     return this.http.post<any>(`${environment.api}/api`, req)
   }
-  httpCRUD(req: Irequest): Observable<ValidatorResponse> {
+  httpCRUD(req: Irequest): Observable<IvalidatorResponse> {
 
-    return this.http.post<ValidatorResponse>(`${environment.api}/CRUD`, req)
+    return this.http.post<IvalidatorResponse>(`${environment.api}/CRUD`, req)
   }
   models(document: Irequest['document']) {
+
     const module = this.dataDomain.getModule(document)
+    const req = { ...this.request[document] }
+
+    req.validator.id = this.request[document].document
+    req.validator.label = this.request[document].document
+    /*     req.validator.name = this.request[document] */
+ /*    console.log(this.request[document]) */
+/*     console.log(req) */
 
     return {
-      request: this.request,
-      language: this.request.language,
+      request: this.request[document],
+      language: req.language,
       model: module.model,
       document: module.document,
       permission: module.permission,
@@ -46,7 +53,7 @@ export class DataService {
   createForm(document: Irequest['document']): IcreateForm {
    
     const model = this.models(document)
-
+    console.log(model.request) 
 /*     console.log('Create MODEL')
     console.log(model.request) */
    

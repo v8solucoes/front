@@ -24,9 +24,8 @@ export class FormGroupComponent implements OnInit {
   }
   
   ngOnInit(): void { 
-/*     console.log('group')
+  /*   console.log('group')
     console.log(this.request) */
-    /*  this.formService.get(this.moduleId) */
     
   }
   getFormObject(id: string): FormGroup {

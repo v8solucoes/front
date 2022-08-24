@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { FormControl, FormGroup, FormGroupDirective, NgForm } from '@angular/forms';
-import { Ilanguage, Imodel, InameValidatorLocal, Irequest, IValidatorRequest } from '@domain/interface';
+import { Ilanguage, Imodel, InameValidatorLocal, Irequest, Ivalidator } from '@domain/interface';
 
 @Component({
   selector: 'app-input-generec',
@@ -13,7 +13,9 @@ export class InputGenerecComponent {
   @Input() model?: Imodel;
   @Input() language?: Ilanguage;
   @Input() request?: Irequest;
-/*   error$: Observable<ValidatorResponse>; */
+
+
+/*   error$: Observable<IvalidatorResponse>; */
   loading = false;
   matcher = new MyErrorStateMatcher();
   control: FormControl = new FormControl()
@@ -23,9 +25,7 @@ export class InputGenerecComponent {
   text = this.model?.text[this.language as Ilanguage]
   
   validatorName = this.model?.validate?.mask as InameValidatorLocal 
-  constructor() {
-
-  }
+  constructor() { }
   
   ngOnInit(): void {
 
@@ -36,21 +36,23 @@ export class InputGenerecComponent {
     this.loading = true
     this.validatorName = this.model?.validate?.mask as InameValidatorLocal
 
-/*     console.log('IMPUT GENERIC') */
+    console.log('INPUT GENERIC')
+    console.log(this.createRequest!)
 
 
   }
   get createRequest(): Irequest {
    
-    const req = this.request!
+    const req = {...this.request!}
 
-    const validator: IValidatorRequest = {
+    const validator: Ivalidator = {
       id: this.model!.id,
       name: this.validatorName,
       label: this.text!.label,
       value: null,
       language: this.language!,
-      typeExecute: 'front'  
+      typeExecute: 'front',
+      error: null
     }
 
     req.validator = validator

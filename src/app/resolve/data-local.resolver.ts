@@ -28,7 +28,10 @@ export class DataLocalResolver implements Resolve<Irequest> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Irequest> {
 
     // Request
-    this.data.request = {
+    const document = route.params['document']
+    this.data.language = route.parent?.url[0].path as Irequest['language']
+
+    this.data!.request = {[document] : {
       language: route.parent?.url[0].path as Irequest['language'],
       page: route.parent?.url[1].path as Ipage,
       domain: this.windowDom.nativeWindow.location.hostname as Irequest['domain'],
@@ -45,23 +48,26 @@ export class DataLocalResolver implements Resolve<Irequest> {
         label: 'Test Request',
         value: '',
         language: route.parent?.url[0].path as Irequest['language'] || 'en',
-        typeExecute: 'front'
+        typeExecute: 'front',
+        error: null
       },
       item: null,
       data: null
-    }
+    }}
     /*   console.log(this.data.request) */
-    const test = new TestCompose(this.data.request).testRequest
+    const test = new TestCompose(this.data.request[document]).testRequest
   
     if (test == null) {
-      return of(this.data.request);
+
+      this.data.request
+      return of(this.data.request[document]);
     } else {
       this.data.errorResolve = `Request Option(s) not valid: "${JSON.stringify(test)}"`
       console.log( this.data.errorResolve)
       this.router.navigate([`notFounRequest`])
     }
     
-    return of(this.data.request)
+    return of(this.data.request[document])
 
   }
 }
