@@ -36,8 +36,8 @@ export class InputGenerecComponent {
     this.loading = true
     this.validatorName = this.model?.validate?.mask as InameValidatorLocal
 
-    console.log('INPUT GENERIC')
-    console.log(this.createRequest!)
+    /* console.log('INPUT GENERIC')
+    console.log(this.createRequest!) */
 
 
   }
