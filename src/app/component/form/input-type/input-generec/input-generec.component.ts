@@ -15,7 +15,7 @@ export class InputGenerecComponent {
   @Input() request?: Irequest;
 
 
-/*   error$: Observable<IvalidatorResponse>; */
+/*   error$: Observable<IresponseValidatorUnit>; */
   loading = false;
   matcher = new MyErrorStateMatcher();
   control: FormControl = new FormControl()

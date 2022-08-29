@@ -9,10 +9,14 @@ export class InputGenerecErrorComponent implements OnInit {
 
   @Input() erros?: any;
 
-  constructor() { }
+ /*  errorList: ResponseCompose; */
+
+  constructor() {
+ /*    this.errorList = this.erros.error */
+   }
 
   ngOnInit(): void {
- /*    console.log(this.erros) */
+    
   }
 
 }

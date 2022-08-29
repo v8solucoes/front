@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormService } from '@component/form/form.service';
-import { IcreateForm, Ilanguage, Irequest, IvalidatorResponse } from '@domain/interface';
+import { IcreateForm, Ilanguage, Irequest, IresponseValidatorUnit } from '@domain/interface';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DataLocal } from '@shared-angular/class'
@@ -27,9 +27,9 @@ export class DataService {
 
     return this.http.post<any>(`${environment.api}/api`, req)
   }
-  httpCRUD(req: Irequest): Observable<IvalidatorResponse> {
+  httpCRUD(req: Irequest): Observable<IresponseValidatorUnit> {
 
-    return this.http.post<IvalidatorResponse>(`${environment.api}/CRUD`, req)
+    return this.http.post<IresponseValidatorUnit>(`${environment.api}/CRUD`, req)
   }
   models(document: Irequest['document']) {
 
