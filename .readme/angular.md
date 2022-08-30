@@ -9,8 +9,6 @@
 
 ## CLI - Global - Always Install LTS version
 
-`npm install -g @angular/cli` 
-
 `npm install -g @angular/cli@13.3.9`
 
 `npm upgrade -g @angular/cli`(last version)
@@ -21,7 +19,7 @@
 
 ## CLI - Local Update
 
-`cd front-app` (root past)
+`cd front` (root past)
 
 `ng update` (Update Last Version)
 
@@ -33,13 +31,13 @@ Delete Past: `rm -rf node_modules .angular` and `rm package-lock.json`
 
 `ng serve`
 
-# Dependecy
+# Dependecy / Global e Local
 
 `npm instal firebase` (é preciso instalar o firebase local e Global)
 
 `npm instal @angular/fire` (é preciso instalar o firebase local e Global)
 
-`npm install --save firebase-functions@latest` (acesse a pasta appBack e execute)
+`npm install --save firebase-functions@latest` (acesse a pasta back e execute)
 
 
 # Setup
