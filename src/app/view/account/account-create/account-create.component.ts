@@ -40,10 +40,10 @@ export class AccountCreateComponent {
     this.data.httpCRUD(this.createForm.request as Irequest).subscribe((response) => {
       const test = response as any[]
       console.log(test)
-      if (test.length == null) {
+      if (test == null) {
 
         setTimeout(() => {
-    /*       this.form.reset() */
+          this.createForm.form.reset()
           this.processing = false 
           this.sucess = true
          
