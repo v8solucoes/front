@@ -1,7 +1,8 @@
 export const environment = {
-  production: true,
-  emuladorFirebase: false,
+  production: false,
+  environment: 'test',
   api: 'http://127.0.0.1:5001/v8app-888cd/us-central1/credenciais',
+  emuladorFirebase: true,
   firebaseConfig: {
     apiKey: "AIzaSyB7_rYWLJ3s97jJOP9SH37hcvE_6m-brXU",
     authDomain: "v8app-888cd.firebaseapp.com",
