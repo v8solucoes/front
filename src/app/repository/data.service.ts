@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormService } from '@component/form/form.service';
-import { IcreateForm, Ilanguage, Irequest, IresponseValidatorUnit } from '@domain/interface';
-import { Observable } from 'rxjs';
+import { IcreateForm, Ilanguage, Irequest, IresponseValidatorCompose, IresponseValidatorUnit } from '@domain/interface';
+import { defer, from, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DataLocal } from '@shared-angular/class'
+import { resolve } from 'dns';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,11 @@ export class DataService {
   httpCRUD(req: Irequest): Observable<IresponseValidatorUnit> {
 
     return this.http.post<IresponseValidatorUnit>(`${environment.api}/CRUD`, req)
+  }
+  httpCRUDResponseCompose(req: Irequest): Observable<IresponseValidatorCompose> {
+
+    return this.http.post<IresponseValidatorCompose>(`${environment.api}/CRUD`, req)
+    
   }
   models(document: Irequest['document']) {
 

@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
 
 // OUTROS
 import { WindowDom } from './method/window.dom';
 import { environment } from 'src/environments/environment';
-import { USE_EMULATOR as USE_AUTH_EMULATOR } from '@angular/fire/compat/auth';
+
+// FIREBASE
+import { AngularFireModule } from '@angular/fire/compat';
+
 
 // MODULO
 import { AccountModule } from './view/account/account.module';
@@ -13,18 +18,17 @@ import { AccountModule } from './view/account/account.module';
 // COMPONENTES
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './view/page-not-found/page-not-found.component';
-
-import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
 import { TermsComponent } from './view/terms/terms.component';
+
 @NgModule({
   declarations: [AppComponent, PageNotFoundComponent, TermsComponent],
   imports: [
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserModule,
-    AccountModule,
     HttpClientModule,
+    AccountModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
         
    /*  MaterialDesign, */
     /*  HttpClientModule, */
@@ -34,17 +38,7 @@ import { TermsComponent } from './view/terms/terms.component';
     /*  ReactiveFormsModule, */
   ],
 
-  providers: [
-    
-    WindowDom,
-    {
-      provide: USE_AUTH_EMULATOR,
-      useValue: environment.emuladorFirebase
-        ? ['http://localhost:9099']
-        : undefined,
-    },
-    
-  ],
+  providers: [ WindowDom ],
 
   bootstrap: [AppComponent],
 })
