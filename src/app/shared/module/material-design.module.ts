@@ -28,7 +28,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 @NgModule({
 
   exports: [
-    
     MatProgressBarModule,
     MatInputModule,
     MatFormFieldModule,
@@ -57,4 +56,4 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatSnackBarModule
   ]
 })
-export class MaterialDesign { }
+export class MaterialDesignModule { }

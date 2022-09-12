@@ -19,14 +19,19 @@ import { AccountModule } from './view/account/account.module';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './view/page-not-found/page-not-found.component';
 import { TermsComponent } from './view/terms/terms.component';
+import { LoginModule } from '@view/login/login.module';
 
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent, TermsComponent],
+  declarations: [
+    AppComponent,
+    PageNotFoundComponent,
+    TermsComponent],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserModule,
     HttpClientModule,
     AccountModule,
+    LoginModule,
     AppRoutingModule,
     BrowserAnimationsModule,
         

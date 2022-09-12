@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  test: true,
   environment: 'test',
   api: 'http://127.0.0.1:5001/v8app-888cd/us-central1/credenciais',
   emuladorFirebase: true,

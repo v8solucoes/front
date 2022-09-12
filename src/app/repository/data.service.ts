@@ -2,10 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormService } from '@component/form/form.service';
 import { IcreateForm, Ilanguage, Irequest, IresponseValidatorCompose, IresponseValidatorUnit } from '@domain/interface';
-import { defer, from, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DataLocal } from '@shared-angular/class'
-import { resolve } from 'dns';
 
 @Injectable({
   providedIn: 'root'
@@ -56,7 +55,20 @@ export class DataService {
       permission: module.permission,
     }
   }
-  createForm(document: Irequest['document']): IcreateForm {
+  createForm(document: Irequest['document']): IcreateForm<any> {
+   
+    const model = this.models(document)
+    console.log(model.request) 
+/*     console.log('Create MODEL')
+    console.log(model.request) */
+   
+    return {
+      ...model,
+      form: this.form.createForm(model.language, model.request, model.permission, model.model, model.document)
+    }
+  
+  }
+  document(document: Irequest['document']): IcreateForm<any> {
    
     const model = this.models(document)
     console.log(model.request) 

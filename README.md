@@ -1,6 +1,7 @@
 # README: LastUpdate (30/08/22)
 
 ### ANGULAR - [Install / Update](.readme/angular.md) 
+### ANGULAR Firebase - [Prod / Emulator](.readme/angular-firebase.md) 
 # About Project
 
 This project was generated with version:

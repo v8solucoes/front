@@ -1,5 +1,6 @@
 export const environment = {
-  production: false,
+  production: true,
+  test: false,
   environment: 'prod',
   api: 'https://us-central1-v8app-888cd.cloudfunctions.net/credenciais',
   emuladorFirebase: true,
