@@ -4,28 +4,29 @@ import { DataService } from '@repository/data.service';
 import { FirebaseAuthService } from 'src/app/api/firebase-auth.service';
 
 @Component({
-  selector: 'app-login-index',
-  templateUrl: './login-index.component.html',
-  styleUrls: ['./login-index.component.scss']
+  selector: 'app-login-sign-in',
+  templateUrl: './login-sign-in.component.html',
+  styleUrls: ['./login-sign-in.component.scss']
 })
-export class LoginIndexComponent implements OnInit {
+export class LoginSignInComponent implements OnInit {
 
   loading = false;
 
-/*   login: IcreateForm<any>; */
+  login: IcreateForm<any>;
 
   constructor(
-    private auth: FirebaseAuthService,
+/*     private auth: FirebaseAuthService, */
     public data: DataService,
     
   ) {
 
-/*     this.login = this.data.createForm('login') */
+    this.login = this.data.createForm('sign-in')
     
   }
 
   ngOnInit(): void {
     this.loading = true;
+    
   }
 
 }

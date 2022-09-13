@@ -5,10 +5,12 @@ import { FormModule } from '@component/form/form.module';
 import { LoginRoutingModule } from './login.routing.modules';
 
 import { LoginIndexComponent } from './login-index/login-index.component';
+import { LoginSignInComponent } from './login-sign-in/login-sign-in.component';
 
 @NgModule({
   declarations: [
-    LoginIndexComponent
+    LoginIndexComponent,
+    LoginSignInComponent
   ],
   imports: [
     CommonModule,

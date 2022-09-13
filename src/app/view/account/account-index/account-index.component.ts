@@ -10,8 +10,8 @@ import { DataService } from '@repository/data.service';
 export class AccountIndexComponent implements OnInit {
 
   constructor(
-    public data: DataService,
-    private activatedRoute: ActivatedRoute
+/*     public data: DataService,
+    private activatedRoute: ActivatedRoute */
   ) { 
     
   }

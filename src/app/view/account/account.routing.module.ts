@@ -1,26 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PageNotFoundComponent } from '@view/page-not-found/page-not-found.component';
-import { TermsComponent } from '@view/terms/terms.component';
-/* import { TermsComponent } from '@view/terms/terms.component'; */
 import { DataLocalResolver } from 'src/app/resolve/data-local.resolver';
 import { AccountCreateComponent } from './account-create/account-create.component';
 import { AccountIndexComponent } from './account-index/account-index.component';
 
 const accountRoutes: Routes = [
-  { path: 'en/terms', component: TermsComponent},
-  { path: 'pt/terms', component: TermsComponent},
+
+  { path: 'en/account', component:AccountIndexComponent},
   {
-    path: 'en/account', component: AccountIndexComponent,
+    path: 'en/account/account-adm', component: AccountCreateComponent,
     
     children: [
-      { path: ':document/:action', component: AccountCreateComponent, resolve: { 'request': DataLocalResolver}},
-      { path: ':document/:action/:item', component: AccountCreateComponent, resolve: { 'request': DataLocalResolver}},
-/*       { path: 'teste/teste/asdf', component: TermsComponent, resolve: { 'request': DataLocalResolver}},
- */      { path: '**', component: PageNotFoundComponent}
+      { path: '', component: AccountCreateComponent, resolve: { 'request': DataLocalResolver}},
+      { path: ':action', component: AccountCreateComponent, resolve: { 'request': DataLocalResolver}},
+      { path: ':action/:item', component: AccountCreateComponent, resolve: { 'request': DataLocalResolver}},
     ]
-  },
-
+  }
   /*   { path: 'login/:tipo', component: LoginComponent },
     { path: 'interface', 
       canActivate:[AutenticarGuard],

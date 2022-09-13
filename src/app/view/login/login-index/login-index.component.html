@@ -1,21 +1,18 @@
-<div *ngIf="loading">
-
-  {{ login.form.value | json}}
-
-  <section>
-
-    <app-form-group [form]="login.form" [permission]="login.permission" [model]="login.model"
-      [language]="login.language" [request]="login.request">
-    </app-form-group>
-
-
-    <button *ngIf="!login.form.get(['login','email']).valid" type="submit" mat-raised-button color="primary" disabled>
-      <mat-label>Create New Account</mat-label>
-    </button>
-    <button *ngIf="login.form.get(['login','email']).valid" type="submit" mat-raised-button color="primary">
-      <mat-label>Sign In</mat-label>
-    </button>
-
-  </section>
-
-</div>
+<ng-container>
+    <section>
+      <button type="submit" mat-raised-button color="primary" routerLink='../login/'>
+        <mat-label>Login</mat-label>
+      </button><br><br>
+      <button type="submit" mat-raised-button color="primary" routerLink='sign-in'>
+          <mat-label>Sign IN</mat-label>
+        </button><br><br>
+      <button type="submit" mat-raised-button color="primary" routerLink='account-agency/create/xx'>
+          <mat-label>New Agency</mat-label>
+        </button><br><br>
+      <button type="submit" mat-raised-button color="primary" routerLink='account-client/create/xxx'>
+          <mat-label>New Client</mat-label>
+        </button>
+    </section>
+   
+  </ng-container>
+<router-outlet></router-outlet>

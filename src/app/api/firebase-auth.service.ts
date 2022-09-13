@@ -25,7 +25,7 @@ export class FirebaseAuthService {
     return signInWithEmailAndPassword(auth, email, password).then(o => {
       console.log('Login Sucess')
       console.log(o)
-      this.router.navigate([`${language}/login/login/create/x`])
+      this.router.navigate([`${language}/login/sign-in`])
     }).catch(o => {
       console.log('Login Error')
       console.log(o)

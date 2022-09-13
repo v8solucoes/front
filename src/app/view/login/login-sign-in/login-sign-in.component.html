@@ -1,0 +1,21 @@
+<div *ngIf="loading">
+
+  LOGIN
+
+  <section>
+
+    <app-form-group [form]="login.form" [permission]="login.permission" [model]="login.model"
+      [language]="login.language" [request]="login.request">
+    </app-form-group>
+
+    <button *ngIf="!login.form.valid" type="submit" mat-raised-button color="primary" disabled>
+      <mat-label>SIGN IN</mat-label>
+    </button>
+
+    <button *ngIf="login.form.valid" type="submit" mat-raised-button color="primary">
+      <mat-label>SIGN IN</mat-label>
+    </button>
+
+  </section>
+
+</div>

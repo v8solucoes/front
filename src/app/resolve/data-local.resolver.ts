@@ -5,11 +5,11 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 
-import { Iaction, Ipage, Irequest } from '@domain/interface';
+import { Irequest } from '@domain/interface';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { WindowDom } from '@method/window.dom';
-import { OptionsValidator, TestCompose } from '@domain/validator-local';
+import { TestCompose } from '@domain/validator-local';
 import { DataService } from '@repository/data.service';
 
 
@@ -26,18 +26,26 @@ export class DataLocalResolver implements Resolve<Irequest> {
   ) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Irequest> {
-
+  /*    console.log('ROUTE')
+     console.log(route)
+     console.log('STATE')
+     console.log(state) */
     // Request
-    const document = route.params['document']
-    this.data.language = route.parent?.url[0].path as Irequest['language']
+    const language =  route.parent?.url[0].path as Irequest['language']
+    const page =  route.parent?.url[1].path as Irequest['page']
+    const document = route.parent?.url[2].path as Irequest['document']
+    const action = route.params['action'] ? route.params['action'] : `null`
+    const item = route.params['item'] ? route.params['item'] : null
+
+    this.data.language = language
 
     this.data!.request = {[document] : {
-      language: route.parent?.url[0].path as Irequest['language'],
-      page: route.parent?.url[1].path as Ipage,
+      language,
+      page,
+      document,
+      action,
       domain: this.windowDom.nativeWindow.location.hostname as Irequest['domain'],
       environment:  environment.environment as Irequest['environment'],
-      action: route.params['action'] as Iaction,
-      document: route.params['document'],
       dateUpdate: new Date(),
       // Optional
       dateCreate: route.params['action'] == 'create' ? new Date() : null,
@@ -47,14 +55,14 @@ export class DataLocalResolver implements Resolve<Irequest> {
         name: 'testRequest',
         label: 'Test Request',
         value: '',
-        language: route.parent?.url[0].path as Irequest['language'] || 'en',
+        language,
         typeExecute: 'front',
         error: null
       },
-      item: null,
+      item,
       data: null
     }}
-    /*   console.log(this.data.request) */
+   /*    console.log(this.data.request) */
     const test = new TestCompose(this.data.request[document]).testRequest
   
     if (test == null) {
