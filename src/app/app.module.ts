@@ -11,15 +11,15 @@ import { environment } from 'src/environments/environment';
 // FIREBASE
 import { AngularFireModule } from '@angular/fire/compat';
 
-
-// MODULO
+// My Modules
+import { LoginModule } from '@view/login/login.module';
+import { AppV8Module } from '@view/app-v8/app-v8.module';
 import { AccountModule } from './view/account/account.module';
 
 // COMPONENTES
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './view/page-not-found/page-not-found.component';
 import { TermsComponent } from './view/terms/terms.component';
-import { LoginModule } from '@view/login/login.module';
 
 @NgModule({
   declarations: [
@@ -29,18 +29,12 @@ import { LoginModule } from '@view/login/login.module';
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AccountModule,
     LoginModule,
+    AppV8Module,
     AppRoutingModule,
-    BrowserAnimationsModule,
-        
-   /*  MaterialDesign, */
-    /*  HttpClientModule, */
-    /*  RouterModule, */
-    /*  BrowserAnimationsModule, */
-    /*  FormsModule, */
-    /*  ReactiveFormsModule, */
   ],
 
   providers: [ WindowDom ],

@@ -6,7 +6,7 @@ import { LoginSignInComponent } from './login-sign-in/login-sign-in.component';
 
 
 const loginRoutes: Routes = [
-  { path: 'en/login', component:LoginIndexComponent},
+  { path: 'en/login', component:LoginIndexComponent },
   {
     path: 'en/login/sign-in', component: LoginSignInComponent,
     

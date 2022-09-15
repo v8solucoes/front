@@ -15,7 +15,7 @@ export class LoginSignInComponent implements OnInit {
   login: IcreateForm<any>;
 
   constructor(
-/*     private auth: FirebaseAuthService, */
+    public auth: FirebaseAuthService,
     public data: DataService,
     
   ) {
@@ -27,6 +27,12 @@ export class LoginSignInComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     
+  }
+ get signIn() {
+    const login = this.login.form.get(['sign-in', 'email']).value
+    const password = this.login.form.get(['sign-in', 'password']).value
+    const language = this.login.request.language
+   return this.auth.loginIn(login,password,language)
   }
 
 }

@@ -52,7 +52,7 @@ export class AccountCreateComponent {
     
       if (response == null) {
         
-        await this.auth.login(user.email, user.password,req.language)
+        await this.auth.loginIn(user.email, user.password,req.language)
         
         setTimeout( () => {
    /*        this.createForm.form.reset() */

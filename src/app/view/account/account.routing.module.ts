@@ -11,7 +11,10 @@ const accountRoutes: Routes = [
     path: 'en/account/account-adm', component: AccountCreateComponent,
     
     children: [
-      { path: '', component: AccountCreateComponent, resolve: { 'request': DataLocalResolver}},
+      {
+        path: '', component: AccountCreateComponent,
+        resolve: { 'request': DataLocalResolver }
+      },
       { path: ':action', component: AccountCreateComponent, resolve: { 'request': DataLocalResolver}},
       { path: ':action/:item', component: AccountCreateComponent, resolve: { 'request': DataLocalResolver}},
     ]

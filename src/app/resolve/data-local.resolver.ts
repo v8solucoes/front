@@ -27,13 +27,14 @@ export class DataLocalResolver implements Resolve<Irequest> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Irequest> {
   /*    console.log('ROUTE')
-     console.log(route)
+    console.log(route)
+    console.log(route.parent?.url[0].path)
      console.log('STATE')
      console.log(state) */
     // Request
     const language =  route.parent?.url[0].path as Irequest['language']
-    const page =  route.parent?.url[1].path as Irequest['page']
-    const document = route.parent?.url[2].path as Irequest['document']
+    const page =  route.parent!.url[1].path as Irequest['page']
+    const document = route.parent!.url[2].path as Irequest['document']
     const action = route.params['action'] ? route.params['action'] : `null`
     const item = route.params['item'] ? route.params['item'] : null
 
@@ -48,7 +49,7 @@ export class DataLocalResolver implements Resolve<Irequest> {
       environment:  environment.environment as Irequest['environment'],
       dateUpdate: new Date(),
       // Optional
-      dateCreate: route.params['action'] == 'create' ? new Date() : null,
+      dateCreate: action == 'create' ? new Date() : null,
       colection: null,
       validator: {
         id: 'request',
