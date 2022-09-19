@@ -5,11 +5,17 @@ import { MaterialDesignModule } from '@shared-angular/module/material-design.mod
 import { FormModule } from '@component/form/form.module';
 
 import { InterfaceComponent } from './interface/interface.component';
+import { MenuIndexComponent } from './menu/menu-index/menu-index.component';
+import { MenuTopComponent } from './menu/menu-top/menu-top.component';
+import { MenuAdmComponent } from './menu/menu-adm/menu-adm.component';
 
 
 @NgModule({
   declarations: [
-    InterfaceComponent
+    InterfaceComponent,
+    MenuIndexComponent,
+    MenuTopComponent,
+    MenuAdmComponent
   ],
   imports: [
     CommonModule,

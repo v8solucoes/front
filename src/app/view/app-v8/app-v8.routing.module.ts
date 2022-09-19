@@ -9,7 +9,7 @@ const appV8Routes: Routes = [
 
   {
     path: 'en/app/interface', component: InterfaceComponent,
-    canActivate:[AuthGuard],
+ /*    canActivate:[AuthGuard], */
     
     children: [
       { path: '', component: InterfaceComponent, resolve: { 'request': DataLocalResolver}},

@@ -1,4 +1,38 @@
-<p>interface works!</p>
+<ng-template #loading>
+  <mat-progress-bar mode="query"></mat-progress-bar>
+</ng-template>
 
-<!-- {{ auth.onAuthState()}} -->
-<button (click)="auth.loginOut()">Sign Out</button>
+<section>
+
+  <mat-drawer-container [ngClass]="i.designUser.tema" [hasBackdrop]="i.design.telaCelular" *ngIf="true; else loading">
+
+    <mat-drawer #menu mode="side" [opened]="this.i.design.telaDesktop">
+ 
+    <app-menu-index></app-menu-index>
+
+    </mat-drawer>
+
+    <mat-drawer-content>
+
+      <mat-sidenav-container>
+
+        <mat-sidenav-content>
+          <button (click)="this.i.actionsEmitter.emit('menu')">M</button>
+          <button (click)="this.i.actionsEmitter.emit('document')">D</button><br>
+          Coleção<br>
+        </mat-sidenav-content>
+
+        <mat-sidenav #document mode="side" [opened]=" i.loading && i.design.telaDesktopTablet" position="end">
+
+          <button (click)="this.i.actionsEmitter.emit('document')">X</button>
+         <br> Documento<br>
+
+        </mat-sidenav>
+
+      </mat-sidenav-container>
+
+    </mat-drawer-content>
+
+  </mat-drawer-container>
+
+</section>

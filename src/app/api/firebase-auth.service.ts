@@ -26,7 +26,9 @@ export class FirebaseAuthService {
 
     return signInWithEmailAndPassword(auth, email, password).then(o => {
       console.log('Login Sucess')
-      console.log(o)
+      const test = auth.currentUser as any
+      console.log(test['reloadUserInfo'])
+  /*     console.log(o.user) */
       this.router.navigate([`${language}/app/interface`])
     }).catch(o => {
       console.log('Login Error')
@@ -92,8 +94,8 @@ export class FirebaseAuthService {
     const auth = getAuth();
   /*   environment.test ? connectAuthEmulator(auth, "http://localhost:9099",) : ''; */
     const user = auth.currentUser;
-   /*  console.log('onStates')
-    console.log(user) */
+    console.log('onStates')
+    console.log(auth.config)
 
     if (user) {
 

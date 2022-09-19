@@ -1,0 +1,137 @@
+@import "/src/sass/construtor";
+
+section {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+app-menu-index {
+  width: 260px;
+  @extend %conteudo;
+  background-color: var(--cor-superficie);
+}
+
+app-modulo {
+
+  @extend %conteudo;
+  background-color: var(--cor-superficie);
+
+  width: 100%;
+
+  @media (min-width: 660px) {
+    max-width: 360px;
+    min-width: 280px;
+  }
+  @media (min-width: 680px) {
+    max-width: 380px;
+    min-width: 280px;
+  }
+  @media (min-width: 700px) {
+    max-width: 410px;
+    min-width: 280px;
+  }
+}
+
+:host app-desktop {
+  max-width: 300px;
+  min-width: 280px;
+  @extend %conteudo;
+  background-color: var(--cor-superficie);
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+  @media (min-width: 660px) {
+    max-width: 360px;
+    min-width: 280px;
+  }
+  @media (min-width: 680px) {
+    max-width: 380px;
+    min-width: 280px;
+  }
+  @media (min-width: 700px) {
+    max-width: 400px;
+    min-width: 280px;
+  }
+  @media (min-width: 720px) {
+    max-width: 420px;
+    min-width: 280px;
+  }
+  @media (min-width: 740px) {
+    max-width: 440px;
+    min-width: 280px;
+  }
+  @media (min-width: 760px) {
+    max-width: 460px;
+    min-width: 280px;
+  }
+  @media (min-width: 780px) {
+    max-width: 480px;
+    min-width: 360px;
+  }
+  @media (min-width: 800px) {
+    max-width: 480px;
+    min-width: 280px;
+  }
+  @media (min-width: 830px) {
+    max-width: 680px;
+    min-width: 280px;
+  }
+  @media (min-width: 840px) {
+    max-width: 480px;
+    min-width: 280px;
+  }
+  @media (min-width: 860px) {
+    max-width: 560px;
+    min-width: 280px;
+  }
+  @media (min-width: 880px) {
+    max-width: 580px;
+    min-width: 280px;
+  }
+
+  @media (min-width: 900px) {
+    max-width: 600px;
+    min-width: 280px;
+  }
+  @media (min-width: 920px) {
+    max-width: 620px;
+    min-width: 280x;
+  }
+  @media (min-width: 940px) {
+    max-width: 560px;
+    min-width: 280px;
+  }
+}
+
+mat-drawer-container,
+mat-sidenav-container {
+  height: 100%;
+
+}
+
+.scroll {
+  @extend %scroll;
+}
+
+/* Remove cores de fundo das Diretivas Material Design */
+.mat-drawer-container {
+  background-color: transparent;
+}
+.mat-drawer {
+  background-color: transparent;
+}
+.mat-sidenav-container {
+  background-color: transparent;
+}
+.mat-drawer-content {
+  overflow: hidden;
+}
+
+// Corrige scroll 100%
+/* :host ::ng-deep cdk-virtual-scroll-viewport .cdk-virtual-scroll-content-wrapper {
+  width: 100%;
+} */
