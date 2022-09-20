@@ -31,6 +31,13 @@ export class DataService {
 
     return this.http.post<IresponseValidatorUnit>(`${environment.api}/CRUD`, req)
   }
+  httpLogin(token: string): Observable<any> {
+
+    return this.http.get<any>(`${environment.api}/login/${token}`, {
+      'headers': {
+      'request': JSON.stringify(this.request['sign-in'])
+    }})
+  }
   httpCRUDResponseCompose(req: Irequest): Observable<IresponseValidatorCompose> {
 
     return this.http.post<IresponseValidatorCompose>(`${environment.api}/CRUD`, req)

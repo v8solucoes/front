@@ -17,9 +17,10 @@
       <mat-sidenav-container>
 
         <mat-sidenav-content>
-          <button (click)="this.i.actionsEmitter.emit('menu')">M</button>
-          <button (click)="this.i.actionsEmitter.emit('document')">D</button><br>
+          <button (click)="i.actionsEmitter.emit('menu')">M</button>
+          <button (click)="i.actionsEmitter.emit('document')">D</button><br>
           Coleção<br>
+          <button (click)="i.auth.loginOut()">loginOut()</button>
         </mat-sidenav-content>
 
         <mat-sidenav #document mode="side" [opened]=" i.loading && i.design.telaDesktopTablet" position="end">

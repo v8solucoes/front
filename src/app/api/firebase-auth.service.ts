@@ -4,6 +4,8 @@ import { FirebaseApp } from '@angular/fire/compat';
 import { connectAuthEmulator, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithCredential, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { environment } from 'src/environments/environment';
 import { Ilanguage } from '@domain/interface';
+import { HttpClient } from '@angular/common/http';
+import { DataService } from '@repository/data.service';
 
 
 
@@ -14,9 +16,10 @@ export class FirebaseAuthService {
 
   constructor(
     public firebaseApp: FirebaseApp,
+    private data: DataService,
     private router: Router
   ) {
-  
+
   }
 
   async loginIn(email: string, password: string, language: Ilanguage) {
@@ -26,10 +29,18 @@ export class FirebaseAuthService {
 
     return signInWithEmailAndPassword(auth, email, password).then(o => {
       console.log('Login Sucess')
-      const test = auth.currentUser as any
-      console.log(test['reloadUserInfo'])
-  /*     console.log(o.user) */
-      this.router.navigate([`${language}/app/interface`])
+      const credential = o.user as any
+      /*       const { permission } = JSON.parse(credential['reloadUserInfo']['customAttributes'])
+            console.log(credential['accessToken'])
+            console.log(o.user.refreshToken)
+            console.log(o.user) */
+      return this.data.httpLogin(credential['accessToken'] as string).subscribe(o => {
+        console.log('API LOGIN')
+        console.log(o)
+        this.router.navigate([`${language}/app/interface`])
+      })
+
+
     }).catch(o => {
       console.log('Login Error')
       this.router.navigate([`${language}/login/sign-in`])
@@ -40,7 +51,7 @@ export class FirebaseAuthService {
   async loginOut() {
 
     const auth = getAuth();
-/*     environment.test ? connectAuthEmulator(auth, "http://localhost:9099") : ''; */
+    /*     environment.test ? connectAuthEmulator(auth, "http://localhost:9099") : ''; */
 
     return signOut(auth).then(() => {
       console.log('signOut Sucess')
@@ -92,18 +103,18 @@ export class FirebaseAuthService {
   }
   onAuthState() {
     const auth = getAuth();
-  /*   environment.test ? connectAuthEmulator(auth, "http://localhost:9099",) : ''; */
+    /*   environment.test ? connectAuthEmulator(auth, "http://localhost:9099",) : ''; */
     const user = auth.currentUser;
     console.log('onStates')
     console.log(auth.config)
 
     if (user) {
 
-    /*   console.log(user) */
+      /*   console.log(user) */
       return true
     } else {
 
-    /*   console.log(user) */
+      /*   console.log(user) */
       this.router.navigate([`en/login/sign-in`])
       return false
 
@@ -126,13 +137,13 @@ export class FirebaseAuthService {
   authChangeStatus() {
     const auth = getAuth();
     environment.test ? connectAuthEmulator(auth, "http://localhost:9099") : '';
-  return  onAuthStateChanged(auth, (user) => {
-    if (user) {
-        
+    return onAuthStateChanged(auth, (user) => {
+      if (user) {
+
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
-      const uid = user.uid;
-      
+        const uid = user.uid;
+
         // ...
       } else {
         // User is signed out
@@ -141,5 +152,5 @@ export class FirebaseAuthService {
     });
 
   }
-  
+
 }
