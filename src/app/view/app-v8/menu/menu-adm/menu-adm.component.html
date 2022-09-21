@@ -1,2 +1,18 @@
-<p>menu-adm workss!</p>
-{{ i.data.dataDomain| json }}
+<ng-template #loading>
+  <mat-progress-bar mode="query"></mat-progress-bar>
+</ng-template>
+
+<section *ngIf="load; else loading">
+
+  <ul>
+    Administrator
+    <li *ngFor="let permission of i.data.permission;
+     let in=index let first let last" [routerLink]="[permission.id]">
+     <!-- Permission - {{ permission.id }} -->
+     {{ i.data.model[permission.id].text[i.data.language]?.label }}
+    </li>
+
+  </ul>
+  <p>menu-adm workss!</p>
+  {{ i.data.permission | json }}
+</section>

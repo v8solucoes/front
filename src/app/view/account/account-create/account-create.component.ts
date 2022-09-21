@@ -52,13 +52,13 @@ export class AccountCreateComponent {
     
       if (response == null) {
         
-        await this.auth.loginIn(user.email, user.password,req.language)
         
+     /*    this.auth.loginIn(user.email, user.password,req.language) */
         setTimeout( () => {
-   /*        this.createForm.form.reset() */
+          /*        this.createForm.form.reset() */
           this.processing = false 
           this.sucess = true
-         
+          this.auth.router.navigate([`${this.data.language}/login/sign-in`])
         }, 2000);
 
       } else {

@@ -1,20 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/guards/auth.guard';
-import { DataLocalResolver } from 'src/app/resolve/data-local.resolver';
+import { AppResolver } from 'src/app/resolve/app.resolver';
 import { InterfaceComponent } from './interface/interface.component';
 
 
 const appV8Routes: Routes = [
 
   {
-    path: 'en/app/interface', component: InterfaceComponent,
- /*    canActivate:[AuthGuard], */
-    
+    path: 'en/app', component: InterfaceComponent,
+    canActivate: [AuthGuard],
+    resolve: { 'request': AppResolver},
     children: [
-      { path: '', component: InterfaceComponent, resolve: { 'request': DataLocalResolver}},
-      { path: ':action', component: InterfaceComponent, resolve: { 'request': DataLocalResolver}},
-      { path: ':action/:item', component: InterfaceComponent, resolve: { 'request': DataLocalResolver}},
+      {
+        path: ':document', component: InterfaceComponent,
+        canActivate: [AuthGuard],
+        resolve: { 'request': AppResolver}},
+      { path: ':document/:action', component: InterfaceComponent},
+      { path: ':document/:action/:id', component: InterfaceComponent},
     ]
   }
   /*   { path: 'login/:tipo', component: LoginComponent },

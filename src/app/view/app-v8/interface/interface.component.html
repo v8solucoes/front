@@ -4,7 +4,7 @@
 
 <section>
 
-  <mat-drawer-container [ngClass]="i.designUser.tema" [hasBackdrop]="i.design.telaCelular" *ngIf="true; else loading">
+  <mat-drawer-container [ngClass]="i.designUser.tema" [hasBackdrop]="i.design.telaCelular" *ngIf="load; else loading">
 
     <mat-drawer #menu mode="side" [opened]="this.i.design.telaDesktop">
  

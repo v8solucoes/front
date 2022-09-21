@@ -9,26 +9,16 @@ import { DataService } from '@repository/data.service';
 })
 export class PageNotFoundComponent implements OnInit {
 
-  loading = false
-
-  language: any
 
   constructor(
-    public dataLocal: DataService,
-    private activatedRoute: ActivatedRoute
+    public data: DataService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    console.log(this.data)
+this.data
 
-    this.activatedRoute.data.subscribe(params => {
-
-      this.language = params
-
-     /*  console.log(this.activatedRoute) */
-
-      this.loading = true
-
-    })
   }
 
 }

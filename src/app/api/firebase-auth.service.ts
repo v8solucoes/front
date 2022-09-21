@@ -3,11 +3,8 @@ import { Router } from '@angular/router';
 import { FirebaseApp } from '@angular/fire/compat';
 import { connectAuthEmulator, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithCredential, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { environment } from 'src/environments/environment';
-import { Ilanguage } from '@domain/interface';
-import { HttpClient } from '@angular/common/http';
+import { Ilanguage, Irequest } from '@domain/interface';
 import { DataService } from '@repository/data.service';
-
-
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +14,7 @@ export class FirebaseAuthService {
   constructor(
     public firebaseApp: FirebaseApp,
     private data: DataService,
-    private router: Router
+    public router: Router
   ) {
 
   }
@@ -29,18 +26,7 @@ export class FirebaseAuthService {
 
     return signInWithEmailAndPassword(auth, email, password).then(o => {
       console.log('Login Sucess')
-      const credential = o.user as any
-      /*       const { permission } = JSON.parse(credential['reloadUserInfo']['customAttributes'])
-            console.log(credential['accessToken'])
-            console.log(o.user.refreshToken)
-            console.log(o.user) */
-      return this.data.httpLogin(credential['accessToken'] as string).subscribe(o => {
-        console.log('API LOGIN')
-        console.log(o)
-        this.router.navigate([`${language}/app/interface`])
-      })
-
-
+      this.router.navigate([`${language}/app`])
     }).catch(o => {
       console.log('Login Error')
       this.router.navigate([`${language}/login/sign-in`])
@@ -62,7 +48,34 @@ export class FirebaseAuthService {
     });
 
   }
+  async loginGuard() {
 
+    try {
+
+      const user = getAuth().currentUser;
+
+      if (user) {
+        const credential = user as any
+        this.data.acessToken = credential['accessToken']
+        return true
+      } else {
+
+       /*  this.router.navigate([`en/login/sign-in`]) */
+        return false
+
+      }
+    } catch (error) {
+      return false
+    }
+
+
+  }
+  
+  loginResolve(request: Irequest) {
+
+   return this.data.httpLogin(this.data.acessToken,request)
+
+  }
   async googleAuth() {
 
     const auth = getAuth();
@@ -100,57 +113,6 @@ export class FirebaseAuthService {
         // ...
         console.log(credential)
       });
-  }
-  onAuthState() {
-    const auth = getAuth();
-    /*   environment.test ? connectAuthEmulator(auth, "http://localhost:9099",) : ''; */
-    const user = auth.currentUser;
-    console.log('onStates')
-    console.log(auth.config)
-
-    if (user) {
-
-      /*   console.log(user) */
-      return true
-    } else {
-
-      /*   console.log(user) */
-      this.router.navigate([`en/login/sign-in`])
-      return false
-
-    }
-  }
-  autenticado() {
-    return new Promise((resolve, reject) => {
-      getAuth().onAuthStateChanged(conectado => {
-        if (conectado) {
-          console.log('Autenticado', conectado.uid);
-          resolve(conectado.uid);
-        } else {
-          alert('Desconectado');
-          this.router.navigate([``]);
-          reject(conectado);
-        }
-      });
-    });
-  }
-  authChangeStatus() {
-    const auth = getAuth();
-    environment.test ? connectAuthEmulator(auth, "http://localhost:9099") : '';
-    return onAuthStateChanged(auth, (user) => {
-      if (user) {
-
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
-
-        // ...
-      } else {
-        // User is signed out
-        // ...
-      }
-    });
-
   }
 
 }

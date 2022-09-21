@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormService } from '@component/form/form.service';
-import { IcreateForm, Ilanguage, Irequest, IresponseValidatorCompose, IresponseValidatorUnit } from '@domain/interface';
+import { IcreateForm, Ilanguage, ImodelUndefinedProperty, Ipermission, Irequest, IresponseValidatorCompose, IresponseValidatorUnit } from '@domain/interface';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DataLocal } from '@shared-angular/class'
@@ -10,10 +10,17 @@ import { DataLocal } from '@shared-angular/class'
   providedIn: 'root'
 })
 export class DataService {
-  
-  public errorResolve: any = null
+  permission!: Ipermission[]
+  model!: ImodelUndefinedProperty
+  errorResolve: any = null
   language!: Ilanguage
-  request!: {[key:string]:Irequest}
+  request!: { [key: string]: Irequest }
+  acessToken: string = ''
+  credential: any = { teste: 'oi' }
+  time = new Observable<string>(observer => {
+    setInterval(() => observer.next(new Date().toString()), 1000);
+  })
+  
 
   constructor(
     public http: HttpClient,
@@ -31,12 +38,12 @@ export class DataService {
 
     return this.http.post<IresponseValidatorUnit>(`${environment.api}/CRUD`, req)
   }
-  httpLogin(token: string): Observable<any> {
+  httpLogin(token: string, request: Irequest): Observable<any> {
 
-    return this.http.get<any>(`${environment.api}/login/${token}`, {
-      'headers': {
-      'request': JSON.stringify(this.request['sign-in'])
-    }})
+    console.log(`'HTTP LOGIN'`)
+    console.log(request)
+ 
+    return this.http.get<any>(`${environment.api}/login/${token}/${JSON.stringify(request)}`)
   }
   httpCRUDResponseCompose(req: Irequest): Observable<IresponseValidatorCompose> {
 

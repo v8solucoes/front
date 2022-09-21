@@ -9,7 +9,7 @@ const loginRoutes: Routes = [
   { path: 'en/login', component:LoginIndexComponent },
   {
     path: 'en/login/sign-in', component: LoginSignInComponent,
-    
+    resolve: { 'request': DataLocalResolver},
     children: [
       { path: '', component: LoginSignInComponent, resolve: { 'request': DataLocalResolver}},
       { path: ':action', component: LoginSignInComponent, resolve: { 'request': DataLocalResolver}},
