@@ -14,9 +14,9 @@ import { FirebaseAuthService } from '../api/firebase-auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AppResolver implements Resolve<Irequest> {
-
-  constructor(
+export class GetUserResolver implements Resolve<Irequest> {
+  
+ constructor(
     private router: Router,
     public auth: FirebaseAuthService,
     private resolveService: ResolveService,
@@ -26,14 +26,14 @@ export class AppResolver implements Resolve<Irequest> {
   
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Irequest> {
 
-    const request = this.resolveService.setRequest(route)
+    const request = this.resolveService.getRequest(route)
     const test = new TestCompose(request).testRequest
 
     if (test == null) {
 
       console.log('Resolve Sucess')
       
-      return this.auth.loginResolve(request)
+      return this.data.httpUser(request)
 
     } else {
       console.log('Resolve Error')

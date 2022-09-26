@@ -19,7 +19,6 @@ export class FormService {
   createForm(language: Ilanguage, request: Irequest, permissions: Ipermission[], model: ImodelUndefinedProperty, data: any = null as any): FormGroup {
 
     let group: any = {};
-    /*  console.log(request) */
 
     for (const permission of permissions) {
 

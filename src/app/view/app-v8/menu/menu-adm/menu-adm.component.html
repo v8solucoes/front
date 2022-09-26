@@ -5,14 +5,13 @@
 <section *ngIf="load; else loading">
 
   <ul>
-    Administrator
-    <li *ngFor="let permission of i.data.permission;
+    Administrator 
+    <li *ngFor="let permission of i.data.permission.adm;
      let in=index let first let last" [routerLink]="[permission.id]">
-     <!-- Permission - {{ permission.id }} -->
      {{ i.data.model[permission.id].text[i.data.language]?.label }}
     </li>
 
   </ul>
   <p>menu-adm workss!</p>
-  {{ i.data.permission | json }}
+  {{ i.data.permission.adm | json }}
 </section>

@@ -6,16 +6,23 @@ import { LoginSignInComponent } from './login-sign-in/login-sign-in.component';
 
 
 const loginRoutes: Routes = [
-  { path: 'en/login', component:LoginIndexComponent },
+  {
+    path: 'en/login', component: LoginIndexComponent,
+  },
+  {
+    path: 'en/login/:document', component: LoginSignInComponent,
+    resolve: { 'request': DataLocalResolver },
+  },
+  /* { path: 'en/login', component:LoginIndexComponent },
   {
     path: 'en/login/sign-in', component: LoginSignInComponent,
     resolve: { 'request': DataLocalResolver},
     children: [
       { path: '', component: LoginSignInComponent, resolve: { 'request': DataLocalResolver}},
       { path: ':action', component: LoginSignInComponent, resolve: { 'request': DataLocalResolver}},
-      { path: ':action/:item', component: LoginSignInComponent, resolve: { 'request': DataLocalResolver}},
+      { path: ':action/:id', component: LoginSignInComponent, resolve: { 'request': DataLocalResolver}},
     ]
-  }
+  } */
 ];
 
 @NgModule({

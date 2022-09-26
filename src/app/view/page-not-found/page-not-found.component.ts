@@ -12,12 +12,10 @@ export class PageNotFoundComponent implements OnInit {
 
   constructor(
     public data: DataService,
-    private route: ActivatedRoute
+
   ) { }
 
   ngOnInit(): void {
-    console.log(this.data)
-this.data
 
   }
 

@@ -6,25 +6,14 @@ import { AccountIndexComponent } from './account-index/account-index.component';
 
 const accountRoutes: Routes = [
 
-  { path: 'en/account', component:AccountIndexComponent},
   {
-    path: 'en/account/account-adm', component: AccountCreateComponent,
-    
-    children: [
-      {
-        path: '', component: AccountCreateComponent,
-        resolve: { 'request': DataLocalResolver }
-      },
-      { path: ':action', component: AccountCreateComponent, resolve: { 'request': DataLocalResolver}},
-      { path: ':action/:item', component: AccountCreateComponent, resolve: { 'request': DataLocalResolver}},
-    ]
-  }
-  /*   { path: 'login/:tipo', component: LoginComponent },
-    { path: 'interface', 
-      canActivate:[AutenticarGuard],
-      resolve:{ 'usuario': AutenticarResolver},
-      component: InterfaceComponent 
-    }, */
+    path: 'en/account', component: AccountIndexComponent,
+  },
+  {
+    path: 'en/account/:document/:action', component: AccountCreateComponent,
+    resolve: { 'request': DataLocalResolver },
+  },
+
 ];
 
 @NgModule({

@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Ipermission } from '@domain/interface';
 import { InterfaceService } from '../interface.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';

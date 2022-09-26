@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { IcreateForm } from '@domain/interface';
 import { DataService } from '@repository/data.service';
 import { FirebaseAuthService } from 'src/app/api/firebase-auth.service';
@@ -12,20 +14,24 @@ export class LoginSignInComponent implements OnInit {
 
   loading = false;
 
-  login: IcreateForm<any>;
+  login!: IcreateForm<any>;
+/*   createForm!: IcreateForm<FormGroup>; */
 
   constructor(
     public auth: FirebaseAuthService,
     public data: DataService,
+    private route: ActivatedRoute
     
   ) {
-
-    this.login = this.data.createForm('sign-in')
     
   }
 
   ngOnInit(): void {
-    this.loading = true;
+    this.route.data.subscribe(req => {
+      const request = req['request']
+      this.login = this.data.createForm(request)
+      this.loading = true;
+    }).closed
     
   }
  get signIn() {

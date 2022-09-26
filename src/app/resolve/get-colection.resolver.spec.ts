@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AppResolver } from './app.resolver';
+import { GetColectionResolver } from './get-colection.resolver';
 
-describe('AppResolver', () => {
-  let resolver: AppResolver;
+describe('GetColectionResolver', () => {
+  let resolver: GetColectionResolver;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    resolver = TestBed.inject(AppResolver);
+    resolver = TestBed.inject(GetColectionResolver);
   });
 
   it('should be created', () => {

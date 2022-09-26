@@ -71,11 +71,6 @@ export class FirebaseAuthService {
 
   }
   
-  loginResolve(request: Irequest) {
-
-   return this.data.httpLogin(this.data.acessToken,request)
-
-  }
   async googleAuth() {
 
     const auth = getAuth();

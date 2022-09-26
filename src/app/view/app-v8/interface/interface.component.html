@@ -7,8 +7,8 @@
   <mat-drawer-container [ngClass]="i.designUser.tema" [hasBackdrop]="i.design.telaCelular" *ngIf="load; else loading">
 
     <mat-drawer #menu mode="side" [opened]="this.i.design.telaDesktop">
- 
-    <app-menu-index></app-menu-index>
+
+      <app-menu-index></app-menu-index>
 
     </mat-drawer>
 
@@ -20,13 +20,14 @@
           <button (click)="i.actionsEmitter.emit('menu')">M</button>
           <button (click)="i.actionsEmitter.emit('document')">D</button><br>
           Coleção<br>
-          <button (click)="i.auth.loginOut()">loginOut()</button>
+          <router-outlet></router-outlet>
+          <!--      <button (click)="i.auth.loginOut()">loginOut()</button> -->
         </mat-sidenav-content>
 
         <mat-sidenav #document mode="side" [opened]=" i.loading && i.design.telaDesktopTablet" position="end">
 
           <button (click)="this.i.actionsEmitter.emit('document')">X</button>
-         <br> Documento<br>
+          <br> Documento<br>
 
         </mat-sidenav>
 

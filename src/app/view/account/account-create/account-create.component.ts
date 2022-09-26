@@ -3,6 +3,8 @@ import { DataService } from '@repository/data.service';
 import { IcreateForm, ImodelUser, Irequest, IresponseValidatorCompose } from '@domain/interface';
 import { FirebaseAuthService } from 'src/app/api/firebase-auth.service';
 import { FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -13,26 +15,34 @@ import { FormGroup } from '@angular/forms';
 })
 
 export class AccountCreateComponent {
+  load = false
+  inscription!: Subscription
 
   loading = false;
   valid = true;
   processing = false;
   sucess = false;
 
-  createForm: IcreateForm<FormGroup>;
+  createForm!: IcreateForm<FormGroup>;
 
   constructor(
     private auth: FirebaseAuthService,
     public data: DataService,
+    private route: ActivatedRoute
   ) {
-
-    this.createForm = this.data.createForm('account-adm')
-    this.createForm.form.get(['logn','email'])
     
   }
   
   ngOnInit() {
-    this.loading = true;
+    
+    this.route.data.subscribe(req => {
+      const request = req['request']
+      console.log('CREATE INSCRIPTION')
+      console.log(request)
+      this.createForm = this.data.createForm(request)
+      this.loading = true;
+    }).closed
+
 }
   async createAccount() {
     const accounAdm = this.createForm.form.value

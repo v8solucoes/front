@@ -10,16 +10,14 @@ import { DataLocal } from '@shared-angular/class'
   providedIn: 'root'
 })
 export class DataService {
-  permission!: Ipermission[]
+  permission!: {adm:Ipermission[]}
   model!: ImodelUndefinedProperty
   errorResolve: any = null
   language!: Ilanguage
-  request!: { [key: string]: Irequest }
+  requestLast!: Irequest
   acessToken: string = ''
   credential: any = { teste: 'oi' }
-  time = new Observable<string>(observer => {
-    setInterval(() => observer.next(new Date().toString()), 1000);
-  })
+  time = new Date().toString()
   
 
   constructor(
@@ -38,40 +36,37 @@ export class DataService {
 
     return this.http.post<IresponseValidatorUnit>(`${environment.api}/CRUD`, req)
   }
-  httpLogin(token: string, request: Irequest): Observable<any> {
-
-    console.log(`'HTTP LOGIN'`)
-    console.log(request)
+  httpUser(request: Irequest): Observable<any> {
  
-    return this.http.get<any>(`${environment.api}/login/${token}/${JSON.stringify(request)}`)
+    return this.http.get<any>(`${environment.api}/user/${this.acessToken}/${JSON.stringify(request)}`)
+  }
+  httpColection(request: Irequest): Observable<any> {
+ 
+    return this.http.get<any>(`${environment.api}/colection/${this.acessToken}/${JSON.stringify(request)}`)
   }
   httpCRUDResponseCompose(req: Irequest): Observable<IresponseValidatorCompose> {
 
     return this.http.post<IresponseValidatorCompose>(`${environment.api}/CRUD`, req)
     
   }
-  models(document: Irequest['document']) {
+  models(req: Irequest) {
 
-    const module = this.dataDomain.getModule(document)
-    const req = { ...this.request[document] }
+    const module = this.dataDomain.getModule(req.document)
 
-    req.validator.id = this.request[document].document
-    req.validator.label = this.request[document].document
-    /*     req.validator.name = this.request[document] */
- /*    console.log(this.request[document]) */
-/*     console.log(req) */
+    req.validator.id = req.document
+    req.validator.label = req.document
 
     return {
-      request: this.request[document],
+      request: req,
       language: req.language,
       model: module.model,
       document: module.document,
       permission: module.permission,
     }
   }
-  createForm(document: Irequest['document']): IcreateForm<any> {
+  createForm(req: Irequest): IcreateForm<any> {
    
-    const model = this.models(document)
+    const model = this.models(req)
 /*     console.log(model.request)  */
 /*     console.log('Create MODEL')
     console.log(model.request) */
@@ -82,9 +77,9 @@ export class DataService {
     }
   
   }
-  document(document: Irequest['document']): IcreateForm<any> {
+  document(req: Irequest): IcreateForm<any> {
    
-    const model = this.models(document)
+    const model = this.models(req)
     console.log(model.request) 
 /*     console.log('Create MODEL')
     console.log(model.request) */
