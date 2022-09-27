@@ -4,7 +4,6 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
-import { Irequest } from '@domain/interface';
 import { DataService } from '@repository/data.service';
 import { Observable, of } from 'rxjs';
 import { ResolveService } from './resolve.service';

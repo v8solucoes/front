@@ -16,15 +16,16 @@ export class ResolveService {
   ) { }
  
   getRequest(route: ActivatedRouteSnapshot): Irequest {
-
-    const router = route.parent?.url[0]?.path ? route.parent : route
+    
+    const root = route as any
+    const urlSegments= root['_urlSegment']['segments'] as any
 
     const domain = this.windowDom.nativeWindow.location.hostname as Irequest['domain']
-    const language = router.url[0].path as Irequest['language']
-    const page = router.url[1].path as Irequest['page']
-    const document = router.params['document'] ? router.params['document'] as Irequest['document'] : `null`
-    const action = router.params['action'] ? router.params['action'] : `null`
-    const item = router.params['id'] ? router.params['id'] : null
+    const language = urlSegments[0].path as Irequest['language']
+    const page = urlSegments[1].path as Irequest['page']
+    const document = urlSegments[2] ? urlSegments[2].path as Irequest['document'] : `null`
+    const action = urlSegments[3] ? urlSegments[3].path : `null`
+    const item = urlSegments[4] ? urlSegments[4].path : null
 
     this.data.language = language
 

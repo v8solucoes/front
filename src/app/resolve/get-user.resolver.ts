@@ -25,7 +25,11 @@ export class GetUserResolver implements Resolve<Irequest> {
   ) { }
   
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Irequest> {
-
+    /* console.log('USER')
+    console.log('ROUTE')
+    console.log(route)
+    console.log('STATE')
+    console.log(state) */
     const request = this.resolveService.getRequest(route)
     const test = new TestCompose(request).testRequest
 
