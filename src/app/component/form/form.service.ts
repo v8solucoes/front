@@ -97,7 +97,7 @@ export class FormService {
 
       if (
         !!controle.controls &&
-        controle.get(req.validator.id)?.pristine !== true &&
+        controle.get(req.validator!.id)?.pristine !== true &&
         control.value !== null
       ) {
 
@@ -121,7 +121,7 @@ export class FormService {
 
       if (
         !!controle.controls &&
-        controle.get(req.validator.id)?.pristine !== true &&
+        controle.get(req.validator!.id)?.pristine !== true &&
         control.value !== null
       ) {
         req.validator!.value = control.value

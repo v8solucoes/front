@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Icolection, Irequest } from '@domain/interface';
+import { Icolection, Imodel, Irequest } from '@domain/interface';
 import { InterfaceService } from '@view/app-v8/interface.service';
 import { Subscription } from 'rxjs';
 
@@ -13,6 +13,7 @@ export class ColectionIndexComponent implements OnInit {
 
   load = false
   document: Irequest['document']
+  model!: Imodel
   colections!: Icolection
   inscription!: Subscription
 
@@ -22,6 +23,7 @@ export class ColectionIndexComponent implements OnInit {
 
   ) { 
     this.document = this.i.data.requestLast.document
+    this.model = this.i.data.model[this.document]
   }
 
   ngOnInit(): void {
@@ -36,6 +38,8 @@ export class ColectionIndexComponent implements OnInit {
      this.colections = dataColection
    
       console.log(colection['request'])
+      console.log(this.model)
+
       this.load = true
     })
 
