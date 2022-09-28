@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormService } from '@component/form/form.service';
-import { IcreateForm, Ilanguage, ImodelUndefinedProperty, Ipermission, IpermissionNivel, Irequest, IresponseValidatorCompose, IresponseValidatorUnit } from '@domain/interface';
+import { Icolection, IcreateForm, Ilanguage, ImodelUndefinedProperty, Ipermission, IpermissionNivel, Irequest, IresponseValidatorCompose, IresponseValidatorUnit } from '@domain/interface';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DataLocal } from '@shared-angular/class'
@@ -12,6 +12,7 @@ import { DataLocal } from '@shared-angular/class'
 export class DataService {
   permission!: IpermissionNivel
   model!: ImodelUndefinedProperty
+  colection!: Icolection
   errorResolve: any = null
   language!: Ilanguage
   requestLast!: Irequest

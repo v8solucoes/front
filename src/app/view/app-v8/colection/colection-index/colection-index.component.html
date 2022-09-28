@@ -1,1 +1,23 @@
-<p>colection-index works!</p>
+<ng-template #loading>
+  <mat-progress-bar mode="query"></mat-progress-bar>
+</ng-template>
+
+<section *ngIf="load; else loading">
+
+  <ul>
+    Colection 
+ <!--    <li *ngFor="let permission in colection;
+     let in=index let first let last" [routerLink]="[permission.id]">
+     {{ i.data.model[permission.id].text[i.data.language]?.label }}
+    </li> -->
+ <!--    <li  *ngFor="let colection of colections | keyvalue"> -->
+    <li  *ngFor="let colection of colections | keyvalue">
+
+      {{ colection }} <br>
+  
+     </li>
+
+  </ul>
+  <p>Object Colection</p>
+  {{ i.data.colection | json }}
+</section>

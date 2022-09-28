@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { InterfaceService } from '../interface.service';
-import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { map, Observable, Subscription } from 'rxjs';
+import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 @Component({
   selector: 'app-interface',
   templateUrl: './interface.component.html',
@@ -16,25 +16,25 @@ export class InterfaceComponent implements OnInit {
 
   constructor(
     public i: InterfaceService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
 
-  ) { }
+  ) { 
+
+    
+  }
 
   ngOnInit(): void {
-
-    console.log('Interface')
-
-    this.inscription = this.route.data.subscribe((o) => {
-      console.log('Route')
-      console.log(o)
-      this.i.data.permission = o['request']['permission']
-      this.i.data.model = o['request']['model']
-      console.log(this.i.data)
-      this.load = true
-    })
-
+    this.router()
     this.actions()
   }
+  router(){ return this.inscription = this.route.data.subscribe((o) => {
+ 
+    this.i.data.permission = o['request']['permission']
+    this.i.data.model = o['request']['model']
+    console.log('Interface Sucess')
+   /*  console.log(this.i.data) */
+    this.load = true
+  }) }
   actions() {
 
     this.i.actionsEmitter.subscribe(action => {
