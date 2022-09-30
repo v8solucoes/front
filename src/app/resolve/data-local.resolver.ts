@@ -31,6 +31,12 @@ export class DataLocalResolver implements Resolve<Irequest> {
 
     if (test == null) {
       
+      this.data.requestLast['user'] = {
+        'name': 'Local',
+        'nivel': 'adm',
+        'userId': 'undefinid'
+        }
+      
       return of(request)
 
     } else {

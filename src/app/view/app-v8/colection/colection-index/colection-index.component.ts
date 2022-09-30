@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Icolection, Imodel, Irequest } from '@domain/interface';
+import { Icolection, Ilanguage, ImodelUndefinedProperty, Ipermission, Irequest } from '@domain/interface';
 import { InterfaceService } from '@view/app-v8/interface.service';
 import { Subscription } from 'rxjs';
 
@@ -13,9 +13,13 @@ export class ColectionIndexComponent implements OnInit {
 
   load = false
   document: Irequest['document']
-  model!: Imodel
   colections!: Icolection
   inscription!: Subscription
+
+  permission!: Ipermission[];
+  model!: ImodelUndefinedProperty;
+  language!: Ilanguage;
+  colection!: any
 
   constructor(
     public i: InterfaceService,
@@ -23,7 +27,7 @@ export class ColectionIndexComponent implements OnInit {
 
   ) { 
     this.document = this.i.data.requestLast.document
-    this.model = this.i.data.model[this.document]
+
   }
 
   ngOnInit(): void {
@@ -32,17 +36,15 @@ export class ColectionIndexComponent implements OnInit {
 
     this.inscription = this.route.data.subscribe((colection) => {
 
-     const dataColection = {[`${this.document}`]:colection['request']} as Icolection
-
-     this.i.data.colection = dataColection
-     this.colections = dataColection
-   
-      console.log(colection['request'])
-      console.log(this.model)
+     this.i.data.colection[`${this.document}`] = colection['request'] 
+      console.log(this.get)
 
       this.load = true
     })
 
+  }
+  get get() {
+    return this.i.data.getColectionDocumentPermission(this.document)
   }
 
 }

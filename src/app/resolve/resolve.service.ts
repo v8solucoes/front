@@ -39,7 +39,7 @@ export class ResolveService {
         dateUpdate: new Date(),
         // Optional
         dateCreate: action == 'create' ? new Date() : null,
-        colection: null,
+      colection: null,
         validator: {
           id: page,
           name: 'testRequest',

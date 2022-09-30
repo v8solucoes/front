@@ -11,7 +11,7 @@ export class AuthGuard implements CanActivate{
   constructor(public auth: FirebaseAuthService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    console.log('Guard')
+
   return  this.auth.loginGuard()
 
   }

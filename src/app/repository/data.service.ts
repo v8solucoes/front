@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormService } from '@component/form/form.service';
-import { Icolection, IcreateForm, Ilanguage, ImodelUndefinedProperty, IpermissionNivel, Irequest, IresponseValidatorCompose, IresponseValidatorUnit } from '@domain/interface';
+import { Icolection, IcreateForm, Ilanguage, ImodelUndefinedProperty, IpermissionNivel, Irequest, IresponseValidatorCompose, IresponseValidatorUnit, Iuser } from '@domain/interface';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DataLocal } from '@shared-angular/class'
@@ -10,16 +10,16 @@ import { DataLocal } from '@shared-angular/class'
   providedIn: 'root'
 })
 export class DataService {
+  user!: Iuser
   permission!: IpermissionNivel
   model!: ImodelUndefinedProperty
-  colection!: Icolection
+  colection: Icolection = {} as any
   errorResolve: any = null
   language!: Ilanguage
   requestLast!: Irequest
   acessToken: string = ''
   credential: any = { teste: 'oi' }
   time = new Date().toString()
-  
 
   constructor(
     public http: HttpClient,
@@ -52,7 +52,7 @@ export class DataService {
   }
   models(req: Irequest) {
 
-    const module = this.dataDomain.getModule(req.document)
+    const module = this.dataDomain.getModule(req.document, req.user!.nivel)
 
     req.validator!.id = req.document
     req.validator!.label = req.document
@@ -62,6 +62,18 @@ export class DataService {
       language: req.language,
       model: module.model,
       document: module.document,
+      permission: module.permission,
+    }
+  }
+  getColectionDocumentPermission(document: Irequest['document']) {
+
+    const module = this.dataDomain.getModule(document, this.user!.nivel)
+
+    return {
+
+      language: this.language,
+      model: module.model,
+      colection: this.colection[document],
       permission: module.permission,
     }
   }

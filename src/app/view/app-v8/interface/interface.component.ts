@@ -31,8 +31,10 @@ export class InterfaceComponent implements OnInit {
  
     this.i.data.permission = o['request']['permission']
     this.i.data.model = o['request']['model']
+    this.i.data.requestLast.user = o['request']['user']
+    this.i.data.user = o['request']['user']
     console.log('Interface Sucess')
-   /*  console.log(this.i.data) */
+    console.log(this.i.data.requestLast)
     this.load = true
   }) }
   actions() {

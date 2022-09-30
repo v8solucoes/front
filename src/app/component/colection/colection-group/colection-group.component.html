@@ -1,0 +1,26 @@
+<ng-container *ngFor="let acess of permission; index as i">
+  <ng-container *ngIf="acess.view.form">
+    <ng-container [ngSwitch]="model?.[acess.id]?.typeData">
+      
+      <!-- TYPE OBJETO -->
+      <ng-container *ngSwitchCase="'object'">
+        <h1>{{ model?.[acess.id]?.text?.en?.label }}</h1>
+        <app-colection-group
+          [permission]="acess._group"
+          [model]="model?.[acess.id]?._group"
+          [language]="language"
+          [colection]="colection"
+        >
+        </app-colection-group>
+      </ng-container>
+
+      <!-- TYPE VALUE -->
+      <app-colection-value *ngSwitchCase="'value'"
+          [permission]="acess._group"
+          [model]="model?.[acess.id]"
+          [language]="language"
+          [colection]="colection.value.document"
+      ></app-colection-value>
+    </ng-container>
+  </ng-container>
+</ng-container>

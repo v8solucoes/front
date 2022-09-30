@@ -57,9 +57,10 @@ export class FirebaseAuthService {
       if (user) {
         const credential = user as any
         this.data.acessToken = credential['accessToken']
+        console.log('Guard Sucess')
         return true
       } else {
-
+        console.log('Guard Error')
        /*  this.router.navigate([`en/login/sign-in`]) */
         return false
 

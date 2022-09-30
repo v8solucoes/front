@@ -9,6 +9,7 @@ import { MenuIndexComponent } from './menu/menu-index/menu-index.component';
 import { MenuTopComponent } from './menu/menu-top/menu-top.component';
 import { MenuAdmComponent } from './menu/menu-adm/menu-adm.component';
 import { ColectionIndexComponent } from './colection/colection-index/colection-index.component';
+import { ColectionModule } from '@component/colection/colection.module';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ColectionIndexComponent } from './colection/colection-index/colection-i
     AppV8RoutingModule,
     MaterialDesignModule,
     FormModule,
+    ColectionModule
   ]
 })
 export class AppV8Module { }
