@@ -4,7 +4,7 @@
 
 <section *ngIf="load; else loading">
   <ul> 
-    Colection s
+    Colection: {{get.colectionName }}
  <!--    <li *ngFor="let permission in colection;
      let in=index let first let last" [routerLink]="[permission.id]">
      {{ i.data.model[permission.id].text[i.data.language]?.label }}
@@ -15,13 +15,13 @@
       [permission]="get.permission"
       [model]="get.model"
       [language]="get.language"
-      [colection]="colection"
+      [colection]="colection.value"
     >
     </app-colection-group>
   
      </li>
 
   </ul>
-  <p>Object Colection</p>
-  {{ i.data.colection | json }}
+<!--   <p>Object Colection</p>
+  {{ i.data.colection | json }} -->
 </section>

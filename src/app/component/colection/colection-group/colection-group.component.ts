@@ -22,10 +22,10 @@ export class ColectionGroupComponent implements OnInit {
 
   ngOnInit(): void {
 
-   /*  console.log(this.permission)
+    console.log(this.permission)
     console.log(this.model)
     console.log(this.language)
-    console.log(this.colection) */
+    console.log(this.colection)
   }
 
 }

@@ -17,7 +17,8 @@ const appV8Routes: Routes = [
       {
         path: ':document', component: ColectionIndexComponent,
         canActivate: [AuthGuard],
-        resolve: { 'request': GetColectionResolver}},
+        resolve: { 'request': GetColectionResolver }
+      },
 /*       { path: ':document/:action', component: InterfaceComponent},
       { path: ':document/:action/:id', component: InterfaceComponent}, */
     ]

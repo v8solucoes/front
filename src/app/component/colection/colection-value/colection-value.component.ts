@@ -15,6 +15,7 @@ export class ColectionValueComponent implements OnInit {
 
   ngOnInit(): void {
 
+    console.log('VALUE')
     console.log(this.colection)
   }
 

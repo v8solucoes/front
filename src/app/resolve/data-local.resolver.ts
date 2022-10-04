@@ -27,6 +27,15 @@ export class DataLocalResolver implements Resolve<Irequest> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Irequest> {
 
     const request = this.resolveService.getRequest(route)
+    request['validator'] = {
+      id: request.page,
+      name: 'testRequest',
+      label: 'Test Request',
+      value: '',
+      language: request.language,
+      typeExecute: 'front',
+      error: null
+    }
     const test = new TestCompose(request).testRequest
 
     if (test == null) {

@@ -1,26 +1,37 @@
-<ng-container *ngFor="let acess of permission; index as i">
+<ng-container *ngFor="let acess of permission; index as i; first as isFirst">
+
   <ng-container *ngIf="acess.view.form">
     <ng-container [ngSwitch]="model?.[acess.id]?.typeData">
       
       <!-- TYPE OBJETO -->
       <ng-container *ngSwitchCase="'object'">
-        <h1>{{ model?.[acess.id]?.text?.en?.label }}</h1>
+    <!--     <h1>{{ model?.[acess.id]?.text?.en?.label }}</h1> -->
         <app-colection-group
           [permission]="acess._group"
           [model]="model?.[acess.id]?._group"
           [language]="language"
-          [colection]="colection"
+          [colection]="colection[acess.id]"
         >
         </app-colection-group>
       </ng-container>
 
       <!-- TYPE VALUE -->
-      <app-colection-value *ngSwitchCase="'value'"
+      <ng-container  *ngSwitchCase="'value'">
+        <span *ngIf="isFirst">
+          <h1> {{ colection[acess.id] }}</h1>
+        </span>
+        <span *ngIf="!isFirst">
+          <!-- Label: --> {{ model?.[acess.id]?.text?.en?.label }}:
+            <!-- Value:  --> {{ colection[acess.id] }} / 
+        </span>
+   
+      </ng-container>
+      <!-- <app-colection-value *ngSwitchCase="'value'"
           [permission]="acess._group"
           [model]="model?.[acess.id]"
           [language]="language"
-          [colection]="colection.value.document"
-      ></app-colection-value>
+          [colection]="colection"
+      ></app-colection-value> -->
     </ng-container>
   </ng-container>
 </ng-container>

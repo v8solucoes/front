@@ -75,6 +75,7 @@ export class DataService {
       model: module.model,
       colection: this.colection[document],
       permission: module.permission,
+      colectionName: module.model[document].text[this.language]?.label
     }
   }
   createForm(req: Irequest): IcreateForm<any> {
