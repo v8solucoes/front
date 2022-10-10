@@ -45,6 +45,10 @@ export class DataService {
  
     return this.http.get<any>(`${environment.api}/colection/${this.acessToken}/${JSON.stringify(request)}`)
   }
+  httpDocument(request: Irequest): Observable<any> {
+ 
+    return this.http.get<any>(`${environment.api}/document/${this.acessToken}/${JSON.stringify(request)}`)
+  }
   httpCRUDResponseCompose(req: Irequest): Observable<IresponseValidatorCompose> {
 
     return this.http.post<IresponseValidatorCompose>(`${environment.api}/CRUD`, req)

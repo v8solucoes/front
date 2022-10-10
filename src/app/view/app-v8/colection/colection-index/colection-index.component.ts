@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./colection-index.component.scss']
 })
 export class ColectionIndexComponent implements OnInit {
-
+ /*  @ViewChild('document') document: any; */
   load = false
   document: Irequest['document']
   colections!: Icolection
@@ -36,7 +36,7 @@ export class ColectionIndexComponent implements OnInit {
 
     this.inscription = this.route.data.subscribe((colection) => {
 
-     this.i.data.colection[`${this.document}`] = colection['request'] 
+     this.i.data.colection[`${this.document}`] = colection['response'] 
       console.log(this.get)
 
       this.load = true

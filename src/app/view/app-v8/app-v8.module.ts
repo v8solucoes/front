@@ -10,6 +10,7 @@ import { MenuTopComponent } from './menu/menu-top/menu-top.component';
 import { MenuAdmComponent } from './menu/menu-adm/menu-adm.component';
 import { ColectionIndexComponent } from './colection/colection-index/colection-index.component';
 import { ColectionModule } from '@component/colection/colection.module';
+import { DocumentComponent } from './document/document.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ColectionModule } from '@component/colection/colection.module';
     MenuIndexComponent,
     MenuTopComponent,
     MenuAdmComponent,
-    ColectionIndexComponent
+    ColectionIndexComponent,
+    DocumentComponent
   ],
   imports: [
     CommonModule,

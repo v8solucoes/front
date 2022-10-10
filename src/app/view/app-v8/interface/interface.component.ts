@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { InterfaceService } from '../interface.service';
-import { map, Observable, Subscription } from 'rxjs';
-import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-interface',
   templateUrl: './interface.component.html',
@@ -27,12 +27,12 @@ export class InterfaceComponent implements OnInit {
     this.router()
     this.actions()
   }
-  router(){ return this.inscription = this.route.data.subscribe((o) => {
- 
-    this.i.data.permission = o['request']['permission']
-    this.i.data.model = o['request']['model']
-    this.i.data.requestLast.user = o['request']['user']
-    this.i.data.user = o['request']['user']
+  router(){ return this.inscription = this.route.data.subscribe((data) => {
+    const db = data['response']
+    this.i.data.permission = db['permission']
+    this.i.data.model = db['model']
+    this.i.data.requestLast.user = db['user']
+    this.i.data.user = db['user']
     console.log('Interface Sucess')
     console.log(this.i.data.requestLast)
     this.load = true
@@ -45,6 +45,7 @@ export class InterfaceComponent implements OnInit {
 
         case 'menu': { this.menu.toggle(); break; }
         case 'document': { this.document.toggle(); break; }
+        case 'documentColection': { this.i.loadingDocument= true ; break; }
 
         default: {
           alert('Evento de Interface não Cadastrado: ' + action);

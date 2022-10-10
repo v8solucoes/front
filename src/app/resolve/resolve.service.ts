@@ -25,7 +25,7 @@ export class ResolveService {
     const page = urlSegments[1].path as Irequest['page']
     const document = urlSegments[2] ? urlSegments[2].path : `null`
     const action = urlSegments[3] ? urlSegments[3].path : `null`
-    const item = urlSegments[4] ? urlSegments[4].path : null
+    const key = urlSegments[4] ? urlSegments[4].path : null
 
     this.data.language = language
 
@@ -38,7 +38,7 @@ export class ResolveService {
       environment: environment.environment as Irequest['environment'],
       dateTime: new Date(),
       colection: document,
-      item,
+      key,
     }
     this.data.requestLast = request
     return request
