@@ -38,7 +38,6 @@ export class ColectionIndexComponent implements OnInit {
 
      this.i.data.colection[`${this.document}`] = colection['response'] 
       console.log(this.get)
-
       this.load = true
     })
 

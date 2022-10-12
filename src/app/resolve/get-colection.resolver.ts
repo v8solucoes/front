@@ -35,8 +35,11 @@ export class GetColectionResolver implements Resolve<any> {
 
     } else {
       console.log('Resolve Colection Error')
-      console.log(test)
-      this.router.navigate([`${this.data.language}/login/sign-in`])
+
+      this.data.errorResolve = test
+      this.router.navigate([`errorResolver`])
+    /*   console.log(test)
+      this.router.navigate([`${this.data.language}/login/sign-in`]) */
       return of()
     }
 

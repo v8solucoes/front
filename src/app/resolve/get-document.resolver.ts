@@ -35,8 +35,8 @@ export class GetDocumentResolver implements Resolve<any> {
 
     } else {
       console.log('Resolve Document Error')
-      console.log(test)
-      this.router.navigate([`${this.data.language}/login/sign-in`])
+      this.data.errorResolve = test
+      this.router.navigate([`errorResolver`])
       return of()
     }
  /*    return of(true); */

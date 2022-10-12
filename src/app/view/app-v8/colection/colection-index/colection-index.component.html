@@ -11,7 +11,7 @@
     <ul> 
       Colection: {{get.colectionName }}
   
-      <li  *ngFor="let colection of get.colection | keyvalue" [routerLink]="['create','id']">
+      <li  *ngFor="let colection of get.colection | keyvalue" [routerLink]="['get', colection.key]">
         <app-colection-group
         [permission]="get.permission"
         [model]="get.model"

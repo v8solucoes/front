@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { DataLocalDomain } from '@domain/repository'
+import { DataLocal as Data} from '@domain/repository'
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class DataLocal extends DataLocalDomain {}
+export class DataLocal extends Data {}

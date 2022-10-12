@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormService } from '@component/form/form.service';
-import { Icolection, IcreateForm, Ilanguage, ImodelUndefinedProperty, IpermissionNivel, Irequest, IresponseValidatorCompose, IresponseValidatorUnit, Iuser } from '@domain/interface';
+import { Icolection, IcreateForm, Ilanguage, ImodelUndefinedProperty, Imodule, Inivel, Ipermission, IpermissionNivel, Irequest, IresponseValidatorCompose, IresponseValidatorUnit, Iuser } from '@domain/interface';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DataLocal } from '@shared-angular/class'
@@ -23,7 +23,7 @@ export class DataService {
 
   constructor(
     public http: HttpClient,
-    public dataDomain: DataLocal,
+    public dataLocal: DataLocal,
     private form: FormService
   ) {
    
@@ -56,7 +56,7 @@ export class DataService {
   }
   models(req: Irequest) {
 
-    const module = this.dataDomain.getModule(req.document, req.user!.nivel)
+    const module = this.dataLocal.getModule(req.document, req.user!.nivel)
 
     req.validator!.id = req.document
     req.validator!.label = req.document
@@ -69,9 +69,10 @@ export class DataService {
       permission: module.permission,
     }
   }
+  
   getColectionDocumentPermission(document: Irequest['document']) {
 
-    const module = this.dataDomain.getModule(document, this.user!.nivel)
+    const module = this.dataLocal.getModule(document, this.user!.nivel)
 
     return {
 
@@ -95,18 +96,33 @@ export class DataService {
     }
   
   }
-  document(req: Irequest): IcreateForm<any> {
+  createFormDocument(req: Irequest, document:any): IcreateForm<any> {
    
-    const model = this.models(req)
-    console.log(model.request) 
-/*     console.log('Create MODEL')
-    console.log(model.request) */
+    const model = this.getModuleRemote(req.document, 'adm')
    
     return {
       ...model,
-      form: this.form.createForm(model.language, model.request, model.permission, model.model, model.document)
+      document,
+      'language': req.language,
+      'request': req,
+      form: this.form.createForm(req.language, req, model.permission, model.model, document)
     }
   
   }
 
+  getModuleRemote (module: Irequest['document'], nivel:Inivel) {
+
+    const permission = this.permission[nivel].filter((permissions:Ipermission) => permissions.id == module)
+    const model = this.model
+
+   nivel ? 'tem': console.log(`não tem Nível de Acesso: ${nivel}`)
+   permission.length ? 'tem': console.log(`não tem Permission: ${module}`)
+   this.permission[nivel].length ? 'tem': console.log(`não tem Permission: ${module}`)
+   this.model[module] ? 'tem': console.log(`não tem Model: ${module}`)
+
+    return {
+      permission,
+      model
+    };
+  }
 }
