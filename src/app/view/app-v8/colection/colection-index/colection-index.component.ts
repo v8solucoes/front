@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Icolection, Ilanguage, ImodelUndefinedProperty, Ipermission, Irequest } from '@domain/interface';
 import { InterfaceService } from '@view/app-v8/interface.service';
@@ -11,8 +11,9 @@ import { Subscription } from 'rxjs';
 })
 export class ColectionIndexComponent implements OnInit {
  /*  @ViewChild('document') document: any; */
+ @ViewChild('document') document: any;
   load = false
-  document: Irequest['document']
+  doc: Irequest['document']
   colections!: Icolection
   inscription!: Subscription
 
@@ -26,7 +27,7 @@ export class ColectionIndexComponent implements OnInit {
     private route: ActivatedRoute
 
   ) { 
-    this.document = this.i.data.requestLast.document
+    this.doc = this.i.data.requestLast.document
 
   }
 
@@ -36,14 +37,34 @@ export class ColectionIndexComponent implements OnInit {
 
     this.inscription = this.route.data.subscribe((colection) => {
 
-     this.i.data.colection[`${this.document}`] = colection['response'] 
+     this.i.data.colection[`${this.doc}`] = colection['response'] 
       console.log(this.get)
       this.load = true
     })
+    this.actions()
 
   }
+
+  actions() {
+
+    this.i.actionsEmitter.subscribe(action => {
+    /*   this.i.auth.onAuthState() */
+      switch (action) {
+        case 'document': { this.document.toggle(); break; }
+        case 'documentCloset': { this.document.toggle(false); break; }
+        case 'documentOpen': { this.document.toggle(true); break; }
+        case 'documentColection': { this.i.loadingDocument= true ; break; }
+
+        default: {
+          alert('Evento de Interface não Cadastrado: ' + action);
+          console.log('Evento de Interface não Cadastrado: ' + action);
+          break;
+        }
+      }
+    });
+  }
   get get() {
-    return this.i.data.getColectionDocumentPermission(this.document)
+    return this.i.data.getColectionDocumentPermission(this.doc)
   }
 
 }

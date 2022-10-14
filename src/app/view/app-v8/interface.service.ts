@@ -6,7 +6,7 @@ import { FirebaseAuthService } from 'src/app/api/firebase-auth.service';
   providedIn: 'root'
 })
 export class InterfaceService {
-  actionsEmitter = new EventEmitter<'menu' | 'document' | 'documentColection'>();
+  actionsEmitter = new EventEmitter<'menu' | 'document' | 'documentColection' | 'documentCloset'| 'documentOpen'>();
   loading = false;
   loadingDocument = false
   design = {

@@ -45,6 +45,8 @@ export class InterfaceComponent implements OnInit {
 
         case 'menu': { this.menu.toggle(); break; }
         case 'document': { this.document.toggle(); break; }
+        case 'documentCloset': { break; }
+        case 'documentOpen': { break; }
         case 'documentColection': { this.i.loadingDocument= true ; break; }
 
         default: {

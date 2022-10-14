@@ -20,20 +20,25 @@ export class DocumentComponent implements OnInit {
     public i: InterfaceService,
     private route: ActivatedRoute
 
-  ){ }
+  ) { 
+
+  }
 
   ngOnInit(): void {
-    
     console.log('Document')
-
     this.inscription = this.route.data.subscribe((document) => {
       const doc = document['response']
-
+      this.i.actionsEmitter.emit('documentCloset')
+      this.load = false
       console.log(doc)
     
       this.createForm = this.i.data.createFormDocument(this.i.data.requestLast, doc)
 
-      this.load = true
+      setTimeout(() => {
+        console.log('SET TIMEOUT')
+        this.load = true
+        this.i.actionsEmitter.emit('documentOpen')
+      }, 500);
     })
 
   }
