@@ -1,9 +1,11 @@
 <ng-container [ngSwitch]="language">
   <ng-container *ngSwitchCase="'en'">
+    <div>
     <section>  <h1>Terms of use:</h1>
     <p> We use cookies to analyze the performance of the website and the number of visits. Your data will only be used to optimize services and offers.</p>
     </section>
     <button mat-flat-button color="{{ control.value ? 'primary': 'basic'}}" (click)="approved()">  <mat-icon>{{ control.value ? 'check_box': 'check_box_outline_blank'}}</mat-icon> Accept   </button>
+  </div>
     <!-- <button mat-flat-button class="{{control.value ? 'true': 'false'}}"    (click)="approved()">  <mat-icon>{{ control.value ? 'check_box': 'check_box_outline_blank'}}</mat-icon> Accept   </button> -->
  <!--    <mat-checkbox [formControl]="control">Accept</mat-checkbox>  -->
      </ng-container>

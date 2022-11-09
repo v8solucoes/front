@@ -35,7 +35,7 @@ export class DocumentComponent implements OnInit {
       this.createForm = this.i.data.createFormDocument(this.i.data.requestLast, doc)
 
       setTimeout(() => {
-        console.log('SET TIMEOUT')
+/*         console.log('SET TIMEOUT') */
         this.load = true
         this.i.actionsEmitter.emit('documentOpen')
       }, 500);

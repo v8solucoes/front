@@ -8,7 +8,12 @@ section {
   overflow: auto;
   box-sizing: border-box;
 }
-
+div {
+  width: 100%;
+  height: 100%;
+  background-color: whitesmoke;
+  flex-direction: row;
+}
 button {
   margin-top: 16px;
   margin-bottom: 8px;

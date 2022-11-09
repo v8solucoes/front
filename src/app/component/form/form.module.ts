@@ -10,7 +10,8 @@ import { InputGenerecErrorComponent } from './input-type/input-generec-error/inp
 import { FormMaskDirective } from './form-mask.directive';
 import { FormPipePipe } from './form-pipe.pipe';
 import { NgxMaskModule } from 'ngx-mask';
-import { AcceptTermsComponent } from './input-type/accept-terms/accept-terms.component'
+import { AcceptTermsComponent } from './input-type/accept-terms/accept-terms.component';
+import { BooleanToggleComponent } from './input-type/boolean-toggle/boolean-toggle.component'
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AcceptTermsComponent } from './input-type/accept-terms/accept-terms.com
     FormMaskDirective,
     FormPipePipe,
     AcceptTermsComponent,
+    BooleanToggleComponent,
   ],
   exports: [
     FormGroupComponent,
