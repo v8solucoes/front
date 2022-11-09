@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { FormControl, FormGroup, FormGroupDirective, NgForm } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, FormGroupDirective, NgForm } from '@angular/forms';
 import { Ilanguage, Imodel, InameValidatorLocal, Irequest, Ivalidator } from '@domain/interface';
 
 @Component({
@@ -9,7 +9,7 @@ import { Ilanguage, Imodel, InameValidatorLocal, Irequest, Ivalidator } from '@d
   styleUrls: ['./input-generec.component.scss'],
 })
 export class InputGenerecComponent {
-  @Input() form?: FormGroup;
+  @Input() form?: UntypedFormGroup;
   @Input() model?: Imodel;
   @Input() language?: Ilanguage;
   @Input() request?: Irequest;
@@ -18,7 +18,7 @@ export class InputGenerecComponent {
 /*   error$: Observable<IresponseValidatorUnit>; */
   loading = false;
   matcher = new MyErrorStateMatcher();
-  control: FormControl = new FormControl()
+  control: UntypedFormControl = new UntypedFormControl()
 
   appearance = this.model?.design.css.materialDesign.appearance as Imodel['design']['css']['materialDesign']['appearance'];
   required = this.model?.validate?.required as Imodel['validate']['required'];
@@ -32,7 +32,7 @@ export class InputGenerecComponent {
     this.appearance = this.model?.design.css.materialDesign.appearance as Imodel['design']['css']['materialDesign']['appearance'];
     this.required = this.model?.validate.required as Imodel['validate']['required'];
     this.text = this.model?.text[this.language as Ilanguage]
-    this.control = this.form?.get([this.model?.id as string]) as FormControl;
+    this.control = this.form?.get([this.model?.id as string]) as UntypedFormControl;
     this.loading = true
     this.validatorName = this.model?.validate?.mask as InameValidatorLocal
 
@@ -63,7 +63,7 @@ export class InputGenerecComponent {
   }
 }
 export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+  isErrorState(control: UntypedFormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
   
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));

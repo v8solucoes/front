@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Ilanguage, Imodel } from '@domain/interface';
 
 @Component({
@@ -9,15 +9,15 @@ import { Ilanguage, Imodel } from '@domain/interface';
 })
 export class BooleanToggleComponent implements OnInit {
 
-  @Input() form?: FormGroup;
+  @Input() form?: UntypedFormGroup;
   @Input() model?: Imodel;
   @Input() language?: Ilanguage;
-  control: FormControl = new FormControl()
+  control: UntypedFormControl = new UntypedFormControl()
 
   constructor() { }
 
   ngOnInit(): void {
-    this.control = this.form?.get([this.model?.id as string]) as FormControl;
+    this.control = this.form?.get([this.model?.id as string]) as UntypedFormControl;
   }
 
 }

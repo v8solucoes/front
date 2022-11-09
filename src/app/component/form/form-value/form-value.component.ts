@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { Ilanguage, Imodel, Ipermission, Irequest } from '@domain/interface';
 
 @Component({
@@ -8,7 +8,7 @@ import { Ilanguage, Imodel, Ipermission, Irequest } from '@domain/interface';
   styleUrls: ['./form-value.component.scss']
 })
 export class FormValueComponent implements OnInit {
-  @Input() form?: FormGroup;
+  @Input() form?: UntypedFormGroup;
   @Input() permission?: Ipermission[];
   @Input() model?: Imodel;
   @Input() language?: Ilanguage;

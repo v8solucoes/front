@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { DataService } from '@repository/data.service';
 import { IcreateForm, ImodelUser, Irequest, IresponseValidatorCompose } from '@domain/interface';
 import { FirebaseAuthService } from 'src/app/api/firebase-auth.service';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
@@ -23,7 +23,7 @@ export class AccountCreateComponent {
   processing = false;
   sucess = false;
 
-  createForm!: IcreateForm<FormGroup>;
+  createForm!: IcreateForm<UntypedFormGroup>;
 
   constructor(
     private auth: FirebaseAuthService,

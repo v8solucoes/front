@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { Ilanguage, Imodel, ImodelUndefinedProperty, Ipermission, Irequest } from '@domain/interface';
 
 export interface FormConstructor{
@@ -13,7 +13,7 @@ export interface FormConstructor{
 })
   
 export class FormGroupComponent implements OnInit {
-  @Input() form?: FormGroup;
+  @Input() form?: UntypedFormGroup;
   @Input() permission?: Ipermission[];
   @Input() model?: ImodelUndefinedProperty;
   @Input() language?: Ilanguage;
@@ -28,12 +28,12 @@ export class FormGroupComponent implements OnInit {
     console.log(this.request)
     
   }
-  getFormObject(id: string): FormGroup {
-    return this.form?.get(id) as FormGroup
+  getFormObject(id: string): UntypedFormGroup {
+    return this.form?.get(id) as UntypedFormGroup
   }
 
-  getFormValue():FormGroup {
-    return this.form as FormGroup
+  getFormValue():UntypedFormGroup {
+    return this.form as UntypedFormGroup
   }
   
 }

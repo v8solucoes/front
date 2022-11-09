@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AbstractControl, AsyncValidatorFn, FormArray, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, UntypedFormArray, UntypedFormControl, UntypedFormGroup, ValidatorFn } from '@angular/forms';
 import { Ilanguage, ImodelUndefinedProperty, InameValidatorLocal, InameValidatorRemote, Ipermission, Irequest, Ivalidator, IresponseValidatorUnit, IresponseValidatorCompose } from '@domain/interface';
 import { ValidatorsLocal } from '@domain/validator-local';
 import { delay, first, map, Observable, of, take } from 'rxjs';
@@ -16,7 +16,7 @@ export class FormService {
 
   }
 
-  createForm(language: Ilanguage, request: Irequest, permissions: Ipermission[], model: ImodelUndefinedProperty, data: any = null as any): FormGroup {
+  createForm(language: Ilanguage, request: Irequest, permissions: Ipermission[], model: ImodelUndefinedProperty, data: any = null as any): UntypedFormGroup {
 
     let group: any = {};
 
@@ -57,7 +57,7 @@ export class FormService {
 
       switch (model[permission.id].typeData) {
         case 'value':
-          group[permission.id] = new FormControl(
+          group[permission.id] = new UntypedFormControl(
 
             {
               value: data[permission.id] ? data[permission.id] : null,
@@ -78,7 +78,7 @@ export class FormService {
           break;
 
         case 'array':
-          group[permission.id] = new FormArray([recursive()]);
+          group[permission.id] = new UntypedFormArray([recursive()]);
           break;
 
         default:
@@ -86,14 +86,14 @@ export class FormService {
       }
     };
 
-    return new FormGroup(group);
+    return new UntypedFormGroup(group);
   }
 
   local(req: Irequest): ValidatorFn {
 
     return (control: AbstractControl): IresponseValidatorUnit => {
 
-      const controle = control.root as FormGroup;
+      const controle = control.root as UntypedFormGroup;
 
       if (
         !!controle.controls &&
@@ -117,7 +117,7 @@ export class FormService {
 
     return (control: AbstractControl): Observable<IresponseValidatorUnit> | Promise<IresponseValidatorUnit> => {
 
-      const controle = control.root as FormGroup;
+      const controle = control.root as UntypedFormGroup;
 
       if (
         !!controle.controls &&

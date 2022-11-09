@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { IcreateForm } from '@domain/interface';
 import { Subscription } from 'rxjs';
@@ -14,7 +14,7 @@ export class DocumentComponent implements OnInit {
 
   load = false
   inscription!: Subscription
-  createForm!: IcreateForm<FormGroup>;
+  createForm!: IcreateForm<UntypedFormGroup>;
 
   constructor(
     public i: InterfaceService,
