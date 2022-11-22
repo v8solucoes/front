@@ -13,7 +13,7 @@ export interface FormConstructor{
 })
   
 export class FormGroupComponent implements OnInit {
-  @Input() form?: UntypedFormGroup;
+  @Input() form?: UntypedFormGroup = {} as any
   @Input() permission?: Ipermission[];
   @Input() model?: ImodelUndefinedProperty;
   @Input() language?: Ilanguage;
@@ -24,15 +24,16 @@ export class FormGroupComponent implements OnInit {
   }
   
   ngOnInit(): void { 
-    console.log('group')
+    /* console.log('group')
     console.log(this.request)
+    console.log(this.form) */
     
   }
   getFormObject(id: string): UntypedFormGroup {
     return this.form?.get(id) as UntypedFormGroup
   }
 
-  getFormValue():UntypedFormGroup {
+ get getFormValue():UntypedFormGroup {
     return this.form as UntypedFormGroup
   }
   

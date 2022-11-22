@@ -11,6 +11,8 @@ import { MenuAdmComponent } from './menu/menu-adm/menu-adm.component';
 import { ColectionIndexComponent } from './colection/colection-index/colection-index.component';
 import { ColectionModule } from '@component/colection/colection.module';
 import { DocumentComponent } from './document/document.component';
+import { ActionComponent } from './document/action/action.component';
+
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { DocumentComponent } from './document/document.component';
     MenuTopComponent,
     MenuAdmComponent,
     ColectionIndexComponent,
-    DocumentComponent
+    DocumentComponent,
+    ActionComponent
   ],
   imports: [
     CommonModule,

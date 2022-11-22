@@ -1,11 +1,21 @@
-  <section>
+
+  <ng-template #loading>
+    <mat-progress-bar mode="query"></mat-progress-bar>
+  </ng-template>
+
+  <section *ngIf="load; else loading">
+    <app-action></app-action>
+    Felix
+    {{ document.form.valid }}
+   <!--  Valid: {{ createForm.form.valid | json }}
+    {{ load ? createForm.form.value : false}} -->
     <app-form-group 
-    *ngIf="load"
-    [form]="createForm.form" 
-    [permission]="createForm.permission"
-    [model]="createForm.model"
-    [language]="createForm.language"
-    [request]="createForm.request" 
+    [form]="document.form" 
+    [permission]="document.permission"
+    [model]="document.model"
+    [language]="document.language"
+    [request]="document.request" 
     >
     </app-form-group>
+
   </section>

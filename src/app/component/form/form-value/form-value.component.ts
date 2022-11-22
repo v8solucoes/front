@@ -17,6 +17,8 @@ export class FormValueComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+ /*    console.log('FORM VALUE')
+    console.log(this.form?.value) */
    /*  console.log('value')
     console.log(this.request) */
   
