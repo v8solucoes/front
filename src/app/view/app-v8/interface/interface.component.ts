@@ -29,8 +29,8 @@ export class InterfaceComponent implements OnInit {
   }
   router(){ return this.inscription = this.route.data.subscribe((data) => {
     const db = data['response']
-    this.i.data.permission = db['permission']
-    this.i.data.model = db['model']
+    this.i.data.local.permission = db['permission']['adm']
+    this.i.data.local.model = db['model']
     this.i.data.requestLast.user = db['user']
     this.i.data.user = db['user']
     console.log('Interface Sucess')

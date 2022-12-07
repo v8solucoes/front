@@ -1,19 +1,16 @@
 <div *ngIf="loading">
 
   <section>
+    <app-form-group [form]="data.form[document]" [permission]="data.local.getRecursive(document).permission"
+      [model]="data.local.getRecursive(document).model" [request]="data.requestLast"></app-form-group>
 
-    <app-form-group [form]="login.form" [permission]="login.permission" [model]="login.model"
-      [language]="login.language" [request]="login.request">
-    </app-form-group>
-
-    <button *ngIf="!login.form.valid" type="submit" mat-raised-button color="primary" disabled>
+    <button *ngIf="!data.form[document].valid" type="submit" mat-raised-button color="primary" disabled>
       <mat-label>Sign In</mat-label>
     </button>
 
-    <button *ngIf="login.form.valid"
-    (click)="signIn" type="submit" mat-raised-button color="primary">
+    <button *ngIf="data.form[document].valid" (click)="signIn" type="submit" mat-raised-button color="primary">
       <mat-label>Sign In</mat-label>
-    </button>  
+    </button>
     <button type="submit" mat-raised-button color="primary" routerLink='../../account/account-adm/create/'>
       <mat-label>New Account</mat-label>
     </button>

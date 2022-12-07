@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import { Ilanguage, Imodel } from '@domain/interface';
+import { Ilanguage, ImodelRecursiveConfig } from '@domain/interface';
 
 @Component({
   selector: 'app-boolean-toggle',
@@ -10,7 +10,7 @@ import { Ilanguage, Imodel } from '@domain/interface';
 export class BooleanToggleComponent implements OnInit {
 
   @Input() form?: UntypedFormGroup;
-  @Input() model?: Imodel;
+  @Input() model?: ImodelRecursiveConfig;
   @Input() language?: Ilanguage;
   control: UntypedFormControl = new UntypedFormControl()
 

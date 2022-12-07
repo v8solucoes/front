@@ -18,6 +18,7 @@ export class ResolveService {
   getRequest(route: ActivatedRouteSnapshot): Irequest {
 
     const root = route as any
+    
     const urlSegments = root['_urlSegment']['segments'] as any
 
     const domain = this.windowDom.nativeWindow.location.hostname as Irequest['domain']
@@ -33,6 +34,7 @@ export class ResolveService {
       language,
       page,
       document,
+      controller: null,
       action,
       domain,
       environment: environment.environment as Irequest['environment'],

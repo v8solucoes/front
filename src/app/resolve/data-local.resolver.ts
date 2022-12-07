@@ -1,3 +1,5 @@
+import { FormService } from '@component/form/form.service';
+import { DataLocal } from './../shared/class';
 import { Injectable } from '@angular/core';
 import {
   Router, Resolve,
@@ -21,12 +23,14 @@ export class DataLocalResolver implements Resolve<Irequest> {
     private router: Router,
     private resolveService: ResolveService,
     private data: DataService,
+    private form: FormService
 
   ) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Irequest> {
 
     const request = this.resolveService.getRequest(route)
+
     request['validator'] = {
       id: request.page,
       name: 'testRequest',
@@ -44,7 +48,9 @@ export class DataLocalResolver implements Resolve<Irequest> {
         'name': 'Local',
         'nivel': 'adm',
         'userId': 'undefinid'
-        }
+      }
+
+      this.data.form[`${request.document}`] = this.form.createForm()
       
       return of(request)
 

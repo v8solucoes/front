@@ -1,40 +1,45 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
-import { Ilanguage, Imodel, ImodelUndefinedProperty, Ipermission, Irequest } from '@domain/interface';
-
-export interface FormConstructor{
-  permission: Ipermission[] | null, model: Imodel | null, data?: any 
-}
+import { ImodelRecursive, Irequest, IpermissionRecursive, ImodelRecursiveConfig, IpermissionRecursiveConfig  } from '@domain/interface';
+import { InterfaceService } from '@view/app-v8/interface.service';
 
 @Component({
   selector: 'app-form-group',
   templateUrl: './form-group.component.html',
   styleUrls: ['./form-group.component.scss']
 })
-  
+
 export class FormGroupComponent implements OnInit {
-  @Input() form?: UntypedFormGroup = {} as any
-  @Input() permission?: Ipermission[];
-  @Input() model?: ImodelUndefinedProperty;
-  @Input() language?: Ilanguage;
-  @Input() request?: Irequest
-  
-  constructor() { 
-    
-  }
-  
-  ngOnInit(): void { 
-    /* console.log('group')
-    console.log(this.request)
-    console.log(this.form) */
-    
-  }
-  getFormObject(id: string): UntypedFormGroup {
-    return this.form?.get(id) as UntypedFormGroup
+  @Input() form!: UntypedFormGroup;
+  @Input() permission!: IpermissionRecursive[];
+  @Input() model!: ImodelRecursive;
+  @Input() request!: Irequest
+
+  constructor(
+    public i: InterfaceService
+  ) {
   }
 
- get getFormValue():UntypedFormGroup {
-    return this.form as UntypedFormGroup
+  ngOnInit(): void {
+    console.log('Form Group')
+    console.log(this.permission)
+    console.log(this.model)
+    console.log(this.form.controls)
   }
-  
+  getFormObject(id: string): UntypedFormGroup {
+    return this.form.get(id) as UntypedFormGroup
+  }
+  getPermissionObject(permission: IpermissionRecursive): IpermissionRecursive[] {
+    return permission._group as unknown as IpermissionRecursive[]
+  }
+  getModelObject(id: string): ImodelRecursive {
+    return this.model[id]._group as unknown as ImodelRecursive
+  }
+  getPermissionValue(permission: IpermissionRecursive): IpermissionRecursiveConfig {
+    return permission as unknown as IpermissionRecursiveConfig
+  }
+  getModelValue(id: string): ImodelRecursiveConfig {
+    return this.model[id] as unknown as ImodelRecursiveConfig
+  }
+
 }

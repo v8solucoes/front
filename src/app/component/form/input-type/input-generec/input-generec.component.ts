@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { UntypedFormControl, UntypedFormGroup, FormGroupDirective, NgForm } from '@angular/forms';
-import { Ilanguage, Imodel, InameValidatorLocal, Irequest, Ivalidator } from '@domain/interface';
+import { Ilanguage, InameValidatorLocal, Irequest, Ivalidator, ImodelRecursiveConfig, ImodelConfig } from '@domain/interface';
 
 @Component({
   selector: 'app-input-generec',
@@ -10,28 +10,25 @@ import { Ilanguage, Imodel, InameValidatorLocal, Irequest, Ivalidator } from '@d
 })
 export class InputGenerecComponent {
   @Input() form?: UntypedFormGroup;
-  @Input() model?: Imodel;
-  @Input() language?: Ilanguage;
+  @Input() model?: ImodelRecursiveConfig;
   @Input() request?: Irequest;
 
-
-/*   error$: Observable<IresponseValidatorUnit>; */
   loading = false;
   matcher = new MyErrorStateMatcher();
   control: UntypedFormControl = new UntypedFormControl()
 
-  appearance = this.model?.design.css.materialDesign.appearance as Imodel['design']['css']['materialDesign']['appearance'];
-  required = this.model?.validate?.required as Imodel['validate']['required'];
-  text = this.model?.text[this.language as Ilanguage]
+  appearance = this.model?.design.css.materialDesign.appearance as ImodelConfig['design']['css']['materialDesign']['appearance'];
+  required = this.model?.validate?.required as ImodelConfig['validate']['required'];
+  text = this.model?.text[this.request?.language as Ilanguage]
   
   validatorName = this.model?.validate?.mask as InameValidatorLocal 
   constructor() { }
   
   ngOnInit(): void {
 
-    this.appearance = this.model?.design.css.materialDesign.appearance as Imodel['design']['css']['materialDesign']['appearance'];
-    this.required = this.model?.validate.required as Imodel['validate']['required'];
-    this.text = this.model?.text[this.language as Ilanguage]
+    this.appearance = this.model?.design.css.materialDesign.appearance as ImodelConfig['design']['css']['materialDesign']['appearance'];
+    this.required = this.model?.validate.required as ImodelConfig['validate']['required'];
+    this.text = this.model?.text[this.request?.language as Ilanguage]
     this.control = this.form?.get([this.model?.id as string]) as UntypedFormControl;
     this.loading = true
     this.validatorName = this.model?.validate?.mask as InameValidatorLocal
@@ -50,7 +47,7 @@ export class InputGenerecComponent {
       name: this.validatorName,
       label: this.text!.label,
       value: null,
-      language: this.language!,
+      language: this.request?.language!,
       typeExecute: 'front',
       error: null
     }

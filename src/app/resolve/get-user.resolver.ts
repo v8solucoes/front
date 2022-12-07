@@ -10,6 +10,7 @@ import { Observable, of } from 'rxjs';
 import { ResolveService } from './resolve.service';
 import { TestCompose } from '@domain/validator-local';
 import { FirebaseAuthService } from '../api/firebase-auth.service';
+import { BackandService } from '@repository/backand.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,8 @@ export class GetUserResolver implements Resolve<Irequest> {
     private router: Router,
     public auth: FirebaseAuthService,
     private resolveService: ResolveService,
-    private data: DataService,
+   private data: DataService,
+   private backand: BackandService,
 
   ) { }
   
@@ -35,9 +37,15 @@ export class GetUserResolver implements Resolve<Irequest> {
 
     if (test == null) {
 
+      this.data.user = {
+        nivel: "adm",
+        name: 'anonimo',
+        userId: 'null'
+    }
+
       console.log('Resolve Sucess')
       
-      return this.data.httpUser(request)
+      return this.backand.httpUser(request)
 
     } else {
       console.log('Resolve Error')

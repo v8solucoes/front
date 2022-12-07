@@ -9,15 +9,15 @@
   <section *ngIf="load; else loading">
     
     <ul> 
-      Colection: {{get.colectionName }}
+      Colection: {{ i.data.local.model[i.data.requestLast.document].text[i.data.language].label }}
   
-      <li  *ngFor="let colection of get.colection | keyvalue" 
+      <li  *ngFor="let colection of i.data.local.colection[i.data.requestLast.document] | keyvalue" 
       [routerLink]="['get', colection.key]"
       >
         <app-colection-group
-        [permission]="get.permission"
-        [model]="get.model"
-        [language]="get.language"
+        [permission]="i.data.local.getRecursive(i.data.requestLast.document).permission"
+        [model]="i.data.local.getRecursive(i.data.requestLast.document).model"
+        [request]="i.data.requestLast"
         [colection]="colection.value"
       >
       </app-colection-group>

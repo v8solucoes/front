@@ -1,28 +1,35 @@
-<ng-container *ngFor="let acess of permission; index as i">
+<ng-container *ngFor="let acess of permission">
+
   <ng-container *ngIf="acess.view.form">
-    <ng-container [ngSwitch]="model?.[acess.id]?.typeData">
+    <ng-container [ngSwitch]="model[acess.id].typeData">
       
       <!-- TYPE OBJETO -->
       <ng-container *ngSwitchCase="'object'">
-        <h1>{{ model?.[acess.id]?.text?.en?.label }}</h1>
+        <h1>{{ model[acess.id].text[request.language].label }}</h1>
+   
         <app-form-group
           [form]="getFormObject(acess.id)"
-          [permission]="acess._group"
-          [model]="model?.[acess.id]?._group"
-          [language]="language"
+          [permission]="getPermissionObject(acess)"
+          [model]="getModelObject(acess.id)"
           [request]="request"
         >
         </app-form-group>
       </ng-container>
 
       <!-- TYPE VALUE -->
-      <app-form-value *ngSwitchCase="'value'"
+      <ng-container *ngSwitchCase="'value'">
+       
+      <!--   <h1>Value {{ acess.id }} </h1> -->
+
+        <app-form-value  *ngSwitchCase="'value'"
           [form]="form"
-          [permission]="acess._group"
-          [model]="model?.[acess.id]"
-          [language]="language"
+          [permission]="getPermissionValue(acess)"
+          [model]="getModelValue(acess.id)"
           [request]="request" 
       ></app-form-value>
+
+      </ng-container>
+  
     </ng-container>
   </ng-container>
 </ng-container>

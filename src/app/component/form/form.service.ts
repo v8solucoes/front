@@ -1,7 +1,8 @@
+import { DataService } from '@repository/data.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, UntypedFormArray, UntypedFormControl, UntypedFormGroup, ValidatorFn } from '@angular/forms';
-import { Ilanguage, ImodelUndefinedProperty, InameValidatorLocal, InameValidatorRemote, Ipermission, Irequest, Ivalidator, IresponseValidatorUnit, IresponseValidatorCompose } from '@domain/interface';
+import { InameValidatorLocal, InameValidatorRemote, Irequest, Ivalidator, IresponseValidatorUnit, IresponseValidatorCompose} from '@domain/interface';
 import { ValidatorsLocal } from '@domain/validator-local';
 import { delay, first, map, Observable, of, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -12,11 +13,87 @@ import { environment } from 'src/environments/environment';
 
 export class FormService {
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private data: DataService
+  ) { }
+  
+  createForm(
+    permissions = this.data.local.getRecursive(this.data.requestLast.document).permission,
+    model = this.data.local.getRecursive(this.data.requestLast.document).model,
+    data = this.data.local.getRecursive(this.data.requestLast.document).document): UntypedFormGroup {
+    
+    const language = this.data.language    
+  
+    let group: any = {};
 
+    for (const permission of permissions) {
+
+      const modelControl = model[permission.id];
+
+      const recursive = () =>
+        this.createForm(
+          permission._group as any,
+          model[permission.id]._group,
+          data[permission.id] as any
+        );
+
+      const validatorRequest = (validatorName: InameValidatorLocal | InameValidatorRemote): Irequest => {
+        const req = { ...this.data.requestLast }
+        const validator: Ivalidator = {
+          id: permission.id,
+          label: model[permission.id].text[language]!.label,
+          value: data[permission.id] ? data[permission.id] : null,
+          language: language,
+          name: validatorName,
+          typeExecute: 'front',
+          error: null
+        }
+        req.validator = validator
+
+        return req
+      }
+
+      const validators = () => modelControl.validate.sync.map(
+        (validator:any) => this.local(validatorRequest(validator)))
+
+      const validatorsAsync = () => modelControl.validate.async.map(
+        (validator:any) => this.remote(validatorRequest(validator)))
+
+      switch (model[permission.id].typeData) {
+        case 'value':
+          group[permission.id] = new UntypedFormControl(
+
+            {
+              value: data[permission.id] ? data[permission.id] : null,
+              disabled: modelControl.validate.disabled,
+            },
+
+            {
+              validators: validators(),
+              asyncValidators: validatorsAsync(),
+              updateOn: modelControl.validate.updateOn,
+            },
+
+          );
+          break;
+
+        case 'object':
+          group[permission.id] = recursive();
+          break;
+
+        case 'array':
+          group[permission.id] = new UntypedFormArray([recursive()]);
+          break;
+
+        default:
+          break;
+      }
+    };
+
+    return new UntypedFormGroup(group);
   }
-
-  createForm(language: Ilanguage, request: Irequest, permissions: Ipermission[], model: ImodelUndefinedProperty, data: any = null as any): UntypedFormGroup {
+  /* createForm(language: Ilanguage, request: Irequest, permissions:any, model: ImodelUndefinedProperty, data: any = null as any): UntypedFormGroup {
 
     let group: any = {};
 
@@ -28,7 +105,7 @@ export class FormService {
         this.createForm(
           language,
           request,
-          permission._group as Ipermission[],
+          permission._group as any,
           model[permission.id]._group as ImodelUndefinedProperty,
           data[permission.id]
         );
@@ -87,7 +164,7 @@ export class FormService {
     };
 
     return new UntypedFormGroup(group);
-  }
+  } */
 
   local(req: Irequest): ValidatorFn {
 

@@ -1,21 +1,16 @@
+<ng-template #loading>
+  <mat-progress-bar mode="query"></mat-progress-bar>
+</ng-template>
 
-  <ng-template #loading>
-    <mat-progress-bar mode="query"></mat-progress-bar>
-  </ng-template>
-
-  <section *ngIf="load; else loading">
-    <app-action></app-action>
-    Felix
-    {{ document.form.valid }}
-   <!--  Valid: {{ createForm.form.valid | json }}
-    {{ load ? createForm.form.value : false}} -->
-    <app-form-group 
-    [form]="document.form" 
-    [permission]="document.permission"
-    [model]="document.model"
-    [language]="document.language"
-    [request]="document.request" 
-    >
-    </app-form-group>
-
-  </section>
+<section *ngIf="load; else loading">
+  <app-action></app-action>
+  <app-form-group
+    [form]="i.data.form[i.data.requestLast.document]"
+    [permission]="
+      i.data.local.getRecursive(i.data.requestLast.document).permission
+    "
+    [model]="i.data.local.getRecursive(i.data.requestLast.document).model"
+    [request]="i.data.requestLast"
+  >
+  </app-form-group>
+</section>

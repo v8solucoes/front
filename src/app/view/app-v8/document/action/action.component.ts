@@ -1,5 +1,5 @@
 import { UntypedFormGroup } from '@angular/forms';
-import { IcreateForm, IresponseValidatorCompose } from '@domain/interface';
+import { IresponseValidatorCompose } from '@domain/interface';
 import { Component, OnInit } from '@angular/core';
 import { InterfaceService } from '@view/app-v8/interface.service';
 
@@ -10,12 +10,12 @@ import { InterfaceService } from '@view/app-v8/interface.service';
 })
 export class ActionComponent implements OnInit {
 
-  document: IcreateForm<UntypedFormGroup>
+  document: UntypedFormGroup
 
   constructor(
     public i: InterfaceService,
   ) {
-    this.document = this.i.data.documentService[this.i.data.requestLast.document] as IcreateForm<UntypedFormGroup>
+    this.document = this.i.data.form[this.i.data.requestLast.document] 
    }
 
   ngOnInit(): void {

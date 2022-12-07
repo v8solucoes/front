@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
-import { Ilanguage, Imodel, Ipermission, Irequest } from '@domain/interface';
+import { Irequest, ImodelRecursiveConfig, IpermissionRecursiveConfig } from '@domain/interface';
 
 @Component({
   selector: 'app-form-value',
@@ -8,19 +8,18 @@ import { Ilanguage, Imodel, Ipermission, Irequest } from '@domain/interface';
   styleUrls: ['./form-value.component.scss']
 })
 export class FormValueComponent implements OnInit {
-  @Input() form?: UntypedFormGroup;
-  @Input() permission?: Ipermission[];
-  @Input() model?: Imodel;
-  @Input() language?: Ilanguage;
-  @Input() request?: Irequest
+  @Input() form!: UntypedFormGroup;
+  @Input() permission!: IpermissionRecursiveConfig;
+  @Input() model!: ImodelRecursiveConfig;
+  @Input() request!: Irequest
 
   constructor() { }
 
   ngOnInit(): void {
- /*    console.log('FORM VALUE')
-    console.log(this.form?.value) */
-   /*  console.log('value')
-    console.log(this.request) */
+/*     console.log('Form Value')
+    console.log(this.permission)
+    console.log(this.model)
+    console.log(this.form.controls) */
   
   }
 

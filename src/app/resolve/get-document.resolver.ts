@@ -4,6 +4,7 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
+import { FormService } from '@component/form/form.service';
 import { DataService } from '@repository/data.service';
 import { Observable, of } from 'rxjs';
 import { TestCompose } from '../../../../domain/src/domain/validators/test/test-compose';
@@ -20,6 +21,7 @@ export class GetDocumentResolver implements Resolve<any> {
     public auth: FirebaseAuthService,
     private resolveService: ResolveService,
     private data: DataService,
+    private form: FormService
 
   ) { }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
@@ -30,7 +32,7 @@ export class GetDocumentResolver implements Resolve<any> {
     if (test == null) {
 
       console.log('Resolve Document')
-
+      this.data.form[`${request.document}`] = this.form.createForm()
       return this.data.httpDocument(request)
 
     } else {

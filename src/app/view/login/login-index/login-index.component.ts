@@ -14,7 +14,7 @@ export class LoginIndexComponent implements OnInit {
 /*   login: IcreateForm<any>; */
 
   constructor(
-    private auth: FirebaseAuthService,
+/*     private auth: FirebaseAuthService, */
     public data: DataService,
     
   ) {

@@ -6,9 +6,10 @@
 
   <ul>
     Administrator 
-    <li *ngFor="let permission of i.data.permission.adm;
+    <li *ngFor="let permission of i.data.local.permission;
      let in=index let first let last" [routerLink]="[permission.id]">
-     {{ i.data.model[permission.id].text[i.data.language]?.label }}
+<!--      {{ permission.id }} -->
+     {{ i.data.local.model[permission.id ].text[i.data.language].label }}
     </li>
 
   </ul>

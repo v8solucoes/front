@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { DataService } from '@repository/data.service';
-import { IcreateForm, ImodelUser, Irequest, IresponseValidatorCompose } from '@domain/interface';
 import { FirebaseAuthService } from 'src/app/api/firebase-auth.service';
-import { UntypedFormGroup } from '@angular/forms';
+import { BackandService } from './../../../repository/backand.service';
+import { Irequest, IresponseValidatorCompose } from '@domain/interface';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
@@ -23,11 +23,10 @@ export class AccountCreateComponent {
   processing = false;
   sucess = false;
 
-  createForm!: IcreateForm<UntypedFormGroup>;
-
   constructor(
     private auth: FirebaseAuthService,
     public data: DataService,
+    public backand: BackandService,
     private route: ActivatedRoute
   ) {
     
@@ -39,15 +38,14 @@ export class AccountCreateComponent {
       const request = req['request']
       console.log('CREATE INSCRIPTION')
       console.log(request)
-      this.createForm = this.data.createForm(request)
+/*       this.createForm = this.data.createForm(request) */
       this.loading = true;
     }).closed
 
 }
   async createAccount() {
-    const accounAdm = this.createForm.form.value
-    const user = accounAdm[this.createForm.request.document] as ImodelUser
-    const req = this.createForm.request
+    const accounAdm = this.data.form[this.data.requestLast.document].value
+    const req = {...this.data.requestLast}
    
     this.valid = false
     this.processing = true;
@@ -56,14 +54,12 @@ export class AccountCreateComponent {
 
     console.log(req)
 
-    this.data.httpCRUDResponseCompose(this.createForm.request as Irequest).subscribe(async (response: IresponseValidatorCompose| null) => {
+    this.backand.httpCRUDResponseCompose(req as Irequest).subscribe(async (response: IresponseValidatorCompose| null) => {
    
       console.log(response)
     
       if (response == null) {
         
-        
-     /*    this.auth.loginIn(user.email, user.password,req.language) */
         setTimeout( () => {
           /*        this.createForm.form.reset() */
           this.processing = false 
