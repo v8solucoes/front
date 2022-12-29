@@ -9,28 +9,28 @@
   ></app-form-group>
   
     <!-- INVALID - disabled -->
-    <button *ngIf=" data.form[data.requestLast.document].valid && data.form[data.requestLast.document].get(['account-adm','acceptTerms'])?.value ? false: true"
+    <button *ngIf=" data.form[data.requestLast.document].valid && data.form[data.requestLast.document].get([data.requestLast.document,'acceptTerms'])?.value ? false: true"
     type="submit" mat-raised-button color="primary" disabled>
     <div *ngIf="processing" class="processing">
       <mat-spinner class="spinner" [diameter]="20"></mat-spinner>
       <mat-label>Processing</mat-label>
     </div>
     
-    <mat-label>Create New Account</mat-label>
+    <mat-label>Create New AccountS</mat-label>
   </button>
     <!-- VALID -->
     <button type="submit" mat-raised-button class="color-sucess"
     (click)="createAccount()"
-      *ngIf="valid && data.form[data.requestLast.document].valid && data.form[data.requestLast.document].get(['account-adm','acceptTerms'])?.value">
+      *ngIf="valid && data.form[data.requestLast.document].valid && data.form[data.requestLast.document].get([data.requestLast.document,'acceptTerms'])?.value">
       <mat-label>Create New Account</mat-label> 
     </button>
     <button type="submit" mat-raised-button class="color-sucess"
     (click)="googleAuth()"
-      *ngIf="valid && data.form[data.requestLast.document].valid && data.form[data.requestLast.document].get(['account-adm','acceptTerms'])?.value">
+      *ngIf="valid && data.form[data.requestLast.document].valid && data.form[data.requestLast.document].get([data.requestLast.document,'acceptTerms'])?.value">
       <mat-label>Google</mat-label> 
     </button>
   <!-- Processing -->
-    <button *ngIf="processing && !sucess && data.form[data.requestLast.document].valid && data.form[data.requestLast.document].get(['account-adm','acceptTerms'])?.value"
+    <button *ngIf="processing && !sucess && data.form[data.requestLast.document].valid && data.form[data.requestLast.document].get([data.requestLast.document,'acceptTerms'])?.value"
       type="submit" mat-raised-button >
       <div class="processing">
         <mat-spinner class="spinner" [diameter]="20"></mat-spinner>

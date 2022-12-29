@@ -21,8 +21,9 @@ export class FormService {
   createForm(
     permissions = this.data.local.getRecursive(this.data.requestLast.document).permission,
     model = this.data.local.getRecursive(this.data.requestLast.document).model,
-    data = this.data.local.getRecursive(this.data.requestLast.document).document): UntypedFormGroup {
-    
+    data = this.data.local.getRecursive(this.data.requestLast.document).document
+  ): UntypedFormGroup {
+  /*   console.log(data) */
     const language = this.data.language    
   
     let group: any = {};
@@ -65,7 +66,7 @@ export class FormService {
           group[permission.id] = new UntypedFormControl(
 
             {
-              value: data[permission.id] ? data[permission.id] : null,
+              value: data[permission.id] ? data[permission.id] : model[permission.id].text[language].valueDefault,
               disabled: modelControl.validate.disabled,
             },
 

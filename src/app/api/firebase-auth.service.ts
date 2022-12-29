@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { FirebaseApp } from '@angular/fire/compat';
-import { connectAuthEmulator, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithCredential, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { connectAuthEmulator, getAuth, GoogleAuthProvider, signInWithCredential, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { environment } from 'src/environments/environment';
-import { Ilanguage, Irequest } from '@domain/interface';
+import { Ilanguage } from '@domain/interface';
 import { DataService } from '@repository/data.service';
 
 @Injectable({
@@ -56,8 +56,9 @@ export class FirebaseAuthService {
 
       if (user) {
         const credential = user as any
-        this.data.acessToken = credential['accessToken']
-        console.log('Guard Sucess')
+        this.data.user.acessToken = credential['accessToken']
+/*         console.log('Guard Sucess')
+        console.log(this.data.user.acessToken) */
         return true
       } else {
         console.log('Guard Error')

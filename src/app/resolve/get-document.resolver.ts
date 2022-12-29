@@ -1,10 +1,10 @@
+import { BackandService } from '@repository/backand.service';
 import { Injectable } from '@angular/core';
 import {
   Router, Resolve,
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
-import { FormService } from '@component/form/form.service';
 import { DataService } from '@repository/data.service';
 import { Observable, of } from 'rxjs';
 import { TestCompose } from '../../../../domain/src/domain/validators/test/test-compose';
@@ -21,9 +21,11 @@ export class GetDocumentResolver implements Resolve<any> {
     public auth: FirebaseAuthService,
     private resolveService: ResolveService,
     private data: DataService,
-    private form: FormService
+    private backand: BackandService,
+
 
   ) { }
+
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
 
     const request = this.resolveService.getRequest(route)
@@ -31,9 +33,8 @@ export class GetDocumentResolver implements Resolve<any> {
 
     if (test == null) {
 
-      console.log('Resolve Document')
-      this.data.form[`${request.document}`] = this.form.createForm()
-      return this.data.httpDocument(request)
+      console.log('Resolver Document')
+      return this.backand.httpDocument(request)
 
     } else {
       console.log('Resolve Document Error')
@@ -41,6 +42,6 @@ export class GetDocumentResolver implements Resolve<any> {
       this.router.navigate([`errorResolver`])
       return of()
     }
- /*    return of(true); */
+
   }
 }

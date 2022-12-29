@@ -21,10 +21,10 @@ export class FormGroupComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('Form Group')
+  /*   console.log('Form Group')
     console.log(this.permission)
     console.log(this.model)
-    console.log(this.form.controls)
+    console.log(this.form.controls) */
   }
   getFormObject(id: string): UntypedFormGroup {
     return this.form.get(id) as UntypedFormGroup

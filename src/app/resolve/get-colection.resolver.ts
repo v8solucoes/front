@@ -1,3 +1,4 @@
+import { BackandService } from '@repository/backand.service';
 import { Injectable } from '@angular/core';
 import {
   Router, Resolve,
@@ -19,19 +20,20 @@ export class GetColectionResolver implements Resolve<any> {
     public auth: FirebaseAuthService,
     private resolveService: ResolveService,
     private data: DataService,
+    private backand: BackandService,
 
   ) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-
+   
     const request = this.resolveService.getRequest(route)
     const test = new TestCompose(request).testRequest
-
+    
     if (test == null) {
 
-      console.log('Resolve Colection')
+  
 
-      return this.data.httpColection(request)
+      return this.backand.httpColection(request)
 
     } else {
       console.log('Resolve Colection Error')

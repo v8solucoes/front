@@ -35,10 +35,8 @@ export class AccountCreateComponent {
   ngOnInit() {
     
     this.route.data.subscribe(req => {
-      const request = req['request']
-      console.log('CREATE INSCRIPTION')
-      console.log(request)
-/*       this.createForm = this.data.createForm(request) */
+      console.log('Account-Adm>Create')
+      console.log(this.data.form)
       this.loading = true;
     }).closed
 

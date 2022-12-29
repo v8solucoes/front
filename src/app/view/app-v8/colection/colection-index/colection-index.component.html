@@ -13,6 +13,7 @@
   
       <li  *ngFor="let colection of i.data.local.colection[i.data.requestLast.document] | keyvalue" 
       [routerLink]="['get', colection.key]"
+      (click)="destroy()"
       >
         <app-colection-group
         [permission]="i.data.local.getRecursive(i.data.requestLast.document).permission"
@@ -33,7 +34,9 @@
 <mat-sidenav #document mode="side" [opened]="i.design.telaDesktop" position="end">
 
   <button (click)="document.toggle()">D</button><br>
+
   <br> Documento<br>
+
   <router-outlet></router-outlet>
 
 </mat-sidenav>

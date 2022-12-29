@@ -1,5 +1,4 @@
 import { FormService } from '@component/form/form.service';
-import { DataLocal } from './../shared/class';
 import { Injectable } from '@angular/core';
 import {
   Router, Resolve,
@@ -47,9 +46,10 @@ export class DataLocalResolver implements Resolve<Irequest> {
       this.data.requestLast['user'] = {
         'name': 'Local',
         'nivel': 'adm',
-        'userId': 'undefinid'
+        'userId': 'null',
+        'acessToken': 'null'
       }
-
+      console.log('Local Resolver')
       this.data.form[`${request.document}`] = this.form.createForm()
       
       return of(request)

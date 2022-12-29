@@ -19,6 +19,8 @@ export class ActionComponent implements OnInit {
    }
 
   ngOnInit(): void {
+/* 
+    console.log('Action') */
 
   }
   async update() {
@@ -27,12 +29,10 @@ export class ActionComponent implements OnInit {
    
     try {
 
-      this.i.data.httpCrudGeneric('create').subscribe(async (response: IresponseValidatorCompose | null) => {
+      this.i.backand.httpCrudGeneric('create').subscribe(async (response: IresponseValidatorCompose | null) => {
 
         console.log(response)
       })
-      
-    
       
     } catch (error) {
       console.log(error)

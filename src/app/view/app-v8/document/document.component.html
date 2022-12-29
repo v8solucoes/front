@@ -2,13 +2,12 @@
   <mat-progress-bar mode="query"></mat-progress-bar>
 </ng-template>
 
-<section *ngIf="load; else loading">
+<section *ngIf="inscription; else loading">
   <app-action></app-action>
   <app-form-group
+  *ngIf="i.viewDocument"
     [form]="i.data.form[i.data.requestLast.document]"
-    [permission]="
-      i.data.local.getRecursive(i.data.requestLast.document).permission
-    "
+    [permission]="i.data.local.getRecursive(i.data.requestLast.document).permission"
     [model]="i.data.local.getRecursive(i.data.requestLast.document).model"
     [request]="i.data.requestLast"
   >

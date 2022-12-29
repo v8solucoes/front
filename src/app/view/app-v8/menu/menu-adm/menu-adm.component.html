@@ -9,7 +9,7 @@
     <li *ngFor="let permission of i.data.local.permission;
      let in=index let first let last" [routerLink]="[permission.id]">
 <!--      {{ permission.id }} -->
-     {{ i.data.local.model[permission.id ].text[i.data.language].label }}
+     {{ i.data.local.model[permission.id].text[i.data.language].label }}
     </li>
 
   </ul>

@@ -21,27 +21,17 @@ export class GetUserResolver implements Resolve<Irequest> {
     private router: Router,
     public auth: FirebaseAuthService,
     private resolveService: ResolveService,
-   private data: DataService,
-   private backand: BackandService,
+    private data: DataService,
+    private backand: BackandService,
 
   ) { }
   
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Irequest> {
-    /* console.log('USER')
-    console.log('ROUTE')
-    console.log(route)
-    console.log('STATE')
-    console.log(state) */
+
     const request = this.resolveService.getRequest(route)
     const test = new TestCompose(request).testRequest
 
     if (test == null) {
-
-      this.data.user = {
-        nivel: "adm",
-        name: 'anonimo',
-        userId: 'null'
-    }
 
       console.log('Resolve Sucess')
       

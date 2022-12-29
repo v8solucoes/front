@@ -15,9 +15,6 @@ export class LoginSignInComponent implements OnInit {
   loading = false;
   document: keyof Idoc = 'sign-in'
 
-  /* login!: IcreateForm<any>; */
-  /*   createForm!: IcreateForm<FormGroup>; */
-
   constructor(
     public auth: FirebaseAuthService,
     public data: DataService,

@@ -16,6 +16,7 @@ export class ColectionIndexComponent implements OnInit {
   doc: Irequest['document']
   colections!: Icol
   inscription!: Subscription
+  view: boolean = true;
 
   constructor(
     public i: InterfaceService,
@@ -24,6 +25,9 @@ export class ColectionIndexComponent implements OnInit {
   ) { 
     this.doc = this.i.data.requestLast.document
 
+  }
+  destroy() {
+    return this.i.viewDocument = false
   }
 
   ngOnInit(): void {
@@ -35,6 +39,12 @@ export class ColectionIndexComponent implements OnInit {
      this.i.data.local.colection[`${this.doc}`] = colection['response']
      /*  console.log(this.get) */
       this.load = true
+      this.view = false
+   /*    setTimeout(() => {
+
+        this.view = true
+
+      }, 500); */
     })
     this.actions()
 

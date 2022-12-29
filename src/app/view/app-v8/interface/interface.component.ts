@@ -27,8 +27,11 @@ export class InterfaceComponent implements OnInit {
     this.router()
     this.actions()
   }
-  router(){ return this.inscription = this.route.data.subscribe((data) => {
-    const db = data['response']
+  router() {
+    return this.inscription = this.route.data.subscribe((data) => {
+
+      const db = data['response']
+   
     this.i.data.local.permission = db['permission']['adm']
     this.i.data.local.model = db['model']
     this.i.data.requestLast.user = db['user']

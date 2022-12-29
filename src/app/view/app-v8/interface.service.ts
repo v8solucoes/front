@@ -1,3 +1,4 @@
+import { BackandService } from '@repository/backand.service';
 import { EventEmitter, Injectable } from '@angular/core';
 import { DataService } from '@repository/data.service';
 import { FirebaseAuthService } from 'src/app/api/firebase-auth.service';
@@ -8,6 +9,7 @@ import { FirebaseAuthService } from 'src/app/api/firebase-auth.service';
 export class InterfaceService {
   actionsEmitter = new EventEmitter<'menu' | 'document' | 'documentColection' | 'documentCloset'| 'documentOpen'>();
   loading = false;
+  viewDocument = false;
   loadingDocument = false
   design = {
     menuScrollBarra: true,
@@ -28,6 +30,7 @@ export class InterfaceService {
   };
   constructor(
     public data: DataService,
+    public backand: BackandService,
     public auth: FirebaseAuthService
   ) { this.loading = true}
 
