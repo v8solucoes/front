@@ -33,12 +33,12 @@ export class GetUserResolver implements Resolve<Irequest> {
 
     if (test == null) {
 
-      console.log('Resolve Sucess')
+      console.log('Resolve User Sucess')
       
       return this.backand.httpUser(request)
 
     } else {
-      console.log('Resolve Error')
+      console.log('Resolve User Error')
       console.log(test)
       this.router.navigate([`${this.data.language}/login/sign-in`])
       return of()

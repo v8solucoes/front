@@ -52,11 +52,11 @@ export class AccountCreateComponent {
 
     console.log(req)
 
-    this.backand.httpCRUDResponseCompose(req as Irequest).subscribe(async (response: IresponseValidatorCompose| null) => {
+    this.backand.httpCrudGeneric('create').subscribe(async (response: IresponseValidatorCompose | null) => {
    
-      console.log(response)
+      console.log(response?.error)
     
-      if (response == null) {
+      if (response?.error == undefined) {
         
         setTimeout( () => {
           /*        this.createForm.form.reset() */

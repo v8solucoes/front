@@ -23,7 +23,6 @@ export class GetDocumentResolver implements Resolve<any> {
     private data: DataService,
     private backand: BackandService,
 
-
   ) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {

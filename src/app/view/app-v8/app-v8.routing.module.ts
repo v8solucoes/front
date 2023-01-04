@@ -14,7 +14,7 @@ const appV8Routes: Routes = [
   {
     path: 'en/app', component: InterfaceComponent,
     canActivate: [AuthGuard],
-    resolve: { 'response': GetUserResolver},
+    resolve: { 'response': GetUserResolver },
     children: [
       {
         path: ':document', component: ColectionIndexComponent,
@@ -22,7 +22,7 @@ const appV8Routes: Routes = [
         resolve: { 'response': GetColectionResolver },
         children: [
           {
-            path: ':action/:id', component: DocumentComponent,
+            path: ':id/:action', component: DocumentComponent,
             canActivate: [AuthGuard],
             resolve: { 'response': GetDocumentResolver }
           }

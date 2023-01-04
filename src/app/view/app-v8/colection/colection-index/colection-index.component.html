@@ -12,7 +12,7 @@
       Colection: {{ i.data.local.model[i.data.requestLast.document].text[i.data.language].label }}
   
       <li  *ngFor="let colection of i.data.local.colection[i.data.requestLast.document] | keyvalue" 
-      [routerLink]="['get', colection.key]"
+      [routerLink]="[colection.key, 'update']"
       (click)="destroy()"
       >
         <app-colection-group
