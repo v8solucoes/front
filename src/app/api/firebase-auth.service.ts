@@ -5,6 +5,7 @@ import { connectAuthEmulator, getAuth, GoogleAuthProvider, signInWithCredential,
 import { environment } from 'src/environments/environment';
 import { Ilanguage } from '@domain/interface';
 import { DataService } from '@repository/data.service';
+import { _debug } from '../../../../domain/src/domain/repository/debug';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +26,13 @@ export class FirebaseAuthService {
     environment.test ? connectAuthEmulator(auth, "http://localhost:9099") : ''
 
     return signInWithEmailAndPassword(auth, email, password).then(o => {
-      console.log('Login Sucess')
+     
+      if (_debug.pg.firebase) {
+        console.log('Login Sucess')
+      }
+
       this.router.navigate([`${language}/app`])
+      
     }).catch(o => {
       console.log('Login Error')
       this.router.navigate([`${language}/login/sign-in`])

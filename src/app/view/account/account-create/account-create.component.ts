@@ -5,6 +5,7 @@ import { BackandService } from './../../../repository/backand.service';
 import { Irequest, IresponseValidatorCompose } from '@domain/interface';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { _debug } from '../../../../../../domain/src/domain/repository/debug';
 
 
 @Component({
@@ -35,8 +36,12 @@ export class AccountCreateComponent {
   ngOnInit() {
     
     this.route.data.subscribe(req => {
-      console.log('Account-Adm>Create')
-      console.log(this.data.form)
+
+      if (_debug.pg.account) {
+        console.log('Account-Adm>Create')
+        console.log(this.data.form)
+      }
+     
       this.loading = true;
     }).closed
 

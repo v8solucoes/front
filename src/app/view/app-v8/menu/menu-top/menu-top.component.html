@@ -1,1 +1,5 @@
-Top<button (click)="this.i.actionsEmitter.emit('menu')">X</button>
+<button 
+(click)="this.i.actionsEmitter.emit('menu')"
+mat-icon-button color="primary" aria-label="Menu">
+  <mat-icon>chevron_left</mat-icon>
+</button>

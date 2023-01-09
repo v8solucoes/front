@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { InterfaceService } from '../interface.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { _debug } from '../../../../../../domain/src/domain/repository/debug';
 @Component({
   selector: 'app-interface',
   templateUrl: './interface.component.html',
@@ -35,15 +36,19 @@ export class InterfaceComponent implements OnInit {
     this.i.data.local.permission = db['permission']['adm']
     this.i.data.local.model = db['model']
     this.i.data.requestLast.user = db['user']
-    this.i.data.user = db['user']
-    console.log('Interface Sucess')
-    console.log(this.i.data.requestLast)
+      this.i.data.user = db['user']
+      
+      if (_debug.pg.interface) {
+        console.log('Interface Sucess')
+        console.log(this.i.data.requestLast)
+      }
+
     this.load = true
   }) }
   actions() {
 
     this.i.actionsEmitter.subscribe(action => {
-    /*   this.i.auth.onAuthState() */
+
       switch (action) {
 
         case 'menu': { this.menu.toggle(); break; }
@@ -53,8 +58,8 @@ export class InterfaceComponent implements OnInit {
         case 'documentColection': { this.i.loadingDocument= true ; break; }
 
         default: {
-          alert('Evento de Interface não Cadastrado: ' + action);
-          console.log('Evento de Interface não Cadastrado: ' + action);
+        /*   alert('Evento de Interface não Cadastrado: ' + action);
+          console.log('Evento de Interface não Cadastrado: ' + action); */
           break;
         }
       }

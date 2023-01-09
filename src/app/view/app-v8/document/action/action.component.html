@@ -1,6 +1,17 @@
-<button (click)="update()">Update {{ document.valid }} </button>
+<ng-template #loading>
+  <mat-progress-bar mode="query"></mat-progress-bar>
+</ng-template>
 
-{{ this.i.data.form[this.i.data.requestLast.document].value | json }}
+<section *ngIf="load; else loading">
+  
+  <button (click)="update()">Update {{ document.valid }} </button>
+
+  {{ this.i.data.form[this.i.data.requestLast.document].value | json }}
+
+</section>
+
+
+
 <!--   <app-form-group
     [form]="this.i.data.form[this.i.data.requestLast.document]"
     [permission]="i.data.local.getRecursive(i.data.requestLast.document).permission"

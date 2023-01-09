@@ -11,32 +11,38 @@ import { InterfaceService } from '@view/app-v8/interface.service';
 export class ActionComponent implements OnInit {
 
   document: UntypedFormGroup
+  load = false
 
   constructor(
     public i: InterfaceService,
   ) {
-    this.document = this.i.data.form[this.i.data.requestLast.document] 
-   }
+    this.document = this.i.data.form[this.i.data.requestLast.document]
+
+  }
 
   ngOnInit(): void {
-/* 
-    console.log('Action') */
+
+    setTimeout(() => {
+
+      this.load = true
+
+    }, 0);
 
   }
   async update() {
 
     console.log('Action')
-   
+
     try {
 
-      this.i.backand.httpCrudGeneric('create').subscribe(async (response: IresponseValidatorCompose | null) => {
+      this.i.backand.httpCrudGeneric('update').subscribe(async (response: IresponseValidatorCompose | null) => {
 
         console.log(response)
       })
-      
+
     } catch (error) {
       console.log(error)
     }
-   
-}
+
+  }
 }

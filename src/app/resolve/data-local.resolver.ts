@@ -11,6 +11,7 @@ import { Observable, of } from 'rxjs';
 import { TestCompose } from '@domain/validator-local';
 import { DataService } from '@repository/data.service';
 import { ResolveService } from './resolve.service';
+import { _debug } from '../../../../domain/src/domain/repository/debug';
 
 
 @Injectable({
@@ -42,6 +43,10 @@ export class DataLocalResolver implements Resolve<Irequest> {
     const test = new TestCompose(request).testRequest
 
     if (test == null) {
+
+      if (_debug.resolver) {
+        console.log('Local Resolver')
+      }
       
       this.data.requestLast['user'] = {
         'name': 'Local',
@@ -49,7 +54,7 @@ export class DataLocalResolver implements Resolve<Irequest> {
         'userId': 'null',
         'acessToken': 'null'
       }
-      console.log('Local Resolver')
+      
       this.data.form[`${request.document}`] = this.form.createForm()
       
       return of(request)

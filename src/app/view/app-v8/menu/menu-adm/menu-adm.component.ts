@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InterfaceService } from '@view/app-v8/interface.service';
+import { _debug } from '../../../../../../../domain/src/domain/repository/debug';
 
 @Component({
   selector: 'app-menu-adm',
@@ -9,7 +10,7 @@ import { InterfaceService } from '@view/app-v8/interface.service';
 export class MenuAdmComponent implements OnInit {
 
   load = false
-  list: any[] = []
+/*   list: any[] = [] */
 
   constructor(
     public i: InterfaceService,
@@ -17,8 +18,13 @@ export class MenuAdmComponent implements OnInit {
 
   ngOnInit(): void {
     this.load = true
-    this.list.push({ id: 'felix' })
-    console.log(this.i.data.local.permission)
+/*     this.list.push({ id: 'felix' }) */
+
+    if (_debug.pg.menu) {
+      console.log('Menu')
+      console.log(this.i.data.local.permission)
+    }
+   
   }
 
 }

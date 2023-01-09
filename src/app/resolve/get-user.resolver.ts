@@ -11,6 +11,7 @@ import { ResolveService } from './resolve.service';
 import { TestCompose } from '@domain/validator-local';
 import { FirebaseAuthService } from '../api/firebase-auth.service';
 import { BackandService } from '@repository/backand.service';
+import { _debug } from '../../../../domain/src/domain/repository/debug';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +34,9 @@ export class GetUserResolver implements Resolve<Irequest> {
 
     if (test == null) {
 
-      console.log('Resolve User Sucess')
+      if (_debug.pg.colection) {
+        console.log('Resolve User Sucess')
+      }
       
       return this.backand.httpUser(request)
 

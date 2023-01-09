@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '@repository/data.service';
-import { FirebaseAuthService } from 'src/app/api/firebase-auth.service';
 
 @Component({
   selector: 'app-login-index',
@@ -11,16 +10,11 @@ export class LoginIndexComponent implements OnInit {
 
   loading = false;
 
-/*   login: IcreateForm<any>; */
-
   constructor(
-/*     private auth: FirebaseAuthService, */
+
     public data: DataService,
     
-  ) {
-
-/*     this.login = this.data.createForm('login') */
-    
+  ) {  
   }
 
   ngOnInit(): void {

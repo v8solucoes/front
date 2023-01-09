@@ -10,6 +10,7 @@ import { Observable, of } from 'rxjs';
 import { ResolveService } from './resolve.service';
 import { TestCompose } from '@domain/validator-local';
 import { FirebaseAuthService } from '../api/firebase-auth.service';
+import { _debug } from '../../../../domain/src/domain/repository/debug';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,6 @@ export class GetColectionResolver implements Resolve<any> {
     private resolveService: ResolveService,
     private data: DataService,
     private backand: BackandService,
-
   ) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
@@ -31,17 +31,17 @@ export class GetColectionResolver implements Resolve<any> {
     
     if (test == null) {
 
-  
-
       return this.backand.httpColection(request)
 
     } else {
-      console.log('Resolve Colection Error')
 
+      if (_debug.resolver) {
+        console.log('Resolve Colection Error')
+      }   
+      
       this.data.errorResolve = test
       this.router.navigate([`errorResolver`])
-    /*   console.log(test)
-      this.router.navigate([`${this.data.language}/login/sign-in`]) */
+
       return of()
     }
 

@@ -1,3 +1,5 @@
+import { _debug } from './../../../../domain/src/domain/repository/debug';
+
 import { BackandService } from '@repository/backand.service';
 import { Injectable } from '@angular/core';
 import {
@@ -10,6 +12,7 @@ import { Observable, of } from 'rxjs';
 import { TestCompose } from '../../../../domain/src/domain/validators/test/test-compose';
 import { FirebaseAuthService } from '../api/firebase-auth.service';
 import { ResolveService } from './resolve.service';
+import { FormService } from '@component/form/form.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +25,7 @@ export class GetDocumentResolver implements Resolve<any> {
     private resolveService: ResolveService,
     private data: DataService,
     private backand: BackandService,
+    private form: FormService
 
   ) { }
 
@@ -32,8 +36,20 @@ export class GetDocumentResolver implements Resolve<any> {
 
     if (test == null) {
 
-      console.log('Resolver Document')
-      return this.backand.httpDocument(request)
+      if (_debug.resolver) {
+        console.log('Resolver Document')
+        console.log(request.action)
+      }   
+
+      if (request.action == 'create') {
+
+        this.data.form[`${this.data.requestLast.document}`] = this.form.createForm()
+      
+        return of(null) 
+        
+      } else {
+        return this.backand.httpDocument(request)
+      }
 
     } else {
       console.log('Resolve Document Error')

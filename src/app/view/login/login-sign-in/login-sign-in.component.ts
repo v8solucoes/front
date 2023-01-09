@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '@repository/data.service';
 import { FirebaseAuthService } from 'src/app/api/firebase-auth.service';
+import { _debug } from '../../../../../../domain/src/domain/repository/debug';
 
 @Component({
   selector: 'app-login-sign-in',
@@ -26,12 +27,16 @@ export class LoginSignInComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.route.data.subscribe(req => {
-      console.log('login')
-      console.log(this.data.form)
-      /*   const request = req['request'] */
-      /*      this.login = this.data.createForm(request) */
+
+      if (_debug.pg.login) {
+        console.log('login')
+        console.log(this.data.form)
+      }
+
       this.loading = true;
+
     }).closed
 
   }

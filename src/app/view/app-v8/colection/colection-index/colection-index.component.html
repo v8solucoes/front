@@ -1,7 +1,17 @@
 <mat-sidenav-content>
-  <button (click)="i.actionsEmitter.emit('menu')">M</button>
-  <button (click)="document.toggle()">D</button><br>
-  
+
+  <button 
+  (click)="this.i.actionsEmitter.emit('menu')"
+  mat-icon-button color="primary" aria-label="Menu">
+    <mat-icon>chevron_right</mat-icon>
+  </button>
+
+  <button 
+  [routerLink]="['new', 'create']"
+  mat-icon-button color="primary" aria-label="Menu">
+    <mat-icon>add</mat-icon>
+  </button>
+ 
   <ng-template #loading>
     <mat-progress-bar mode="query"></mat-progress-bar>
   </ng-template>
@@ -13,7 +23,6 @@
   
       <li  *ngFor="let colection of i.data.local.colection[i.data.requestLast.document] | keyvalue" 
       [routerLink]="[colection.key, 'update']"
-      (click)="destroy()"
       >
         <app-colection-group
         [permission]="i.data.local.getRecursive(i.data.requestLast.document).permission"
@@ -40,8 +49,6 @@
   <router-outlet></router-outlet>
 
 </mat-sidenav>
-
-
 
 <!-- <ng-template #loading>
   <mat-progress-bar mode="query"></mat-progress-bar>
