@@ -3,19 +3,16 @@
 </ng-template>
 
 <section *ngIf="load; else loading">
-  
-  <button (click)="update()">Update {{ document.valid }} </button>
 
-  {{ this.i.data.form[this.i.data.requestLast.document].value | json }}
+  <mat-card>
+
+      <button mat-icon-button><mat-icon>more_vert</mat-icon></button>
+      <button mat-raised-button color="primary" (click)="this.i.actionsEmitter.emit('document')">CANCELAR</button>
+      <button mat-raised-button color="primary" *ngIf="document.valid">SALVAR</button>
+      <button mat-raised-button disabled color="primary" *ngIf="!document.valid">SALVAR</button>
+    
+  </mat-card>
+
+  <app-form-error *ngIf="!document.valid"></app-form-error>
 
 </section>
-
-
-
-<!--   <app-form-group
-    [form]="this.i.data.form[this.i.data.requestLast.document]"
-    [permission]="i.data.local.getRecursive(i.data.requestLast.document).permission"
-    [model]="i.data.local.getRecursive(i.data.requestLast.document).model"
-    [request]="i.data.requestLast"
-  >
-  </app-form-group> -->

@@ -12,17 +12,22 @@ export class ActionComponent implements OnInit {
 
   document: UntypedFormGroup
   load = false
+  erros!: any;
 
   constructor(
     public i: InterfaceService,
   ) {
     this.document = this.i.data.form[this.i.data.requestLast.document]
+    this.erros = this.i.data.form[this.i.data.requestLast.document].errors
 
   }
 
   ngOnInit(): void {
 
     setTimeout(() => {
+
+      console.log('ERROS')
+      console.log(this.i.data.form[this.i.data.requestLast.document])
 
       this.load = true
 

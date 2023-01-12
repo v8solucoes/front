@@ -1,2 +1,7 @@
 <mat-slide-toggle [formControl]="control"> {{ model?.text?.en?.label }}</mat-slide-toggle><br>
 
+<mat-error *ngIf="control.errors">
+  <app-input-generec-error
+    [erros]="control.errors"
+  ></app-input-generec-error>
+</mat-error>

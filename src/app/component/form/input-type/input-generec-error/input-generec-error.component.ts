@@ -12,11 +12,12 @@ export class InputGenerecErrorComponent implements OnInit {
  /*  errorList: ResponseCompose; */
 
   constructor() {
+/*     console.log(this.erros) */
  /*    this.errorList = this.erros.error */
    }
 
   ngOnInit(): void {
-    
+ /*    console.log('imputError') */
   }
 
 }

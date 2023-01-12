@@ -1,22 +1,16 @@
 <mat-sidenav-content>
-
-  <button 
-  (click)="this.i.actionsEmitter.emit('menu')"
-  mat-icon-button color="primary" aria-label="Menu">
-    <mat-icon>chevron_right</mat-icon>
-  </button>
-
-  <button 
-  [routerLink]="['new', 'create']"
-  mat-icon-button color="primary" aria-label="Menu">
-    <mat-icon>add</mat-icon>
-  </button>
  
   <ng-template #loading>
     <mat-progress-bar mode="query"></mat-progress-bar>
   </ng-template>
 
   <section *ngIf="load; else loading">
+
+    <nav>
+      <button mat-icon-button (click)="this.i.actionsEmitter.emit('menu')"><mat-icon>chevron_left</mat-icon></button>
+      <button mat-button>Colection</button>
+      <button mat-icon-button><mat-icon>more_vert</mat-icon></button>
+    </nav>
     
     <ul> 
       Colection: {{ i.data.local.model[i.data.requestLast.document].text[i.data.language].label }}
@@ -35,16 +29,60 @@
        </li>
   
     </ul>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
+    teswte<br>
   
   </section>
 
 </mat-sidenav-content>
 
 <mat-sidenav #document mode="side" [opened]="i.design.telaDesktop" position="end">
-
-  <button (click)="document.toggle()">D</button><br>
-
-  <br> Documento<br>
 
   <router-outlet></router-outlet>
 

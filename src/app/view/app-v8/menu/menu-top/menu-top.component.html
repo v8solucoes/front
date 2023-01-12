@@ -1,5 +1,5 @@
-<button 
-(click)="this.i.actionsEmitter.emit('menu')"
-mat-icon-button color="primary" aria-label="Menu">
-  <mat-icon>chevron_left</mat-icon>
-</button>
+<nav>
+  <button mat-icon-button (click)="this.i.actionsEmitter.emit('menu')"><mat-icon>chevron_left</mat-icon></button>
+  <button mat-button>Menu</button>
+  <button mat-icon-button><mat-icon>more_vert</mat-icon></button>
+</nav>

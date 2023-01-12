@@ -15,7 +15,6 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { LoginModule } from '@view/login/login.module';
 import { AppV8Module } from '@view/app-v8/app-v8.module';
 import { AccountModule } from './view/account/account.module';
-
 // COMPONENTES
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './view/page-not-found/page-not-found.component';
@@ -34,7 +33,7 @@ import { TermsComponent } from './view/terms/terms.component';
     AccountModule,
     LoginModule,
     AppV8Module,
-    AppRoutingModule,
+    AppRoutingModule
   ],
 
   providers: [ WindowDom ],

@@ -19,10 +19,7 @@ export class InterfaceComponent implements OnInit {
     public i: InterfaceService,
     private route: ActivatedRoute,
 
-  ) { 
-
-    
-  }
+  ) { }
 
   ngOnInit(): void {
     this.router()
@@ -44,7 +41,10 @@ export class InterfaceComponent implements OnInit {
       }
 
     this.load = true
-  }) }
+    })
+  }
+  
+ 
   actions() {
 
     this.i.actionsEmitter.subscribe(action => {
@@ -57,11 +57,11 @@ export class InterfaceComponent implements OnInit {
         case 'documentOpen': { break; }
         case 'documentColection': { this.i.loadingDocument= true ; break; }
 
-        default: {
-        /*   alert('Evento de Interface não Cadastrado: ' + action);
-          console.log('Evento de Interface não Cadastrado: ' + action); */
+      /*   default: {
+          alert('Evento de Interface não Cadastrado: ' + action);
+          console.log('Evento de Interface não Cadastrado: ' + action);
           break;
-        }
+        } */
       }
     });
   }

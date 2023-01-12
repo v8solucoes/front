@@ -3,8 +3,17 @@
 </ng-template>
 
 <section *ngIf="load; else loading">
+<!--   <nav>
 
+    <button mat-icon-button><mat-icon>more_vert</mat-icon></button>
+
+    <button mat-raised-button color="primary" (click)="this.i.actionsEmitter.emit('document')">CANCELAR</button>
+
+    <button mat-raised-button color="primary" >SALVAR</button>
+
+  </nav> -->
   <app-action></app-action>
+
   <app-form-group
     [form]="i.data.form[i.data.requestLast.document]"
     [permission]="i.data.local.getRecursive(i.data.requestLast.document).permission"
@@ -12,4 +21,5 @@
     [request]="i.data.requestLast"
   >
   </app-form-group>
+  
 </section>

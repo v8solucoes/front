@@ -12,6 +12,7 @@ import { ColectionIndexComponent } from './colection/colection-index/colection-i
 import { ColectionModule } from '@component/colection/colection.module';
 import { DocumentComponent } from './document/document.component';
 import { ActionComponent } from './document/action/action.component';
+/* import { InputGenerecErrorComponent } from './../../component/form/input-type/input-generec-error/input-generec-error.component'; */
 
 
 
@@ -23,7 +24,8 @@ import { ActionComponent } from './document/action/action.component';
     MenuAdmComponent,
     ColectionIndexComponent,
     DocumentComponent,
-    ActionComponent
+    ActionComponent,
+/*     InputGenerecErrorComponent */
   ],
   imports: [
     CommonModule,

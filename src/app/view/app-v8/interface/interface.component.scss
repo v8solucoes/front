@@ -9,9 +9,13 @@ section {
 }
 
 app-menu-index {
+  margin: 0px;
   width: 260px;
-  @extend %conteudo;
-  background-color: var(--cor-superficie);
+  height: 100%;
+  display: grid;
+ /*  background-color: var(--cor-superficie); */
+  background-color: blue;
+  @extend %scroll;
 }
 
 app-modulo {
@@ -109,7 +113,7 @@ app-modulo {
 
 mat-drawer-container,
 mat-sidenav-container {
-  height: 100%;
+  height: 100vh;
 
 }
 
@@ -120,6 +124,10 @@ mat-sidenav-container {
 /* Remove cores de fundo das Diretivas Material Design */
 .mat-drawer-container {
   background-color: transparent;
+  
+}
+mat-sidenav-content {
+  overflow:hidden;
 }
 .mat-drawer {
   background-color: transparent;
@@ -128,7 +136,8 @@ mat-sidenav-container {
   background-color: transparent;
 }
 .mat-drawer-content {
-  overflow: hidden;
+  display:grid;
+/*   overflow: none; */
 }
 
 // Corrige scroll 100%
