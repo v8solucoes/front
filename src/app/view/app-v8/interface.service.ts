@@ -2,6 +2,7 @@ import { BackandService } from '@repository/backand.service';
 import { EventEmitter, Injectable } from '@angular/core';
 import { DataService } from '@repository/data.service';
 import { FirebaseAuthService } from 'src/app/api/firebase-auth.service';
+import { ModalService } from '@component/modal/modal.service';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,7 @@ export class InterfaceService {
   };
   constructor(
     public data: DataService,
+    public modal: ModalService,
     public backand: BackandService,
     public auth: FirebaseAuthService
   ) { this.loading = true}

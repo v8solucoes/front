@@ -19,12 +19,17 @@ import { AccountModule } from './view/account/account.module';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './view/page-not-found/page-not-found.component';
 import { TermsComponent } from './view/terms/terms.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormValidateComponent } from './component/modal/form-validate/form-validate.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    TermsComponent],
+    TermsComponent,
+    FormValidateComponent],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserModule,
@@ -33,7 +38,10 @@ import { TermsComponent } from './view/terms/terms.component';
     AccountModule,
     LoginModule,
     AppV8Module,
-    AppRoutingModule
+    AppRoutingModule,
+    MatDialogModule,
+    MatIconModule,
+    MatButtonModule,
   ],
 
   providers: [ WindowDom ],

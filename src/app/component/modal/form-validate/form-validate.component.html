@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>{{text[data.language].title}}</h1>
+
+<mat-dialog-content>
+
+  <div *ngFor="let error of data.error; ">
+
+    > {{ data.model[error].text[data.language].label }} <br>
+
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button [mat-dialog-close]="true">
+    {{text[data.language].buttom}}
+  </button>
+</mat-dialog-actions>

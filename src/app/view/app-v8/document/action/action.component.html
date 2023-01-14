@@ -4,15 +4,14 @@
 
 <section *ngIf="load; else loading">
 
-  <mat-card>
+  <button mat-raised-button color="basic"
+   (click)="validar()" *ngIf="!document.valid">{{this.text[this.i.data.language].update}}</button>
 
-      <button mat-icon-button><mat-icon>more_vert</mat-icon></button>
-      <button mat-raised-button color="primary" (click)="this.i.actionsEmitter.emit('document')">CANCELAR</button>
-      <button mat-raised-button color="primary" *ngIf="document.valid">SALVAR</button>
-      <button mat-raised-button disabled color="primary" *ngIf="!document.valid">SALVAR</button>
-    
-  </mat-card>
+  <button mat-raised-button color="primary"
+   (click)="update()" *ngIf="document.valid && !processing">{{this.text[this.i.data.language].update}}</button>
 
-  <app-form-error *ngIf="!document.valid"></app-form-error>
+  <button mat-raised-button color="{{ sucess ? 'accent': 'warn'}}" 
+  disabled
+  *ngIf="processing">{{ sucess ? this.text[this.i.data.language].sucess: this.text[this.i.data.language].processing }}</button>
 
 </section>

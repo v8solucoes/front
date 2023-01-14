@@ -3,16 +3,16 @@
 </ng-template>
 
 <section *ngIf="load; else loading">
-<!--   <nav>
+  
+  <mat-card>
 
     <button mat-icon-button><mat-icon>more_vert</mat-icon></button>
+    <button mat-raised-button color="basic" (click)="this.i.actionsEmitter.emit('document')">CANCELAR</button>
+    <app-action></app-action>
+   <!--  <button mat-raised-button color="primary" *ngIf="document.valid">SALVAR</button>
+    <button mat-raised-button disabled color="primary" *ngIf="!document.valid">SALVAR</button> -->
 
-    <button mat-raised-button color="primary" (click)="this.i.actionsEmitter.emit('document')">CANCELAR</button>
-
-    <button mat-raised-button color="primary" >SALVAR</button>
-
-  </nav> -->
-  <app-action></app-action>
+  </mat-card>
 
   <app-form-group
     [form]="i.data.form[i.data.requestLast.document]"

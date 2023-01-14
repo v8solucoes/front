@@ -13,7 +13,6 @@ import { FormGroupComponent } from './form-group/form-group.component';
 import { FormArrayComponent } from './form-array/form-array.component';
 import { AcceptTermsComponent } from './input-type/accept-terms/accept-terms.component';
 import { BooleanToggleComponent } from './input-type/boolean-toggle/boolean-toggle.component';
-import { FormErrorComponent } from './form-error/form-error.component'
 
 @NgModule({
   declarations: [
@@ -26,11 +25,9 @@ import { FormErrorComponent } from './form-error/form-error.component'
     FormPipePipe,
     AcceptTermsComponent,
     BooleanToggleComponent,
-    FormErrorComponent,
   ],
   exports: [
     FormGroupComponent,
-    FormErrorComponent
     ],
   imports: [
     CommonModule,

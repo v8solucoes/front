@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Icol, Irequest } from '@domain/interface';
+import { Icol } from '@domain/interface';
 import { InterfaceService } from '@view/app-v8/interface.service';
 import { Subscription } from 'rxjs';
 import { _debug } from '../../../../../../../domain/src/domain/repository/debug';
