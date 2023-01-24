@@ -1,25 +1,10 @@
+@use '@angular/material' as mat; // https://material.angular.io/guide/theming
 
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
 @include mat.core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$angular-13-primary: mat.define-palette(mat.$pink-palette);
+$angular-13-primary: mat.define-palette(mat.$pink-palette); // https://material.io/design/color/
 $angular-13-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
 $angular-13-warn: mat.define-palette(mat.$red-palette);
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
 $angular-13-theme: mat.define-dark-theme((
   color: (
     primary: $angular-13-primary,
@@ -27,13 +12,49 @@ $angular-13-theme: mat.define-dark-theme((
     warn: $angular-13-warn,
   )
 ));
+$pad-black-configuracao-fonte-material: mat.define-typography-config(
+  $font-family: "Roboto, Arial, sans-serif",
+  $headline: mat.define-typography-level(32px, 48px, 700),
+  $body-1: mat.define-typography-level(var(--font-material), 24px, 500),
+);
+@include mat.core($pad-black-configuracao-fonte-material);
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
+:root {
+  --font-material: 15px;
+  --fonte-10: 10px;
+  --fonte-12: 12px;
+  --fonte-14: 14px;
+  --fonte-16: 16px;
+  --fonte-17: 17px;
+  --fonte-20: 20px;
+  --margem: 16px;
+  --color-background: #0f0f0f;
+  --color-primary: #9c0000;
+  --color-tex-white:#{rgba(white, 0.87)};
+  --color-tex-black:#{rgba(black, 0.87)};
+}
+
+@include mat.core($pad-black-configuracao-fonte-material);
+
 @include mat.all-component-themes($angular-13-theme);
 
-/* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; width: 100%; background-color: rgb(26, 26, 26); overflow:hidden;}
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html{
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+}
+ body {
+  display: flex;
+  flex-flow: row nowrap;  
+  justify-content: center;
+  align-content: center;
+  height:100vh;
+  margin: 0;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.87);
+  font-family: "Roboto","Arial", sans-serif;
+  background-color: var(--color-background);
+  overflow:hidden;
+}

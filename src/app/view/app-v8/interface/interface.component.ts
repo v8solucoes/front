@@ -26,6 +26,7 @@ export class InterfaceComponent implements OnInit {
     this.actions()
   }
   router() {
+    
     return this.inscription = this.route.data.subscribe((data) => {
 
       const db = data['response']
@@ -57,11 +58,11 @@ export class InterfaceComponent implements OnInit {
         case 'documentOpen': { break; }
         case 'documentColection': { this.i.loadingDocument= true ; break; }
 
-      /*   default: {
+        default: {
           alert('Evento de Interface não Cadastrado: ' + action);
           console.log('Evento de Interface não Cadastrado: ' + action);
           break;
-        } */
+        }
       }
     });
   }

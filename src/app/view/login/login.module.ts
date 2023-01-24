@@ -6,6 +6,7 @@ import { FormModule } from '@component/form/form.module';
 
 import { LoginIndexComponent } from './login-index/login-index.component';
 import { LoginSignInComponent } from './login-sign-in/login-sign-in.component';
+import { ActionModule } from '@view/app-v8/document/action/action.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { LoginSignInComponent } from './login-sign-in/login-sign-in.component';
     FormModule,
     LoginRoutingModule,
     MaterialDesignModule,
+    ActionModule
   ]
 })
 export class LoginModule { }

@@ -1,88 +1,40 @@
 <mat-sidenav-content>
- 
+
   <ng-template #loading>
     <mat-progress-bar mode="query"></mat-progress-bar>
   </ng-template>
 
-  <section *ngIf="load; else loading">
+  <ng-container *ngIf="load; else loading">
 
     <nav>
-      <button mat-icon-button (click)="this.i.actionsEmitter.emit('menu')"><mat-icon>chevron_left</mat-icon></button>
-      <button mat-button>Colection</button>
-      <button mat-icon-button><mat-icon>more_vert</mat-icon></button>
+      <button mat-icon-button (click)="this.i.actionsEmitter.emit('menu')"><mat-icon>more_vert</mat-icon></button>
+      <span>{{ i.data.local.model[i.data.requestLast.document].text[i.data.language].label }}</span>
+      <button mat-icon-button [routerLink]="['new', 'create']"><mat-icon>add</mat-icon></button>
     </nav>
-    
-    <ul> 
-      Colection: {{ i.data.local.model[i.data.requestLast.document].text[i.data.language].label }}
-  
-      <li  *ngFor="let colection of i.data.local.colection[i.data.requestLast.document] | keyvalue" 
-      [routerLink]="[colection.key, 'update']"
-      >
-        <app-colection-group
-        [permission]="i.data.local.getRecursive(i.data.requestLast.document).permission"
-        [model]="i.data.local.getRecursive(i.data.requestLast.document).model"
-        [request]="i.data.requestLast"
-        [colection]="colection.value"
-      >
-      </app-colection-group>
-    
-       </li>
-  
-    </ul>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-    teswte<br>
-  
-  </section>
+
+    <section *ngFor="let colection of i.data.local.colection[i.data.requestLast.document] | keyvalue"
+      routerLinkActive="active-link" [routerLink]="[colection.key, 'update']">
+
+      <div class="flex">
+        <div class="icon" [ngStyle]="{'background-color': 'blue'}"></div>
+      </div>
+      <div>
+
+        <app-colection-group class="text"
+          [permission]="i.data.local.getRecursive(i.data.requestLast.document).permission"
+          [model]="i.data.local.getRecursive(i.data.requestLast.document).model" [request]="i.data.requestLast"
+          [colection]="colection.value">
+        </app-colection-group>
+
+      </div>
+      <div class="data">Data: {{ data(colection.value) | date: 'dd/mm/aa'}} <button (click)="data(colection.value)">x</button> </div>
+    </section>
+
+  </ng-container>
 
 </mat-sidenav-content>
 
-<mat-sidenav #document mode="side" [opened]="i.design.telaDesktop" position="end">
+<mat-sidenav #document mode="side" [opened]="true" position="end">
 
   <router-outlet></router-outlet>
 
@@ -114,8 +66,8 @@
 <!--   <p>Object Colection</p>
   {{ i.data.colection | json }} -->
 
- <!--    <li *ngFor="let permission in colection;
+<!--    <li *ngFor="let permission in colection;
      let in=index let first let last" [routerLink]="[permission.id]">
      {{ i.data.model[permission.id].text[i.data.language]?.label }}
     </li> -->
- <!--    <li  *ngFor="let colection of colections | keyvalue"> -->
+<!--    <li  *ngFor="let colection of colections | keyvalue"> -->

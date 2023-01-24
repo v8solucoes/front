@@ -16,7 +16,7 @@ export class ColectionIndexComponent implements OnInit {
   load = false
   colections!: Icol
   inscription!: Subscription
-
+  text = this.i.data.local.text.action[this.i.data.language]
   constructor(
     public i: InterfaceService,
     private route: ActivatedRoute
@@ -30,32 +30,18 @@ export class ColectionIndexComponent implements OnInit {
       }
 
       this.i.data.local.colection[`${this.i.data.requestLast.document}`] = response
-
+      this.colections = response
       this.load = true
-
+        console.log(this.colections)
     })
-    this.actions()
-
   }
   ngOnInit(): void { }
-
-  actions() {
-
-    this.i.actionsEmitter.subscribe(action => {
-
-      switch (action) {
-        case 'document': { this.document.toggle(); break; }
-        case 'documentCloset': { this.document.toggle(false); break; }
-        case 'documentOpen': { this.document.toggle(true); break; }
-        case 'documentColection': { this.i.loadingDocument= true ; break; }
-
-        default: {
-          alert('Evento de Interface não Cadastrado: ' + action);
-          console.log('Evento de Interface não Cadastrado: ' + action);
-          break;
-        }
-      }
-    });
+  data(date: any): Date {
+   const secunds = date._dateLastUpdate._seconds
+/*     console.log(secunds)
+    console.log( new Date())
+    console.log( new Date(secunds)) */
+    return new Date(secunds)
   }
 
 }

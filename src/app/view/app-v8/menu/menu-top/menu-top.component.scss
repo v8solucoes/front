@@ -2,5 +2,13 @@ nav {
   display: grid;
 /*   grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); */
   grid-template-columns: 50px auto 50px;
+  grid-template-rows: auto;
   column-gap: 8px;
+}
+ span {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color: var(--color-primary);
+   font-weight: 600;
 }

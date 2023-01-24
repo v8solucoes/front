@@ -4,64 +4,47 @@
 
 <section *ngIf="load; else loading">
 
-  <ul>
-    Administrator 
-    <li *ngFor="let permission of i.data.local.permission;
+  <button mat-stroked-button>{{ text.administrator }}</button>
+
+  <button mat-raised-button routerLinkActive="active-link" *ngFor="let permission of i.data.local.permission;
      let in=index let first let last" [routerLink]="[permission.id]">
-<!--      {{ permission.id }} -->
-     {{ i.data.local.model[permission.id].text[i.data.language].label }}
-    </li>
 
-  </ul>
-  <!-- <p>menu-adm workss!</p>
-  {{ i.data.permission.adm | json }} -->
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-  teswte<br>
-
-</section>
+    {{ i.data.local.model[permission.id].text[i.data.language].label }}
+  </button>
+  <button mat-raised-button routerLinkActive="active-link" [routerLink]="['permission.id']">
+    Test
+  </button>
+  <button mat-raised-button routerLinkActive="active-link" [routerLink]="['permission.id']">
+    Test
+  </button>
+  <button mat-raised-button routerLinkActive="active-link" [routerLink]="['permission.id']">
+    Test
+  </button>
+  <button mat-raised-button routerLinkActive="active-link" [routerLink]="['permission.id']">
+    Test
+  </button>
+  <button mat-raised-button routerLinkActive="active-link" [routerLink]="['permission.id']">
+    Test
+  </button>
+  <button mat-raised-button routerLinkActive="active-link" [routerLink]="['permission.id']">
+    Test
+  </button>
+  <button mat-raised-button routerLinkActive="active-link" [routerLink]="['permission.id']">
+    Test
+  </button>
+  <button mat-raised-button routerLinkActive="active-link" [routerLink]="['permission.id']">
+    Test
+  </button>
+  <button mat-raised-button routerLinkActive="active-link" [routerLink]="['permission.id']">
+    Test
+  </button>
+  <button mat-raised-button routerLinkActive="active-link" [routerLink]="['permission.id']">
+    Test
+  </button>
+  <button mat-raised-button routerLinkActive="active-link" [routerLink]="['permission.id']">
+    Test
+  </button>
+  <button mat-raised-button routerLinkActive="active-link" [routerLink]="['permission.id']">
+    Test
+  </button>
+ 

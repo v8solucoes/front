@@ -2,36 +2,22 @@
 
   <ng-container *ngIf="acess.view.form">
     <ng-container [ngSwitch]="model[acess.id].typeData">
-      
-      <!-- TYPE OBJETO -->
+
       <ng-container *ngSwitchCase="'object'">
-   <!--      <h1>{{ model[acess.id].text[request.language].label }}</h1> -->
-        <app-colection-group
-          [permission]="getPermissionObject(acess)"
-          [model]="getModelObject(acess.id)"
-          [request]="request"
-          [colection]="colection[acess.id]"
-        >
+        
+        <app-colection-group [permission]="getPermissionObject(acess)" [model]="getModelObject(acess.id)"
+          [request]="request" [colection]="colection[acess.id]">
         </app-colection-group>
       </ng-container>
 
-      <!-- TYPE VALUE -->
-      <ng-container  *ngSwitchCase="'value'">
-        <span *ngIf="isFirst">
-          <h1> {{ colection[acess.id] }}</h1>
-        </span>
-        <span *ngIf="!isFirst">
-          <!-- Label: --> {{ model[acess.id].text.en.label }}:
-            <!-- Value:  --> {{ colection[acess.id] }} / 
-        </span>
-   
+
+      <ng-container *ngSwitchCase="'value'">
+
+        <div *ngIf="isFirst" class="title">{{ colection[acess.id] }}</div>
+        {{ !isFirst ? model[acess.id].text.en.label: '' }}:
+           {{ !isFirst ? colection[acess.id]: '' }} / 
+
       </ng-container>
-      <!-- <app-colection-value *ngSwitchCase="'value'"
-          [permission]="acess._group"
-          [model]="model?.[acess.id]"
-          [language]="language"
-          [colection]="colection"
-      ></app-colection-value> -->
     </ng-container>
   </ng-container>
 </ng-container>

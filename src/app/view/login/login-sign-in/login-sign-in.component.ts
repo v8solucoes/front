@@ -40,11 +40,5 @@ export class LoginSignInComponent implements OnInit {
     }).closed
 
   }
-  get signIn() {
-    const login = this.data.form[this.data.requestLast.document].get(['sign-in', 'email'])?.value
-    const password = this.data.form[this.data.requestLast.document]?.get(['sign-in', 'password'])?.value
-    const language = this.data.language
-    return this.auth.loginIn(login, password, language)
-  }
 
 }

@@ -1,3 +1,4 @@
+import { level } from './../../../../../../../domain/src/domain/repository/data-text-language';
 import { Component, OnInit } from '@angular/core';
 import { InterfaceService } from '@view/app-v8/interface.service';
 import { _debug } from '../../../../../../../domain/src/domain/repository/debug';
@@ -10,7 +11,7 @@ import { _debug } from '../../../../../../../domain/src/domain/repository/debug'
 export class MenuAdmComponent implements OnInit {
 
   load = false
-/*   list: any[] = [] */
+  text = this.i.data.local.text.level[this.i.data.language]
 
   constructor(
     public i: InterfaceService,
@@ -18,7 +19,7 @@ export class MenuAdmComponent implements OnInit {
 
   ngOnInit(): void {
     this.load = true
-/*     this.list.push({ id: 'felix' }) */
+ this.i.data.language
 
     if (_debug.pg.menu) {
       console.log('Menu')

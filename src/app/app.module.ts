@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { ActionModule } from './view/app-v8/document/action/action.module';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,25 +12,27 @@ import { environment } from 'src/environments/environment';
 // FIREBASE
 import { AngularFireModule } from '@angular/fire/compat';
 
-// My Modules
+// Modules
 import { LoginModule } from '@view/login/login.module';
 import { AppV8Module } from '@view/app-v8/app-v8.module';
 import { AccountModule } from './view/account/account.module';
-// COMPONENTES
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+// Components
 import { AppComponent } from './app.component';
+import { ActionComponent } from './view/app-v8/document/action/action.component';
 import { PageNotFoundComponent } from './view/page-not-found/page-not-found.component';
 import { TermsComponent } from './view/terms/terms.component';
-import { MatDialogModule } from '@angular/material/dialog';
 import { FormValidateComponent } from './component/modal/form-validate/form-validate.component';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
     TermsComponent,
-    FormValidateComponent],
+    FormValidateComponent
+],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserModule,
@@ -42,7 +45,11 @@ import { MatButtonModule } from '@angular/material/button';
     MatDialogModule,
     MatIconModule,
     MatButtonModule,
+    ActionModule
   ],
+
+  /* schemas:[CUSTOM_ELEMENTS_SCHEMA], */
+  exports: [ ActionComponent ],
 
   providers: [ WindowDom ],
 

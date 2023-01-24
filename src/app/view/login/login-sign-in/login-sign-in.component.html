@@ -3,17 +3,11 @@
   <section>
     <app-form-group [form]="data.form[document]" [permission]="data.local.getRecursive(document).permission"
       [model]="data.local.getRecursive(document).model" [request]="data.requestLast"></app-form-group>
-
-    <button *ngIf="!data.form[document].valid" type="submit" mat-raised-button color="primary" disabled>
-      <mat-label>Sign In</mat-label>
-    </button>
-
-    <button *ngIf="data.form[document].valid" (click)="signIn" type="submit" mat-raised-button color="primary">
-      <mat-label>Sign In</mat-label>
-    </button>
+      <app-action [action]="'user-sig-in'" [width]="200"></app-action>
+ 
     <button type="submit" mat-raised-button color="primary" routerLink='../../account/account-adm-new/create/'>
       <mat-label>New Account</mat-label>
     </button>
   </section>
-
+ 
 </div>

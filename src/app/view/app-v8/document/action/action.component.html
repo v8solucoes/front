@@ -5,13 +5,16 @@
 <section *ngIf="load; else loading">
 
   <button mat-raised-button color="basic"
-   (click)="validar()" *ngIf="!document.valid">{{this.text[this.i.data.language].update}}</button>
+  [ngStyle]="{'width.px': width}"
+   (click)="validar()" *ngIf="!document.valid">{{ text[action]}}</button>
 
   <button mat-raised-button color="primary"
-   (click)="update()" *ngIf="document.valid && !processing">{{this.text[this.i.data.language].update}}</button>
+  [ngStyle]="{'width.px': width}"
+   (click)="crud()" *ngIf="document.valid && !processing">{{ text[action] }}</button>
 
-  <button mat-raised-button color="{{ sucess ? 'accent': 'warn'}}" 
+  <button mat-raised-button color="{{ sucess ? 'accent': 'warn'}}"
+  [ngStyle]="{'width.px': width}"
   disabled
-  *ngIf="processing">{{ sucess ? this.text[this.i.data.language].sucess: this.text[this.i.data.language].processing }}</button>
+  *ngIf="processing">{{ sucess ? text.sucess: text.processing }}</button>
 
 </section>

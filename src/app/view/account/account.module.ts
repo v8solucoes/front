@@ -1,3 +1,4 @@
+import { ActionModule } from './../app-v8/document/action/action.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AccountRoutingModule } from './account.routing.module';
@@ -16,6 +17,7 @@ import { AccountCreateComponent } from './account-create/account-create.componen
     AccountRoutingModule,
     MaterialDesignModule,
     FormModule,
+    ActionModule
   ]
 })
 export class AccountModule { }

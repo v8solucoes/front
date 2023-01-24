@@ -11,12 +11,17 @@ import { MenuAdmComponent } from './menu/menu-adm/menu-adm.component';
 import { ColectionIndexComponent } from './colection/colection-index/colection-index.component';
 import { ColectionModule } from '@component/colection/colection.module';
 import { DocumentComponent } from './document/document.component';
-import { ActionComponent } from './document/action/action.component';
-/* import { InputGenerecErrorComponent } from './../../component/form/input-type/input-generec-error/input-generec-error.component'; */
-
-
+import { ActionModule } from './document/action/action.module';
 
 @NgModule({
+  imports: [
+    CommonModule,
+    AppV8RoutingModule,
+    MaterialDesignModule,
+    FormModule,
+    ColectionModule,
+    ActionModule
+  ],
   declarations: [
     InterfaceComponent,
     MenuIndexComponent,
@@ -24,15 +29,8 @@ import { ActionComponent } from './document/action/action.component';
     MenuAdmComponent,
     ColectionIndexComponent,
     DocumentComponent,
-    ActionComponent,
-/*     InputGenerecErrorComponent */
   ],
-  imports: [
-    CommonModule,
-    AppV8RoutingModule,
-    MaterialDesignModule,
-    FormModule,
-    ColectionModule
-  ]
+
+ 
 })
 export class AppV8Module { }

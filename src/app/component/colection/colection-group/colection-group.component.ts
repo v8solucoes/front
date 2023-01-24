@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UntypedFormGroup } from '@angular/forms';
 import { ImodelRecursive, ImodelRecursiveConfig, IpermissionRecursive, IpermissionRecursiveConfig, Irequest } from '@domain/interface';
 import { InterfaceService } from '@view/app-v8/interface.service';
 
@@ -15,11 +14,16 @@ export class ColectionGroupComponent implements OnInit {
   @Input() request!: Irequest
   @Input() colection?: any;
 
+  colors:string[] = this.createColors
+
   constructor(
     public i: InterfaceService
   ) {
 
-    
+/*  console.log('CORES')
+ console.log(this.colors) */
+ console.log('COLECTION')
+ console.log(this.colection!)
     
 /*     console.log(this.permission)
     console.log(this.model)
@@ -37,6 +41,21 @@ export class ColectionGroupComponent implements OnInit {
  /*  getFormObject(id: string): UntypedFormGroup {
     return this.form.get(id) as UntypedFormGroup
   } */
+ get createColors() {
+    const colors = []
+    for (var i = 0; i < 100; i++) {
+
+      colors.push(this.colorDynamic)
+    }
+    return colors
+  }
+ get colorDynamic() {
+    const r = Math.floor(Math.random() * 256)
+    const g = Math.floor(Math.random() * 256)
+    const b = Math.floor(Math.random() * 256)
+
+   return `rgb(${r}, ${g}, ${b} ,0.87)`
+  }
   getPermissionObject(permission: IpermissionRecursive): IpermissionRecursive[] {
     return permission._group as unknown as IpermissionRecursive[]
   }

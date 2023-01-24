@@ -1,6 +1,6 @@
+import { Component, OnInit, Input } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { IresponseValidatorCompose, ImodelRecursive } from '@domain/interface';
-import { Component, OnInit } from '@angular/core';
 import { InterfaceService } from '@view/app-v8/interface.service';
 import { _debug } from '../../../../../../../domain/src/domain/repository/debug';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -10,15 +10,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './action.component.html',
   styleUrls: ['./action.component.scss']
 })
+
 export class ActionComponent implements OnInit {
 
-  text = {
-    en: {
-      sucess: 'Sucess!',
-      update: 'Update',
-      processing: 'Processing...'
-    }
-  }
+  @Input() action!: 'create' | 'update' | 'user-sig-in'
+  @Input() width: number = 100
+  @Input() redirect: string = null as any
+
+  text = this.i.data.local.text.action[this.i.data.language]
 
   document: UntypedFormGroup
   model: ImodelRecursive
@@ -34,6 +33,7 @@ export class ActionComponent implements OnInit {
     this.document = this.i.data.form[this.i.data.requestLast.document]
     this.erros = this.i.data.form[this.i.data.requestLast.document].errors
     this.model = i.data.local.model[this.i.data.requestLast.document]._group
+    this.action = this.action
   }
 
   ngOnInit(): void {
@@ -42,53 +42,81 @@ export class ActionComponent implements OnInit {
 
       this.load = true
 
-    }, 0);
+    }, 0)
 
   }
-  async update() {
 
+  async crud() {
+
+    const text = this.text
     this.processing = true
 
     try {
 
-      this.i.backand.httpCrudGeneric('update').subscribe(async (response: IresponseValidatorCompose | null) => {
-    
-        setTimeout(() => {
-          
-          this.sucess = true
-          
-        }, 2000);
-     
-        this._snackBar.open(this.text[this.i.data.language].sucess, this.text[this.i.data.language].update);
-  
-        console.log(response)
-      })
+      if (this.action != 'user-sig-in') {
+
+        this.i.backand.httpCrudGeneric(this.action).subscribe(async (response: IresponseValidatorCompose | null) => {
+
+
+          setTimeout(() => {
+
+            if (this.redirect != null) {
+
+              this.i.auth.router.navigate([this.redirect])
+
+            }
+
+            this.sucess = true
+
+          }, 2500);
+
+
+          const mensagem = `${text[this.action]} ${text.sucess} ${this.redirect != null ? text.redirect : ''}`
+
+          this._snackBar.open(mensagem, 'X');
+
+          console.log(response)
+
+        })
+      }
+
+      if (this.action == 'user-sig-in') {
+
+        const login = this.i.data.form[this.i.data.requestLast.document].get(['sign-in', 'email'])?.value
+        const password = this.i.data.form[this.i.data.requestLast.document]?.get(['sign-in', 'password'])?.value
+        const language = this.i.data.language
+
+        return this.i.auth.loginIn(login, password, language)
+      }
 
     } catch (error) {
       this.processing = false
       this.sucess = false
-      this._snackBar.open(JSON.stringify(error) as any, this.text[this.i.data.language].update);
+      const mensagem = `${text[this.action]} ${JSON.stringify(error)}`
+
+      this._snackBar.open(mensagem, 'X');
+
       console.log(error)
     }
 
   }
 
   validar() {
-    
+
     const error = this.verificaValidacao()
 
     if (_debug.action) {
       console.log(error)
     }
-    this.i.modal.modalErrorForm({language: this.i.data.language, width:'500', error, model: this.model})
+    this.i.modal.modalErrorForm({ language: this.i.data.language, width: '500', error, model: this.model })
   }
 
   verificaValidacao(form = this.document.get(this.i.data.requestLast.document) as UntypedFormGroup) {
 
-    const errors:string[] = [];
+    const errors: string[] = [];
 
     Object.keys(form.controls).forEach((campo: string) => {
-    
+
       const controle = form.get(campo);
 
       if (controle!.invalid) {
