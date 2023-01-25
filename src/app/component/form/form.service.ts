@@ -61,7 +61,7 @@ export class FormService {
       const validatorsAsync = () => modelControl.validate.async.map(
         (validator:any) => this.remote(validatorRequest(validator)))
 
-      switch (model[permission.id].typeData) {
+      switch (model[permission.id].typeModel) {
         case 'value':
           group[permission.id] = new UntypedFormControl(
 
@@ -133,7 +133,7 @@ export class FormService {
       const validatorsAsync = () => modelControl.validate.async.map(
         validator => this.remote(validatorRequest(validator)))
 
-      switch (model[permission.id].typeData) {
+      switch (model[permission.id].typeModel) {
         case 'value':
           group[permission.id] = new UntypedFormControl(
 

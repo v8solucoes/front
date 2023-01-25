@@ -5,8 +5,13 @@ section {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  border-radius: 40px;
+  margin: 16px;
 }
-button {
+section button {
   width: 200px;
   margin: 8px;
 }
+/* mat-icon{
+  margin-right: 8px;
+} */

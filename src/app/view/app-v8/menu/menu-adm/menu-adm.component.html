@@ -8,7 +8,6 @@
 
   <button mat-raised-button routerLinkActive="active-link" *ngFor="let permission of i.data.local.permission;
      let in=index let first let last" [routerLink]="[permission.id]">
-
     {{ i.data.local.model[permission.id].text[i.data.language].label }}
   </button>
   <button mat-raised-button routerLinkActive="active-link" [routerLink]="['permission.id']">

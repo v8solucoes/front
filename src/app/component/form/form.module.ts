@@ -13,6 +13,7 @@ import { FormGroupComponent } from './form-group/form-group.component';
 import { FormArrayComponent } from './form-array/form-array.component';
 import { AcceptTermsComponent } from './input-type/accept-terms/accept-terms.component';
 import { BooleanToggleComponent } from './input-type/boolean-toggle/boolean-toggle.component';
+import { PasswordComponent } from './input-type/password/password.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { BooleanToggleComponent } from './input-type/boolean-toggle/boolean-togg
     FormPipePipe,
     AcceptTermsComponent,
     BooleanToggleComponent,
+    PasswordComponent,
   ],
   exports: [
     FormGroupComponent,

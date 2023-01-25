@@ -1,0 +1,10 @@
+%color-dark {
+  --color-surface: #{#303030};
+  --color-text-white: #{rgb(white,0.8)};
+}
+
+%color-white {
+  --color-surface: #{white};
+  --color-text-white: #{rgb(black,0.8)};
+
+}

@@ -31,7 +31,7 @@ export class GetDocumentResolver implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
 
-    const request = this.resolveService.getRequest(route)
+    const request = this.resolveService.getRequest(route, state)
     const test = new TestCompose(request).testRequestDocument
 
     if (test == null) {

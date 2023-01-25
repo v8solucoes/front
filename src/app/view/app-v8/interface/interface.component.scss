@@ -14,6 +14,7 @@ app-menu-index {
   min-width: 200px;
   display: grid;
   @extend %scroll;
+/*   background-color: white; */
 }
 
 :host mat-drawer-container, mat-sidenav-container {
@@ -22,7 +23,7 @@ app-menu-index {
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: transparent;
+/*   background-color: transparent; */
   overflow: hidden;
 }
 
@@ -143,7 +144,7 @@ mat-sidenav-container {
 /* mat-sidenav-content {
   overflow:hidden;
 } */
-.mat-drawer {
+/* .mat-drawer {
   background-color: transparent;
 }
 .mat-sidenav-container {
@@ -151,7 +152,7 @@ mat-sidenav-container {
 }
 .mat-drawer-content {
   background-color: transparent;
-}
+} */
 
 // Corrige scroll 100%
 /* :host ::ng-deep cdk-virtual-scroll-viewport .cdk-virtual-scroll-content-wrapper {

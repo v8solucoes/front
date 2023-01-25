@@ -1,18 +1,13 @@
 <ng-container [ngSwitch]="model.typeInput">
 
-  <app-input-generec *ngSwitchCase="'input'"
-  [form]="form" [model]="model" [request]="request"></app-input-generec>
-  
-  <app-input-generec *ngSwitchCase="'email'"
+  <app-input-generec *ngSwitchCase="inputType.generic"
   [form]="form" [model]="model" [request]="request"></app-input-generec>
  
-  <app-accept-terms *ngSwitchCase="'acceptTerms'"
+  <app-accept-terms *ngSwitchCase="inputType.acceptTerms"
   [form]="form" [model]="model" ></app-accept-terms>
 
-  <app-boolean-toggle *ngSwitchCase="'booleanToggle'"
+  <app-boolean-toggle *ngSwitchCase="inputType.booleanToggle"
   [form]="form" [model]="model"></app-boolean-toggle>
   
 </ng-container>
-
-<!-- <input type="password"> -->
 

@@ -1,31 +1,22 @@
 <p *ngIf="loading">
 
-<!--   
-  {{ model?.validate?.async }}
-  {{ model?.validate?.test }}
-  {{ text?.label }} -->
-
   <mat-form-field [appearance]="appearance">
-    <mat-label> {{ text?.label }} </mat-label>
+    <mat-label> {{ text.label }} </mat-label>
 
     <input
-      type="{{ model?.typeInput }}"
-      placeholder="{{ text?.placeholder }}"
+      [type]="model.typeInputHtml=='password' && hide==false ? 'text' :model.typeInputHtml"
+      placeholder="{{ text.placeholder }}"
       matInput
       appFormMask
       [formControl]="control"
       [request]="createRequest"
       [validatorName]="validatorName"
       [errorStateMatcher]="matcher"
-      required="{{ model?.validate?.required }}"
+      required="{{ model.validate.required }}"
     />
-
-    <!-- // After -->
-
-    <!-- // Clear Input -->
-
+    <!--    OPTIONS -->
     <button
-      *ngIf="!!control.errors"
+      *ngIf="!!control.errors && model.typeInputHtml != 'password'"
       matSuffix
       mat-icon-button
       aria-label="Clear"
@@ -33,11 +24,21 @@
     >
       <mat-icon>close</mat-icon>
     </button>
-    <mat-icon *ngIf="!!!control.errors" matSuffix class="check">check</mat-icon>
+    <mat-icon matSuffix *ngIf="!!!control.errors && model.typeInputHtml != 'password'"  class="check">check</mat-icon>
+    <!--    PASSWORD -->
+    <button
+     *ngIf="model.typeInputHtml == 'password' && !control.errors"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="hide= !hide"
+    >
+    <mat-icon >{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>    
    
     <!-- Account Length -->
-    <mat-hint *ngIf="model?.design?.tools?.accont" align="end">
-      {{ control.value?.length }} / {{ model?.validate?.valueMax }}</mat-hint>
+    <mat-hint *ngIf="model.design.tools?.accont" align="end">
+      {{ control.value?.length }} / {{ model.validate.valueMax }}</mat-hint>
 
     <!-- Error -->
 
@@ -48,64 +49,3 @@
     </mat-error>
   </mat-form-field>
 </p>
-
-<!-- Valido:{{form.valid | json}}<br>
-Erros:{{form.errors | json}} -->
-<!-- <mat-form-field [appearance]="materialAppearance">
-
-  <mat-label>{{ model?.text?.pt?.label }} / </mat-label>
-
-  <mat-icon *ngIf="model?.design?.icon?.prefix" matPrefix> {{ model?.design?.icon?.prefix }}</mat-icon>
-  <span *ngIf="model?.design?.icon?.prefix " matPrefix> {{ model?.design?.icon?.prefix }}</span> -->
-
-<!-- INPUT -->
-<!-- <input *ngIf="model?.typeInput == 'input'" type="{{ model?.design?.html?.typeInput}}" [formControl]="control.value" matInput> -->
-
-<!-- COLOR -->
-<!--   <input *ngIf="model?.typeInput == 'color'" type="{{ model?.design?.html?.typeInput}}" [formControl]="form" matInput  [required]='materialRequered'>
- -->
-<!-- TEXT ÁREA -->
-<!--   <input *ngIf="model?.typeInput == 'text-area'" type="{{ model?.design?.html?.typeInput}}" [formControl]="form" matInput [required]='materialRequered'>
- -->
-<!-- SELECT  -->
-<!--   <mat-select *ngIf="model?.design?.inputType == 'select'" [formControl]="formulario" matInput [required]='model?.validate?.requered'>
-
-    <ng-container [ngSwitch]="modelo.colecao.tipo">
-
-      <ng-container *ngSwitchCase="'objeto'">
-
-        <mat-option *ngFor="let objeto of modelo.colecao.objeto | keyvalue" [value]="objeto.key">
-          {{ objeto.value.nome }}
-        </mat-option>
-
-      </ng-container>
-
-      <ng-container *ngSwitchCase="'lista'">
-
-        <mat-option *ngFor="let selecao of modelo.colecao.lista" [value]="selecao.id">
-          {{selecao.nome}}
-        </mat-option>
-
-      </ng-container>
-
-    </ng-container>
-
-    <mat-option (click)="ola()">Adicionar Campo</mat-option>
-
-  </mat-select> -->
-
-<!-- <mat-icon *ngIf="model?.design?.icon?.suffix" matSuffix> {{model?.design?.icon?.suffix }}</mat-icon>
-  <span *ngIf="model?.text?.pt?.suffix" matSuffix> {{ model?.text?.pt?.suffix}}</span>
-
-  <mat-hint *ngIf="model?.text?.pt?.hintStart" align="start">{{ model?.text?.pt?.hintStart }}</mat-hint>
-  <mat-hint *ngIf="model?.text?.pt?.hintEnd" align="end">{{ model?.text?.pt?.hintEnd }}</mat-hint> -->
-
-<!-- Contador -->
-<!--   <mat-hint *ngIf="model?.design?.tools" align="end"> {{form?.value?.length}} / {{
-    model?.validate?.valueMax }}</mat-hint> -->
-<!-- ERROS -->
-<!--   <mat-error *ngIf="form?.errors">Erro: 
-    {{ control.errors | json}}
-  <app-input-generec-error [erros]='control.errors'></app-input-generec-error> 
-  </mat-error> -->
-<!-- </mat-form-field>  -->

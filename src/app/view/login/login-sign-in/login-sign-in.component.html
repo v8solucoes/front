@@ -1,13 +1,17 @@
 <div *ngIf="loading">
+  <section [class.mat-elevation-z2]="true">
+    <app-settings></app-settings>
+  </section>
+  <section [class.mat-elevation-z7]="true">
+    
 
-  <section>
     <app-form-group [form]="data.form[document]" [permission]="data.local.getRecursive(document).permission"
       [model]="data.local.getRecursive(document).model" [request]="data.requestLast"></app-form-group>
-      <app-action [action]="'user-sig-in'" [width]="200"></app-action>
- 
+    <app-action [action]="'user-sig-in'" [width]="200"></app-action>
+
     <button type="submit" mat-raised-button color="primary" routerLink='../../account/account-adm-new/create/'>
       <mat-label>New Account</mat-label>
     </button>
   </section>
- 
+
 </div>

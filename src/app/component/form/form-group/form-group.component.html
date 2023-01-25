@@ -1,7 +1,7 @@
 <ng-container *ngFor="let acess of permission">
 
   <ng-container *ngIf="acess.view.form">
-    <ng-container [ngSwitch]="model[acess.id].typeData">
+    <ng-container [ngSwitch]="model[acess.id].typeModel">
       
       <!-- TYPE OBJETO -->
       <ng-container *ngSwitchCase="'object'">

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Irequest } from '@domain/interface';
 import { environment } from 'src/environments/environment';
 import { WindowDom } from '@method/window.dom';
@@ -15,9 +15,13 @@ export class ResolveService {
     private windowDom: WindowDom,
   ) { }
 
-  getRequest(route: ActivatedRouteSnapshot): Irequest {
+  getRequest(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Irequest {
 
     const root = route as any
+
+    /* console.log(state.url) */
+   /*  console.log(this.windowDom.nativeWindow) */
+    
     
     const urlSegments = root['_urlSegment']['segments'] as any
 

@@ -9,33 +9,32 @@ import { Ilanguage, InameValidatorLocal, Irequest, Ivalidator, ImodelRecursiveCo
   styleUrls: ['./input-generec.component.scss'],
 })
 export class InputGenerecComponent {
-  @Input() form?: UntypedFormGroup;
-  @Input() model?: ImodelRecursiveConfig;
-  @Input() request?: Irequest;
+
+  @Input() form!: UntypedFormGroup;
+  @Input() model!: ImodelRecursiveConfig;
+  @Input() request!: Irequest;
 
   loading = false;
   matcher = new MyErrorStateMatcher();
   control: UntypedFormControl = new UntypedFormControl()
+  hide: boolean= true
 
-  appearance = this.model?.design.css.materialDesign.appearance as ImodelConfig['design']['css']['materialDesign']['appearance'];
-  required = this.model?.validate?.required as ImodelConfig['validate']['required'];
-  text = this.model?.text[this.request?.language as Ilanguage]
-  
-  validatorName = this.model?.validate?.mask as InameValidatorLocal 
-  constructor() { }
+  appearance!: ImodelConfig['design']['css']['materialDesign']['appearance'];
+  required!: ImodelConfig['validate']['required'];
+  text!: ImodelConfig['text'][Ilanguage]
+  validatorName!: InameValidatorLocal
+
+  constructor() { 
+  }
   
   ngOnInit(): void {
-
-    this.appearance = this.model?.design.css.materialDesign.appearance as ImodelConfig['design']['css']['materialDesign']['appearance'];
-    this.required = this.model?.validate.required as ImodelConfig['validate']['required'];
-    this.text = this.model?.text[this.request?.language as Ilanguage]
-    this.control = this.form?.get([this.model?.id as string]) as UntypedFormControl;
+ 
+    this.appearance = this.model.design.css.materialDesign.appearance
+    this.required = this.model.validate.required
+    this.text = this.model.text[this.request.language]
+    this.control = this.form.get([this.model.id as string]) as UntypedFormControl;
+    this.validatorName = this.model.validate.mask
     this.loading = true
-    this.validatorName = this.model?.validate?.mask as InameValidatorLocal
-
-    /* console.log('INPUT GENERIC')
-    console.log(this.createRequest!) */
-
 
   }
   get createRequest(): Irequest {
@@ -43,24 +42,24 @@ export class InputGenerecComponent {
     const req = {...this.request!}
 
     const validator: Ivalidator = {
-      id: this.model!.id,
+      id: this.model.id,
       name: this.validatorName,
-      label: this.text!.label,
+      label: this.text.label,
       value: null,
-      language: this.request?.language!,
+      language: this.request.language,
       typeExecute: 'front',
       error: null
     }
 
     req.validator = validator
-   /*  console.log(req.validator?.name) */
-/*     console.log(req.validator) */
-/*     console.log(validator) */
+
     return req
   }
 }
 export class MyErrorStateMatcher implements ErrorStateMatcher {
+ 
   isErrorState(control: UntypedFormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+ 
     const isSubmitted = form && form.submitted;
   
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));

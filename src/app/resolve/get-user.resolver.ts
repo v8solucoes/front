@@ -29,7 +29,7 @@ export class GetUserResolver implements Resolve<Irequest> {
   
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Irequest> {
 
-    const request = this.resolveService.getRequest(route)
+    const request = this.resolveService.getRequest(route,state)
     const test = new TestCompose(request).testRequest
 
     if (test == null) {

@@ -1,5 +1,5 @@
 import { ActionModule } from './view/app-v8/document/action/action.module';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,9 +16,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { LoginModule } from '@view/login/login.module';
 import { AppV8Module } from '@view/app-v8/app-v8.module';
 import { AccountModule } from './view/account/account.module';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { MaterialDesignModule } from '@shared-angular/module/material-design.module';
+
 // Components
 import { AppComponent } from './app.component';
 import { ActionComponent } from './view/app-v8/document/action/action.component';
@@ -42,13 +41,12 @@ import { FormValidateComponent } from './component/modal/form-validate/form-vali
     LoginModule,
     AppV8Module,
     AppRoutingModule,
-    MatDialogModule,
-    MatIconModule,
-    MatButtonModule,
-    ActionModule
+    ActionModule,
+    MaterialDesignModule,
   ],
+  schemas: [  CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA ],
 
-  /* schemas:[CUSTOM_ELEMENTS_SCHEMA], */
   exports: [ ActionComponent ],
 
   providers: [ WindowDom ],

@@ -1,3 +1,4 @@
+import { InterfaceService } from '@view/app-v8/interface.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { Irequest, ImodelRecursiveConfig, IpermissionRecursiveConfig } from '@domain/interface';
@@ -13,7 +14,9 @@ export class FormValueComponent implements OnInit {
   @Input() model!: ImodelRecursiveConfig;
   @Input() request!: Irequest
 
-  constructor() { }
+  inputType = this.i.data.local.variable.inputType
+
+  constructor( public i: InterfaceService) { }
 
   ngOnInit(): void {
 /*     console.log('Form Value')
