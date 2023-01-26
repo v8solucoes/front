@@ -10,9 +10,29 @@ import { InterfaceComponent } from './interface/interface.component';
 
 
 const appV8Routes: Routes = [
-
+// ENGLISH ROUTER
   {
     path: 'en/app', component: InterfaceComponent,
+    canActivate: [AuthGuard],
+    resolve: { 'response': GetUserResolver },
+    children: [
+      {
+        path: ':document', component: ColectionIndexComponent,
+        canActivate: [AuthGuard],
+        resolve: { 'response': GetColectionResolver },
+        children: [
+          {
+            path: ':id/:action', component: DocumentComponent,
+            canActivate: [AuthGuard],
+            resolve: { 'response': GetDocumentResolver }
+          }
+        ]
+      },
+    ]
+  },
+// PORTUGUÊS ROUTER
+  {
+    path: 'pt/app', component: InterfaceComponent,
     canActivate: [AuthGuard],
     resolve: { 'response': GetUserResolver },
     children: [

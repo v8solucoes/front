@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import { Ilanguage, ImodelRecursiveConfig } from '@domain/interface';
+import { ImodelRecursiveConfig, Irequest } from '@domain/interface';
 
 @Component({
   selector: 'app-accept-terms',
@@ -11,7 +11,7 @@ export class AcceptTermsComponent implements OnInit {
 
   @Input() form?: UntypedFormGroup;
   @Input() model?: ImodelRecursiveConfig;
-  @Input() language?: Ilanguage;
+  @Input() language?: Irequest['language'];
 
   loading = false;
   control: UntypedFormControl = new UntypedFormControl()

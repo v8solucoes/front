@@ -3,15 +3,24 @@
     <app-settings></app-settings>
   </section>
   <section [class.mat-elevation-z7]="true">
-    
+ 
+      <img src="/assets/Logo-V8-Sites01.png" alt="V8" width="80px">
+
+    <h2>{{ data.language == 'en' ? 'App -Test': 'App Teste'}} </h2> 
 
     <app-form-group [form]="data.form[document]" [permission]="data.local.getRecursive(document).permission"
       [model]="data.local.getRecursive(document).model" [request]="data.requestLast"></app-form-group>
-    <app-action [action]="'user-sig-in'" [width]="200"></app-action>
+    
+      <app-action [action]="'user-sig-in'" [width]="200"></app-action>
 
     <button type="submit" mat-raised-button color="primary" routerLink='../../account/account-adm-new/create/'>
-      <mat-label>New Account</mat-label>
+      <mat-label>{{data.language == 'en' ? 'New Account': 'Nova Conta' }}</mat-label>
     </button>
+
+    <button type="submit" mat-button routerLink='../../account/account-adm-new/create/'>
+      {{data.language == 'en' ? 'Forgot password?': 'Esqueceu a Senha?' }} 
+    </button>
+
   </section>
 
 </div>

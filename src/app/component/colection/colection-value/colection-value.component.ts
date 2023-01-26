@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Ilanguage, Imodel2, Ipermission2 } from '@domain/interface';
+import { Imodel2, Ipermission2, Irequest } from '@domain/interface';
 
 @Component({
   selector: 'app-colection-value',
@@ -9,7 +9,7 @@ import { Ilanguage, Imodel2, Ipermission2 } from '@domain/interface';
 export class ColectionValueComponent implements OnInit {
   @Input() permission?: Ipermission2[];
   @Input() model?: Imodel2;
-  @Input() language?: Ilanguage;
+  @Input() language?: Irequest['language'];
   @Input() colection?: any;
   constructor() { }
 

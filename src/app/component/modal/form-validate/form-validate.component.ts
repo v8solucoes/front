@@ -13,6 +13,10 @@ export class FormValidateComponent implements OnInit {
     en: {
       title: 'Please, correct fields!',
       buttom: 'Correct'
+    },
+    pt: {
+      title: 'Por Favor, corrija os campos!',
+      buttom: 'Corrigir'
     }
   }
   

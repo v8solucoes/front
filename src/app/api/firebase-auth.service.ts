@@ -1,9 +1,9 @@
+import { Irequest } from './../../../../domain/src/shared/interface';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { FirebaseApp } from '@angular/fire/compat';
 import { connectAuthEmulator, getAuth, GoogleAuthProvider, signInWithCredential, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { environment } from 'src/environments/environment';
-import { Ilanguage } from '@domain/interface';
 import { DataService } from '@repository/data.service';
 import { _debug } from '../../../../domain/src/domain/repository/debug';
 
@@ -20,7 +20,7 @@ export class FirebaseAuthService {
 
   }
 
-  async loginIn(email: string, password: string, language: Ilanguage) {
+  async loginIn(email: string, password: string, language: Irequest['language']) {
 
     const auth = getAuth();
     environment.test ? connectAuthEmulator(auth, "http://localhost:9099") : ''

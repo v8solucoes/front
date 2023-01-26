@@ -6,12 +6,11 @@ section {
   justify-content: center;
   flex-direction: column;
   border-radius: 40px;
-  margin: 16px;
+  padding-bottom: 8px;
+  padding-top: 8px;
 }
+
 section button {
   width: 200px;
   margin: 8px;
 }
-/* mat-icon{
-  margin-right: 8px;
-} */

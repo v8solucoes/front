@@ -1,6 +1,5 @@
 @use '@angular/material' as mat;
 @include mat.core();
-@import "/src/sass/_tema-padrao-cores";
 @import "/src/sass/_color";
 
 // Font Theme
@@ -32,18 +31,17 @@ $dark-theme: mat.define-dark-theme((
  )
 ));
 
-
-.light-theme {
-  @extend %color-white;
-  @include mat.all-component-themes($light-theme);
-}
 .dark-theme {
   @extend %color-dark;
   @include mat.all-component-themes($dark-theme);
 }
+.light-theme {
+  @extend %color-white;
+  @include mat.all-component-colors($light-theme);
+}
 
 :root {
-  --font-material: 15px;
+  --font-material: 16px;
   --fonte-10: 10px;
   --fonte-12: 12px;
   --fonte-14: 14px;

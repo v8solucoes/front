@@ -16,9 +16,9 @@ import { ActionModule } from './document/action/action.module';
 @NgModule({
   imports: [
     CommonModule,
+    FormModule,
     AppV8RoutingModule,
     MaterialDesignModule,
-    FormModule,
     ColectionModule,
     ActionModule
   ],

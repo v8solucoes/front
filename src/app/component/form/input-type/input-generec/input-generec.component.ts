@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { UntypedFormControl, UntypedFormGroup, FormGroupDirective, NgForm } from '@angular/forms';
-import { Ilanguage, InameValidatorLocal, Irequest, Ivalidator, ImodelRecursiveConfig, ImodelConfig } from '@domain/interface';
+import { InameValidatorLocal, Irequest, Ivalidator, ImodelRecursiveConfig, ImodelConfig } from '@domain/interface';
 
 @Component({
   selector: 'app-input-generec',
@@ -21,7 +21,7 @@ export class InputGenerecComponent {
 
   appearance!: ImodelConfig['design']['css']['materialDesign']['appearance'];
   required!: ImodelConfig['validate']['required'];
-  text!: ImodelConfig['text'][Ilanguage]
+  text!: ImodelConfig['text'][Irequest['language']]
   validatorName!: InameValidatorLocal
 
   constructor() { 

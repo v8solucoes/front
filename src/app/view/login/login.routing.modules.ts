@@ -13,16 +13,14 @@ const loginRoutes: Routes = [
     path: 'en/login/:document', component: LoginSignInComponent,
     resolve: { 'request': DataLocalResolver },
   },
-  /* { path: 'en/login', component:LoginIndexComponent },
   {
-    path: 'en/login/sign-in', component: LoginSignInComponent,
-    resolve: { 'request': DataLocalResolver},
-    children: [
-      { path: '', component: LoginSignInComponent, resolve: { 'request': DataLocalResolver}},
-      { path: ':action', component: LoginSignInComponent, resolve: { 'request': DataLocalResolver}},
-      { path: ':action/:id', component: LoginSignInComponent, resolve: { 'request': DataLocalResolver}},
-    ]
-  } */
+    path: 'pt/login', component: LoginIndexComponent,
+  },
+  {
+    path: 'pt/login/:document', component: LoginSignInComponent,
+    resolve: { 'request': DataLocalResolver },
+  },
+
 ];
 
 @NgModule({

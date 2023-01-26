@@ -3,11 +3,11 @@
 </button>
 
 <button mat-button [matMenuTriggerFor]="color" aria-label="Color">
-  <mat-icon>brightness_6</mat-icon>{{ data.language == 'en'? 'Color':'Escuro / Claro'}}
+  <mat-icon>brightness_6</mat-icon>{{ data.language == 'en'? 'Color':'Cor'}}
 </button>
 
 <button mat-button [matMenuTriggerFor]="font" aria-label="Font">
-  <mat-icon>text_fields</mat-icon>{{ data.language == 'en'? 'Font Size':'Escuro / Claro'}}
+  <mat-icon>text_fields</mat-icon>{{ data.language == 'en'? 'Font Size':'Fonte'}}
 </button>
 
 <mat-menu #language="matMenu">
