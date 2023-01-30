@@ -1,11 +1,11 @@
-import { ActionModule } from './../app-v8/document/action/action.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AccountRoutingModule } from './account.routing.module';
 import { MaterialDesignModule } from 'src/app/shared/module/material-design.module';
 import { FormModule } from '@component/form/form.module';
 import { AccountIndexComponent } from './account-index/account-index.component';
 import { AccountCreateComponent } from './account-create/account-create.component';
+import { ComponentSharedModule } from 'src/app/app.module.shared';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,10 +14,11 @@ import { AccountCreateComponent } from './account-create/account-create.componen
   ],
   imports: [
     CommonModule,
-    AccountRoutingModule,
+/*     AccountRoutingModule, */
     MaterialDesignModule,
+    ComponentSharedModule,
     FormModule,
-    ActionModule
+    AppRoutingModule,
   ]
 })
 export class AccountModule { }

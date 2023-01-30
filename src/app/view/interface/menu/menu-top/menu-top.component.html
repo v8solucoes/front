@@ -1,0 +1,7 @@
+<div class="menu-top-title menu-top-font">
+  <span class="menu-top-font" [routerLink]="[i.data.language =='en'?'/en/app':'/pt/app']">
+    {{ i.data.language == 'en' ? 'V8 App Test': 'V8 App Teste'}}
+  </span>
+  
+  <button mat-icon-button (click)="this.i.actionsEmitter.emit('menu')"><mat-icon class="icon">chevron_left</mat-icon></button>
+</div>

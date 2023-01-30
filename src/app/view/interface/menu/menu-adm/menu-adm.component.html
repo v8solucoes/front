@@ -1,0 +1,51 @@
+<div class="menu-title menu-font">
+  <!-- <mat-icon class="menu-title-icon">panorama_fish_eye</mat-icon> -->
+  <div class="font">{{ text.administrator }}</div>
+</div>
+
+<div class="menu menu-font" routerLinkActive="menu-active" *ngFor="let permission of i.data.local.permission;
+let in=index let first let last" [routerLink]="[permission.id]">
+  <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
+  <div class="menu-font">{{ i.data.local.model[permission.id].text[i.data.language].label }}</div>
+  <mat-icon class="menu-item-right">chevron_right</mat-icon>
+</div>
+<!-- Devoloping -->
+<div class="menu menu-font" [routerLink]="[language =='en'?'/en/app':'/pt/app']">
+  <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
+  <div class="menu-font">{{ language =='en'?'Create Agency (Devoloping)':'Criar Revenda (Desenvolvendo)' }}</div>
+  <!-- <div class="menu-item-right">100x</div> -->
+  <mat-icon class="menu-item-right">chevron_right</mat-icon>
+</div>
+
+<mat-divider class="menu-divider"></mat-divider>
+
+<div class="menu-title menu-font">
+  <div class="font">{{ language =='en'?'Agency':'Revenda' }}</div>
+</div>
+<div class="menu menu-font" [routerLink]="[language =='en'?'/en/app':'/pt/app']">
+  <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
+  <div class="menu-font">{{ language =='en'?'User Agency (Devoloping)':'Usuários Revenda (Desenvolvendo)' }}</div>
+  <mat-icon class="menu-item-right">chevron_right</mat-icon>
+</div>
+<div class="menu menu-font" [routerLink]="[language =='en'?'/en/app':'/pt/app']">
+  <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
+  <div class="menu-font">{{ language =='en'?'Create Clients (Devoloping)':'Criar Clientes (Desenvolvendo)' }}</div>
+  <!-- <div class="menu-item-right">100x</div> -->
+  <mat-icon class="menu-item-right">chevron_right</mat-icon>
+</div>
+<mat-divider class="menu-divider"></mat-divider>
+<div class="menu-title menu-font">
+  <div class="font">{{ language =='en'?'Clients':'Clientes' }}</div>
+</div>
+<div class="menu menu-font" [routerLink]="[language =='en'?'/en/app':'/pt/app']">
+  <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
+  <div class="menu-font">{{ language =='en'?'User Clientes (Devoloping)':'Usuários Clientes (Desenvolvendo)' }}</div>
+  <mat-icon class="menu-item-right">chevron_right</mat-icon>
+</div>
+<div class="menu menu-font" [routerLink]="[language =='en'?'/en/app':'/pt/app']">
+  <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
+  <div class="menu-font">{{ language =='en'?'Create Test (Devoloping)':'Criar Test (Desenvolvendo)' }}</div>
+  <!-- <div class="menu-item-right">100x</div> -->
+  <mat-icon class="menu-item-right">chevron_right</mat-icon>
+</div>
+<mat-divider class="menu-divider"></mat-divider>

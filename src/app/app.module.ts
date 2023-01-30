@@ -1,4 +1,4 @@
-import { NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -13,41 +13,38 @@ import { AngularFireModule } from '@angular/fire/compat';
 
 // Modules
 import { LoginModule } from '@view/login/login.module';
-import { AppV8Module } from '@view/app-v8/app-v8.module';
-import { AccountModule } from './view/account/account.module';
-import { MaterialDesignModule } from '@shared-angular/module/material-design.module';
 
 // Components
-import { AppComponent } from './app.component';
-import { PageNotFoundComponent } from './view/page-not-found/page-not-found.component';
+import { InterfaceModule } from '@view/interface/interface.module';
 import { FormValidateModule } from '@component/modal/form-validate/form-validate.module';
-/* import { FormValidateComponent } from './component/modal/form-validate/form-validate.component';
- */
+import { ComponentSharedModule } from './app.module.shared';
+import { AppComponent } from './app.component';
+import { AccountModule } from '@view/account/account.module';
+
 @NgModule({
   declarations: [
-    AppComponent,
-    PageNotFoundComponent,
-],
+    AppComponent
+  ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MaterialDesignModule,
     FormValidateModule,
-
     // correct sequency Router URL Acess
-    AccountModule,
-    AppV8Module,
-    LoginModule,
-    AppRoutingModule,
-  ],
-/*   schemas: [  CUSTOM_ELEMENTS_SCHEMA,
-    NO_ERRORS_SCHEMA ], */
-  exports: [],
 
-  providers: [ WindowDom ],
+    LoginModule,
+    AccountModule,
+    InterfaceModule,
+    ComponentSharedModule,
+    AppRoutingModule,
+
+  ],
+  /*   schemas: [  CUSTOM_ELEMENTS_SCHEMA,
+      NO_ERRORS_SCHEMA ], */
+
+  providers: [WindowDom],
 
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

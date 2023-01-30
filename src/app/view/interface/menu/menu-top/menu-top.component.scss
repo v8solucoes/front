@@ -1,0 +1,23 @@
+.menu-top {
+
+  &-font {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    text-align: left;
+    width: 100%;
+    color: var(--color-text-white);
+    cursor: pointer;
+  }
+
+  &-title {
+    height: 56px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

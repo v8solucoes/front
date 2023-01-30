@@ -1,9 +1,41 @@
 %color-dark {
-  --color-surface: #{#303030};
+  --color-surface: #{#1C1B1F};
   --color-text-white: #{rgb(white,0.8)};
 }
 
 %color-white {
-  --color-surface: #{#ffffffe0};
+  --color-surface: #{#FFFBFE};
   --color-text-white: #{rgb(black,0.8)};
 }
+
+
+/* 
+.menu-section-header {
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  
+  width: 360px;
+  height: 20px;
+  
+  border-radius: 100px;
+  }
+.label {
+  display: flex;
+flex-direction: row;
+align-items:flex-start;
+padding: 0px;
+gap: 12px;
+
+width: 360px;
+height: 56px;
+border-radius: 100px;
+&:hover {
+  background: #4A4458;
+}
+&:active {
+  background: rgba(56, 30, 114, 0.12);
+}
+} */

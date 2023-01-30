@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from 'src/app/guards/auth.guard';
+/* import { AuthGuard } from 'src/app/guards/auth.guard';
 import { GetColectionResolver } from 'src/app/resolve/get-colection.resolver';
 import { GetDocumentResolver } from 'src/app/resolve/get-document.resolver';
 import { GetUserResolver } from 'src/app/resolve/get-user.resolver';
 import { ColectionIndexComponent } from './colection/colection-index/colection-index.component';
 import { DocumentComponent } from './document/document.component';
-import { InterfaceComponent } from './interface/interface.component';
+import { InterfaceComponent } from './interface/interface.component'; */
 
 
 const appV8Routes: Routes = [
 // ENGLISH ROUTER
-  {
+ /*  {
     path: 'en/app', component: InterfaceComponent,
     canActivate: [AuthGuard],
     resolve: { 'response': GetUserResolver },
@@ -29,9 +29,9 @@ const appV8Routes: Routes = [
         ]
       },
     ]
-  },
+  }, */
 // PORTUGUÊS ROUTER
-  {
+ /*  {
     path: 'pt/app', component: InterfaceComponent,
     canActivate: [AuthGuard],
     resolve: { 'response': GetUserResolver },
@@ -49,7 +49,7 @@ const appV8Routes: Routes = [
         ]
       },
     ]
-  }
+  } */
 ];
 
 @NgModule({

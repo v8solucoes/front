@@ -39,14 +39,18 @@ export class SettingsComponent implements OnInit {
 
   setSize(tipo: 'system' | 'increment' | 'decremente') {
 
+  /*   --font-size-mt-15: 15px;
+    --font-size-mt-24: 24px;
+    --font-size-mt-26: 26px;
+    --font-size-mt-38: 38px; */
+
     const valor = tipo == 'system' ? 0 : tipo == 'increment' ? 1 : -1
     const size = tipo == 'system' ? 0 : this.data.local.settings.fontSize + valor
 
-    document.documentElement.style.setProperty('--fonte-material', 16 + size + 'px')
-    document.documentElement.style.setProperty('--fonte-14', 14 + size + 'px')
-    document.documentElement.style.setProperty('--fonte-16', 16 + size + 'px')
-    document.documentElement.style.setProperty('--fonte-17', 16 + size + 'px')
-    document.documentElement.style.setProperty('--fonte-20', 20 + size + 'px')
+    document.documentElement.style.setProperty('--font-size-mt-15', 15 + size + 'px')
+    document.documentElement.style.setProperty('--font-size-mt-24', 24 + size + 'px')
+    document.documentElement.style.setProperty('--font-size-mt-26', 26 + size + 'px')
+    document.documentElement.style.setProperty('--font-size-mt-38', 38 + size + 'px')
 
     this.data.local.settings.fontSize = size
   }

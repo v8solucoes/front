@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { FormService } from '@component/form/form.service';
+import { InterfaceService } from '@view/app-v8/interface.service';
 import { Subscription } from 'rxjs';
 import { _debug } from '../../../../../../domain/src/domain/repository/debug';
-import { InterfaceService } from '../interface.service';
+
 
 @Component({
   selector: 'app-document',

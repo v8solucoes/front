@@ -11,7 +11,8 @@ import { Observable, of } from 'rxjs';
 import { TestCompose } from '@domain/validator-local';
 import { DataService } from '@repository/data.service';
 import { ResolveService } from './resolve.service';
-import { _debug } from '../../../../domain/src/domain/repository/debug';
+import { _debug } from '@repositoryDomain/debug';
+
 
 
 @Injectable({
@@ -62,7 +63,7 @@ export class DataLocalResolver implements Resolve<Irequest> {
     } else {
 
       this.data.errorResolve = test
-      this.router.navigate([`errorResolver`])
+      this.router.navigate([`PageNotFoundComponent`])
   
       return of()
     }

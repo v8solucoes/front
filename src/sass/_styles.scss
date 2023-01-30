@@ -3,74 +3,62 @@
 @import "/src/sass/_color";
 
 // Font Theme
-$font-theme: mat.define-typography-config(
-  $font-family: "Roboto, Arial, sans-serif",
-  $headline: mat.define-typography-level(32px, 48px, 700),
-  $body-1: mat.define-typography-level(var(--fonte-material), 24px, 500),
-);
+$font-theme: mat.define-typography-config($font-family: "Roboto, Arial, sans-serif",
+    $headline: mat.define-typography-level(var(--font-size-mt-26), var(--font-size-mt-38), 700),
+    $body-1: mat.define-typography-level(var(--font-size-mt-15), var(--font-size-mt-24), 500),
+    $button: mat.define-typography-level(var(--font-size-mt-15), var(--font-size-mt-38), 500),
+  );
 
 @include mat.core($font-theme);
 
 // Light theme
 $light-primary: mat.define-palette(mat.$indigo-palette);
 $light-accent: mat.define-palette(mat.$pink-palette);
-$light-theme: mat.define-light-theme((
- color: (
-   primary: $light-primary,
-   accent: $light-accent,
- )
-));
+$light-theme: mat.define-light-theme((color: (primary: $light-primary,
+        accent: $light-accent,
+      )));
 
 // Dark theme
 $dark-primary: mat.define-palette(mat.$pink-palette);
 $dark-accent: mat.define-palette(mat.$blue-grey-palette);
-$dark-theme: mat.define-dark-theme((
- color: (
-   primary: $dark-primary,
-   accent: $dark-accent,
- )
-));
+$dark-theme: mat.define-dark-theme((color: (primary: $dark-primary,
+        accent: $dark-accent,
+      )));
 
 .dark-theme {
   @extend %color-dark;
   @include mat.all-component-themes($dark-theme);
 }
+
 .light-theme {
   @extend %color-white;
   @include mat.all-component-colors($light-theme);
 }
 
 :root {
-  --font-material: 16px;
-  --fonte-10: 10px;
-  --fonte-12: 12px;
-  --fonte-14: 14px;
-  --fonte-16: 16px;
-  --fonte-17: 17px;
-  --fonte-20: 20px;
-  --margem: 16px;
-/*   --color-background: #0f0f0f;
-  --color-primary: #9c0000;
-  --color-tex-white:#{rgba(white, 0.87)};
-  --color-tex-black:#{rgba(black, 0.87)}; */
+  --font-size-mt-15: 15px;
+  --font-size-mt-24: 24px;
+  --font-size-mt-26: 26px;
+  --font-size-mt-38: 38px;
 }
 
-html{
+html {
   padding: 0px;
   margin: 0px;
   width: 100%;
   height: 100%;
-  color:var(--color-text-white);
+  color: var(--color-text-white);
 }
- body {
+
+body {
   display: flex;
-  flex-flow: row nowrap;  
+  flex-flow: row nowrap;
   justify-content: center;
   align-content: center;
-  height:100vh;
+  height: 100vh;
   margin: 0;
   padding: 0;
-  font-family: "Roboto","Arial", sans-serif;
+  font-family: "Roboto", "Arial", sans-serif;
   background-color: var(--color-surface);
-  overflow:hidden;
+  overflow: hidden;
 }

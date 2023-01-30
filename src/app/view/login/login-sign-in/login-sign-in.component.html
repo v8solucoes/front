@@ -1,4 +1,7 @@
-<div *ngIf="loading">
+<ng-template #loading>
+  <mat-progress-bar mode="query"></mat-progress-bar>
+</ng-template>
+<div *ngIf="loading; else loading">
   <section [class.mat-elevation-z2]="true">
     <app-settings></app-settings>
   </section>

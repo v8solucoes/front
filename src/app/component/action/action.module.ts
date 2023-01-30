@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   declarations: [
     ActionComponent
   ],
-  imports:[CommonModule,MaterialDesignModule],
+  imports:[CommonModule],
   exports: [
     ActionComponent,
   ]

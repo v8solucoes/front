@@ -9,11 +9,22 @@ section {
 }
 
 app-menu-index {
-  margin: 0px;
+
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  width: 340px;
+  min-width: 270px;
+  height: 100%px;
+  /* Surface 1*/
+  background: linear-gradient(0deg, rgba(208, 188, 255, 0.05), rgba(208, 188, 255, 0.05)), #1C1B1F;
+  border-radius: 16px;
+  @extend %scroll; 
+/*   margin: 0px;
   max-width: 240px;
   min-width: 200px;
   display: grid;
-  @extend %scroll;
+  @extend %scroll; */
 /*   background-color: white; */
 }
 
@@ -23,10 +34,18 @@ app-menu-index {
   height: 100%;
   display: flex;
   flex-direction: column;
-/*   background-color: transparent; */
+  background-color: transparent;
   overflow: hidden;
 }
-
+.mat-drawer {
+  background-color: transparent;
+}
+.mat-sidenav-container {
+  background-color: transparent;
+}
+:host .mat-drawer-content {
+  background-color: transparent;
+}
 
 /* :host mat-sidenav-container {
 
@@ -144,15 +163,7 @@ mat-sidenav-container {
 /* mat-sidenav-content {
   overflow:hidden;
 } */
-/* .mat-drawer {
-  background-color: transparent;
-}
-.mat-sidenav-container {
-  background-color: transparent;
-}
-.mat-drawer-content {
-  background-color: transparent;
-} */
+
 
 // Corrige scroll 100%
 /* :host ::ng-deep cdk-virtual-scroll-viewport .cdk-virtual-scroll-content-wrapper {

@@ -27,7 +27,7 @@
         </app-colection-group>
 
       </div>
-      <div class="data">Data: {{ data(colection.value) | date: 'dd/mm/aa'}} <button (click)="data(colection.value)">x</button> </div>
+      <div class="data">Data: <!-- {{ data(colection.value) | date: 'dd/mm/aa'}}  --><button (click)="data(colection.value)">x</button> </div>
     </section>
 
   </ng-container>
@@ -39,35 +39,3 @@
   <router-outlet></router-outlet>
 
 </mat-sidenav>
-
-<!-- <ng-template #loading>
-  <mat-progress-bar mode="query"></mat-progress-bar>
-</ng-template>
-
-<section *ngIf="load; else loading">
-  <ul> 
-    Colection: {{get.colectionName }}
-
-    <li  *ngFor="let colection of get.colection | keyvalue">
-      <app-colection-group
-      [permission]="get.permission"
-      [model]="get.model"
-      [language]="get.language"
-      [colection]="colection.value"
-    >
-    </app-colection-group>
-  
-     </li>
-
-  </ul>
-
-</section> -->
-
-<!--   <p>Object Colection</p>
-  {{ i.data.colection | json }} -->
-
-<!--    <li *ngFor="let permission in colection;
-     let in=index let first let last" [routerLink]="[permission.id]">
-     {{ i.data.model[permission.id].text[i.data.language]?.label }}
-    </li> -->
-<!--    <li  *ngFor="let colection of colections | keyvalue"> -->

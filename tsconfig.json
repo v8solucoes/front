@@ -13,6 +13,7 @@
       "@module/*":["./src/app/module/*"],
       "@component/*":["./src/app/component/*"],
       "@repository/*":["./src/app/repository/*"],
+      "@repositoryDomain/*":["../domain/src/domain/repository/*"],
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

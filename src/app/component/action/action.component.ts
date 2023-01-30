@@ -2,8 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { IresponseValidatorCompose, ImodelRecursive } from '@domain/interface';
 import { InterfaceService } from '@view/app-v8/interface.service';
-import { _debug } from '../../../../../../../domain/src/domain/repository/debug';
+
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { _debug } from '@repositoryDomain/debug';
 
 @Component({
   selector: 'app-action',
@@ -82,11 +83,11 @@ export class ActionComponent implements OnInit {
 
       if (this.action == 'user-sig-in') {
 
-        const login = this.i.data.form[this.i.data.requestLast.document].get(['sign-in', 'email'])?.value
+        const email = this.i.data.form[this.i.data.requestLast.document].get(['sign-in', 'email'])?.value
         const password = this.i.data.form[this.i.data.requestLast.document]?.get(['sign-in', 'password'])?.value
         const language = this.i.data.language
 
-        return this.i.auth.loginIn(login, password, language)
+        return this.i.auth.loginIn(email, password, language)
       }
 
     } catch (error) {

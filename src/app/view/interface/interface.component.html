@@ -1,0 +1,27 @@
+<ng-template #loading>
+  <mat-progress-bar mode="query"></mat-progress-bar>
+</ng-template>
+
+<section>
+
+  <mat-drawer-container [hasBackdrop]="i.design.telaCelular" *ngIf="load; else loading">
+
+    <mat-drawer #menu mode="side" [opened]="this.i.design.telaDesktop">
+
+      <app-menu-index></app-menu-index>
+
+    </mat-drawer>
+
+    <mat-drawer-content>
+
+      <mat-sidenav-container>
+       
+        <router-outlet ></router-outlet>
+
+      </mat-sidenav-container>
+
+    </mat-drawer-content>
+
+  </mat-drawer-container>
+
+</section>

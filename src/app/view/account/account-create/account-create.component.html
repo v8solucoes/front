@@ -1,4 +1,8 @@
-<div *ngIf="load">
+<ng-template #loading>
+  <mat-progress-bar mode="query"></mat-progress-bar>
+</ng-template>
+
+<div *ngIf="loading; else loading">
 
   <section [class.mat-elevation-z7]="true">
     <app-form-group [form]="data.form[data.requestLast.document]"
@@ -8,44 +12,8 @@
       <app-action [action]="'create'" [width]="200" [redirect]="data.language + '/login/sign-in'"></app-action>
 
     <button type="submit" mat-raised-button [routerLink]="[data.language == 'en'? '../../../../en/login/sign-in':'../../../../en/login/sign-in']">
-      <mat-label>Log In</mat-label>
+      <mat-label> {{ data.language == 'en'? 'Log In':'Login'}} </mat-label>
     </button>
-   <!--  <button type="submit" mat-raised-button class="color-sucess" (click)="googleAuth()"
-      *ngIf="data.form[data.requestLast.document].valid">
-      <mat-label>Google</mat-label>
-    </button> -->
-    <!-- INVALID - disabled -->
-
-<!--     <button
-      *ngIf=" data.form[data.requestLast.document].valid && data.form[data.requestLast.document].get([data.requestLast.document,'acceptTerms'])?.value ? false: true"
-      type="submit" mat-raised-button color="primary" disabled>
-      <div *ngIf="processing" class="processing">
-        <mat-spinner class="spinner" [diameter]="20"></mat-spinner>
-        <mat-label>Processing</mat-label>
-      </div>
-
-      <mat-label>Create New AccountS</mat-label>
-    </button> -->
-    <!-- VALID -->
-  
-    <!-- Processing -->
-   <!--  <button
-      *ngIf="processing && !sucess && data.form[data.requestLast.document].valid && data.form[data.requestLast.document].get([data.requestLast.document,'acceptTerms'])?.value"
-      type="submit" mat-raised-button>
-      <div class="processing">
-        <mat-spinner class="spinner" [diameter]="20"></mat-spinner>
-        <mat-label>Processing</mat-label>
-      </div>
-    </button> -->
-    <!-- SUCESS -->
-  <!--   <button type="submit" mat-raised-button class="color-sucess" *ngIf="sucess">
-      <mat-label>Create Sucess!</mat-label>
-    </button> -->
-    <!-- Sign IN -->
- <!--    <button type="submit" mat-raised-button class="color-sucess" routerLink="../../../login/sign-in">
-      <mat-label>Sign In</mat-label>
-    </button> -->
-
   </section>
 
 </div>

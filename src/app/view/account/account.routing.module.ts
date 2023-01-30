@@ -5,12 +5,20 @@ import { AccountCreateComponent } from './account-create/account-create.componen
 import { AccountIndexComponent } from './account-index/account-index.component';
 
 const accountRoutes: Routes = [
-
+// EN
   {
     path: 'en/account', component: AccountIndexComponent,
   },
   {
     path: 'en/account/:document/:action', component: AccountCreateComponent,
+    resolve: { 'request': DataLocalResolver },
+  },
+  //PT
+  {
+    path: 'pt/account', component: AccountIndexComponent,
+  },
+  {
+    path: 'pt/account/:document/:action', component: AccountCreateComponent,
     resolve: { 'request': DataLocalResolver },
   },
 
