@@ -1,9 +1,22 @@
 %color-dark {
   --color-surface: #{#1C1B1F};
   --color-text-white: #{rgb(white,0.8)};
+  --color-active: #{rgb(blue,0.8)};
+  --color-surface-1: linear-gradient(0deg, rgba(208, 188, 255, 0.05), rgba(208, 188, 255, 0.05)), var(--color-surface);
+  --color-surface-1-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3);
+  --color-surface-2: linear-gradient(0deg, rgba(208, 188, 255, 0.08), rgba(208, 188, 255, 0.08)), var(--color-surface);
+  --color-surface-2-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3);
+
 }
 
 %color-white {
   --color-surface: #{#FFFBFE};
   --color-text-white: #{rgb(black,0.8)};
+  --color-active: #{rgb(rgb(218, 218, 255),0.8)};
+  --color-surface-1: linear-gradient(0deg, rgba(103, 80, 164, 0.05), rgba(103, 80, 164, 0.05)), var(--color-surface);
+  --color-surface-1-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --color-surface-2: linear-gradient(0deg, rgba(208, 188, 255, 0.08), rgba(208, 188, 255, 0.08)), var(--color-surface);
+  --color-surface-2-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3);
+
+
 }

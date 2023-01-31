@@ -6,12 +6,15 @@ import { ComponentSharedModule } from 'src/app/app.module.shared';
 import { ColectionModule } from '@component/colection/colection.module';
 
 import { InterfaceComponent } from './interface.component';
-import { MenuIndexComponent } from './menu/menu-index/menu-index.component';
-import { MenuTopComponent } from './menu/menu-top/menu-top.component';
+
 import { MenuAdmComponent } from './menu/menu-adm/menu-adm.component';
 import { ColectionIndexComponent } from './colection/colection-index/colection-index.component';
 import { DocumentComponent } from './document/document.component';
 import { MaterialDesignModule } from '@shared-angular/material-design.module';
+import { MenuFooterComponent } from './menu/menu-footer/menu-footer.component';
+import { MenuNavComponent } from './menu/menu-nav/menu-nav.component';
+import { MenuHeaderComponent } from './menu/menu-header/menu-header.component';
+import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({
@@ -25,11 +28,18 @@ import { MaterialDesignModule } from '@shared-angular/material-design.module';
   ],
   declarations: [
     InterfaceComponent,
-    MenuIndexComponent,
-    MenuTopComponent,
+    MenuComponent,
+    MenuNavComponent,
+    MenuHeaderComponent,
+    MenuFooterComponent,
+
     MenuAdmComponent,
     ColectionIndexComponent,
     DocumentComponent,
+    MenuFooterComponent,
+    MenuNavComponent,
+    MenuHeaderComponent,
+    MenuComponent,
   ],
   exports: [
     InterfaceComponent

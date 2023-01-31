@@ -5,7 +5,6 @@
   </ng-template>
 
   <ng-container *ngIf="load; else loading">
-
     <nav>
       <button mat-icon-button (click)="this.i.actionsEmitter.emit('menu')"><mat-icon>more_vert</mat-icon></button>
       <span>{{ i.data.local.model[i.data.requestLast.document].text[i.data.language].label }}</span>

@@ -1,21 +1,21 @@
 <button mat-button [matMenuTriggerFor]="language" aria-label="Language">
-  <mat-icon>translate</mat-icon>{{ data.language == 'en'? 'English':'Portugues'}}
+  <mat-icon>translate</mat-icon><ng-container *ngIf="icon">{{ data.language == 'en'? 'English':'Portugues'}}</ng-container>
 </button>
 
 <button mat-button [matMenuTriggerFor]="color" aria-label="Color">
-  <mat-icon>brightness_6</mat-icon>{{ data.language == 'en'? 'Color':'Cor'}}
+  <mat-icon>brightness_6</mat-icon><ng-container *ngIf="icon">{{ data.language == 'en'? 'Color':'Cor'}}</ng-container>
 </button>
 
 <button mat-button [matMenuTriggerFor]="font" aria-label="Font">
-  <mat-icon>text_fields</mat-icon>{{ data.language == 'en'? 'Font Size':'Fonte'}}
+  <mat-icon>text_fields</mat-icon><ng-container *ngIf="icon">{{ data.language == 'en'? 'Font Size':'Fonte'}}</ng-container>
 </button>
 
 <mat-menu #language="matMenu">
-  <button mat-menu-item routerLink='/en/login/sign-in'>
+  <button mat-menu-item routerLink="{{ '/en' + url}}">
     <mat-icon>language</mat-icon>
     <span>{{ data.language == 'en'? 'English':'Inglês'}}</span>
   </button>
-  <button mat-menu-item [routerLink]="['/pt/login/sign-in']">
+  <button mat-menu-item routerLink="{{ '/pt' + url}}">
     <mat-icon>language</mat-icon>
     <span>{{ data.language == 'en'? 'Portugues':'Português'}}</span>
   </button>
@@ -24,9 +24,9 @@
 
  <section>
   <mat-radio-group [(ngModel)]="labelPosition">
-    <mat-radio-button value="sytem" (click)="colorTheme('dark')">{{ data.language == 'en'? 'System':'Padrão'}}</mat-radio-button>
-    <mat-radio-button value="dark" (click)="colorTheme('dark')">{{ data.language == 'en'? 'Dark':'Escuro'}}</mat-radio-button>
     <mat-radio-button value="ligth" (click)="colorTheme('ligth')">{{ data.language == 'en'? 'Ligth':'Claro'}}</mat-radio-button>
+    <mat-radio-button value="dark" (click)="colorTheme('dark')">{{ data.language == 'en'? 'Dark':'Escuro'}}</mat-radio-button>
+    <mat-radio-button value="sytem" (click)="colorTheme('dark')">{{ data.language == 'en'? 'System':'Padrão'}}</mat-radio-button>
   </mat-radio-group>
  </section>
     

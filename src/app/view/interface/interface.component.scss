@@ -6,17 +6,7 @@ section {
   height: 100%;
   max-width: 960px;
   box-sizing: border-box;
-}
-
-app-menu-index {
-  display: flex;
-  flex-direction: column;
-  padding: 12px;
-  width: 340px;
-  min-width: 270px;
-  height: 100%;
-  border-radius: 16px;
-  @extend %scroll; 
+ 
 }
 
 :host mat-drawer-container, mat-sidenav-container {
@@ -27,15 +17,25 @@ app-menu-index {
   flex-direction: column;
   background-color: transparent;
   overflow: hidden;
+  border: none;
 }
 .mat-drawer {
   background-color: transparent;
+  border: none;
+  overflow: hidden;
 }
 .mat-sidenav-container {
   background-color: transparent;
+  border: none;
+  overflow: hidden;
 }
 :host .mat-drawer-content {
   background-color: transparent;
+  border: none;
+  overflow: hidden;
+}
+:host .mat-drawer-inner-container {
+  overflow: hidden;
 }
 
 /* :host mat-sidenav-container {

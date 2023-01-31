@@ -8,20 +8,24 @@ import { ModalService } from '@component/modal/modal.service';
   providedIn: 'root'
 })
 export class InterfaceService {
-  actionsEmitter = new EventEmitter<'menu' | 'document' | 'documentColection' | 'documentCloset'| 'documentOpen'>();
+  actionsEmitter: EventEmitter<'menu' | 'document' | 'documentColection' | 'documentCloset'| 'documentOpen'>  = new EventEmitter();
   loading = false;
   viewDocument = false;
   loadingDocument = false
+  celullar = false;
+  web = false;
+  tablet = false;
+  webAndTablet = false;
   design = {
     menuScrollBarra: true,
     menuScrollUltimo: 0,
     moduloScrollBarra: true,
     moduloScrollUltimo: 0,
     opcoesFixar: false,
-    telaTablet: false,
+  /*   telaTablet: false,
     telaCelular: false,
     telaDesktop: true,
-    telaDesktopTablet: false,
+    telaDesktopTablet: false, */
     animaItem: true,
   };
   designUser = {

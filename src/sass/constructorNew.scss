@@ -1,0 +1,57 @@
+@mixin section($width) {
+  width: $width;
+  height: 100%;
+  background: var(--color-surface-1);
+  box-shadow: var(--color-surface-1-shadow);
+  @extend %scroll;
+  overflow: auto;
+}
+
+%nav {
+  position: absolute;
+  width: 100%;
+  background: var(--color-surface-2);
+  box-shadow: var(--color-surface-2-shadow);
+  border-radius: 18px 18px 0 0;
+}
+%header {
+
+}
+%footer {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 34px;
+  width: 100%;
+  height: 56px;
+  background: var(--color-surface-2);
+  box-shadow: var(--color-surface-2-shadow);
+  border-radius: 0 0 18px 18px;
+}
+%scroll {
+  height: 100%;
+  width: 100%;
+  padding-top: 0px;
+  padding-bottom: 190px;
+  margin-left: 0;
+  overflow: auto;
+  box-sizing: border-box;
+  border-radius: 16px;
+
+  @media (max-width: 360px) {
+    overflow: hidden;
+
+    &:hover {
+      overflow: auto;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    background: rgba(255, 255, 255, 0.13);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 6px;
+    background: rgba(255, 255, 255, 0.13);
+  }
+}

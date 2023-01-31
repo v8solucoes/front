@@ -1,10 +1,10 @@
-import { Irequest } from './../../../../domain/src/shared/interface';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from '@repository/data.service';
 import { FirebaseApp } from '@angular/fire/compat';
 import { connectAuthEmulator, getAuth, GoogleAuthProvider, signInWithCredential, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { Irequest } from './../../../../domain/src/shared/interface';
 import { environment } from 'src/environments/environment';
-import { DataService } from '@repository/data.service';
 import { _debug } from '../../../../domain/src/domain/repository/debug';
 
 @Injectable({
@@ -30,7 +30,7 @@ export class FirebaseAuthService {
       if (_debug.pg.firebase) {
         console.log('Login Sucess')
       }
-
+    
       this.router.navigate([`${language}/app`])
       
     }).catch(o => {

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Isettings } from '@domain/interface';
 import { DataService } from '@repository/data.service';
@@ -10,8 +10,11 @@ import { DataService } from '@repository/data.service';
 })
 export class SettingsComponent implements OnInit {
 
+  @Input() icon: boolean = false;
+
   isActive = false;
   labelPosition: Isettings['theme'] = this.data.local.settings.theme;
+  url = this.data.requestLast.lastUrlNoLanguage
 
   constructor(
     @Inject(DOCUMENT)
@@ -41,6 +44,7 @@ export class SettingsComponent implements OnInit {
     const valor = tipo == 'system' ? 0 : tipo == 'increment' ? 1 : -1
     const size = tipo == 'system' ? 0 : this.data.local.settings.fontSize + valor
 
+/*     document.documentElement.style.setProperty('--menu-size', 300 + size + 'px') */
     document.documentElement.style.setProperty('--font-size-mt-15', 15 + size + 'px')
     document.documentElement.style.setProperty('--font-size-mt-24', 24 + size + 'px')
     document.documentElement.style.setProperty('--font-size-mt-26', 26 + size + 'px')

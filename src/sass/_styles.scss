@@ -5,8 +5,8 @@
 // Font Theme
 $font-theme: mat.define-typography-config($font-family: "Roboto, Arial, sans-serif",
     $headline: mat.define-typography-level(var(--font-size-mt-26), var(--font-size-mt-38), 700),
-    $body-1: mat.define-typography-level(var(--font-size-mt-15), var(--font-size-mt-24), 500),
-    $button: mat.define-typography-level(var(--font-size-mt-15), var(--font-size-mt-38), 500),
+    $body-1: mat.define-typography-level(var(--font-size-mt-14), var(--font-size-mt-24), 500),
+    $button: mat.define-typography-level(var(--font-size-mt-14), var(--font-size-mt-38), 500),
   );
 
 @include mat.core($font-theme);
@@ -36,10 +36,12 @@ $dark-theme: mat.define-dark-theme((color: (primary: $dark-primary,
 }
 
 :root {
+  --font-size-mt-14: 14px;
   --font-size-mt-15: 15px;
   --font-size-mt-24: 24px;
   --font-size-mt-26: 26px;
   --font-size-mt-38: 38px;
+  --menu-size: 300px;
 }
 
 html {
@@ -59,6 +61,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Roboto", "Arial", sans-serif;
+  font-size: var( --font-size-mt-14);
   background-color: var(--color-surface);
   overflow: hidden;
 }

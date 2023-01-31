@@ -1,4 +1,4 @@
-<div class="menu-top-title menu-top-font">
+<div class="menu-top-title menu-top-font" [class.mat-elevation-z1]="true">
   <span class="menu-top-font" [routerLink]="[i.data.language =='en'?'/en/app':'/pt/app']">
     {{ i.data.language == 'en' ? 'V8 App Test': 'V8 App Teste'}}
   </span>

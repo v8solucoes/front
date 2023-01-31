@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { _debug } from '@repositoryDomain/debug';
 import { InterfaceService } from '@view/interface/interface.service';
-import { _debug } from '../../../../../../../domain/src/domain/repository/debug';
 
 @Component({
   selector: 'app-menu-adm',

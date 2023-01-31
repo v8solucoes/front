@@ -2,7 +2,6 @@ import { Inject, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Irequest } from '@domain/interface';
 import { environment } from 'src/environments/environment';
-/* import { WindowDom } from '@method/window.dom'; */
 import { DataService } from '@repository/data.service';
 import { DOCUMENT } from '@angular/common';
 
@@ -15,17 +14,14 @@ export class ResolveService {
     @Inject(DOCUMENT)
     private document: Document,
     private data: DataService,
-  /*   private windowDom: WindowDom, */
 
   ) { }
 
   getRequest(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Irequest {
 
     const root = route as any
-
-    /* console.log(state.url) */
-   /*  console.log(this.windowDom.nativeWindow) */
-    
+    const lastUrl = state.url
+    const lastUrlNoLanguage = state.url.slice(3)    
     
     const urlSegments = root['_urlSegment']['segments'] as any
 
@@ -49,8 +45,11 @@ export class ResolveService {
       dateTime: new Date(),
       colection: document,
       key,
+      lastUrl,
+      lastUrlNoLanguage
     }
     this.data.requestLast = request
+/*     console.log(this.data.requestLast) */
     return request
   }
 

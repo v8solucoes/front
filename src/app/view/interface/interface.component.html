@@ -4,19 +4,20 @@
 
 <section>
 
-  <mat-drawer-container [hasBackdrop]="i.design.telaCelular" *ngIf="load; else loading">
+  <mat-drawer-container [hasBackdrop]="false" *ngIf="load; else loading">
 
-    <mat-drawer #menu mode="side" [opened]="this.i.design.telaDesktop">
+    <mat-drawer #menu mode="side" [opened]="true">
 
-      <app-menu-index></app-menu-index>
+      <app-menu> </app-menu >
 
     </mat-drawer>
 
     <mat-drawer-content>
 
       <mat-sidenav-container>
+        
        
-        <router-outlet ></router-outlet>
+        <router-outlet>Colection</router-outlet>
 
       </mat-sidenav-container>
 
