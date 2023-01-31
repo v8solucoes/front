@@ -5,45 +5,41 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 // OUTROS
-import { WindowDom } from './method/window.dom';
 import { environment } from 'src/environments/environment';
-
-// FIREBASE
 import { AngularFireModule } from '@angular/fire/compat';
 
 // Modules
-import { LoginModule } from '@view/login/login.module';
-
-// Components
 import { InterfaceModule } from '@view/interface/interface.module';
+import { LoginModule } from '@view/login/login.module';
 import { FormValidateModule } from '@component/modal/form-validate/form-validate.module';
 import { ComponentSharedModule } from './app.module.shared';
+
+// Components
 import { AppComponent } from './app.component';
-import { AccountModule } from '@view/account/account.module';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    // Not Remove
     BrowserModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FormValidateModule,
-    // correct sequency Router URL Acess
+    AngularFireModule.initializeApp(environment.firebaseConfig),
 
-    LoginModule,
-    AccountModule,
-    InterfaceModule,
+    // Personal App
     ComponentSharedModule,
-    AppRoutingModule,
+    LoginModule,
+    InterfaceModule,
 
   ],
   /*   schemas: [  CUSTOM_ELEMENTS_SCHEMA,
       NO_ERRORS_SCHEMA ], */
 
-  providers: [WindowDom],
+/*   providers: [WindowDom], */
 
   bootstrap: [AppComponent],
 })

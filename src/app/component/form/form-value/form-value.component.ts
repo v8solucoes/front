@@ -1,4 +1,4 @@
-import { InterfaceService } from '@view/app-v8/interface.service';
+import { InterfaceService } from '@view/interface/interface.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { Irequest, ImodelRecursiveConfig, IpermissionRecursiveConfig } from '@domain/interface';

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ImodelRecursive, ImodelRecursiveConfig, IpermissionRecursive, IpermissionRecursiveConfig, Irequest } from '@domain/interface';
-import { InterfaceService } from '@view/app-v8/interface.service';
+import { InterfaceService } from '@view/interface/interface.service';
 
 @Component({
   selector: 'app-colection-group',

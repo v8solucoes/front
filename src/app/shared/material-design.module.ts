@@ -29,6 +29,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
   exports: [
     MatProgressBarModule,
+    MatRadioModule,
     MatInputModule,
     MatFormFieldModule,
     MatSidenavModule,
@@ -51,7 +52,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatProgressSpinnerModule,
     MatSnackBarModule,
     MatSliderModule,
-    MatRadioModule,
     MatSlideToggleModule,
     MatSnackBarModule
   ]

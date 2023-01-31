@@ -2,8 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { InterfaceService } from '@view/app-v8/interface.service';
-import { _debug } from '../../../../../domain/src/domain/repository/debug';
+import { InterfaceService } from '@view/interface/interface.service';
+import { _debug } from '@repositoryDomain/debug';
+
 
 @Component({
   selector: 'app-interface',
@@ -14,6 +15,7 @@ export class InterfaceComponent implements OnInit {
 
   @ViewChild('menu') menu: any;
   @ViewChild('document') document: any;
+  
   load = false
   inscription!: Subscription
 

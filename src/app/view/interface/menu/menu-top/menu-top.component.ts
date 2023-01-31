@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InterfaceService } from '@view/app-v8/interface.service';
+import { InterfaceService } from '@view/interface/interface.service';
 
 @Component({
   selector: 'app-menu-top',

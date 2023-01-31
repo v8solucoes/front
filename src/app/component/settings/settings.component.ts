@@ -1,7 +1,7 @@
-import { Isettings } from './../../../../../domain/src/shared/interface';
-import { DataService } from './../../repository/data.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { Isettings } from '@domain/interface';
+import { DataService } from '@repository/data.service';
 
 @Component({
   selector: 'app-settings',
@@ -10,21 +10,15 @@ import { DOCUMENT } from '@angular/common';
 })
 export class SettingsComponent implements OnInit {
 
-  private static readonly DARK_THEME_CLASS = 'dark-theme';
-  private static readonly DARK_THEME_LIGHT = 'light';
-  private static readonly DARK_THEME_DARK = 'dark';
-
-  public theme: string;
   isActive = false;
   labelPosition: Isettings['theme'] = this.data.local.settings.theme;
 
   constructor(
     @Inject(DOCUMENT)
     private document: Document,
-    public data: DataService) {
+    public data: DataService
+  ) {
 
-    this.data
-    this.theme = this.document.documentElement.classList.contains(SettingsComponent.DARK_THEME_CLASS) ? SettingsComponent.DARK_THEME_DARK : SettingsComponent.DARK_THEME_LIGHT;
   }
   ngOnInit(): void {
   }

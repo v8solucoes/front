@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { ImodelRecursive, Irequest, IpermissionRecursive, ImodelRecursiveConfig, IpermissionRecursiveConfig  } from '@domain/interface';
-import { InterfaceService } from '@view/app-v8/interface.service';
+import { InterfaceService } from '@view/interface/interface.service';
 
 @Component({
   selector: 'app-form-group',

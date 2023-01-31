@@ -34,8 +34,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/sass/_fontes.scss",
-              "src/sass/_fonte-icone.scss",
+              "src/sass/_font.scss",
+              "src/sass/_font-icone.scss",
               "src/sass/_styles.scss"
             ],
             "scripts": []
@@ -104,8 +104,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/sass/_fontes.scss",
-              "src/sass/_fonte-icone.scss",
+              "src/sass/_font.scss",
+              "src/sass/_font-icone.scss",
               "src/sass/_styles.scss"
             ],
             "scripts": []

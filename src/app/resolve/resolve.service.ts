@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Irequest } from '@domain/interface';
 import { environment } from 'src/environments/environment';
-import { WindowDom } from '@method/window.dom';
+/* import { WindowDom } from '@method/window.dom'; */
 import { DataService } from '@repository/data.service';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,11 @@ import { DataService } from '@repository/data.service';
 export class ResolveService {
 
   constructor(
+    @Inject(DOCUMENT)
+    private document: Document,
     private data: DataService,
-    private windowDom: WindowDom,
+  /*   private windowDom: WindowDom, */
+
   ) { }
 
   getRequest(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Irequest {
@@ -25,7 +29,7 @@ export class ResolveService {
     
     const urlSegments = root['_urlSegment']['segments'] as any
 
-    const domain = this.windowDom.nativeWindow.location.hostname as Irequest['domain']
+    const domain = this.document.location.hostname as Irequest['domain']
     const language = urlSegments[0].path as Irequest['language']
     const page = urlSegments[1].path as Irequest['page']
     const document = urlSegments[2] ? urlSegments[2].path : `null`

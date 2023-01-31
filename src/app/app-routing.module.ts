@@ -4,7 +4,6 @@ import { AuthGuard } from './guards/auth.guard';
 import { DataLocalResolver } from './resolve/data-local.resolver';
 import { GetUserResolver } from './resolve/get-user.resolver';
 
-import { LoginIndexComponent } from '@view/login/login-index/login-index.component';
 import { LoginSignInComponent } from '@view/login/login-sign-in/login-sign-in.component';
 import { PageNotFoundComponent } from './view/page-not-found/page-not-found.component';
 import { InterfaceComponent } from '@view/interface/interface.component';
@@ -12,23 +11,16 @@ import { ColectionIndexComponent } from '@view/interface/colection/colection-ind
 import { GetColectionResolver } from './resolve/get-colection.resolver';
 import { DocumentComponent } from '@view/interface/document/document.component';
 import { GetDocumentResolver } from './resolve/get-document.resolver';
-import { AccountIndexComponent } from '@view/account/account-index/account-index.component';
-import { AccountCreateComponent } from '@view/account/account-create/account-create.component';
+import { CreateAccountComponent } from '@view/login/create-account/create-account.component';
 
 const routes: Routes = [
 
-  {
-    path: ':language/login', component: LoginIndexComponent,
-  },
   {
     path: ':language/login/:document', component: LoginSignInComponent,
     resolve: { 'request': DataLocalResolver },
   },
   {
-    path: ':language/account', component: AccountIndexComponent,
-  },
-  {
-    path: ':language/account/:document/:action', component: AccountCreateComponent,
+    path: ':language/account/:document/:action', component: CreateAccountComponent,
     resolve: { 'request': DataLocalResolver },
   },
   {

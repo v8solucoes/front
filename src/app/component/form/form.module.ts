@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialDesignModule } from '@shared-angular/module/material-design.module';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { FormMaskDirective } from './form-mask.directive';
@@ -14,6 +14,7 @@ import { FormArrayComponent } from './form-array/form-array.component';
 import { AcceptTermsComponent } from './input-type/accept-terms/accept-terms.component';
 import { BooleanToggleComponent } from './input-type/boolean-toggle/boolean-toggle.component';
 import { PasswordComponent } from './input-type/password/password.component';
+import { MaterialDesignModule } from '@shared-angular/material-design.module';
 
 @NgModule({
   declarations: [

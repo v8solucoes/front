@@ -7,13 +7,13 @@ import { _debug } from '../../../../../../domain/src/domain/repository/debug';
 
 
 @Component({
-  selector: 'app-account-create',
-  templateUrl: './account-create.component.html',
-  styleUrls: ['./account-create.component.scss'],
+  selector: 'app-create-account',
+  templateUrl: './create-account.component.html',
+  styleUrls: ['./create-account.component.scss'],
   
 })
 
-export class AccountCreateComponent {
+export class CreateAccountComponent {
   load = false
   inscription!: Subscription
 

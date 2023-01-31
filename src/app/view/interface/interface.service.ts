@@ -34,6 +34,8 @@ export class InterfaceService {
     public modal: ModalService,
     public backand: BackandService,
     public auth: FirebaseAuthService
-  ) { this.loading = true}
+  ) {
+    this.loading = true
+  }
 
 }
