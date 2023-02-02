@@ -1,11 +1,9 @@
-<section>
+<section (scroll)="i.startAnimation($event,'navMenu')">
 
-  <app-menu-nav></app-menu-nav>
+  <app-menu-nav [@navTop]="i.animate.navMenu.animate"></app-menu-nav>
 
   <app-menu-header ></app-menu-header>
 
-  <app-menu-footer></app-menu-footer>
+  <app-menu-footer [@navFooter]="i.animate.navMenu.animate"></app-menu-footer>
 
 </section>
-
-

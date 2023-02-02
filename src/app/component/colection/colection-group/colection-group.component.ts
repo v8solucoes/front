@@ -19,28 +19,10 @@ export class ColectionGroupComponent implements OnInit {
   constructor(
     public i: InterfaceService
   ) {
-
-/*  console.log('CORES')
- console.log(this.colors) */
- console.log('COLECTION')
- console.log(this.colection!)
-    
-/*     console.log(this.permission)
-    console.log(this.model)
-    console.log(this.language)
-    console.log(this.colection) */
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
 
-   /*  console.log(this.permission)
-    console.log(this.model)
-    console.log(this.language)
-    console.log(this.colection) */
-  }
- /*  getFormObject(id: string): UntypedFormGroup {
-    return this.form.get(id) as UntypedFormGroup
-  } */
  get createColors() {
     const colors = []
     for (var i = 0; i < 100; i++) {

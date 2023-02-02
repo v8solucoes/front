@@ -8,7 +8,7 @@ import { ModalService } from '@component/modal/modal.service';
   providedIn: 'root'
 })
 export class InterfaceService {
-  actionsEmitter: EventEmitter<'menu' | 'document' | 'documentColection' | 'documentCloset'| 'documentOpen'>  = new EventEmitter();
+  actionsEmitter: EventEmitter<'menu' | 'document'>  = new EventEmitter();
   loading = false;
   viewDocument = false;
   loadingDocument = false
@@ -16,17 +16,16 @@ export class InterfaceService {
   web = false;
   tablet = false;
   webAndTablet = false;
-  design = {
-    menuScrollBarra: true,
-    menuScrollUltimo: 0,
-    moduloScrollBarra: true,
-    moduloScrollUltimo: 0,
-    opcoesFixar: false,
-  /*   telaTablet: false,
-    telaCelular: false,
-    telaDesktop: true,
-    telaDesktopTablet: false, */
-    animaItem: true,
+  animate = {
+    navMenu: {
+      animate: true,
+      scrollLast: 0
+    },
+    navColection: {
+      animate: true,
+      scrollLast: 0
+    },
+
   };
   designUser = {
     tema: 'pad-tema-black',
@@ -41,5 +40,13 @@ export class InterfaceService {
   ) {
     this.loading = true
   }
+  startAnimation(evento: any, nameScroll: 'navMenu' | 'navColection') {
+    const scrollCurrent = evento.srcElement.scrollTop;
+    const scrollLast = this.animate[nameScroll].scrollLast
+    const compare = ()=> scrollLast > scrollCurrent ? true : false
 
+    this.animate[nameScroll].scrollLast = scrollCurrent
+    this.animate[nameScroll].animate = compare()
+
+  }
 }

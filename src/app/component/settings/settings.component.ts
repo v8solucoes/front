@@ -42,9 +42,10 @@ export class SettingsComponent implements OnInit {
     --font-size-mt-38: 38px; */
 
     const valor = tipo == 'system' ? 0 : tipo == 'increment' ? 1 : -1
-    const size = tipo == 'system' ? 0 : this.data.local.settings.fontSize + valor
+    const size = tipo == 'system' ? 0 : this.data.local.settings.fontSize + valor + 1
 
 /*     document.documentElement.style.setProperty('--menu-size', 300 + size + 'px') */
+    document.documentElement.style.setProperty('--font-size-mt-14', 14 + size + 'px')
     document.documentElement.style.setProperty('--font-size-mt-15', 15 + size + 'px')
     document.documentElement.style.setProperty('--font-size-mt-24', 24 + size + 'px')
     document.documentElement.style.setProperty('--font-size-mt-26', 26 + size + 'px')

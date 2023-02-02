@@ -1,0 +1,13 @@
+@import "/src/sass/constructorNew";
+
+section {
+  @include section($width:var(--colection-size));
+}
+
+app-colection-nav {
+  @extend %nav;
+}
+
+app-colection-footer {
+  @extend %footer;
+}

@@ -15,6 +15,10 @@ import { MenuFooterComponent } from './menu/menu-footer/menu-footer.component';
 import { MenuNavComponent } from './menu/menu-nav/menu-nav.component';
 import { MenuHeaderComponent } from './menu/menu-header/menu-header.component';
 import { MenuComponent } from './menu/menu.component';
+import { ColectionComponent } from './colection/colection/colection.component';
+import { ColectionNavComponent } from './colection/colection-nav/colection-nav.component';
+import { ColectionHeaderComponent } from './colection/colection-header/colection-header.component';
+import { ColectionFooterComponent } from './colection/colection-footer/colection-footer.component';
 
 
 @NgModule({
@@ -32,14 +36,18 @@ import { MenuComponent } from './menu/menu.component';
     MenuNavComponent,
     MenuHeaderComponent,
     MenuFooterComponent,
+    ColectionComponent,
+    ColectionNavComponent,
+    ColectionHeaderComponent,
+    ColectionFooterComponent,
 
     MenuAdmComponent,
     ColectionIndexComponent,
     DocumentComponent,
-    MenuFooterComponent,
-    MenuNavComponent,
-    MenuHeaderComponent,
-    MenuComponent,
+    ColectionComponent,
+    ColectionNavComponent,
+    ColectionHeaderComponent,
+    ColectionFooterComponent,
   ],
   exports: [
     InterfaceComponent

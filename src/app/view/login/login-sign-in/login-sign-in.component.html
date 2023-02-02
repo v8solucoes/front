@@ -1,13 +1,10 @@
 <ng-template #loading>
   <mat-progress-bar mode="query"></mat-progress-bar>
 </ng-template>
-<div *ngIf="loading; else loading">
-  <section [class.mat-elevation-z2]="true">
-    <app-settings></app-settings>
-  </section>
-  <section [class.mat-elevation-z7]="true">
- 
-      <img src="/assets/Logo-V8-Sites01.png" alt="V8" width="80px">
+<div *ngIf="loading; else loading" class="center">
+  <section>
+    <app-settings></app-settings><br>
+      <img src="/assets/Logo-V8-Sites01.png" alt="V8" width="50px">
 
     <h2>{{ data.language == 'en' ? 'App -Test': 'App Teste'}} </h2> 
 

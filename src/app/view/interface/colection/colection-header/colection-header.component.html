@@ -1,0 +1,28 @@
+<div class="margin"></div>
+
+<section
+  *ngFor="
+    let colection of i.data.local.colection[i.data.requestLast.document]
+      | keyvalue;
+    index as ind
+  "
+  routerLinkActive="active-link"
+  [routerLink]="[colection.key, 'update']"
+>
+  <div class="flex">
+    <div class="icon" [ngStyle]="{ 'background-color': colors[ind] }"></div>
+  </div>
+  <div>
+    <app-colection-group
+      class="text"
+      [permission]="
+        i.data.local.getRecursive(i.data.requestLast.document).permission
+      "
+      [model]="i.data.local.getRecursive(i.data.requestLast.document).model"
+      [request]="i.data.requestLast"
+      [colection]="colection.value"
+    >
+    </app-colection-group>
+  </div>
+  <div class="data">Data: 01/02/23</div>
+</section>

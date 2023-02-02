@@ -21,16 +21,11 @@
   </button>
 
   <mat-menu #color="matMenu">
-
- <section>
   <mat-radio-group [(ngModel)]="labelPosition">
     <mat-radio-button value="ligth" (click)="colorTheme('ligth')">{{ data.language == 'en'? 'Ligth':'Claro'}}</mat-radio-button>
     <mat-radio-button value="dark" (click)="colorTheme('dark')">{{ data.language == 'en'? 'Dark':'Escuro'}}</mat-radio-button>
     <mat-radio-button value="sytem" (click)="colorTheme('dark')">{{ data.language == 'en'? 'System':'Padrão'}}</mat-radio-button>
   </mat-radio-group>
- </section>
-    
-
   </mat-menu>
   <mat-menu #font="matMenu">
     

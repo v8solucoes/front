@@ -4,7 +4,7 @@ section {
   @extend %scroll;
 }
 
-mat-card {
+ mat-card {
   width: 100%;
   position: fixed;
   display: flex;
@@ -12,8 +12,19 @@ mat-card {
   margin-right: 8px;
   column-gap: 8px;
   bottom: 0px;
-  background-color: black;
   z-index: 99;
   transition: all .5s;
   place-self: center stretch;
+}
+/* ::ng-deep .dark-theme .mat-menu-panel {
+  background: var(--color-surface-2);
+  box-shadow: var(--color-surface-2-shadow);
+} */
+::ng-deep .dark-theme .mat-drawer {
+  background: var(--color-surface-2);
+  box-shadow: var(--color-surface-2-shadow);
+}
+::ng-deep .dark-theme .mat-card {
+  background: var(--color-surface-2);
+  box-shadow: var(--color-surface-2-shadow);
 }

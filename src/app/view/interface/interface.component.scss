@@ -1,12 +1,19 @@
-@import "/src/sass/construtor";
+@import "/src/sass/constructorNew";
+
+.center {
+  @extend %centerFlex;
+}
 
 section {
+  display: grid;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
   margin: 0;
   padding: 0;
   height: 100%;
   max-width: 960px;
   box-sizing: border-box;
- 
 }
 
 :host mat-drawer-container, mat-sidenav-container {

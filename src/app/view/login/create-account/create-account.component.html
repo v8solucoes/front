@@ -2,9 +2,9 @@
   <mat-progress-bar mode="query"></mat-progress-bar>
 </ng-template>
 
-<div *ngIf="loading; else loading">
+<div *ngIf="loading; else loading" class="center">
 
-  <section [class.mat-elevation-z7]="true">
+  <section>
     <app-form-group [form]="data.form[data.requestLast.document]"
       [permission]="data.local.getRecursive(data.requestLast.document).permission"
       [model]="data.local.getRecursive(data.requestLast.document).model" [request]="data.requestLast"></app-form-group>

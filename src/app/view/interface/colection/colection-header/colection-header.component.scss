@@ -1,0 +1,50 @@
+.margin{
+  margin: 56px;
+}
+section {
+  
+  display: grid;
+  grid-template-columns: 50px auto 50px;
+  column-gap: 8px;
+  color: var(--color-tex-white);
+}
+
+.flex {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: azure;
+}
+.data {
+  display: grid;
+  grid-template-rows: auto;
+  align-items: center;
+  justify-content: center;
+}
+.title {
+  font-family: "Segoe UI","Helvetica Neue", sans-serif;
+  font-size: var(--fonte-17);
+  letter-spacing: 0.15px;
+  font-weight: 400;
+  color: #e9edef;
+  
+}
+.text {
+
+  font-family: "Segoe UI","Helvetica Neue", sans-serif;
+  font-size: var(--fonte-14);
+  letter-spacing: 0.15px;
+  font-weight: 400;
+  color: #8696a0;
+  
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

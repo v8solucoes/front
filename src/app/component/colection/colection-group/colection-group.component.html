@@ -1,23 +1,23 @@
 <ng-container *ngFor="let acess of permission; index as i; first as isFirst">
-
   <ng-container *ngIf="acess.view.form">
     <ng-container [ngSwitch]="model[acess.id].typeModel">
-
       <ng-container *ngSwitchCase="'object'">
-        
-        <app-colection-group [permission]="getPermissionObject(acess)" [model]="getModelObject(acess.id)"
-          [request]="request" [colection]="colection[acess.id]">
+        <app-colection-group
+          [permission]="getPermissionObject(acess)"
+          [model]="getModelObject(acess.id)"
+          [request]="request"
+          [colection]="colection[acess.id]"
+        >
         </app-colection-group>
       </ng-container>
 
-
       <ng-container *ngSwitchCase="'value'">
-
+        
         <div *ngIf="isFirst" class="title">{{ colection[acess.id] }}</div>
-        {{ !isFirst ? model[acess.id].text.en.label: '' }}:
-           {{ !isFirst ? colection[acess.id]: '' }} / 
-
+        {{ !isFirst ? model[acess.id].text.en.label : "" }}:
+        {{ !isFirst ? colection[acess.id] : "" }} /
       </ng-container>
+
     </ng-container>
   </ng-container>
 </ng-container>

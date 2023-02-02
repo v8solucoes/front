@@ -7,11 +7,11 @@ import { GetUserResolver } from './resolve/get-user.resolver';
 import { LoginSignInComponent } from '@view/login/login-sign-in/login-sign-in.component';
 import { PageNotFoundComponent } from './view/page-not-found/page-not-found.component';
 import { InterfaceComponent } from '@view/interface/interface.component';
-import { ColectionIndexComponent } from '@view/interface/colection/colection-index/colection-index.component';
 import { GetColectionResolver } from './resolve/get-colection.resolver';
 import { DocumentComponent } from '@view/interface/document/document.component';
 import { GetDocumentResolver } from './resolve/get-document.resolver';
 import { CreateAccountComponent } from '@view/login/create-account/create-account.component';
+import { ColectionComponent } from '@view/interface/colection/colection/colection.component';
 
 const routes: Routes = [
 
@@ -29,7 +29,7 @@ const routes: Routes = [
     resolve: { 'response': GetUserResolver },
     children: [
       {
-        path: ':document', component: ColectionIndexComponent,
+        path: ':document', component: ColectionComponent,
         canActivate: [AuthGuard],
         resolve: { 'response': GetColectionResolver },
         children: [
