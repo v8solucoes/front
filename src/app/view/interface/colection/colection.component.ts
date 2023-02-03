@@ -10,7 +10,9 @@ import { InterfaceService } from '@view/interface/interface.service';
 })
 export class ColectionComponent implements OnInit {
 load = true
-  constructor(public i: InterfaceService) { }
+  constructor(public i: InterfaceService) {
+    i.dashboard = false
+   }
 
   ngOnInit(): void {
   }

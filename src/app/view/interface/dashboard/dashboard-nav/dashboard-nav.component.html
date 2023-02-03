@@ -1,0 +1,12 @@
+<div class="dashboard-top-title menu-top-nav-font">
+
+  <button mat-icon-button (click)="this.i.actionsEmitter.emit('menu')"><mat-icon>more_vert</mat-icon></button>
+  
+  <span class="menu-top-font">{{i.data.language =='en'?'Dashboard':'Painel de Controle'}}</span>
+
+  <div></div>
+  
+  <button mat-icon-button></button>
+<!--   <button mat-icon-button [routerLink]="['new', 'create']"><mat-icon>add</mat-icon></button> -->
+
+</div>

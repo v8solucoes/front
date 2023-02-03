@@ -10,6 +10,7 @@ import { ModalService } from '@component/modal/modal.service';
 export class InterfaceService {
   actionsEmitter: EventEmitter<'menu' | 'document'>  = new EventEmitter();
   loading = false;
+  dashboard = true;
   viewDocument = false;
   loadingDocument = false
   celullar = false;
@@ -48,5 +49,11 @@ export class InterfaceService {
     this.animate[nameScroll].scrollLast = scrollCurrent
     this.animate[nameScroll].animate = compare()
 
+  }
+  dashboardOpen() {
+    this.dashboard = true
+  }
+  dashboardClose() {
+    this.dashboard = false
   }
 }

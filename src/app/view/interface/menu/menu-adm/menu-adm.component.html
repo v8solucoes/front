@@ -4,25 +4,42 @@
     <!-- <mat-icon class="menu-title-icon">panorama_fish_eye</mat-icon> -->
     <div class="font">{{ text.administrator }}</div>
   </div>
-
 </div>
 <div class="menu-padding">
-  <div class="menu menu-font" routerLinkActive="menu-active" *ngFor="let permission of i.data.local.permission;
-  let in=index let first let last" [routerLink]="[permission.id]">
+  <div
+    class="menu menu-font"
+    routerLinkActive="menu-active"
+    *ngFor="
+      let permission of i.data.local.permission;
+      let in = index;
+      let first;
+      let last
+    "
+    [routerLink]="[permission.id]"
+    (click)="i.dashboardClose()"
+  >
     <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
-    <div class="menu-font">{{ i.data.local.model[permission.id].text[i.data.language].label }}</div>
+    <div class="menu-font">
+      {{ i.data.local.model[permission.id].text[i.data.language].label }}
+    </div>
     <mat-icon class="menu-item-right">chevron_right</mat-icon>
   </div>
 </div>
-
 
 <!-- Devoloping -->
 <div class="menu-padding">
-  <div class="menu menu-font" [routerLink]="[i.data.language =='en'?'/en/app':'/pt/app']">
-   
+  <div
+    class="menu menu-font"
+    [routerLink]="[
+      i.data.language == 'en' ? '/en/app/' : '/pt/app/'
+    ]"
+    (click)="i.dashboardOpen()"
+  >
     <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
-  
-    <div class="menu-font">{{ i.data.language =='en'?'Devoloping...':'Desenvolvendo...' }}</div>
+
+    <div class="menu-font">
+      {{ i.data.language == "en" ? "Devoloping..." : "Desenvolvendo..." }}
+    </div>
     <!-- <div class="menu-item-right">100x</div> -->
     <mat-icon class="menu-item-right">chevron_right</mat-icon>
   </div>
@@ -30,42 +47,33 @@
 <mat-divider class="menu-divider"></mat-divider>
 <div class="menu-padding">
   <div class="menu-title menu-font">
-    <div class="font">{{ i.data.language =='en'?'Agency':'Revenda' }}</div>
+    <div class="font">{{ i.data.language == "en" ? "Agency" : "Revenda" }}</div>
   </div>
 </div>
 <div class="menu-padding">
-  <div class="menu menu-font" [routerLink]="[i.data.language =='en'?'/en/app':'/pt/app']">
+  <div
+    class="menu menu-font"
+    [routerLink]="[i.data.language == 'en' ? '/en/app' : '/pt/app']"
+    (click)="i.dashboardOpen()"
+  >
     <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
-    <div class="menu-font">{{ i.data.language =='en'?'Devoloping...':'Desenvolvendo...' }}</div>
+    <div class="menu-font">
+      {{ i.data.language == "en" ? "Devoloping..." : "Desenvolvendo..." }}
+    </div>
     <mat-icon class="menu-item-right">chevron_right</mat-icon>
   </div>
 </div>
 
 <div class="menu-padding">
-  <div class="menu menu-font" [routerLink]="[i.data.language =='en'?'/en/app':'/pt/app']">
+  <div
+    class="menu menu-font"
+    [routerLink]="[i.data.language == 'en' ? '/en/app' : '/pt/app']"
+    (click)="i.dashboardOpen()"
+  >
     <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
-    <div class="menu-font">{{ i.data.language =='en'?'Devoloping...':'Desenvolvendo...' }}</div>
-    <!-- <div class="menu-item-right">100x</div> -->
-    <mat-icon class="menu-item-right">chevron_right</mat-icon>
-  </div>
-</div>
-
-<mat-divider class="menu-divider"></mat-divider>
-
-<div class="menu-padding">
-  <div class="menu-title menu-font">
-    <div class="font">{{ i.data.language =='en'?'Clients':'Clientes' }}</div>
-  </div>
-  <div class="menu menu-font" [routerLink]="[i.data.language =='en'?'/en/app':'/pt/app']">
-    <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
-    <div class="menu-font">{{ i.data.language =='en'?'Devoloping...':'Desenvolvendo...' }}</div>
-    <mat-icon class="menu-item-right">chevron_right</mat-icon>
-  </div>
-</div>
-<div class="menu-padding">
-  <div class="menu menu-font" [routerLink]="[i.data.language =='en'?'/en/app':'/pt/app']">
-    <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
-    <div class="menu-font">{{ i.data.language =='en'?'Devoloping...':'Desenvolvendo...' }}</div>
+    <div class="menu-font">
+      {{ i.data.language == "en" ? "Devoloping..." : "Desenvolvendo..." }}
+    </div>
     <!-- <div class="menu-item-right">100x</div> -->
     <mat-icon class="menu-item-right">chevron_right</mat-icon>
   </div>
@@ -75,18 +83,67 @@
 
 <div class="menu-padding">
   <div class="menu-title menu-font">
-    <div class="font">{{ i.data.language =='en'?'Clients':'Clientes' }}</div>
+    <div class="font">
+      {{ i.data.language == "en" ? "Clients" : "Clientes" }}
+    </div>
   </div>
-  <div class="menu menu-font" [routerLink]="[i.data.language =='en'?'/en/app':'/pt/app']">
+  <div
+    class="menu menu-font"
+    [routerLink]="[i.data.language == 'en' ? '/en/app' : '/pt/app']"
+    (click)="i.dashboardOpen()"
+  >
     <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
-    <div class="menu-font">{{ i.data.language =='en'?'Devoloping...':'Desenvolvendo...' }}</div>
+    <div class="menu-font">
+      {{ i.data.language == "en" ? "Devoloping..." : "Desenvolvendo..." }}
+    </div>
     <mat-icon class="menu-item-right">chevron_right</mat-icon>
   </div>
 </div>
 <div class="menu-padding">
-  <div class="menu menu-font" [routerLink]="[i.data.language =='en'?'/en/app':'/pt/app']">
+  <div
+    class="menu menu-font"
+    [routerLink]="[i.data.language == 'en' ? '/en/app' : '/pt/app']"
+    (click)="i.dashboardOpen()"
+  >
     <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
-    <div class="menu-font">{{ i.data.language =='en'?'Devoloping...':'Desenvolvendo...' }}</div>
+    <div class="menu-font">
+      {{ i.data.language == "en" ? "Devoloping..." : "Desenvolvendo..." }}
+    </div>
+    <!-- <div class="menu-item-right">100x</div> -->
+    <mat-icon class="menu-item-right">chevron_right</mat-icon>
+  </div>
+</div>
+
+<mat-divider class="menu-divider"></mat-divider>
+
+<div class="menu-padding">
+  <div class="menu-title menu-font">
+    <div class="font">
+      {{ i.data.language == "en" ? "Clients" : "Clientes" }}
+    </div>
+  </div>
+  <div
+    class="menu menu-font"
+    [routerLink]="[i.data.language == 'en' ? '/en/app' : '/pt/app']"
+    (click)="i.dashboardOpen()"
+  >
+    <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
+    <div class="menu-font">
+      {{ i.data.language == "en" ? "Devoloping..." : "Desenvolvendo..." }}
+    </div>
+    <mat-icon class="menu-item-right">chevron_right</mat-icon>
+  </div>
+</div>
+<div class="menu-padding">
+  <div
+    class="menu menu-font"
+    [routerLink]="[i.data.language == 'en' ? '/en/app' : '/pt/app']"
+    (click)="i.dashboardOpen()"
+  >
+    <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
+    <div class="menu-font">
+      {{ i.data.language == "en" ? "Devoloping..." : "Desenvolvendo..." }}
+    </div>
     <!-- <div class="menu-item-right">100x</div> -->
     <mat-icon class="menu-item-right">chevron_right</mat-icon>
   </div>

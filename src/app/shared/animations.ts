@@ -6,11 +6,9 @@ export const Animates = [
 
     state('true', style({
       marginTop: '*',
-      overflow: 'hidden'
     })),
     state('false', style({
       marginTop: '-70px',
-      overflow: 'hidden'
     })),
     transition('* => true', [
       animate('0.3.5s')
@@ -25,11 +23,9 @@ export const Animates = [
 
     state('true', style({
       margin: '*',
-      overflow: 'hidden'
     })),
     state('false', style({
       height: '0px',
-      overflow: 'hidden'
     })),
     transition('* => true', [
       animate('0.3.5s')

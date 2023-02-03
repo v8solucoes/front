@@ -42,7 +42,7 @@ $dark-theme: mat.define-dark-theme((color: (primary: $dark-primary,
   --font-size-mt-26: 26px;
   --font-size-mt-38: 38px;
   --menu-size: 300px;
-  --colection-size: 100%;
+  --colection-size: 300px;
 }
 
 html { padding: 0px; margin: 0px; overflow: hidden;}
@@ -61,7 +61,7 @@ body {
   font-size: var( --font-size-mt-14);
   background-color: var(--color-surface);
   overflow: hidden;
-  @media (max-width: 599px) {
+  @media (max-width: 350px) {
     justify-content:flex-start;
   }
 }

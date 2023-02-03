@@ -1,0 +1,19 @@
+@import "/src/sass/constructorNew";
+
+section {
+  @include section($width:100%);
+}
+
+app-dashboard-nav {
+
+  position: absolute;
+  width: 100%;
+  background: var(--color-surface-2);
+  box-shadow: var(--color-surface-2-shadow);
+  border-radius: 18px 18px 0 0;
+/*   @extend %nav; */
+}
+
+app-dashboard-footer {
+  @extend %footer;
+}

@@ -2,6 +2,7 @@
 
 section {
   @include section($width:var(--colection-size));
+/*   background-color: white; */
 }
 
 app-colection-nav {

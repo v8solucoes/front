@@ -1,0 +1,11 @@
+<div class="menu-margin"></div>
+<div class="menu-padding">
+  <div class="menu menu-font" [routerLink]="[i.data.language =='en'?'/en/app/dashboard':'/pt/app/dashboard']">
+   
+    <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
+  
+    <div class="menu-font">{{ i.data.language =='en'?'Devoloping...':'Desenvolvendo...' }}</div>
+    <!-- <div class="menu-item-right">100x</div> -->
+    <mat-icon class="menu-item-right">chevron_right</mat-icon>
+  </div>
+</div>

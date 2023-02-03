@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { InterfaceService } from '@view/interface/interface.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { InterfaceService } from '@view/interface/interface.service';
   styleUrls: ['./colection-nav.component.scss']
 })
 export class ColectionNavComponent implements OnInit {
-
+  
   constructor(public i: InterfaceService) { }
 
   ngOnInit(): void {

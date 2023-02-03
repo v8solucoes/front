@@ -2,26 +2,30 @@
   <mat-progress-bar mode="query"></mat-progress-bar>
 </ng-template>
 
-<section>
+<div class="center">
+  
+  <div class="container">
 
-  <mat-drawer-container [hasBackdrop]="false" *ngIf="load; else loading">
+    <mat-drawer-container [hasBackdrop]="false" *ngIf="load; else loading">
 
-    <mat-drawer #menu mode="side" [opened]="true">
+      <mat-drawer #menu mode="side" [opened]="true">
 
-      <app-menu> </app-menu>
+        <app-menu> </app-menu>
 
-    </mat-drawer>
+      </mat-drawer>
 
-    <mat-drawer-content>
+      <mat-drawer-content>
 
-      <mat-sidenav-container>
-        
-        <router-outlet></router-outlet>
+        <mat-sidenav-container>
 
-      </mat-sidenav-container>
+          <app-dashboard *ngIf="i.dashboard" class="container-colection"></app-dashboard>
 
-    </mat-drawer-content>
+          <router-outlet> </router-outlet>
 
-  </mat-drawer-container>
+        </mat-sidenav-container>
 
-</section>
+      </mat-drawer-content>
+
+    </mat-drawer-container>
+  </div>
+</div>

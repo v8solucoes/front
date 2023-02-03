@@ -34,12 +34,12 @@
   background: var(--color-surface-1);
   box-shadow: var(--color-surface-1-shadow);
   @extend %scroll;
-  overflow: auto;
+/*   @media (max-width: 600px) {
+    width: 100%;
+   } */
 }
 
-%navMenu {
-
-  &-font {
+%nav-font {
     font-family: Roboto;
     padding-right: 12px;
     font-weight: 500;
@@ -47,20 +47,18 @@
     letter-spacing: 0.1px;
     text-align: left;
     color: var(--color-text-white);
-    cursor: pointer;
-  }
-
-  &-title {
-    padding-left: 12px;
-    display: flex;
-    box-sizing: border-box;
-    width: 100%;
-    height: 56px;
-    flex-direction: row;
-    justify-content: center;
-    justify-content: space-between;
-    align-items: center;
-  }
+    cursor: pointer; 
+}
+%nav-title {
+  padding-left: 12px;
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  height: 56px;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
 %nav {
@@ -70,9 +68,7 @@
   box-shadow: var(--color-surface-2-shadow);
   border-radius: 18px 18px 0 0;
 }
-/* %header {
 
-} */
 %footer {
   position: absolute;
   bottom: 0;

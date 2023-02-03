@@ -31,7 +31,7 @@ export class FirebaseAuthService {
         console.log('Login Sucess')
       }
     
-      this.router.navigate([`${language}/app`])
+      this.router.navigate([`${language}/app/`])
       
     }).catch(o => {
       console.log('Login Error')

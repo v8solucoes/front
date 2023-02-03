@@ -4,13 +4,13 @@
   *ngFor="
     let colection of i.data.local.colection[i.data.requestLast.document]
       | keyvalue;
-    index as ind
+    index as indice
   "
   routerLinkActive="active-link"
   [routerLink]="[colection.key, 'update']"
 >
   <div class="flex">
-    <div class="icon" [ngStyle]="{ 'background-color': colors[ind] }"></div>
+    <div class="icon" [ngStyle]="{ 'background-color': colors[indice] }"></div>
   </div>
   <div>
     <app-colection-group

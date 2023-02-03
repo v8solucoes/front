@@ -15,10 +15,14 @@ import { MenuFooterComponent } from './menu/menu-footer/menu-footer.component';
 import { MenuNavComponent } from './menu/menu-nav/menu-nav.component';
 import { MenuHeaderComponent } from './menu/menu-header/menu-header.component';
 import { MenuComponent } from './menu/menu.component';
-import { ColectionComponent } from './colection/colection/colection.component';
+import { ColectionComponent } from './colection/colection.component';
 import { ColectionNavComponent } from './colection/colection-nav/colection-nav.component';
 import { ColectionHeaderComponent } from './colection/colection-header/colection-header.component';
 import { ColectionFooterComponent } from './colection/colection-footer/colection-footer.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardNavComponent } from './dashboard/dashboard-nav/dashboard-nav.component';
+import { DashboardHeaderComponent } from './dashboard/dashboard-header/dashboard-header.component';
+import { DashboardFooterComponent } from './dashboard/dashboard-footer/dashboard-footer.component';
 
 
 @NgModule({
@@ -48,6 +52,10 @@ import { ColectionFooterComponent } from './colection/colection-footer/colection
     ColectionNavComponent,
     ColectionHeaderComponent,
     ColectionFooterComponent,
+    DashboardComponent,
+    DashboardNavComponent,
+    DashboardHeaderComponent,
+    DashboardFooterComponent,
   ],
   exports: [
     InterfaceComponent

@@ -11,7 +11,7 @@ import { GetColectionResolver } from './resolve/get-colection.resolver';
 import { DocumentComponent } from '@view/interface/document/document.component';
 import { GetDocumentResolver } from './resolve/get-document.resolver';
 import { CreateAccountComponent } from '@view/login/create-account/create-account.component';
-import { ColectionComponent } from '@view/interface/colection/colection/colection.component';
+import { ColectionComponent } from '@view/interface/colection/colection.component';
 
 const routes: Routes = [
 

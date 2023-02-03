@@ -1,11 +1,11 @@
-<div class="menu-top-title menu-top-font" [class.mat-elevation-z1]="true">
+<div class="menu-top-title menu-top-nav-font">
 
   <!-- <button mat-icon-button  [routerLink]="[i.data.language =='en'?'/':'/']"><mat-icon class="icon">chevron_left</mat-icon></button> -->
   
-  <span class="menu-top-font" [routerLink]="[i.data.language =='en'?'/en/app':'/pt/app']">
+  <span class="menu-top-nav-font" [routerLink]="[i.data.language =='en'?'/en/app':'/pt/app']">
     {{ i.data.language == 'en' ? 'V8 App Test': 'V8 App Teste'}}
   </span>
   
   <button mat-icon-button (click)="this.i.actionsEmitter.emit('menu')"><mat-icon class="icon">chevron_left</mat-icon></button>
+
 </div>
-<!-- en/login/sign-in -->
