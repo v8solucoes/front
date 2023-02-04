@@ -32,11 +32,13 @@ export class FirebaseAuthService {
       }
     
       this.router.navigate([`${language}/app/`])
+      return
       
     }).catch(o => {
       console.log('Login Error')
       this.router.navigate([`${language}/login/sign-in`])
       console.log(o)
+      return
     })
 
   }

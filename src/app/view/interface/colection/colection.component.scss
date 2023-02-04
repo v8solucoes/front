@@ -2,7 +2,6 @@
 
 section {
   @include section($width:var(--colection-size));
-/*   background-color: white; */
 }
 
 app-colection-nav {
@@ -12,3 +11,15 @@ app-colection-nav {
 app-colection-footer {
   @extend %footer;
 }
+
+mat-sidenav .dark-theme .mat-drawer-side .mat-drawer-end {
+background-color: blue;
+border-left: none;
+fill: none;
+}
+
+/* ::ng-deep .dark-theme .mat-drawer-side .mat-drawer-end {
+
+border: none;
+border-left: none;
+} */

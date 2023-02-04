@@ -13,9 +13,10 @@
 
       <ng-container *ngSwitchCase="'value'">
         
-        <div *ngIf="isFirst" class="title">{{ colection[acess.id] }}</div>
-        {{ !isFirst ? model[acess.id].text.en.label : "" }}:
-        {{ !isFirst ? colection[acess.id] : "" }} /
+        <div *ngIf="isFirst" class="colection-header-name">{{ colection[acess.id] }}</div>
+
+        {{ !isFirst ? model[acess.id].text.en.label +': '+ colection[acess.id] +' - ' : "" }}
+
       </ng-container>
 
     </ng-container>

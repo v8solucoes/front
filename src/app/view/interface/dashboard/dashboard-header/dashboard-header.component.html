@@ -1,11 +1,28 @@
-<div class="menu-margin"></div>
-<div class="menu-padding">
-  <div class="menu menu-font" [routerLink]="[i.data.language =='en'?'/en/app/dashboard':'/pt/app/dashboard']">
-   
-    <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
-  
-    <div class="menu-font">{{ i.data.language =='en'?'Devoloping...':'Desenvolvendo...' }}</div>
-    <!-- <div class="menu-item-right">100x</div> -->
-    <mat-icon class="menu-item-right">chevron_right</mat-icon>
+<div class="colection-header-margin"></div>
+
+<div class="colection-header-padding">
+  <div class="colection-header-title ">
+    <div class="colection-header-font">
+      {{ i.data.language == "en" ? "Administrator" : "Clientes" }}
+    </div>
+  </div>
+</div>
+
+<div class="colection-header-padding">
+  <div class="colection-header" [routerLink]="[
+      i.data.language == 'en' ? '/en/app/dashboard' : '/pt/app/dashboard'
+    ]">
+    <!-- <mat-icon class="colection-header-item-left">panorama_fish_eye</mat-icon> -->
+    <div class="colection-header-item-left">
+      <div class="colection-header-userColor" style="background-color: blue"></div>
+    </div>
+
+    <div class="colection-header-name">
+      {{ i.data.language == "en" ? "Devoloping..." : "Desenvolvendo..."
+      }}<br />
+      <div class="colection-header-description">Text asdfas asdfasf asdfasdf aasdfasd fasdfflsdf asdfasdfasf asdfasdf asf</div>
+    </div>
+    <!--     <div class="menu-item-right">100x</div> -->
+    <mat-icon class="colection-header-item-right">chevron_right</mat-icon>
   </div>
 </div>

@@ -1,12 +1,14 @@
 <ng-template #loading>
-  <mat-progress-bar mode="query"></mat-progress-bar>
+  {{ i.data.language == 'en'? 'Progress...': 'Carregando...'}}<br>
+  <mat-progress-bar mode="query" [color]="'accent'">
+  </mat-progress-bar>
 </ng-template>
 
 <div class="center">
   
   <div class="container">
 
-    <mat-drawer-container [hasBackdrop]="false" *ngIf="load; else loading">
+    <mat-drawer-container [hasBackdrop]="false" *ngIf="i.load.menu; else loading">
 
       <mat-drawer #menu mode="side" [opened]="true">
 
@@ -18,7 +20,7 @@
 
         <mat-sidenav-container>
 
-          <app-dashboard *ngIf="i.dashboard" class="container-colection"></app-dashboard>
+          <app-dashboard *ngIf="i.load.dashboard" class="container-colection"></app-dashboard>
 
           <router-outlet> </router-outlet>
 

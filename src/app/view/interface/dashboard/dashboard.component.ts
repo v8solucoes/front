@@ -10,7 +10,9 @@ import { Animates } from '@shared-angular/animations';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(public i: InterfaceService) { }
+  constructor(public i: InterfaceService) { 
+    i.load.colection = true;
+  }
 
   ngOnInit(): void {
   }

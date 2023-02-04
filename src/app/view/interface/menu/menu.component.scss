@@ -1,7 +1,7 @@
 @import "/src/sass/constructorNew";
 
 section {
-  @include section($width:var(--menu-size));
+  @include sectionMenu($width:var(--menu-size));
 }
 
 app-menu-nav {

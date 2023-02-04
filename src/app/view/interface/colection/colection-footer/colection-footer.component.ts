@@ -1,3 +1,4 @@
+import { InterfaceService } from '@view/interface/interface.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ColectionFooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public i:InterfaceService
+  ) { }
 
   ngOnInit(): void {
   }

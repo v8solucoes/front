@@ -1,22 +1,20 @@
-<mat-sidenav-content>
+<ng-template #loading>
+  {{ i.data.language == 'en'? 'Progress...': 'Carregando...'}}<br>
+  <mat-progress-bar mode="query" [color]="'accent'">
+  </mat-progress-bar>
+</ng-template>
 
-  <ng-template #loading>
-    <mat-progress-bar mode="query"></mat-progress-bar>
-  </ng-template>
+<mat-sidenav-content *ngIf="i.load.colection; else loading">
 
-  <ng-container *ngIf="load; else loading">
+  <section (scroll)="i.startAnimation($event,'navColection')">
 
-    <section (scroll)="i.startAnimation($event,'navColection')">
+    <app-colection-nav [@navTop]="i.animate.navColection.animate"></app-colection-nav>
 
-      <app-colection-nav [@navTop]="i.animate.navColection.animate"></app-colection-nav>
+    <app-colection-header></app-colection-header>
 
-      <app-colection-header></app-colection-header>
+    <app-colection-footer [@navFooter]="i.animate.navColection.animate"></app-colection-footer>
 
-    <!--   <app-colection-footer [@navFooter]="i.animate.navColection.animate"></app-colection-footer> -->
-
-    </section>
-
-  </ng-container>
+  </section>
 
 </mat-sidenav-content>
 

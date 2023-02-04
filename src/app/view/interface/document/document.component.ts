@@ -28,7 +28,7 @@ export class DocumentComponent implements OnInit {
 
     this.inscription = this.route.data.subscribe(({ response }) => {
       /* this.i.actionsEmitter.emit('menu') */
-      this.load = false
+      this.i.load.document = false
 
       if (response == null) {
 
@@ -54,7 +54,7 @@ export class DocumentComponent implements OnInit {
 
       setTimeout(() => {
 
-        this.load = true
+        this.i.load.document = true
        /*  this.i.actionsEmitter.emit('documentOpen') */
 
       }, 500);

@@ -12,7 +12,10 @@
     justify-content: start
   }
 }
+mat-progress-bar {
 
+  height: 8px;
+}
 .container {
   width: 600px;
   height: 100%;
@@ -48,6 +51,7 @@
 }
 :host .mat-drawer-inner-container {
   overflow: hidden;
+  border: none;
 }
 
 /* :host mat-sidenav-container {

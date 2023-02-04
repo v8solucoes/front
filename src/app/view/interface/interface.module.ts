@@ -23,6 +23,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardNavComponent } from './dashboard/dashboard-nav/dashboard-nav.component';
 import { DashboardHeaderComponent } from './dashboard/dashboard-header/dashboard-header.component';
 import { DashboardFooterComponent } from './dashboard/dashboard-footer/dashboard-footer.component';
+import { DocumentNavComponent } from './document/document-nav/document-nav.component';
+import { DocumentHeaderComponent } from './document/document-header/document-header.component';
+import { DocumentFooterComponent } from './document/document-footer/document-footer.component';
 
 
 @NgModule({
@@ -56,6 +59,10 @@ import { DashboardFooterComponent } from './dashboard/dashboard-footer/dashboard
     DashboardNavComponent,
     DashboardHeaderComponent,
     DashboardFooterComponent,
+    DocumentNavComponent,
+    DocumentNavComponent,
+    DocumentHeaderComponent,
+    DocumentFooterComponent,
   ],
   exports: [
     InterfaceComponent

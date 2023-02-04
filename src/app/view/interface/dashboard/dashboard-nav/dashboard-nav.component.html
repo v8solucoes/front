@@ -1,12 +1,9 @@
-<div class="dashboard-top-title menu-top-nav-font">
+<div class="dashboard-top-title dashboard-top-font" [class.mat-elevation-z1]="true">
 
   <button mat-icon-button (click)="this.i.actionsEmitter.emit('menu')"><mat-icon>more_vert</mat-icon></button>
   
-  <span class="menu-top-font">{{i.data.language =='en'?'Dashboard':'Painel de Controle'}}</span>
-
-  <div></div>
+  <span class="dashboard-top-font">{{i.data.language =='en'?'Dashboard':'Painel de Controle'}}</span>
   
-  <button mat-icon-button></button>
-<!--   <button mat-icon-button [routerLink]="['new', 'create']"><mat-icon>add</mat-icon></button> -->
+  <button mat-icon-button><!-- <mat-icon>add</mat-icon> --></button>
 
 </div>

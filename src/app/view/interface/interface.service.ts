@@ -8,9 +8,15 @@ import { ModalService } from '@component/modal/modal.service';
   providedIn: 'root'
 })
 export class InterfaceService {
-  actionsEmitter: EventEmitter<'menu' | 'document'>  = new EventEmitter();
-  loading = false;
-  dashboard = true;
+  actionsEmitter: EventEmitter<'menu' | 'document'> = new EventEmitter();
+  load = {
+    menu: false,
+    colection: false,
+    document: false,
+    dashboard: true
+  }
+/*   loading = false; */
+
   viewDocument = false;
   loadingDocument = false
   celullar = false;
@@ -23,6 +29,10 @@ export class InterfaceService {
       scrollLast: 0
     },
     navColection: {
+      animate: true,
+      scrollLast: 0
+    },
+    navDashboard: {
       animate: true,
       scrollLast: 0
     },
@@ -39,9 +49,9 @@ export class InterfaceService {
     public backand: BackandService,
     public auth: FirebaseAuthService
   ) {
-    this.loading = true
+    this.load.menu = true
   }
-  startAnimation(evento: any, nameScroll: 'navMenu' | 'navColection') {
+  startAnimation(evento: any, nameScroll: 'navMenu' | 'navColection'| 'navDashboard') {
     const scrollCurrent = evento.srcElement.scrollTop;
     const scrollLast = this.animate[nameScroll].scrollLast
     const compare = ()=> scrollLast > scrollCurrent ? true : false
@@ -51,9 +61,9 @@ export class InterfaceService {
 
   }
   dashboardOpen() {
-    this.dashboard = true
+    this.load.dashboard = true
   }
   dashboardClose() {
-    this.dashboard = false
+    this.load.dashboard = false
   }
 }

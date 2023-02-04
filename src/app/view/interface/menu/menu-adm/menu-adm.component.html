@@ -16,7 +16,7 @@
       let last
     "
     [routerLink]="[permission.id]"
-    (click)="i.dashboardClose()"
+    (click)="[i.load.colection = false, i.dashboardClose()]"
   >
     <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
     <div class="menu-font">

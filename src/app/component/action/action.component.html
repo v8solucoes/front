@@ -8,7 +8,7 @@
   [ngStyle]="{'width.px': width}"
    (click)="validar()" *ngIf="!document.valid">{{ text[action]}}</button>
 
-  <button mat-raised-button color="primary"
+  <button mat-raised-button 
   [ngStyle]="{'width.px': width}"
    (click)="crud()" *ngIf="document.valid && !processing">{{ text[action] }}</button>
 

@@ -9,9 +9,10 @@ import { InterfaceService } from '@view/interface/interface.service';
   animations:[Animates]
 })
 export class ColectionComponent implements OnInit {
-load = true
+
   constructor(public i: InterfaceService) {
-    i.dashboard = false
+    i.load.dashboard = false
+    i.load.colection = true
    }
 
   ngOnInit(): void {
