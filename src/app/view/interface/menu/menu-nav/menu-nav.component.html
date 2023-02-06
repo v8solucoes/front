@@ -2,7 +2,9 @@
 
   <!-- <button mat-icon-button  [routerLink]="[i.data.language =='en'?'/':'/']"><mat-icon class="icon">chevron_left</mat-icon></button> -->
   
-  <span class="menu-top-nav-font" [routerLink]="[i.data.language =='en'?'/en/app':'/pt/app']">
+  <span class="menu-top-nav-font" [routerLink]="[
+  i.data.language == 'en' ? '/en/app' : '/pt/app'
+]">
     {{ i.data.language == 'en' ? 'V8 App Test': 'V8 App Teste'}}
   </span>
   

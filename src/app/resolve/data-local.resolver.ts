@@ -44,7 +44,7 @@ export class DataLocalResolver implements Resolve<Irequest> {
     const test = new TestCompose(request).testRequest
 
     if (test == null) {
-
+      
       if (_debug.resolver) {
         console.log('Local Resolver')
       }
@@ -55,9 +55,7 @@ export class DataLocalResolver implements Resolve<Irequest> {
         'userId': 'null',
         'acessToken': 'null'
       }
-      
       this.data.form[`${request.document}`] = this.form.createForm()
-      
       return of(request)
 
     } else {

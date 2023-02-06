@@ -3,10 +3,17 @@
 .menu-top {
   
   &-font {
+    
     @extend %nav-font;
+  
   }
 
   &-title {
+   
     @extend %nav-title;
   }
+  
+}
+span{
+  cursor: pointer;  
 }

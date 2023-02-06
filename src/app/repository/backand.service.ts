@@ -59,8 +59,6 @@ export class BackandService {
       language: this.data.requestLast.language,
       typeExecute: 'back'
     }
-    console.log(action)
-    console.log(req)
 
     return this.http.post<IresponseValidatorCompose>(`${environment.api}/crudGeneric`, req)
   }

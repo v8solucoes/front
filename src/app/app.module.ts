@@ -12,10 +12,10 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { InterfaceModule } from '@view/interface/interface.module';
 import { LoginModule } from '@view/login/login.module';
 import { FormValidateModule } from '@component/modal/form-validate/form-validate.module';
-/* import { ComponentSharedModule } from './app.module.shared'; */
 
 // Components
 import { AppComponent } from './app.component';
+import { ComponentSharedModule } from './app.module.shared';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { AppComponent } from './app.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
 
     // Personal App
-/*     ComponentSharedModule, */
+    ComponentSharedModule,
     LoginModule,
     InterfaceModule,
 

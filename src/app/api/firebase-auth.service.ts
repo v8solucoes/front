@@ -31,15 +31,14 @@ export class FirebaseAuthService {
         console.log('Login Sucess')
       }
     
-      this.router.navigate([`${language}/app/`])
-      return
+      return true
       
     }).catch(o => {
       console.log('Login Error')
       this.router.navigate([`${language}/login/sign-in`])
       console.log(o)
       return
-    })
+    }).finally()
 
   }
   async loginOut() {

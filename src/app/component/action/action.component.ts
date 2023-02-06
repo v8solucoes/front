@@ -86,8 +86,15 @@ export class ActionComponent implements OnInit {
         const email = this.i.data.form[this.i.data.requestLast.document].get(['sign-in', 'email'])?.value
         const password = this.i.data.form[this.i.data.requestLast.document]?.get(['sign-in', 'password'])?.value
         const language = this.i.data.language
-
-        return this.i.auth.loginIn(email, password, language)
+        this.i.auth.loginIn(email, password, language).then(loged => {
+          
+          if (loged) {
+          this.i.auth.router.navigate([`${language}/app/`])
+          }
+          return
+        }).finally()
+       
+        return 
       }
 
     } catch (error) {
