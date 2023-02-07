@@ -5,9 +5,10 @@
 /tmp
 /out-tsc
 /bazel-out
-/src/environments/
-package-lock.json
 
+package-lock.json
+/src/environments/*
+!/src/environments/.gitkeep 
 
 # Node
 /node_modules
