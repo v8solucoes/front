@@ -17,7 +17,7 @@ export class InterfaceComponent implements OnInit {
   @ViewChild('menu') menu: any;
   @ViewChild('document') document: any;
   
-  load = false
+/*   load = false */
   inscription!: Subscription
 
   constructor(
@@ -68,8 +68,6 @@ export class InterfaceComponent implements OnInit {
         console.log('Interface Sucess')
         console.log(this.i.data.requestLast)
       }
-
-      this.load = true
     })
   }
 

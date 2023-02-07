@@ -1,3 +1,4 @@
+import { InterfaceService } from './../view/interface/interface.service';
 import { BackandService } from '@repository/backand.service';
 import { Injectable } from '@angular/core';
 import {
@@ -20,12 +21,13 @@ export class GetColectionResolver implements Resolve<any> {
     private router: Router,
     public auth: FirebaseAuthService,
     private resolveService: ResolveService,
-    private data: DataService,
+   /*  private data: DataService, */
+    private i: InterfaceService,
     private backand: BackandService,
   ) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-   
+    this.i.load.colection = false
     const request = this.resolveService.getRequest(route, state)
     const test = new TestCompose(request).testRequest
     
@@ -39,7 +41,7 @@ export class GetColectionResolver implements Resolve<any> {
         console.log('Resolve Colection Error')
       }   
       
-      this.data.errorResolve = test
+      this.i.data.errorResolve = test
       this.router.navigate([`errorResolver`])
 
       return of()

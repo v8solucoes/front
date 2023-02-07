@@ -5,9 +5,9 @@ section {
 }
 
 app-menu-nav {
-  @extend %nav;
+  @include nav($width:100%);
 }
 
 app-menu-footer {
-  @extend %footer;
+  @include footer($width:var(--menu-size));
 }

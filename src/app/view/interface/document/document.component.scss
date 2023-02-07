@@ -2,15 +2,21 @@
 /* @import "/src/sass/construtor"; */
 
 section {
-  @include section($width:var(--colection-size));
+  @include section($width:var(--document-size));
 }
-
+app-document-header {
+  width: 100%;
+  padding-left: 0px;
+  margin-left:0px;
+  box-sizing: border-box;
+}
 app-document-nav {
-  @extend %nav;
+  @include nav($width:var(--document-size));
+ 
 }
 
 app-document-footer {
-  @extend %footer;
+  @include footer($width:var(--document-size));
 }
 
 
@@ -37,3 +43,4 @@ app-document-footer {
   background: var(--color-surface-2);
   box-shadow: var(--color-surface-2-shadow);
 }
+

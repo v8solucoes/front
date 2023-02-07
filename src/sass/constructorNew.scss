@@ -35,6 +35,7 @@
   height: 100%;
   background: var(--color-surface-1);
   box-shadow: var(--color-surface-1-shadow);
+
   @extend %scroll;
 }
 @mixin section($width) {
@@ -42,6 +43,7 @@
   height: 100%;
   background: var(--color-surface-1);
   box-shadow: var(--color-surface-1-shadow);
+  
   @extend %scroll;
   @media (max-width: 600px) {
     width: 100vw;
@@ -71,23 +73,30 @@
   align-items: center;
 }
 
-%nav {
+@mixin nav($width) {
   position: absolute;
-  width: 100%;
+  width: $width;
   background: var(--color-surface-2);
   box-shadow: var(--color-surface-2-shadow);
   border-radius: 18px 18px 0 0;
+  z-index: 100;
+  @media (max-width: 600px) {
+    width: 100%;
+   }
 }
 
-%footer {
+@mixin footer($width) {
   position: absolute;
   bottom: 0;
   margin-bottom: 0px;
-  width: 100%;
+  width: $width;
   height: 56px;
   background: var(--color-surface-2);
   box-shadow: var(--color-surface-2-shadow);
   border-radius: 0 0 18px 18px;
+  @media (max-width: 600px) {
+    width: 100%;
+   }
 }
 
 %scroll {

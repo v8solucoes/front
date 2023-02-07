@@ -5,21 +5,26 @@ section {
 }
 
 app-colection-nav {
-  @extend %nav;
+  @include nav($width:var(--colection-size));
 }
 
 app-colection-footer {
-  @extend %footer;
+  @include footer($width:var(--colection-size));
 }
 
-mat-sidenav .dark-theme .mat-drawer-side .mat-drawer-end {
+.dark-theme .mat-drawer-side .mat-drawer-end {
 background-color: blue;
-border-left: none;
-fill: none;
+border-left: solid 0px;
+border-right: solid 0px;
+/* fill: none;
+border: none; */
 }
 
-/* ::ng-deep .dark-theme .mat-drawer-side .mat-drawer-end {
+::ng-deep .dark-theme .mat-drawer-side .mat-drawer-end {
 
-border: none;
-border-left: none;
-} */
+  background-color: blue;
+/*   border-left: none;
+  border-right: none;
+  fill: none; */
+  border: none;
+}
