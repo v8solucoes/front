@@ -68,6 +68,7 @@ export class InterfaceComponent implements OnInit {
         console.log('Interface Sucess')
         console.log(this.i.data.requestLast)
       }
+
     })
   }
 

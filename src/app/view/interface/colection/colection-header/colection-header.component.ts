@@ -32,12 +32,13 @@ export class ColectionHeaderComponent implements OnInit {
       this.i.data.local.colection[`${this.i.data.requestLast.document}`] = response
       this.colections = response
 
+      this.i.load.colectionHeader = true 
     })
   }
 
   ngOnInit(): void {
    
-  /*   console.log(this.createColors) */
+
   }
   get createColors() {
     let colors: any[] = []

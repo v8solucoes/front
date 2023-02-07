@@ -12,6 +12,7 @@ export class InterfaceService {
   load = {
     menu: false,
     colection: false,
+    colectionHeader: false,
     document: false,
     dashboard: true
   }

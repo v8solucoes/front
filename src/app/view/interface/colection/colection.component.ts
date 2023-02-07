@@ -11,12 +11,12 @@ import { InterfaceService } from '@view/interface/interface.service';
 export class ColectionComponent implements OnInit {
 
   constructor(public i: InterfaceService) {
-  
+    this.i.load.dashboard = false
+    this.i.load.colection = true
    }
 
   ngOnInit(): void {
-    this.i.load.dashboard = false
-    this.i.load.colection = true
+ 
   }
 
 }
