@@ -7,8 +7,8 @@
 /bazel-out
 
 package-lock.json
-/src/environments/*
-!/src/environments/.gitkeep 
+src/environments/
+
 
 # Node
 /node_modules
