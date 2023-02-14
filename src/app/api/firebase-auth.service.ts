@@ -44,11 +44,12 @@ export class FirebaseAuthService {
   async loginOut() {
 
     const auth = getAuth();
-    /*     environment.test ? connectAuthEmulator(auth, "http://localhost:9099") : ''; */
+      /*   environment.test ? connectAuthEmulator(auth, "http://localhost:9099") : ''; */
 
     return signOut(auth).then(() => {
       console.log('signOut Sucess')
-      this.router.navigate([`en/login/sign-in`])
+    
+      this.router.navigate([this.data.language =='en'?'en/login/sign-in':'pt/login/sign-in'])
     }).catch((error) => {
       // An error happened.
       console.log('signOut Error')

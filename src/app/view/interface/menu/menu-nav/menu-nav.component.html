@@ -1,7 +1,7 @@
 <div class="menu-top-title menu-top-nav-font"
 (click)="i.dashboardOpen()">
 
-  <!-- <button mat-icon-button  [routerLink]="[i.data.language =='en'?'/':'/']"><mat-icon class="icon">chevron_left</mat-icon></button> -->
+  <button mat-icon-button (click)="i.auth.loginOut()" ><mat-icon class="icon">logout</mat-icon></button>
   
   <span class="menu-top-nav-font" [routerLink]="[
   i.data.language == 'en' ? '/en/app' : '/pt/app'

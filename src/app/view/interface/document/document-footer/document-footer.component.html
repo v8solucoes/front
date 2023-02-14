@@ -1,13 +1,16 @@
 <div class="flex">
-  <button mat-raised-button 
-  [routerLink]="[i.data.language == 'en' ? '/en/app' : '/pt/app']"
-   (click)="i.dashboardOpen()">
-    <!--  <mat-icon>add</mat-icon> -->
-     {{ i.data.language == 'en'? 'Cancel':'Cancelar'}}
-   </button>
-  <button mat-raised-button [routerLink]="['new', 'create']">
-<!--     <mat-icon>add</mat-icon> -->
-    {{ i.data.language == 'en'? 'Update':'Atualizar'}}
-  </button>
+  <ng-container *ngIf="i.celullar">
+    <button mat-raised-button [routerLink]="[i.data.language == 'en' ? '/en/app' : '/pt/app']"
+      (click)="i.dashboardOpen()">
+      <!--  <mat-icon>add</mat-icon> -->
+      {{ i.data.language == 'en'? 'Cancel':'Cancelar'}}
+    </button>
 
+  </ng-container>
+<!--   <button mat-raised-button [routerLink]="['new', 'create']">
+
+    {{ i.data.language == 'en'? 'Update':'Atualizar'}}
+  </button> -->
+
+  <app-action [action]="'update'"></app-action>
 </div>

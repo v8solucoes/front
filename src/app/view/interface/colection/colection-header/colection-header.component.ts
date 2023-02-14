@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Icol } from '@domain/interface';
 import { _debug } from '@repositoryDomain/debug';
@@ -10,13 +10,14 @@ import { Subscription } from 'rxjs';
   templateUrl: './colection-header.component.html',
   styleUrls: ['./colection-header.component.scss']
 })
-export class ColectionHeaderComponent implements OnInit {
+export class ColectionHeaderComponent implements AfterContentInit, OnDestroy {
 
   colections!: Icol
   inscription!: Subscription
   text = this.i.data.local.text.action[this.i.data.language]
   colors = this.createColors
   modelName: string = ''
+  load = true;
 
   constructor(
     public i: InterfaceService,
@@ -33,13 +34,20 @@ export class ColectionHeaderComponent implements OnInit {
       this.colections = response
 
       this.i.load.colectionHeader = true 
+      console.log('inscription')
     })
   }
 
-  ngOnInit(): void {
-   
-
+  ngAfterContentInit(): void {
+ /*    console.log('after') */
+    
+    this.load = false;
   }
+  ngOnDestroy(): void {
+    this.inscription.unsubscribe
+  }
+  
+
   get createColors() {
     let colors: any[] = []
     for (var i = 0; i < 50; i++) {

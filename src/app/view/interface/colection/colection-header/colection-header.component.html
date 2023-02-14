@@ -9,6 +9,11 @@
 <div *ngIf="i.load.colectionHeader; else loading;">
 
   <div class="colection-header-margin"></div>
+  <div *ngIf="load">
+    {{ i.data.language == 'en'? 'Progress...': 'Carregando...'}}<br>
+    <mat-spinner [color]="'accent'"></mat-spinner>
+  
+  </div>
   <div class="colection-header-padding">
     <div class="colection-header-title ">
       <div class="colection-header-font">
@@ -33,9 +38,159 @@
       </app-colection-group>
 
       <mat-icon class="colection-header-item-right">chevron_right</mat-icon>
-      <!--   <div class="menu-item-right"> 01/02</div> -->
-    </div>
 
+    </div>
+    <div *ngFor="
+    let colection of i.data.local.colection[i.data.requestLast.document] | keyvalue; index as indice;" routerLinkActive="colection-header-active" [routerLink]="[colection.key, 'update']" class="colection-header">
+      <div class="colection-header-item-left">
+        <div class="colection-header-userColor" [ngStyle]="{'background-color': colors[indice]}"></div>
+      </div>
+
+
+      <app-colection-group class="colection-header-description" [permission]="
+        i.data.local.getRecursive(i.data.requestLast.document).permission
+      " [model]="i.data.local.getRecursive(i.data.requestLast.document).model" [request]="i.data.requestLast"
+        [colection]="colection.value">
+      </app-colection-group>
+
+      <mat-icon class="colection-header-item-right">chevron_right</mat-icon>
+
+    </div> <div *ngFor="
+    let colection of i.data.local.colection[i.data.requestLast.document] | keyvalue; index as indice;" routerLinkActive="colection-header-active" [routerLink]="[colection.key, 'update']" class="colection-header">
+      <div class="colection-header-item-left">
+        <div class="colection-header-userColor" [ngStyle]="{'background-color': colors[indice]}"></div>
+      </div>
+
+
+      <app-colection-group class="colection-header-description" [permission]="
+        i.data.local.getRecursive(i.data.requestLast.document).permission
+      " [model]="i.data.local.getRecursive(i.data.requestLast.document).model" [request]="i.data.requestLast"
+        [colection]="colection.value">
+      </app-colection-group>
+
+      <mat-icon class="colection-header-item-right">chevron_right</mat-icon>
+
+    </div> <div *ngFor="
+    let colection of i.data.local.colection[i.data.requestLast.document] | keyvalue; index as indice;" routerLinkActive="colection-header-active" [routerLink]="[colection.key, 'update']" class="colection-header">
+      <div class="colection-header-item-left">
+        <div class="colection-header-userColor" [ngStyle]="{'background-color': colors[indice]}"></div>
+      </div>
+
+
+      <app-colection-group class="colection-header-description" [permission]="
+        i.data.local.getRecursive(i.data.requestLast.document).permission
+      " [model]="i.data.local.getRecursive(i.data.requestLast.document).model" [request]="i.data.requestLast"
+        [colection]="colection.value">
+      </app-colection-group>
+
+      <mat-icon class="colection-header-item-right">chevron_right</mat-icon>
+
+    </div> <div *ngFor="
+    let colection of i.data.local.colection[i.data.requestLast.document] | keyvalue; index as indice;" routerLinkActive="colection-header-active" [routerLink]="[colection.key, 'update']" class="colection-header">
+      <div class="colection-header-item-left">
+        <div class="colection-header-userColor" [ngStyle]="{'background-color': colors[indice]}"></div>
+      </div>
+
+
+      <app-colection-group class="colection-header-description" [permission]="
+        i.data.local.getRecursive(i.data.requestLast.document).permission
+      " [model]="i.data.local.getRecursive(i.data.requestLast.document).model" [request]="i.data.requestLast"
+        [colection]="colection.value">
+      </app-colection-group>
+
+      <mat-icon class="colection-header-item-right">chevron_right</mat-icon>
+
+    </div> <div *ngFor="
+    let colection of i.data.local.colection[i.data.requestLast.document] | keyvalue; index as indice;" routerLinkActive="colection-header-active" [routerLink]="[colection.key, 'update']" class="colection-header">
+      <div class="colection-header-item-left">
+        <div class="colection-header-userColor" [ngStyle]="{'background-color': colors[indice]}"></div>
+      </div>
+
+
+      <app-colection-group class="colection-header-description" [permission]="
+        i.data.local.getRecursive(i.data.requestLast.document).permission
+      " [model]="i.data.local.getRecursive(i.data.requestLast.document).model" [request]="i.data.requestLast"
+        [colection]="colection.value">
+      </app-colection-group>
+
+      <mat-icon class="colection-header-item-right">chevron_right</mat-icon>
+
+    </div> <div *ngFor="
+    let colection of i.data.local.colection[i.data.requestLast.document] | keyvalue; index as indice;" routerLinkActive="colection-header-active" [routerLink]="[colection.key, 'update']" class="colection-header">
+      <div class="colection-header-item-left">
+        <div class="colection-header-userColor" [ngStyle]="{'background-color': colors[indice]}"></div>
+      </div>
+
+
+      <app-colection-group class="colection-header-description" [permission]="
+        i.data.local.getRecursive(i.data.requestLast.document).permission
+      " [model]="i.data.local.getRecursive(i.data.requestLast.document).model" [request]="i.data.requestLast"
+        [colection]="colection.value">
+      </app-colection-group>
+
+      <mat-icon class="colection-header-item-right">chevron_right</mat-icon>
+
+    </div> <div *ngFor="
+    let colection of i.data.local.colection[i.data.requestLast.document] | keyvalue; index as indice;" routerLinkActive="colection-header-active" [routerLink]="[colection.key, 'update']" class="colection-header">
+      <div class="colection-header-item-left">
+        <div class="colection-header-userColor" [ngStyle]="{'background-color': colors[indice]}"></div>
+      </div>
+
+
+      <app-colection-group class="colection-header-description" [permission]="
+        i.data.local.getRecursive(i.data.requestLast.document).permission
+      " [model]="i.data.local.getRecursive(i.data.requestLast.document).model" [request]="i.data.requestLast"
+        [colection]="colection.value">
+      </app-colection-group>
+
+      <mat-icon class="colection-header-item-right">chevron_right</mat-icon>
+
+    </div> <div *ngFor="
+    let colection of i.data.local.colection[i.data.requestLast.document] | keyvalue; index as indice;" routerLinkActive="colection-header-active" [routerLink]="[colection.key, 'update']" class="colection-header">
+      <div class="colection-header-item-left">
+        <div class="colection-header-userColor" [ngStyle]="{'background-color': colors[indice]}"></div>
+      </div>
+
+
+      <app-colection-group class="colection-header-description" [permission]="
+        i.data.local.getRecursive(i.data.requestLast.document).permission
+      " [model]="i.data.local.getRecursive(i.data.requestLast.document).model" [request]="i.data.requestLast"
+        [colection]="colection.value">
+      </app-colection-group>
+
+      <mat-icon class="colection-header-item-right">chevron_right</mat-icon>
+
+    </div> <div *ngFor="
+    let colection of i.data.local.colection[i.data.requestLast.document] | keyvalue; index as indice;" routerLinkActive="colection-header-active" [routerLink]="[colection.key, 'update']" class="colection-header">
+      <div class="colection-header-item-left">
+        <div class="colection-header-userColor" [ngStyle]="{'background-color': colors[indice]}"></div>
+      </div>
+
+
+      <app-colection-group class="colection-header-description" [permission]="
+        i.data.local.getRecursive(i.data.requestLast.document).permission
+      " [model]="i.data.local.getRecursive(i.data.requestLast.document).model" [request]="i.data.requestLast"
+        [colection]="colection.value">
+      </app-colection-group>
+
+      <mat-icon class="colection-header-item-right">chevron_right</mat-icon>
+
+    </div> <div *ngFor="
+    let colection of i.data.local.colection[i.data.requestLast.document] | keyvalue; index as indice;" routerLinkActive="colection-header-active" [routerLink]="[colection.key, 'update']" class="colection-header">
+      <div class="colection-header-item-left">
+        <div class="colection-header-userColor" [ngStyle]="{'background-color': colors[indice]}"></div>
+      </div>
+
+
+      <app-colection-group class="colection-header-description" [permission]="
+        i.data.local.getRecursive(i.data.requestLast.document).permission
+      " [model]="i.data.local.getRecursive(i.data.requestLast.document).model" [request]="i.data.requestLast"
+        [colection]="colection.value">
+      </app-colection-group>
+
+      <mat-icon class="colection-header-item-right">chevron_right</mat-icon>
+
+    </div>
   </div>
 
 </div>

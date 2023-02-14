@@ -22,7 +22,7 @@ export const Animates = [
   trigger('navFooter', [
 
     state('true', style({
-      margin: '*',
+      height: '*',
     })),
     state('false', style({
       height: '0px',

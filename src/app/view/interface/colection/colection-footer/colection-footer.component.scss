@@ -2,11 +2,14 @@
 
 
 .flex {
+  position:fixed;
+  height: 56px;
+/*   width: 100%; */
   display: flex;
-  align-content: center;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-evenly;
-  height: 100%;
 
 }
 button {
