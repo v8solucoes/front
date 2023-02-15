@@ -27,7 +27,7 @@ export class GetColectionResolver implements Resolve<any> {
   ) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-    this.i.load.colection = false
+/*     this.i.load.colection = false */
     const request = this.resolveService.getRequest(route, state)
     const test = new TestCompose(request).testRequest
     

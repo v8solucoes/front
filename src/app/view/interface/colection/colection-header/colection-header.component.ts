@@ -23,7 +23,7 @@ export class ColectionHeaderComponent implements AfterContentInit, OnDestroy {
     public i: InterfaceService,
     private route: ActivatedRoute
   ) {
-  
+    this.i.load.colectionHeader = false 
     this.inscription = this.route.data.subscribe(({ response }) => {
 
       if (_debug.pg.document) {
@@ -34,17 +34,15 @@ export class ColectionHeaderComponent implements AfterContentInit, OnDestroy {
       this.colections = response
 
       this.i.load.colectionHeader = true 
-      console.log('inscription')
     })
   }
 
   ngAfterContentInit(): void {
- /*    console.log('after') */
     
     this.load = false;
   }
   ngOnDestroy(): void {
-    this.inscription.unsubscribe
+    this.inscription.unsubscribe()
   }
   
 

@@ -30,26 +30,25 @@
 
 }
 
-@mixin sectionMenu($width) {
-  width: $width;
+/* @mixin sectionMenu($width) {
+  max-width: var(--menu-size-max);
+  min-width: var(--menu-size-min);
   height: 100vh;
   background: var(--color-surface-1);
   box-shadow: var(--color-surface-1-shadow);
 
   @extend %scroll;
-}
+} */
 
-@mixin section($width) {
-  width: $width;
+@mixin section($width-max, $width-min) {
+  max-width: $width-max;
+  min-width: $width-min;
   height: 100vh;
   background: var(--color-surface-1);
   box-shadow: var(--color-surface-1-shadow);
 
   @extend %scroll;
 
-  @media (max-width: 600px) {
-    width: 100vw;
-  }
 }
 
 %nav-font {
@@ -75,20 +74,18 @@
   align-items: center;
 }
 
-@mixin nav($width) {
+@mixin nav($width-max, $width-min) {
   position: absolute;
-  width: $width;
+  width: $width-max;
+  max-width:$width-max;
+  min-width:$width-min;
   background: var(--color-surface-2);
   box-shadow: var(--color-surface-2-shadow);
   border-radius: 18px 18px 0 0;
   z-index: 100;
-
-  @media (max-width: 600px) {
-    width: 100%;
-  }
 }
 
-@mixin footer($width) {
+@mixin footer($width-max, $width-min) {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -96,15 +93,18 @@
   position: absolute;
   bottom: 0;
   margin-bottom: 0px;
-  width: $width;
+
+
   height: 56px;
+  max-width:$width-max;
+  min-width:$width-min;
   background: var(--color-surface-2);
   box-shadow: var(--color-surface-2-shadow);
   border-radius: 0 0 18px 18px;
 
-  @media (max-width: 600px) {
+  /* @media (max-width: 600px) {
     width: 100%;
-  }
+  } */
 }
 
 %scroll {
@@ -135,91 +135,4 @@
     background: rgba(255, 255, 255, 0.13);
   }
 
-  /* %menu-and-colection {
-
-    &-tes {
-      width: 100px;
-      height: 100px;
-      background-color: blue;
-    }
-
-    &-margin {
-      margin-top: 56px;
-    }
-
-    &-padding {
-      padding-left: 8px;
-      padding-right: 8px;
-    }
-
-    display: flex;
-    flex-direction: row;
-    border-radius: 100px;
-    height: 56px;
-    margin-bottom: 2px;
-    justify-content: center;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-
-    &-title {
-      height: 56px;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      justify-content: space-between;
-      align-items: center;
-      padding-left: 8px;
-
-      &-icon {
-        margin: 0px;
-        padding-right: 24px;
-      }
-    }
-
-    &-font {
-      font-family: Roboto;
-      font-size: var(--font-size-mt-14);
-      font-weight: 500;
-      line-height: 20px;
-      letter-spacing: 0.1px;
-      text-align: left;
-      width: 100%;
-      color: var(--color-text-white);
-    }
-
-    &-divider {
-      width: 100%;
-    }
-
-    &-item-left {
-      margin: 0px;
-      padding-left: 16px;
-      padding-right: 24px;
-    }
-
-    &-item-right {
-      margin: 0px;
-      padding-left: 24px;
-      padding-right: 16px;
-    }
-
-    &-active {
-      background: var(--color-active);
-    }
-
-    &:hover {
-
-      background: var(--color-active);
-    }
-
-    &:active {
-      background: rgba(56, 30, 114, 0.12);
-    }
-
-    &:focus {
-      outline: 0;
-    }
-
-  } */
 }

@@ -1,7 +1,9 @@
 <div class="menu-top-title menu-top-nav-font"
 (click)="i.dashboardOpen()">
 
-  <button mat-icon-button (click)="i.auth.loginOut()" ><mat-icon class="icon">logout</mat-icon></button>
+  <button mat-icon-button [routerLink]="[
+  i.data.language == 'en' ? '/en/app' : '/pt/app'
+]" ><mat-icon class="icon">home</mat-icon></button>
   
   <span class="menu-top-nav-font" [routerLink]="[
   i.data.language == 'en' ? '/en/app' : '/pt/app'
@@ -9,6 +11,11 @@
     {{ i.data.language == 'en' ? 'V8 App Test': 'V8 App Teste'}}
   </span>
   
-  <button mat-icon-button (click)="this.i.actionsEmitter.emit('menu')"><mat-icon class="icon">chevron_left</mat-icon></button>
+  <button mat-icon-button 
+  *ngIf="i.view.phone"
+  (click)="this.i.actionsEmitter.emit('menu')"><mat-icon class="icon">chevron_left</mat-icon></button>
+  <button mat-icon-button 
+  *ngIf="!i.view.phone"
+ ><mat-icon class="icon">user</mat-icon></button>
 
 </div>

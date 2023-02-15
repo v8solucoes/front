@@ -1,6 +1,5 @@
-import { DataService } from './repository/data.service';
-import { DOCUMENT } from '@angular/common';
-import { Component, Inject } from '@angular/core';
+
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',

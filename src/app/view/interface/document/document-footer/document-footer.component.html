@@ -1,7 +1,6 @@
 <div class="flex">
-  <ng-container *ngIf="i.celullar">
-    <button mat-raised-button [routerLink]="[i.data.language == 'en' ? '/en/app' : '/pt/app']"
-      (click)="i.dashboardOpen()">
+  <ng-container *ngIf="!i.view.desktop">
+    <button mat-raised-button [routerLink]="[i.data.language == 'en' ? '../../' : '../../']">
       <!--  <mat-icon>add</mat-icon> -->
       {{ i.data.language == 'en'? 'Cancel':'Cancelar'}}
     </button>

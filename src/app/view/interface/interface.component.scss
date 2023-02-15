@@ -1,27 +1,21 @@
 @import "/src/sass/constructorNew";
 
-
 .center {
   width: 100%;
   height: 100%;
   display: grid;
   align-items: center;
   justify-content: center;
-  @media (max-width: 600px) {
-   /*  background-color: yellow; */
-    justify-content: start
-  }
 }
 mat-progress-bar {
-
   height: 8px;
 }
+
 .container {
-  width: 900px;
+  max-width: var(--inteface-size-max);
+  min-width: var(--inteface-size-min);
   height: 100%;
-  @media (max-width: 600px) {
-    width: 100%;
-   }
+
 }
 
 :host mat-drawer-container, mat-sidenav-container {

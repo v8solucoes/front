@@ -1,22 +1,21 @@
 @import "/src/sass/constructorNew";
-/* @import "/src/sass/construtor"; */
 
 section {
-  @include section($width:var(--document-size));
+  @include section($width-max:var(--colection-size-max), $width-min:var(--colection-size-max));
 }
-app-document-header {
+/* app-document-header {
   width: 100%;
   padding-left: 0px;
   margin-left:0px;
   box-sizing: border-box;
-}
+} */
 app-document-nav {
-  @include nav($width:var(--document-size));
+  @include nav($width-max:var(--navBar-size), $width-min:var(--navBar-size));
  
 }
 
 app-document-footer {
-  @include footer($width:var(--document-size));
+  @include footer($width-max:var(--navBar-size), $width-min:var(--navBar-size));
 }
 
 

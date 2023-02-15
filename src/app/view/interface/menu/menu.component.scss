@@ -1,13 +1,13 @@
 @import "/src/sass/constructorNew";
 
 section {
-  @include sectionMenu($width:var(--menu-size));
+  @include section($width-max:var(--menu-size-max), $width-min:var(--menu-size-nin));
 }
 
 app-menu-nav {
-  @include nav($width:100%);
+  @include nav($width-max:var(--menu-size-max), $width-min:var(--menu-size-max));
 }
 
 app-menu-footer {
-  @include footer($width:var(--menu-size));
+  @include footer($width-max:var(--menu-size-max), $width-min:var(--menu-size-max));
 }

@@ -9,13 +9,15 @@
 <button mat-button [matMenuTriggerFor]="font" aria-label="Font">
   <mat-icon>text_fields</mat-icon><ng-container *ngIf="icon">{{ data.language == 'en'? 'Font Size':'Fonte'}}</ng-container>
 </button>
+<button *ngIf="i.data.requestLast.page == 'app'" mat-icon-button (click)="i.auth.loginOut()" >
+  <mat-icon class="icon">logout</mat-icon></button>
 
 <mat-menu #language="matMenu">
-  <button mat-menu-item routerLink="{{ '/en' + url}}">
+  <button mat-menu-item routerLink="{{ '/en' + this.data.requestLast.lastUrlNoLanguage}}">
     <mat-icon>language</mat-icon>
     <span>{{ data.language == 'en'? 'English':'Inglês'}}</span>
   </button>
-  <button mat-menu-item routerLink="{{ '/pt' + url}}">
+  <button mat-menu-item routerLink="{{ '/pt' + this.data.requestLast.lastUrlNoLanguage}}">
     <mat-icon>language</mat-icon>
     <span>{{ data.language == 'en'? 'Portugues':'Português'}}</span>
   </button>

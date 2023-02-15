@@ -1,18 +1,20 @@
-<ng-container *ngFor="let acess of permission">
+<ng-container *ngFor="let acess of permission; let i = first;">
 
   <ng-container *ngIf="acess.view.form">
+
     <ng-container [ngSwitch]="model[acess.id].typeModel">
       
       <!-- TYPE OBJETO -->
       <ng-container *ngSwitchCase="'object'">
         
-        <h1>{{ model[acess.id].text[request.language].label }}</h1>
+        <h1>{{ firstoObject ? '' : model[acess.id].text[request.language].label }}</h1>
    
         <app-form-group
           [form]="getFormObject(acess.id)"
           [permission]="getPermissionObject(acess)"
           [model]="getModelObject(acess.id)"
           [request]="request"
+          [firstoObject]="false"
         >
         </app-form-group>
       </ng-container>
@@ -20,7 +22,7 @@
       <!-- TYPE VALUE -->
       <ng-container *ngSwitchCase="'value'">
        
-      <!--   <h1>Value {{ acess.id }} </h1> -->
+      {{ !firstoObject ? i ? setLabel(acess.id) : '' :'' }}
 
         <app-form-value  *ngSwitchCase="'value'"
           [form]="form"

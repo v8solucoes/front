@@ -38,31 +38,79 @@ $dark-theme: mat.define-dark-theme((color: (primary: $dark-primary,
 }
 
 :root {
+
   --font-size-mt-14: 14px;
   --font-size-mt-15: 15px;
   --font-size-mt-24: 24px;
   --font-size-mt-26: 26px;
   --font-size-mt-38: 38px;
-  --menu-size: 300px;
-  --colection-size: 300px;
-  --document-size: 300px;
+
+  /*  Phone 0 - 540  only Colection*/
+  @media (max-width: 540px) {
+
+    --inteface-size-max: 100vw;
+    --inteface-size-min: 100vw;
+
+    --menu-size-max: 270px;
+    --menu-size-min: 240px;
+
+    --colection-size-max: 100vw;
+    --colection-size-min: 100vw;
+
+    --navBar-size: 100vw;
+  }
+
+  /*  Tablet 541 - 899 */
+  @media (min-width: 541px) {
+
+    --inteface-size-max: 100vw;
+    --inteface-size-min: 100vw;
+
+    --menu-size-max: 300px;
+    --menu-size-min: 260px;
+
+    --colection-size-max: 35vw;
+    --colection-size-min: 35vw;
+
+    --navBar-size: 35vw;
+  }
+
+  /*  Desktop 900 - max */
+  @media (min-width: 900px) {
+
+    --inteface-size-max: 900px;
+    --inteface-size-min: 900px;
+
+    --menu-size-max: 300px;
+    --menu-size-min: 270px;
+
+    --colection-size-max: 300px;
+    --colection-size-min: 300px;
+
+    --navBar-size: 300px;
+  }
 }
 
-html { padding: 0px; margin: 0px; overflow: hidden;}
+html {
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+}
 
 body {
   height: 100vh;
   width: 100vw;
   margin: 0;
   padding: 0;
-/*   font-family: "Roboto", "Arial", sans-serif; */
-font-family: "Segoe UI","Helvetica Neue", sans-serif;
+  /*   font-family: "Roboto", "Arial", sans-serif; */
+  font-family: "Segoe UI", "Helvetica Neue", sans-serif;
 
   color: var(--color-text-white);
-  font-size: var( --font-size-mt-14);
+  font-size: var(--font-size-mt-14);
   background-color: var(--color-surface);
   overflow: hidden;
-  @media (max-width: 350px) {
-    justify-content:flex-start;
+
+  @media (max-width: 540px) {
+    justify-content: flex-start;
   }
 }

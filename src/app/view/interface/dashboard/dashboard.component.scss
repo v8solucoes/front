@@ -1,15 +1,15 @@
 @import "/src/sass/constructorNew";
 
 section {
-  @include section($width:var(--colection-size));
+  @include section($width-max:var(--colection-size-max), $width-min:var(--colection-size-nin));
 }
 
 app-dashboard-nav {
 
-  @include nav($width:var(--colection-size));
+  @include nav($width-max:var(--navBar-size), $width-min:var(--navBar-size));
 
 }
 
 app-dashboard-footer {
-  @include footer($width:var(--colection-size));
+  @include footer($width-max:var(--navBar-size), $width-min:var(--navBar-size));
 }

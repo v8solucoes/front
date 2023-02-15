@@ -11,6 +11,7 @@ import { InterfaceService } from '@view/interface/interface.service';
 
 export class FormGroupComponent implements OnInit {
   @Input() form!: UntypedFormGroup;
+  @Input() firstoObject: boolean = true;
   @Input() permission!: IpermissionRecursive[];
   @Input() model!: ImodelRecursive;
   @Input() request!: Irequest
@@ -25,6 +26,12 @@ export class FormGroupComponent implements OnInit {
     console.log(this.permission)
     console.log(this.model)
     console.log(this.form.controls) */
+  }
+  setLabel(id:string) {
+   
+   /*  console.log( id)
+    console.log( this.form.get(id)) */
+    this.i.document.name = this.form.get(id)?.value
   }
   getFormObject(id: string): UntypedFormGroup {
     return this.form.get(id) as UntypedFormGroup

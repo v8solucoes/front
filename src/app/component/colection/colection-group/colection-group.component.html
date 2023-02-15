@@ -15,7 +15,7 @@
         
         <div *ngIf="isFirst" class="colection-header-name">{{ colection[acess.id] }}</div>
 
-        {{ !isFirst ? model[acess.id].text.en.label +': '+ colection[acess.id] +' - ' : "" }}
+        {{ !isFirst ? model[acess.id].text[request.language].label +': '+ colection[acess.id] +' - ' : "" }}
 
       </ng-container>
 

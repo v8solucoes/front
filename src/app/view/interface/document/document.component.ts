@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { FormService } from '@component/form/form.service';
@@ -13,7 +13,7 @@ import { _debug } from '../../../../../../domain/src/domain/repository/debug';
   styleUrls: ['./document.component.scss']
 })
 
-export class DocumentComponent implements OnInit {
+export class DocumentComponent implements OnDestroy {
 
   load = false
   inscription!: Subscription
@@ -62,5 +62,9 @@ export class DocumentComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void { }
+  ngOnDestroy(): void { 
+/*     console.log('destroi') */
+    this.i.load.document = false;
+    this.inscription.unsubscribe()
+  }
 }

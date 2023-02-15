@@ -16,13 +16,19 @@ export class InterfaceService {
     document: false,
     dashboard: true
   }
+  document = {
+    name: ''
+  }
 /*   loading = false; */
 
   viewDocument = false;
   loadingDocument = false
-  celullar = false;
-  web = false;
-  tablet = false;
+  view = {
+    phone: false,
+    tablet: false,
+    desktop: false
+  }
+
   webAndTablet = false;
   animate = {
     navMenu: {

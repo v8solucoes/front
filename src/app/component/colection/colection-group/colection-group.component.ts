@@ -19,6 +19,7 @@ export class ColectionGroupComponent implements OnInit {
   constructor(
     public i: InterfaceService
   ) {
+    this.i.data.requestLast.language
   }
 
   ngOnInit(): void { }

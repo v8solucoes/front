@@ -26,24 +26,22 @@ export class InterfaceComponent implements OnInit {
     public layout: BreakpointObserver,
 
   ) { 
+
     this.layout.observe([
       Breakpoints.Handset,
       Breakpoints.Tablet,
       Breakpoints.Web
     ]).subscribe(result => {
       if (result.matches) {
+
+        const phone = layout.isMatched('(max-width: 540.98px)')
+        const destktop = layout.isMatched('(min-width: 900px)');
   
-        /*      console.log(result.breakpoints) */
   
-        this.i.celullar = result.breakpoints['(max-width: 599.98px) and (orientation: portrait)']
-        this.i.tablet =
-           result.breakpoints['(min-width: 600px) and (max-width: 839.98px) and (orientation: portrait)']
-        || result.breakpoints['(min-width: 840px) and (orientation: portrait)']
-        || result.breakpoints['(max-width: 959.98px) and (orientation: landscape)']
-        this.i.web =
-             result.breakpoints['(min-width: 960px) and (max-width: 1279.98px) and (orientation: landscape)']
-          || result.breakpoints['(min-width: 1280px) and (orientation: landscape)']
-        this.i.webAndTablet = this.i.tablet || this.i.web
+        this.i.view.phone = phone
+        this.i.view.tablet = phone == false && destktop == false
+        this.i.view.desktop = destktop
+          /*    console.log(this.i.view) */
       }
     });
   }
