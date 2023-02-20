@@ -1,7 +1,7 @@
 @import "/src/sass/constructorNew";
 
 section {
-  @include section($width-max:var(--colection-size-max), $width-min:var(--colection-size-max));
+  @include section($width-max:var(--colection-size-max), $width-min:var(--colection-size-max),$width:false);
 }
 /* app-document-header {
   width: 100%;

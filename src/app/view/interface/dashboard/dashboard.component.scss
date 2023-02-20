@@ -1,7 +1,7 @@
 @import "/src/sass/constructorNew";
 
 section {
-  @include section($width-max:var(--colection-size-max), $width-min:var(--colection-size-nin));
+  @include section($width-max:var(--colection-size-max), $width-min:var(--colection-size-nin),$width:false);
 }
 
 app-dashboard-nav {

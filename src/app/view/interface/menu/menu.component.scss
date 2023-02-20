@@ -1,7 +1,7 @@
 @import "/src/sass/constructorNew";
 
 section {
-  @include section($width-max:var(--menu-size-max), $width-min:var(--menu-size-nin));
+  @include section($width-max:var(--menu-size-max), $width-min:var(--menu-size-nin),$width:true);
 }
 
 app-menu-nav {

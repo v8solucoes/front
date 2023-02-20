@@ -36,8 +36,7 @@ export class InterfaceComponent implements OnInit {
 
         const phone = layout.isMatched('(max-width: 540.98px)')
         const destktop = layout.isMatched('(min-width: 900px)');
-  
-  
+
         this.i.view.phone = phone
         this.i.view.tablet = phone == false && destktop == false
         this.i.view.desktop = destktop

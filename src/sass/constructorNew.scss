@@ -30,23 +30,15 @@
 
 }
 
-/* @mixin sectionMenu($width) {
-  max-width: var(--menu-size-max);
-  min-width: var(--menu-size-min);
-  height: 100vh;
-  background: var(--color-surface-1);
-  box-shadow: var(--color-surface-1-shadow);
-
-  @extend %scroll;
-} */
-
-@mixin section($width-max, $width-min) {
+@mixin section($width-max, $width-min, $width) {
   max-width: $width-max;
   min-width: $width-min;
   height: 100vh;
   background: var(--color-surface-1);
   box-shadow: var(--color-surface-1-shadow);
-
+  @if $width {
+    width: $width-max;
+    }
   @extend %scroll;
 
 }
@@ -86,14 +78,14 @@
 }
 
 @mixin footer($width-max, $width-min) {
-  display: flex;
+  
+  display:block;
   flex-direction: row;
   justify-content: center;
 
   position: absolute;
-  bottom: 0;
+  bottom: 0px;
   margin-bottom: 0px;
-
 
   height: 56px;
   max-width:$width-max;
@@ -101,10 +93,7 @@
   background: var(--color-surface-2);
   box-shadow: var(--color-surface-2-shadow);
   border-radius: 0 0 18px 18px;
-
-  /* @media (max-width: 600px) {
-    width: 100%;
-  } */
+  z-index: 100;
 }
 
 %scroll {
