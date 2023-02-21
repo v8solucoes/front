@@ -1,41 +1,17 @@
+@import "/src/sass/generic";
 @import "/src/sass/constructorNew";
 
 section {
   @include section($width-max:var(--colection-size-max), $width-min:var(--colection-size-max),$width:false);
 }
-/* app-document-header {
-  width: 100%;
-  padding-left: 0px;
-  margin-left:0px;
-  box-sizing: border-box;
-} */
-app-document-nav {
-  @include nav($width-max:var(--navBar-size), $width-min:var(--navBar-size));
+
+app-document-nav-top {
+  @include nav($width:var(--navBar-size));
  
 }
 
-app-document-footer {
-  @include footer($width-max:var(--navBar-size), $width-min:var(--navBar-size));
-}
-
-
-
-/* section {
-  width:350px;
-  @extend %scroll;
-} */
-
- mat-card {
-  width: 100%;
-  position: fixed;
-  display: flex;
-  grid-template-columns: auto auto auto auto;
-  margin-right: 8px;
-  column-gap: 8px;
-  bottom: 0px;
-  z-index: 99;
-  transition: all .5s;
-  place-self: center stretch;
+app-document-nav-footer {
+  @include footer($width:var(--navBar-size));
 }
 
 ::ng-deep .dark-theme .mat-drawer .mat-card{

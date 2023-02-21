@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { FormService } from '@component/form/form.service';
+import { _debug } from '@repositoryDomain/debug';
 import { InterfaceService } from '@view/interface/interface.service';
 import { Subscription } from 'rxjs';
-import { _debug } from '../../../../../../domain/src/domain/repository/debug';
 
 
 @Component({

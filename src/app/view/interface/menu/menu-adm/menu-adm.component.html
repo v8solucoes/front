@@ -8,7 +8,7 @@
 <div class="menu-padding">
   <div
   [ngClass]="falseActive[0] ? 'menu menu-font menu-active': 'menu menu-font'"
-  (click)="falseLinkActive(0)"
+  (click)="[falseLinkActive(0),i.load.colectionHeader = false]"
     *ngFor="
       let permission of i.data.local.permission.adm;
       let in = index;
@@ -40,9 +40,9 @@
 <div class="menu-padding">
   <div
     [ngClass]="falseActive[1] ? 'menu menu-font menu-active': 'menu menu-font'"
-    (click)="falseLinkActive(1)"
+    (click)="[falseLinkActive(1), i.dashboardClose()]"
     [routerLink]="[
-      i.data.language == 'en' ? '/en/app/user-adm' : '/pt/app/user-adm'
+      i.data.language == 'en' ? '/en/app/test1' : '/pt/app/test1'
     ]"
     > 
  
@@ -67,8 +67,8 @@
 <div class="menu-padding">
   <div
   [ngClass]="falseActive[2] ? 'menu menu-font menu-active': 'menu menu-font'"
-  (click)="falseLinkActive(2)"
-    [routerLink]="[i.data.language == 'en' ? '/en/app/user-adm' : '/pt/app/user-adm']"
+  (click)="[falseLinkActive(2),i.dashboardClose()]"
+    [routerLink]="[i.data.language == 'en' ? '/en/app/test2' : '/pt/app/test2']"
   >
     <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
     <div class="menu-font">
@@ -82,7 +82,7 @@
   <div
     [ngClass]="falseActive[3] ? 'menu menu-font menu-active': 'menu menu-font'"
     (click)="falseLinkActive(3)"
-    [routerLink]="[i.data.language == 'en' ? '/en/app/user-adm' : '/pt/app/user-adm']"
+    [routerLink]="[i.data.language == 'en' ? '/en/app/test3' : '/pt/app/test3']"
 
   >
     <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
@@ -105,7 +105,7 @@
   <div
   [ngClass]="falseActive[4] ? 'menu menu-font menu-active': 'menu menu-font'"
   (click)="falseLinkActive(4)"
-    [routerLink]="[i.data.language == 'en' ? '/en/app/user-adm' : '/pt/app/user-adm']"
+    [routerLink]="[i.data.language == 'en' ? '/en/app/test4' : '/pt/app/test4']"
   >
     <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
     <div class="menu-font">
@@ -118,7 +118,7 @@
   <div
   [ngClass]="falseActive[5] ? 'menu menu-font menu-active': 'menu menu-font'"
   (click)="falseLinkActive(5)"
-    [routerLink]="[i.data.language == 'en' ? '/en/app/user-adm' : '/pt/app/user-adm']"
+    [routerLink]="[i.data.language == 'en' ? '/en/app/test5' : '/pt/app/test5']"
   >
     <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
     <div class="menu-font">
@@ -140,7 +140,7 @@
   <div
   [ngClass]="falseActive[6] ? 'menu menu-font menu-active': 'menu menu-font'"
   (click)="falseLinkActive(6)"
-    [routerLink]="[i.data.language == 'en' ? '/en/app/user-adm' : '/pt/app/user-adm']"
+    [routerLink]="[i.data.language == 'en' ? '/en/app/test6' : '/pt/app/test6']"
   >
     <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
     <div class="menu-font">
@@ -153,7 +153,7 @@
   <div
   [ngClass]="falseActive[7] ? 'menu menu-font menu-active': 'menu menu-font'"
   (click)="falseLinkActive(7)"
-    [routerLink]="[i.data.language == 'en' ? '/en/app/user-adm' : '/pt/app/user-adm']"
+    [routerLink]="[i.data.language == 'en' ? '/en/app/test7' : '/pt/app/test7']"
   >
     <mat-icon class="menu-item-left">panorama_fish_eye</mat-icon>
     <div class="menu-font">

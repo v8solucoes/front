@@ -1,18 +1,20 @@
 <ng-template #loading>
-  {{ i.data.language == 'en'? 'Progress...': 'Carregando...'}}<br>
-  <mat-progress-bar mode="query" [color]="'accent'">
-  </mat-progress-bar>
+  <div class="gen-centerFlex">{{ i.data.language == 'en'? 'Progress...': 'Carregando...'}}</div>
+  <div class="gen-centerFlex"><mat-spinner class="gen-centerFlex"></mat-spinner></div>
 </ng-template>
 
 <mat-sidenav-content *ngIf="i.load.colection; else loading">
 
   <section (scroll)="i.startAnimation($event,'navColection')">
 
-    <app-colection-nav [@navTop]="i.animate.navColection.animate"></app-colection-nav>
+    <app-colection-nav-top [@navTop]="i.animate.navColection.animate"></app-colection-nav-top>
 
-    <app-colection-header></app-colection-header>
 
-    <app-colection-footer [@navFooter]="i.animate.navColection.animate"></app-colection-footer>
+    <app-colection-header
+    (click)=" i.view.phone ? i.actionsEmitter.emit('document'):''"
+    ></app-colection-header>
+
+    <app-colection-nav-footer [@navFooter]="i.animate.navColection.animate"></app-colection-nav-footer>
 
   </section>
 

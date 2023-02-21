@@ -1,17 +1,18 @@
 <ng-template #loading>
-  <mat-progress-bar mode="query"></mat-progress-bar>
+  <div class="gen-centerFlex">{{ data.language == 'en'? 'Progress...': 'Carregando...'}}</div>
+  <div class="gen-centerFlex"><mat-spinner class="gen-centerFlex"></mat-spinner></div>
 </ng-template>
 
-<div *ngIf="loading; else loading" class="center">
+<div *ngIf="load; else loading" class="gen-centerFlex">
 
-  <section>
+  <section class="gen-section">
     <app-form-group [form]="data.form[data.requestLast.document]"
       [permission]="data.local.getRecursive(data.requestLast.document).permission"
       [model]="data.local.getRecursive(data.requestLast.document).model" [request]="data.requestLast"></app-form-group>
     
       <app-action [action]="'create'" [width]="200" [redirect]="data.language + '/login/sign-in'"></app-action>
 
-    <button type="submit" mat-raised-button [routerLink]="[data.language == 'en'? '../../../../en/login/sign-in':'../../../../en/login/sign-in']">
+    <button mat-raised-button [routerLink]="[data.language == 'en'? '../../../../en/login/sign-in':'../../../../en/login/sign-in']">
       <mat-label> {{ data.language == 'en'? 'Log In':'Login'}} </mat-label>
     </button>
   </section>

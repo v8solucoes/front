@@ -1,3 +1,11 @@
+section {
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 mat-radio-group {
   display: flex;
   flex-direction: column;

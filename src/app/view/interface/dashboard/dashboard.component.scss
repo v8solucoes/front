@@ -4,12 +4,12 @@ section {
   @include section($width-max:var(--colection-size-max), $width-min:var(--colection-size-nin),$width:false);
 }
 
-app-dashboard-nav {
+app-dashboard-nav-top {
 
-  @include nav($width-max:var(--navBar-size), $width-min:var(--navBar-size));
+  @include nav($width:var(--navBar-size));
 
 }
 
-app-dashboard-footer {
-  @include footer($width-max:var(--navBar-size), $width-min:var(--navBar-size));
+app-dashboard-nav-footer {
+  @include footer($width:var(--navBar-size));
 }

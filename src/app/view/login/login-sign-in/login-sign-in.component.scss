@@ -1,18 +1,1 @@
-@import "/src/sass/constructorNew";
-
-.center {
-  @extend %centerFlex;
-}
-
-section {
-  @extend %sectionLoginAndCreate
-}
-
-button {
-  border-radius: 40px;
-  background-color: var(--color-active)
-}
-
-::ng-deep .dark-theme .mat-raised-button {
-  background-color: var(--color-active)
-}
+@import "/src/sass/generic";

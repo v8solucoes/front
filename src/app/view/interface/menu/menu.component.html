@@ -1,9 +1,9 @@
 <section (scroll)="i.startAnimation($event,'navMenu')">
 
-  <app-menu-nav [@navTop]="i.animate.navMenu.animate"></app-menu-nav>
+  <app-menu-nav-top [@navTop]="i.animate.navMenu.animate"></app-menu-nav-top>
 
-  <app-menu-header ></app-menu-header>
+  <app-menu-adm (click)=" i.view.phone ? i.actionsEmitter.emit('menu'):''"></app-menu-adm>
 
-  <app-menu-footer [@navFooter]="i.animate.navMenu.animate"></app-menu-footer>
+  <app-menu-nav-footer [@navFooter]="i.animate.navMenu.animate"></app-menu-nav-footer>
 
 </section>

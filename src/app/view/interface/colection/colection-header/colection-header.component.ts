@@ -10,21 +10,23 @@ import { Subscription } from 'rxjs';
   templateUrl: './colection-header.component.html',
   styleUrls: ['./colection-header.component.scss']
 })
-export class ColectionHeaderComponent implements AfterContentInit, OnDestroy {
+export class ColectionHeaderComponent implements OnDestroy {
 
   colections!: Icol
   inscription!: Subscription
   text = this.i.data.local.text.action[this.i.data.language]
   colors = this.createColors
   modelName: string = ''
-  load = true;
+  load = false;
 
   constructor(
     public i: InterfaceService,
     private route: ActivatedRoute
   ) {
-    this.i.load.colectionHeader = false 
+
     this.inscription = this.route.data.subscribe(({ response }) => {
+
+     /*  this.load = false; */
 
       if (_debug.pg.document) {
         console.log('Colection')
@@ -32,15 +34,12 @@ export class ColectionHeaderComponent implements AfterContentInit, OnDestroy {
       this.modelName = i.data.local.model[i.data.requestLast.document].text[i.data.language].label
       this.i.data.local.colection[`${this.i.data.requestLast.document}`] = response
       this.colections = response
-
+      this.load = true;
       this.i.load.colectionHeader = true 
     })
   }
 
-  ngAfterContentInit(): void {
-    
-    this.load = false;
-  }
+
   ngOnDestroy(): void {
     this.inscription.unsubscribe()
   }

@@ -1,14 +1,13 @@
 <ng-template #loading>
-  {{ i.data.language == 'en'? 'Progress...': 'Carregando...'}}<br>
-  <mat-progress-bar mode="query" [color]="'accent'">
-  </mat-progress-bar>
+  <div class="gen-centerFlex">{{ i.data.language == 'en'? 'Progress...': 'Carregando...'}}</div>
+  <div class="gen-centerFlex"><mat-spinner class="gen-centerFlex"></mat-spinner></div>
 </ng-template>
 
-<div class="center">
+<div class="center" *ngIf="load; else loading">
   
   <div class="container">
 
-    <mat-drawer-container [hasBackdrop]="i.view.phone" *ngIf="i.load.menu; else loading">
+    <mat-drawer-container [hasBackdrop]="i.view.phone" >
 
       <mat-drawer #menu mode="side" [opened]="true">
 

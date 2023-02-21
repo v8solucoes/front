@@ -4,28 +4,29 @@ import { FormModule } from '@component/form/form.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { ComponentSharedModule } from 'src/app/app.module.shared';
 import { ColectionModule } from '@component/colection/colection.module';
+import { MaterialDesignModule } from '@shared-angular/material-design.module';
 
 import { InterfaceComponent } from './interface.component';
 
-import { MenuAdmComponent } from './menu/menu-adm/menu-adm.component';
-import { ColectionIndexComponent } from './colection/colection-index/colection-index.component';
-import { DocumentComponent } from './document/document.component';
-import { MaterialDesignModule } from '@shared-angular/material-design.module';
-import { MenuFooterComponent } from './menu/menu-footer/menu-footer.component';
-import { MenuNavComponent } from './menu/menu-nav/menu-nav.component';
-import { MenuHeaderComponent } from './menu/menu-header/menu-header.component';
 import { MenuComponent } from './menu/menu.component';
-import { ColectionComponent } from './colection/colection.component';
-import { ColectionNavComponent } from './colection/colection-nav/colection-nav.component';
-import { ColectionHeaderComponent } from './colection/colection-header/colection-header.component';
-import { ColectionFooterComponent } from './colection/colection-footer/colection-footer.component';
+import { MenuNavTopComponent } from './menu/menu-nav-top/menu-nav-top.component';
+import { MenuAdmComponent } from './menu/menu-adm/menu-adm.component';
+import { MenuNavFooterComponent } from './menu/menu-nav-footer/menu-nav-footer.component';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DashboardNavComponent } from './dashboard/dashboard-nav/dashboard-nav.component';
+import { DashboardNavTopComponent } from './dashboard/dashboard-nav-top/dashboard-nav-top.component';
 import { DashboardHeaderComponent } from './dashboard/dashboard-header/dashboard-header.component';
-import { DashboardFooterComponent } from './dashboard/dashboard-footer/dashboard-footer.component';
-import { DocumentNavComponent } from './document/document-nav/document-nav.component';
+import { DashboardNavFooterComponent } from './dashboard/dashboard-nav-footer/dashboard-nav-footer.component';
+
+import { ColectionComponent } from './colection/colection.component';
+import { ColectionNavTopComponent } from './colection/colection-nav-top/colection-nav-top.component';
+import { ColectionHeaderComponent } from './colection/colection-header/colection-header.component';
+import { ColectionNavFooterComponent } from './colection/colection-nav-footer/colection-nav-footer.component';
+
+import { DocumentComponent } from './document/document.component';
+import { DocumentNavTopComponent } from './document/document-nav-top/document-nav-top.component';
 import { DocumentHeaderComponent } from './document/document-header/document-header.component';
-import { DocumentFooterComponent } from './document/document-footer/document-footer.component';
+import { DocumentNavFooterComponent } from './document/document-nav-footer/document-nav-footer.component';
 
 
 @NgModule({
@@ -39,30 +40,26 @@ import { DocumentFooterComponent } from './document/document-footer/document-foo
   ],
   declarations: [
     InterfaceComponent,
-    MenuComponent,
-    MenuNavComponent,
-    MenuHeaderComponent,
-    MenuFooterComponent,
-    ColectionComponent,
-    ColectionNavComponent,
-    ColectionHeaderComponent,
-    ColectionFooterComponent,
 
+    MenuComponent,
+    MenuNavTopComponent,
     MenuAdmComponent,
-    ColectionIndexComponent,
-    DocumentComponent,
-    ColectionComponent,
-    ColectionNavComponent,
-    ColectionHeaderComponent,
-    ColectionFooterComponent,
+    MenuNavFooterComponent,
+  
     DashboardComponent,
-    DashboardNavComponent,
+    DashboardNavTopComponent,
     DashboardHeaderComponent,
-    DashboardFooterComponent,
-    DocumentNavComponent,
-    DocumentNavComponent,
+    DashboardNavFooterComponent,
+
+    ColectionComponent,
+    ColectionNavFooterComponent,
+    ColectionHeaderComponent,
+    ColectionNavTopComponent,
+
+    DocumentComponent,
+    DocumentNavTopComponent,
     DocumentHeaderComponent,
-    DocumentFooterComponent,
+    DocumentNavFooterComponent,
   ],
   exports: [
     InterfaceComponent

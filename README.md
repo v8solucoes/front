@@ -4,6 +4,8 @@
 ### ANGULAR Firebase - [Prod / Emulator](.readme/angular-firebase.md) 
 # About Project
 
+kill $(lsof -t -i:4000)
+
 This project was generated with version:
 - Angular: 13.3.5.
 - Node v16.17.0,

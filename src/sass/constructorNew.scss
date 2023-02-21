@@ -1,39 +1,16 @@
 /* @extend %flex-linha; */
 /* @include flex-linha() */
 
-%centerFlex {
+/* %centerFlex {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-%sectionLoginAndCreate {
-
-  width: 300px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  border-radius: 40px;
-  padding-bottom: 8px;
-  padding-top: 8px;
-  margin: 16px;
-  background: var(--color-surface-1);
-  box-shadow: var(--color-surface-1-shadow);
-
-  >button {
-    width: 200px;
-    margin: 8px;
-  }
-
-}
+} */
 
 @mixin section($width-max, $width-min, $width) {
   max-width: $width-max;
   min-width: $width-min;
-  height: 100vh;
   background: var(--color-surface-1);
   box-shadow: var(--color-surface-1-shadow);
   @if $width {
@@ -66,30 +43,24 @@
   align-items: center;
 }
 
-@mixin nav($width-max, $width-min) {
+@mixin nav($width) {
   position: absolute;
-  width: $width-max;
-  max-width:$width-max;
-  min-width:$width-min;
+  height: 56px;
+  width: $width;
   background: var(--color-surface-2);
   box-shadow: var(--color-surface-2-shadow);
   border-radius: 18px 18px 0 0;
   z-index: 100;
 }
 
-@mixin footer($width-max, $width-min) {
-  
-  display:block;
-  flex-direction: row;
-  justify-content: center;
+@mixin footer($width) {
 
-  position: absolute;
+  position: fixed;
   bottom: 0px;
   margin-bottom: 0px;
 
   height: 56px;
-  max-width:$width-max;
-  min-width:$width-min;
+  width: $width;
   background: var(--color-surface-2);
   box-shadow: var(--color-surface-2-shadow);
   border-radius: 0 0 18px 18px;

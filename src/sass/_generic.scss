@@ -1,0 +1,60 @@
+.gen-centerFlex {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gen-section {
+  width: 300px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 40px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  margin: 16px;
+  background: var(--color-surface-1);
+  box-shadow: var(--color-surface-1-shadow);
+
+  > button {
+    width: 200px;
+    margin: 8px;
+    border-radius: 40px;
+  }
+
+}
+
+.gen-nav-top {
+
+  &-title {
+   /*  padding-left: 12px; */
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    height: 56px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  &-font {
+    font-family: Roboto;
+    padding-right: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    text-align: left;
+  /*   color: var(--color-text-white); */
+  /*   cursor: pointer; */
+  }
+  > button { 
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  
+
+
+}

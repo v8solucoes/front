@@ -4,10 +4,10 @@ section {
   @include section($width-max:var(--menu-size-max), $width-min:var(--menu-size-nin),$width:true);
 }
 
-app-menu-nav {
-  @include nav($width-max:var(--menu-size-max), $width-min:var(--menu-size-max));
+app-menu-nav-top {
+  @include nav($width:var(--navBar-size));
 }
 
-app-menu-footer {
-  @include footer($width-max:var(--menu-size-max), $width-min:var(--menu-size-max));
+app-menu-nav-footer {
+  @include footer($width:var(--menu-size-max));
 }

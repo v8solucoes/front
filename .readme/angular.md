@@ -5,13 +5,13 @@
 
 `npm install -g @angular/cli` (if NPM / NVM new instalation)
 
-`ng version` (Angula CLI: 14.2.10 era 14.2.9)
+`ng version` (Angula CLI: 14.2.10 era 14.2.10)
 
 `npm view @angular/cli`(Versions LTS Angular)
 
 ## CLI - Global - Always Install LTS version
 
-`npm install -g @angular/cli@14.2.9`
+`npm install -g @angular/cli@14.2.10`
 
 `npm upgrade -g @angular/cli`(last version)
 
@@ -25,7 +25,7 @@
 
 `ng update` (Update Last Version)
 
-`npm install -g @angular/cli@13.3.9` (Update LTS version)
+`npm install -g @angular/cli@14.2.10` (Update LTS version)
 
 Delete Past: `rm -rf node_modules .angular` and `rm package-lock.json`
 

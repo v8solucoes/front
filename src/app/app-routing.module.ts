@@ -12,6 +12,7 @@ import { DocumentComponent } from '@view/interface/document/document.component';
 import { GetDocumentResolver } from './resolve/get-document.resolver';
 import { CreateAccountComponent } from '@view/login/create-account/create-account.component';
 import { ColectionComponent } from '@view/interface/colection/colection.component';
+import { DashboardComponent } from '@view/interface/dashboard/dashboard.component';
 
 const routes: Routes = [
 
@@ -23,11 +24,13 @@ const routes: Routes = [
     path: ':language/account/:document/:action', component: CreateAccountComponent,
     resolve: { 'request': DataLocalResolver },
   },
+
   {
     path: ':language/app', component: InterfaceComponent,
     canActivate: [AuthGuard],
     resolve: { 'response': GetUserResolver },
     children: [
+
       {
         path: ':document', component: ColectionComponent,
         canActivate: [AuthGuard],

@@ -1,8 +1,11 @@
 <ng-template #loading>
-  <mat-progress-bar mode="query"></mat-progress-bar>
+  <div class="gen-centerFlex">{{ data.language == 'en'? 'Progress...': 'Carregando...'}}</div>
+  <div class="gen-centerFlex"><mat-spinner class="gen-centerFlex"></mat-spinner></div>
 </ng-template>
-<div *ngIf="loading; else loading" class="center">
-  <section>
+
+<div *ngIf="load; else loading" class="gen-centerFlex">
+
+  <section class="gen-section">
     <app-settings></app-settings><br>
       <img src="/assets/Logo-V8-Sites01.png" alt="V8" width="50px">
 
@@ -13,12 +16,14 @@
     
       <app-action [action]="'user-sig-in'" [width]="200"></app-action>
 
-    <button type="submit" mat-raised-button routerLink='../../account/account-adm-new/create/'>
+    <button mat-raised-button
+     routerLink='../../account/account-adm-new/create/'>
       <mat-label>{{data.language == 'en' ? 'New Account': 'Nova Conta' }}</mat-label>
     </button>
 
-    <button type="submit" mat-button routerLink='../../account/account-adm-new/create/'>
-      {{data.language == 'en' ? 'Forgot password?': 'Esqueceu a Senha?' }} 
+    <button 
+     mat-button routerLink='../../account/account-adm-new/create/'>
+      {{ data.language == 'en' ? 'Forgot password?': 'Esqueceu a Senha?' }} 
     </button>
 
   </section>

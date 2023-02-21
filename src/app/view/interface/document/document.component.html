@@ -1,23 +1,14 @@
 <ng-template #loading>
-  {{ i.data.language == 'en'? 'Progress...': 'Carregando...'}}<br>
-  <mat-progress-bar mode="query" [color]="'accent'">
-  </mat-progress-bar>
+  <div class="gen-centerFlex">{{ i.data.language == 'en'? 'Progress...': 'Carregando...'}}</div>
+  <div class="gen-centerFlex"><mat-spinner class="gen-centerFlex"></mat-spinner></div>
 </ng-template>
 
 <section *ngIf="i.load.document; else loading">
 
-  <app-document-nav></app-document-nav>
+  <app-document-nav-top></app-document-nav-top>
 
-  <!--   <mat-card>
+  <app-document-header></app-document-header>
 
-    <button mat-icon-button><mat-icon>more_vert</mat-icon></button>
-    <button mat-raised-button color="basic" (click)="this.i.actionsEmitter.emit('document')">Cancelar</button>
-    <app-action [action]="'update'"></app-action>
-
-  </mat-card> -->
-
-<app-document-header></app-document-header>
-
-  <app-document-footer></app-document-footer>
+  <app-document-nav-footer></app-document-nav-footer>
 
 </section>

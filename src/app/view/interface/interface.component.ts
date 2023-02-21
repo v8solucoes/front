@@ -16,48 +16,50 @@ export class InterfaceComponent implements OnInit {
 
   @ViewChild('menu') menu: any;
   @ViewChild('document') document: any;
-  
-/*   load = false */
-  inscription!: Subscription
+
+  load = false;
 
   constructor(
     public i: InterfaceService,
     private route: ActivatedRoute,
-    public layout: BreakpointObserver,
+    public breakpoint: BreakpointObserver,
 
-  ) { 
+  ) {
+    this.router()
+  }
 
-    this.layout.observe([
+  ngOnInit(): void {
+    this.breakpointView()
+    this.actions()
+  }
+
+  breakpointView() {
+    return this.breakpoint.observe([
       Breakpoints.Handset,
       Breakpoints.Tablet,
       Breakpoints.Web
     ]).subscribe(result => {
       if (result.matches) {
 
-        const phone = layout.isMatched('(max-width: 540.98px)')
-        const destktop = layout.isMatched('(min-width: 900px)');
+        const phone = this.breakpoint.isMatched('(max-width: 540.98px)')
+        const destktop = this.breakpoint.isMatched('(min-width: 900px)');
 
         this.i.view.phone = phone
         this.i.view.tablet = phone == false && destktop == false
         this.i.view.desktop = destktop
-          /*    console.log(this.i.view) */
       }
     });
   }
 
-  ngOnInit(): void {
-    this.router()
-    this.actions()
-  }
   router() {
 
-    return this.inscription = this.route.data.subscribe((data) => {
-      
+    return this.route.data.subscribe((data) => {
+
       const db = data['response']
-     /*  console.log(db) */
+      /*  console.log(db) */
 
       this.i.data.local.permission.adm = db['permission']['adm']
-     /*  this.i.data.local.model = db['model'] */
+      /*  this.i.data.local.model = db['model'] */
       this.i.data.requestLast.user = db['user']
       this.i.data.user = db['user']
 
@@ -65,10 +67,9 @@ export class InterfaceComponent implements OnInit {
         console.log('Interface Sucess')
         console.log(this.i.data.requestLast)
       }
-
+      this.load = true;
     })
   }
-
 
   actions() {
 
@@ -76,7 +77,10 @@ export class InterfaceComponent implements OnInit {
 
       switch (action) {
 
-        case 'menu': { this.menu.toggle(); break; }
+        case 'menu': {
+          this.menu.toggle();
+          break;
+        }
         case 'document': { this.document.toggle(); break; }
 
         default: {
@@ -87,5 +91,5 @@ export class InterfaceComponent implements OnInit {
       }
     });
   }
-  
+
 }

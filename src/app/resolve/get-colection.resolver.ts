@@ -21,13 +21,12 @@ export class GetColectionResolver implements Resolve<any> {
     private router: Router,
     public auth: FirebaseAuthService,
     private resolveService: ResolveService,
-   /*  private data: DataService, */
     private i: InterfaceService,
     private backand: BackandService,
   ) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-/*     this.i.load.colection = false */
+
     const request = this.resolveService.getRequest(route, state)
     const test = new TestCompose(request).testRequest
     

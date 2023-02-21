@@ -10,11 +10,15 @@
 
   <button mat-raised-button 
   [ngStyle]="{'width.px': width}"
-   (click)="crud()" *ngIf="document.valid && !processing">{{ text[action] }}</button>
+   (click)="crud()" *ngIf="document.valid && !processing">
+   {{ text[action] }}
+  </button>
 
   <button mat-raised-button color="{{ sucess ? 'accent': 'warn'}}"
   [ngStyle]="{'width.px': width}"
   disabled
-  *ngIf="processing">{{ sucess ? text.sucess: text.processing }}</button>
+  *ngIf="processing">{{ sucess ? text.sucess: text.processing }}
+  <mat-progress-bar mode="query"></mat-progress-bar>
+</button>
 
 </section>

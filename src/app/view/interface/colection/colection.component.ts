@@ -12,7 +12,7 @@ export class ColectionComponent implements OnInit {
 
   constructor(public i: InterfaceService) {
     this.i.load.dashboard = false
-    this.i.load.colection = true
+/*     this.i.load.colection = true */
    }
 
   ngOnInit(): void {
