@@ -1,0 +1,9 @@
+<div class="gen-nav-top gen-nav-top-title gen-nav-top-font" [class.mat-elevation-z1]="true">
+
+  <button mat-icon-button (click)="this.i.actionsEmitter.emit('menu')"><mat-icon>more_vert</mat-icon></button>
+  
+  <span class="gen-nav-top-font"> {{ i.data.language == "en" ? "Search" : "Pesquisar" }}</span>
+  
+  <button mat-icon-button ><mat-icon>search</mat-icon></button>
+
+</div>

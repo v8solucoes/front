@@ -89,7 +89,7 @@ export class ActionComponent implements OnInit {
         this.i.auth.loginIn(email, password, language).then(loged => {
           
           if (loged) {
-          this.i.auth.router.navigate([`${language}/app/`])
+          this.i.auth.router.navigate([`${language}/app/dashboard`])
           }
           return
         }).finally()

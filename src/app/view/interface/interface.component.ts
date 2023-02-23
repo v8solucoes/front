@@ -1,11 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { InterfaceService } from '@view/interface/interface.service';
 import { _debug } from '@repositoryDomain/debug';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-
 
 @Component({
   selector: 'app-interface',
@@ -15,9 +13,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 export class InterfaceComponent implements OnInit {
 
   @ViewChild('menu') menu: any;
-  @ViewChild('document') document: any;
 
-  load = false;
 
   constructor(
     public i: InterfaceService,
@@ -56,9 +52,9 @@ export class InterfaceComponent implements OnInit {
     return this.route.data.subscribe((data) => {
 
       const db = data['response']
-      /*  console.log(db) */
+     /*   console.log(db) */
 
-      this.i.data.local.permission.adm = db['permission']['adm']
+      this.i.data.local.permission = db['permission']
       /*  this.i.data.local.model = db['model'] */
       this.i.data.requestLast.user = db['user']
       this.i.data.user = db['user']
@@ -67,7 +63,7 @@ export class InterfaceComponent implements OnInit {
         console.log('Interface Sucess')
         console.log(this.i.data.requestLast)
       }
-      this.load = true;
+      this.i.load.interface = true;
     })
   }
 
@@ -81,7 +77,20 @@ export class InterfaceComponent implements OnInit {
           this.menu.toggle();
           break;
         }
-        case 'document': { this.document.toggle(); break; }
+        case 'document': {
+          //Page Colection open/close Document
+          break;
+        }
+        case 'colectionAndDocClose': {
+          this.i.load.colection = false;
+          this.i.load.document = false;
+          this.i.load.dashboard = false;
+          break;
+        }
+        case 'documentClose': {
+          //Page Colection open/close Document
+          break;
+        }
 
         default: {
           alert('Evento de Interface não Cadastrado: ' + action);

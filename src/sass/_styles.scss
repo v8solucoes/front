@@ -1,7 +1,10 @@
 @use '@angular/material' as mat;
 @include mat.core();
+
 @import "/src/sass/_color";
 @import "/src/sass/_colection";
+
+@import "/src/sass/_generic";
 
 
 // Font Theme

@@ -1,0 +1,18 @@
+<ng-template #loading>
+  <div class="gen-centerFlex">{{ i.data.language == 'en'? 'Progress...': 'Carregando...'}}</div>
+  <div class="gen-centerFlex"><mat-spinner class="gen-centerFlex"></mat-spinner></div>
+</ng-template>
+
+<div *ngIf="i.load.dashboard; else loading">
+  <section (scroll)="i.startAnimation($event,'navMenu')">
+
+    <app-dashboard-nav-top [@navTop]="i.animate.navDashboard.animate"></app-dashboard-nav-top>
+  
+    <app-dashboard-header ></app-dashboard-header>
+  
+   <!--  <app-dashboard-nav-footer [@navFooter]="i.animate.navDashboard.animate"></app-dashboard-nav-footer> -->
+  
+  </section>  
+</div>
+
+

@@ -1,0 +1,127 @@
+<div class="gen-menu-margin"></div>
+<div class="gen-menu-padding">
+  <div class="gen-menu-title gen-menu-font">
+    <div class="font">{{ text.administrator }}</div>
+  </div>
+</div>
+<div class="gen-menu-padding">
+  <div
+  class="gen-menu gen-menu-font"
+  routerLinkActive="gen-menu-active"
+    *ngFor="
+      let permission of i.data.local.permission.adm;
+      let in = index;
+      let first;
+      let last
+    "
+    [routerLink]="[permission.id]"
+  >
+    <mat-icon class="gen-menu-item-left">panorama_fish_eye</mat-icon>
+    <div class="gen-menu-font">
+      {{ i.data.local.model[permission.id].text[i.data.language].label }}
+    </div>
+    <mat-icon class="gen-menu-item-right">chevron_right</mat-icon>
+  </div>
+</div>
+ <!-- Agency -->
+<!-- <div class="gen-menu-padding">
+  <div class="gen-menu-title gen-menu-font">
+    <div class="font">{{ i.data.language == "en" ? "Agency" : "Revenda" }}</div>
+  </div>
+</div>
+<div class="gen-menu-padding">
+  <div
+  [ngClass]="falseActive[2] ? 'gen-menu gen-menu-font gen-menu-active': 'gen-menu gen-menu-font'"
+  (click)="[falseLinkActive(2),i.dashboardClose()]"
+    [routerLink]="[i.data.language == 'en' ? '/en/app/test2' : '/pt/app/test2']"
+  >
+    <mat-icon class="gen-menu-item-left">panorama_fish_eye</mat-icon>
+    <div class="gen-menu-font">
+      {{ i.data.language == "en" ? "Devoloping..." : "Desenvolvendo..." }}
+    </div>
+    <mat-icon class="gen-menu-item-right">chevron_right</mat-icon>
+  </div>
+</div>
+
+<div class="gen-menu-padding">
+  <div
+    [ngClass]="falseActive[3] ? 'gen-menu gen-menu-font gen-menu-active': 'gen-menu gen-menu-font'"
+    (click)="falseLinkActive(3)"
+    [routerLink]="[i.data.language == 'en' ? '/en/app/test3' : '/pt/app/test3']"
+
+  >
+    <mat-icon class="gen-menu-item-left">panorama_fish_eye</mat-icon>
+    <div class="gen-menu-font">
+      {{ i.data.language == "en" ? "Devoloping..." : "Desenvolvendo..." }}
+    </div>
+    <mat-icon class="gen-menu-item-right">chevron_right</mat-icon>
+  </div>
+</div>
+
+<mat-divider class="gen-menu-divider"></mat-divider>
+
+<div class="gen-menu-padding">
+  <div class="gen-menu-title gen-menu-font">
+    <div class="font">
+      {{ i.data.language == "en" ? "Clients" : "Clientes" }}
+    </div>
+  </div>
+  <div
+  [ngClass]="falseActive[4] ? 'gen-menu gen-menu-font gen-menu-active': 'gen-menu gen-menu-font'"
+  (click)="falseLinkActive(4)"
+    [routerLink]="[i.data.language == 'en' ? '/en/app/test4' : '/pt/app/test4']"
+  >
+    <mat-icon class="gen-menu-item-left">panorama_fish_eye</mat-icon>
+    <div class="gen-menu-font">
+      {{ i.data.language == "en" ? "Devoloping..." : "Desenvolvendo..." }}
+    </div>
+    <mat-icon class="gen-menu-item-right">chevron_right</mat-icon>
+  </div>
+</div>
+<div class="gen-menu-padding">
+  <div
+  [ngClass]="falseActive[5] ? 'gen-menu gen-menu-font gen-menu-active': 'gen-menu gen-menu-font'"
+  (click)="falseLinkActive(5)"
+    [routerLink]="[i.data.language == 'en' ? '/en/app/test5' : '/pt/app/test5']"
+  >
+    <mat-icon class="gen-menu-item-left">panorama_fish_eye</mat-icon>
+    <div class="gen-menu-font">
+      {{ i.data.language == "en" ? "Devoloping..." : "Desenvolvendo..." }}
+    </div>
+    <mat-icon class="gen-menu-item-right">chevron_right</mat-icon>
+  </div>
+</div>
+
+<mat-divider class="gen-menu-divider"></mat-divider>
+
+<div class="gen-menu-padding">
+  <div class="gen-menu-title gen-menu-font">
+    <div class="font">
+      {{ i.data.language == "en" ? "Clients" : "Clientes" }}
+    </div>
+  </div>
+  <div
+  [ngClass]="falseActive[6] ? 'gen-menu gen-menu-font gen-menu-active': 'gen-menu gen-menu-font'"
+  (click)="falseLinkActive(6)"
+    [routerLink]="[i.data.language == 'en' ? '/en/app/test6' : '/pt/app/test6']"
+  >
+    <mat-icon class="gen-menu-item-left">panorama_fish_eye</mat-icon>
+    <div class="gen-menu-font">
+      {{ i.data.language == "en" ? "Devoloping..." : "Desenvolvendo..." }}
+    </div>
+    <mat-icon class="gen-menu-item-right">chevron_right</mat-icon>
+  </div>
+</div>
+<div class="gen-menu-padding">
+  <div
+  [ngClass]="falseActive[7] ? 'gen-menu gen-menu-font gen-menu-active': 'gen-menu gen-menu-font'"
+  (click)="falseLinkActive(7)"
+    [routerLink]="[i.data.language == 'en' ? '/en/app/test7' : '/pt/app/test7']"
+  >
+    <mat-icon class="gen-menu-item-left">panorama_fish_eye</mat-icon>
+    <div class="gen-menu-font">
+      {{ i.data.language == "en" ? "Devoloping..." : "Desenvolvendo..." }}
+    </div>
+    <mat-icon class="gen-menu-item-right">chevron_right</mat-icon>
+  </div>
+</div> -->

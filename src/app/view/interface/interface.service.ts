@@ -8,13 +8,14 @@ import { ModalService } from '@component/modal/modal.service';
   providedIn: 'root'
 })
 export class InterfaceService {
-  actionsEmitter: EventEmitter<'menu' | 'document'> = new EventEmitter();
+  actionsEmitter: EventEmitter<'menu' | 'document' | 'colectionAndDocClose' | 'documentClose'> = new EventEmitter();
   load = {
     menu: false,
     colection: false,
-    colectionHeader: false,
+    colectionHeader: true,
     document: false,
-    dashboard: true
+    dashboard: true,
+    interface: false,
   }
   document = {
     name: ''

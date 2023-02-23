@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Imodel2, Ipermission2, Irequest } from '@domain/interface';
+import { Imodel2, IpermissionFormControl, Irequest } from '@domain/interface';
 
 @Component({
   selector: 'app-colection-value',
@@ -7,7 +7,7 @@ import { Imodel2, Ipermission2, Irequest } from '@domain/interface';
   styleUrls: ['./colection-value.component.scss']
 })
 export class ColectionValueComponent implements OnInit {
-  @Input() permission?: Ipermission2[];
+  @Input() permission?: IpermissionFormControl[];
   @Input() model?: Imodel2;
   @Input() language?: Irequest['language'];
   @Input() colection?: any;

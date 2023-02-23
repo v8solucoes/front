@@ -1,0 +1,26 @@
+@import "/src/sass/constructorNew";
+
+section {
+  @include section($width-max:var(--colection-size-max), $width-min:var(--colection-size-nin), $width:false);
+}
+
+app-colection-nav-top {
+  @include nav($width:var(--navBar-size));
+}
+
+app-colection-nav-footer {
+  @include footer($width:var(--navBar-size));
+}
+
+/* .dark-theme .mat-drawer-side .mat-drawer-end {
+background-color: blue;
+border-left: solid 0px;
+border-right: solid 0px;
+
+}
+
+::ng-deep .dark-theme .mat-drawer-side .mat-drawer-end {
+
+  background-color: blue;
+  border: none;
+} */

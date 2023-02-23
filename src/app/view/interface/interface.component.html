@@ -1,9 +1,10 @@
-<ng-template #loading>
+<!-- <ng-template #loading>
   <div class="gen-centerFlex">{{ i.data.language == 'en'? 'Progress...': 'Carregando...'}}</div>
   <div class="gen-centerFlex"><mat-spinner class="gen-centerFlex"></mat-spinner></div>
-</ng-template>
+</ng-template> -->
 
-<div class="center" *ngIf="load; else loading">
+<!-- <div class="center" *ngIf="i.load.interface; else loading"> -->
+<div class="center">
   
   <div class="container">
 
@@ -18,8 +19,6 @@
       <mat-drawer-content>
 
         <mat-sidenav-container>
-
-          <app-dashboard *ngIf="i.load.dashboard" class="container-colection"></app-dashboard>
 
           <router-outlet> </router-outlet>
 

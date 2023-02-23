@@ -1,0 +1,26 @@
+<section class="gen-nav-top-font" (click)="i.dashboardOpen()">
+  <button
+    mat-icon-button
+    [routerLink]="[i.data.language == 'en' ? '/en/app' : '/pt/app']"
+  >
+    <mat-icon class="icon">home</mat-icon>
+  </button>
+
+  <span
+    class="gen-nav-top-nav-font"
+    [routerLink]="[i.data.language == 'en' ? '/en/app/dashboard' : '/pt/app']"
+  >
+    {{ i.data.language == "en" ? "V8 App Test" : "V8 App Teste" }}
+  </span>
+
+  <button
+    mat-icon-button
+    *ngIf="i.view.phone"
+    (click)="i.actionsEmitter.emit('menu')"
+  >
+    <mat-icon class="icon">chevron_left</mat-icon>
+  </button>
+  <button mat-icon-button *ngIf="!i.view.phone">
+    <mat-icon class="icon">user</mat-icon>
+  </button>
+</section>

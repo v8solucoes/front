@@ -1,0 +1,17 @@
+<div class="flex">
+  <ng-container *ngIf="!i.view.desktop">
+    <button mat-raised-button 
+    (click)="i.actionsEmitter.emit('documentClose')"
+   >
+      <!--  <mat-icon>add</mat-icon> -->
+      {{ i.data.language == 'en'? 'Cancel':'Cancelar'}}
+    </button>
+
+  </ng-container>
+  <button mat-raised-button>
+
+    {{ i.data.language == 'en'? 'Update':'Atualizar'}}
+  </button>
+
+<!--   <app-action [action]="'update'"></app-action> -->
+</div>

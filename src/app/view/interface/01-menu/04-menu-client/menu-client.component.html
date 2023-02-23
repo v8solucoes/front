@@ -1,0 +1,26 @@
+<mat-divider class="gen-menu-divider"></mat-divider>
+<div class="gen-menu-padding">
+  <div class="gen-menu-title gen-menu-font">
+    <div class="font">{{ i.data.language == "en" ? "Client" : "Cliente" }}</div>
+  </div>
+</div>
+<div class="gen-menu-padding">
+  <div
+  class="gen-menu gen-menu-font"
+  (click)="[i.load.colectionHeader = false, i.load.document = false]"
+  routerLinkActive="gen-menu-active"
+    *ngFor="
+      let permission of i.data.local.permission.client;
+      let in = index;
+      let first;
+      let last
+    "
+    [routerLink]="[permission.id]"
+  >
+    <mat-icon class="gen-menu-item-left">panorama_fish_eye</mat-icon>
+    <div class="gen-menu-font">
+      {{ i.data.local.model[permission.id].text[i.data.language].label }}
+    </div>
+    <mat-icon class="gen-menu-item-right">chevron_right</mat-icon>
+  </div>
+</div>

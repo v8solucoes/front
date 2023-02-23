@@ -1,0 +1,32 @@
+<!-- <ng-template #loading>
+  <div class="gen-centerFlex">{{ i.data.language == 'en'? 'Progress...': 'Carregando...'}}</div>
+  <div class="gen-centerFlex"><mat-spinner class="gen-centerFlex"></mat-spinner></div>
+</ng-template>
+
+<mat-sidenav-content *ngIf="i.load.colection; else loading"> -->
+<mat-sidenav-content>
+  
+  <section (scroll)="i.startAnimation($event,'navColection')">
+
+    <app-colection-nav-top [@navTop]="i.animate.navColection.animate"></app-colection-nav-top>
+  
+    <div style="margin-top: 56px; height: 4px;">
+      <mat-progress-bar  *ngIf="!i.load.colectionHeader" mode="query"></mat-progress-bar>
+    </div>
+      
+      <app-colection-header (click)="[
+      i.load.colectionHeader = false,
+      i.actionsEmitter.emit('documentClose')
+      ]" ></app-colection-header>
+
+    <app-colection-nav-footer [@navFooter]="i.animate.navColection.animate"></app-colection-nav-footer>
+
+  </section>
+
+</mat-sidenav-content>
+
+<mat-sidenav #document mode="side" [opened]="false" position="end">
+
+  <router-outlet></router-outlet>
+
+</mat-sidenav>

@@ -6,7 +6,6 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
-import { DataService } from '@repository/data.service';
 import { Observable, of } from 'rxjs';
 import { ResolveService } from './resolve.service';
 import { TestCompose } from '@domain/validator-local';

@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Irequest } from '@domain/interface';
-import { environment } from 'src/environments/environment';
+import { environment } from 'environments/environment';
 import { DataService } from '@repository/data.service';
 import { DOCUMENT } from '@angular/common';
 

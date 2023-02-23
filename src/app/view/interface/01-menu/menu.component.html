@@ -1,0 +1,19 @@
+<section (scroll)="i.startAnimation($event,'navMenu')">
+
+  <app-menu-nav-top [@navTop]="i.animate.navMenu.animate"
+  (click)="[
+  i.view.phone ? i.actionsEmitter.emit('menu'):'']"></app-menu-nav-top>
+  <div (click)="[
+  i.view.phone ? i.actionsEmitter.emit('menu'):'',
+  i.actionsEmitter.emit('colectionAndDocClose'),
+  i.actionsEmitter.emit('documentClose')]">
+    
+    <app-menu-adm></app-menu-adm>
+    <app-menu-partner></app-menu-partner>
+    <app-menu-client></app-menu-client>
+  </div>
+
+
+  <app-menu-nav-footer [@navFooter]="i.animate.navMenu.animate"></app-menu-nav-footer>
+
+</section>

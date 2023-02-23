@@ -8,11 +8,11 @@ import { LoginSignInComponent } from '@view/login/login-sign-in/login-sign-in.co
 import { PageNotFoundComponent } from './view/page-not-found/page-not-found.component';
 import { InterfaceComponent } from '@view/interface/interface.component';
 import { GetColectionResolver } from './resolve/get-colection.resolver';
-import { DocumentComponent } from '@view/interface/document/document.component';
+import { DocumentComponent } from '@view/interface/04-document/document.component';
 import { GetDocumentResolver } from './resolve/get-document.resolver';
 import { CreateAccountComponent } from '@view/login/create-account/create-account.component';
-import { ColectionComponent } from '@view/interface/colection/colection.component';
-import { DashboardComponent } from '@view/interface/dashboard/dashboard.component';
+import { ColectionComponent } from '@view/interface/03-colection/colection.component';
+import { DashboardComponent } from '@view/interface/02-dashboard/dashboard.component';
 
 const routes: Routes = [
 
@@ -30,7 +30,9 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     resolve: { 'response': GetUserResolver },
     children: [
-
+      {
+        path: 'dashboard', component: DashboardComponent
+      },
       {
         path: ':document', component: ColectionComponent,
         canActivate: [AuthGuard],

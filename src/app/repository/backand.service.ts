@@ -1,7 +1,7 @@
 import { DataService } from '@repository/data.service';
 import { Injectable } from '@angular/core';
 import { Irequest, IresponseValidatorCompose } from '@domain/interface';
-import { environment } from 'src/environments/environment';
+import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
