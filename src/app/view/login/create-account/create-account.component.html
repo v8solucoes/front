@@ -15,6 +15,9 @@
     <button mat-raised-button [routerLink]="[data.language == 'en'? '../../../../en/login/sign-in':'../../../../en/login/sign-in']">
       <mat-label> {{ data.language == 'en'? 'Log In':'Login'}} </mat-label>
     </button>
+    <button mat-raised-button (click)="genericData()">
+      <mat-label> {{ data.language == 'en'? 'Generic Data':'Generico Data'}} </mat-label>
+    </button>
   </section>
 
 </div>

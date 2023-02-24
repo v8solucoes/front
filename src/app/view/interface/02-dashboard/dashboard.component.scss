@@ -1,6 +1,7 @@
 @import "/src/sass/constructorNew";
 
 section {
+  height: 100vh;
   @include section($width-max:var(--colection-size-max), $width-min:var(--colection-size-nin),$width:false);
 }
 

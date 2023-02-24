@@ -37,7 +37,9 @@ export class ColectionHeaderComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log('destroy')
+    if (_debug.pg.colection) {
+      console.log('Destroy Colection')
+    }
     this.inscription.unsubscribe()
   }
   

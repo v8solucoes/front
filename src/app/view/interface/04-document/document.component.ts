@@ -27,7 +27,7 @@ export class DocumentComponent implements OnDestroy {
   ) {
 
     this.inscription = this.route.data.subscribe(({ response }) => {    
-
+      this.i.load.document = false
       if (response == null) {
 
         if (_debug.pg.document) {
@@ -51,9 +51,10 @@ export class DocumentComponent implements OnDestroy {
       }
 
       setTimeout(() => {
+        console.log('document')
         this.i.actionsEmitter.emit('document')
-        this.i.load.document = true
         this.i.load.colectionHeader = true;
+        this.i.load.document = true
 
       }, 500);
 

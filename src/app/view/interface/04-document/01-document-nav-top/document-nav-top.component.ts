@@ -10,7 +10,8 @@ export class DocumentNavTopComponent {
 
   name: string
   constructor(public i: InterfaceService) { 
-    this.name = this.i.document.name
+
+    this.name = this.i.document.name   
   }
 
 }

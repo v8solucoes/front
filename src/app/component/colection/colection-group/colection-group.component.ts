@@ -22,7 +22,9 @@ export class ColectionGroupComponent implements OnInit {
     this.i.data.requestLast.language
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+ 
+   }
 
  get createColors() {
     const colors = []

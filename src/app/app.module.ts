@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 // OUTROS
-import { environment } from 'environments/environment';
+import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 
 // Modules

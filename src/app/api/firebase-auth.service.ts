@@ -4,7 +4,7 @@ import { DataService } from '@repository/data.service';
 import { FirebaseApp } from '@angular/fire/compat';
 import { connectAuthEmulator, getAuth, GoogleAuthProvider, signInWithCredential, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { Irequest } from './../../../../domain/src/shared/interface';
-import { environment } from 'environments/environment';
+import { environment } from 'src/environments/environment';
 import { _debug } from '../../../../domain/src/domain/repository/debug';
 
 @Injectable({

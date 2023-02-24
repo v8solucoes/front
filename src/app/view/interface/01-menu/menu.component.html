@@ -4,6 +4,7 @@
   (click)="[
   i.view.phone ? i.actionsEmitter.emit('menu'):'']"></app-menu-nav-top>
   <div (click)="[
+  i.load.colectionHeader = false,
   i.view.phone ? i.actionsEmitter.emit('menu'):'',
   i.actionsEmitter.emit('colectionAndDocClose'),
   i.actionsEmitter.emit('documentClose')]">

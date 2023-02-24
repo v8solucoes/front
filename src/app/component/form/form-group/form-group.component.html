@@ -1,5 +1,5 @@
-<ng-container *ngFor="let acess of permission; let i = first;">
-
+<ng-container *ngFor="let acess of permission; let i =  index;">
+{{ i==0 ? setLabel(acess.id) : ''}}
   <ng-container *ngIf="acess.view.form">
 
     <ng-container [ngSwitch]="model[acess.id].typeModel">
@@ -22,7 +22,7 @@
       <!-- TYPE VALUE -->
       <ng-container *ngSwitchCase="'value'">
        
-      {{ !firstoObject ? i ? setLabel(acess.id) : '' :'' }}
+      
 
         <app-form-value  *ngSwitchCase="'value'"
           [form]="form"

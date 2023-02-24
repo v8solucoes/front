@@ -28,10 +28,9 @@ export class FormGroupComponent implements OnInit {
     console.log(this.form.controls) */
   }
   setLabel(id:string) {
-   
-   /*  console.log( id)
-    console.log( this.form.get(id)) */
-    this.i.document.name = this.form.get(id)?.value
+ 
+  this.i.document.name = this.form.get(id)?.value
+
   }
   getFormObject(id: string): UntypedFormGroup {
     return this.form.get(id) as UntypedFormGroup

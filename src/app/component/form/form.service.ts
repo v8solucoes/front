@@ -5,7 +5,7 @@ import { AbstractControl, AsyncValidatorFn, UntypedFormArray, UntypedFormControl
 import { InameValidatorLocal, InameValidatorRemote, Irequest, Ivalidator, IresponseValidatorUnit, IresponseValidatorCompose} from '@domain/interface';
 import { ValidatorsLocal } from '@domain/validator-local';
 import { delay, first, map, Observable, of, take } from 'rxjs';
-import { environment } from 'environments/environment';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
