@@ -1,19 +1,12 @@
-# ANGULAR
-###### [README](./../README.md)
+# ANGULAR - Last Update 15-05-23
 
-## Last Update 24-05-22
+## [README](./../README.md)
 
-`npm install -g @angular/cli` (if NPM / NVM new instalation)
+`ng version` (Angula CLI: 15.2.8 era 14.2.10)
 
-`ng version` (Angula CLI: 14.2.10 era 14.2.10)
+`npm view @angular/cli` (Versions LTS Angular)
 
-`npm view @angular/cli`(Versions LTS Angular)
-
-## CLI - Global - Always Install LTS version
-
-`npm install -g @angular/cli@14.2.10`
-
-`npm upgrade -g @angular/cli`(last version)
+`npm install -g @angular/cli@15` (Version LTS)
 
 `npm uninstall -g @angular/cli`
 
@@ -21,11 +14,9 @@
 
 ## CLI - Local Update
 
-`cd front` (root past)
+`cd front` (root past/angular)
 
 `ng update` (Update Last Version)
-
-`npm install -g @angular/cli@14.2.10` (Update LTS version)
 
 Delete Past: `rm -rf node_modules .angular` and `rm package-lock.json`
 
