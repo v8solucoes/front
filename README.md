@@ -1,19 +1,18 @@
-# README: LastUpdate (30/08/22)
+# LastUpdate (15/05/23)
 
-### ANGULAR - [Install / Update](.readme/angular.md) 
-### ANGULAR Firebase - [Prod / Emulator](.readme/angular-firebase.md) 
-# About Project
+## ANGULAR - [Install / Update](.readme/angular.md)
+
+## FIREBASE FrontEnd - [Install / Update](../front/.readme/firebase-frontend.md)
+
+## FIREBASE BackEnd > Functions - [Install / Update](../back/.readme/firebase-functions.md)
+
+## FIREBASE Emulator - [Install / Update](../domain/.readme/firebase-emulator.md)
+
+## About Project
 
 kill $(lsof -t -i:4000)
 
-This project was generated with version:
-- Angular: 13.3.5.
-- Node v16.17.0,
-- NPM 8.9.0,
-- "firebase": "^9.8.1",
-- "@angular/fire": "^7.3.0",
-
-# Multiplos idiomas
+## Multiplos idiomas
 
 ```html
 <ng-container [ngSwitch]="dataLocal.request?.language">

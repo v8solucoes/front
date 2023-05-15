@@ -3,7 +3,7 @@ import { UntypedFormGroup } from '@angular/forms';
 import { IresponseValidatorCompose, ImodelRecursive } from '@domain/interface';
 import { InterfaceService } from '@view/interface/interface.service';
 
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { _debug } from '@repositoryDomain/debug';
 
 @Component({

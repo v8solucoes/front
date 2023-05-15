@@ -4,16 +4,34 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "paths":{
-      "@domain/*":["./../domain/src/shared/*"],
-      "@shared-angular/*":["./src/app/shared/*"],
-      "@css/*":["./src/sass/*"],
-      "@view/*":["./src/app/view/*"],
-      "@method/*":["./src/app/method/*"],
-      "@module/*":["./src/app/module/*"],
-      "@component/*":["./src/app/component/*"],
-      "@repository/*":["./src/app/repository/*"],
-      "@repositoryDomain/*":["../domain/src/domain/repository/*"],
+    "paths": {
+      "@domain/*": [
+        "./../domain/src/shared/*"
+      ],
+      "@shared-angular/*": [
+        "./src/app/shared/*"
+      ],
+      "@css/*": [
+        "./src/sass/*"
+      ],
+      "@view/*": [
+        "./src/app/view/*"
+      ],
+      "@method/*": [
+        "./src/app/method/*"
+      ],
+      "@module/*": [
+        "./src/app/module/*"
+      ],
+      "@component/*": [
+        "./src/app/component/*"
+      ],
+      "@repository/*": [
+        "./src/app/repository/*"
+      ],
+      "@repositoryDomain/*": [
+        "../domain/src/domain/repository/*"
+      ]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -28,12 +46,14 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2020",
-    "module": "es2020",
+    "target": "ES2022",
+    "module": "ES2022",
+    "useDefineForClassFields": false,
     "lib": [
-      "es2020",
+      "ES2022",
       "dom"
     ]
+    
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

@@ -1,6 +1,6 @@
 import { ImodalErrorForm } from '@domain/interface';
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { FormValidateComponent } from './form-validate/form-validate.component';
 
 @Injectable({

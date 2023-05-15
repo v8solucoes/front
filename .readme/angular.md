@@ -18,28 +18,28 @@
 
 `ng update` (Update Last Version)
 
-Delete Past: `rm -rf node_modules .angular` and `rm package-lock.json`
+`npm outdated` (Last version Package)
+
+Delete Past: `rm -rf node_modules .angular dist package-lock.json`
 
 `npm install`
 
 `ng serve`
 
-# Dependecy / Global e Local
+## Angular > Firebase
 
-`npm instal firebase` (é preciso instalar o firebase local e Global)
+`npm instal @angular/fire` (Save Local Angular)
 
-`npm instal @angular/fire` (é preciso instalar o firebase local e Global)
+Install [Firebase FRONTEND](firebase-frontend.md) 
 
-`npm install --save firebase-functions@latest` (acesse a pasta back e execute)
+## Setup Easy access to folders
 
+Modify files:
 
-# Setup
+- tsconfig.json
+- tsconfig.app.json
+- tsconfig.spec.json
 
-## Phats | Easy access to folders
-Modify files
- - tsconfig.json
- - tsconfig.app.json,
- - tsconfig.spec.json
 ```json
 "baseUrl": "./",
 "paths": {
@@ -52,5 +52,5 @@ Modify files
     "@component/*":["./src/app/component/*"],
     "@repository/*":["./src/app/repository/*"],
   },
-```
 
+```

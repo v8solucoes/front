@@ -1,10 +1,10 @@
-Install Firebase packages in Angular app.
+# Firebase FrontEnd
 
 `npm install firebase @angular/fire`
 
 Add your firebase configuration in enviorment.ts files.
 
-``` json
+```json
 export const environment = {
   production: false,
   firebase: {
@@ -17,9 +17,10 @@ export const environment = {
     appId: "xxxxx",
     measurementId: "xxxxxxxxxxxxxxxx"
   }
-}```
+}
+```
 
-Import and register firebase modules in app.module.ts.
+## Import and register firebase modules in app.module.ts
 
 // Firebase services + environment module
 import { AngularFireModule } from '@angular/fire/compat';
@@ -39,7 +40,14 @@ import { environment } from '../environments/environment';
   ]
 })
 
-### Create Auth Service
+## Firebase Emulador - Angular
+
+module.ts
+import { USE_EMULATOR as USE_AUTH_EMULATOR } from '@angular/fire/compat/auth';
+providers: [ { provide: USE_AUTH_EMULATOR, useValue: environment.emulador ? ['http://localhost:9099'] : undefined }],
+
+## Create Auth Service
+
 Exemple Imports
 import { FirebaseApp } from '@angular/fire/compat';
 import { connectAuthEmulator, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
