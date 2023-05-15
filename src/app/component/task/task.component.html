@@ -1,0 +1,26 @@
+<!-- <div class="task-padding">
+  <div class="task-title ">
+    <div class="task-font">
+      {{ title }}
+    </div>
+  </div>
+</div> -->
+
+<div class="task-padding">
+
+  <div class="task">
+
+    <div class="task-item-left">
+      <div class="task-status" [ngStyle]="{'background-color': color }"> {{status}}% </div>
+    </div>
+
+    <div>
+      <div class="task-title"> {{ title }} </div>
+      <div class="task-description"> {{ description }}</div>
+    </div>
+
+<!--     <mat-icon class="task-item-right">chevron_right</mat-icon> -->
+
+  </div>
+
+</div>

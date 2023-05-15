@@ -19,7 +19,7 @@ import { ComponentSharedModule } from './app.module.shared';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     // Not Remove

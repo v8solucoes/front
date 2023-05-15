@@ -1,6 +1,11 @@
 <div class="margin"></div>
+<ng-template #loading>
+  <div class="gen-centerFlex">{{ i.data.language == 'en'? 'Progress...': 'Carregando...'}}</div>
+  <div class="gen-centerFlex"><mat-spinner class="gen-centerFlex"></mat-spinner></div>
+</ng-template>
 
-<section>
+<section *ngIf="i.load.document; else loading">
+
   <app-form-group [form]="i.data.form[i.data.requestLast.document]"
 [permission]="i.data.local.getRecursive(i.data.requestLast.document).permission"
 [model]="i.data.local.getRecursive(i.data.requestLast.document).model" [request]="i.data.requestLast">

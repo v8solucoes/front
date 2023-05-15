@@ -8,7 +8,7 @@ import { UntypedFormGroup } from '@angular/forms';
 })
 export class DataService {
 
-  user: Iuser = {'name':'Any','nivel':'adm','userId':'xx','acessToken':'xx'} 
+  user: Iuser = {'name':'Any','level':'adm','userId':'xx','acessToken':'xx'} 
   form: { [K in keyof Idoc]: UntypedFormGroup } = {} as any
   errorResolve: any = null
   language!: Irequest['language']

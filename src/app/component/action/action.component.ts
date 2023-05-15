@@ -56,25 +56,31 @@ export class ActionComponent implements OnInit {
 
       if (this.action != 'user-sig-in') {
 
-        this.i.backand.httpCrudGeneric(this.action).subscribe(async (response: IresponseValidatorCompose | null) => {
+        this.i.backand.httpCrudGeneric(this.action).subscribe(async (response: any | null) => {
+
+          console.log(response.response == null)
+
+          if (response.response === null) {
+            const mensagem = `${text[this.action]} ${text.sucess} ${this.redirect != null ? text.redirect : ''}`
+            this._snackBar.open(mensagem, 'X');
+          
+            setTimeout(() => {
+
+              if (this.redirect != null) { /*   this.i.auth.router.navigate([this.redirect]) */ }
+  
+              this.sucess = true
+  
+            }, 200);
 
 
-          setTimeout(() => {
 
-            if (this.redirect != null) {
-
-              this.i.auth.router.navigate([this.redirect])
-
+          } else {
+            
+            const mensagem = `${text[this.action]} ${text.error}`
+            
+            this._snackBar.open(mensagem, 'X');
+           /*  throw new this.erros */
             }
-
-            this.sucess = true
-
-          }, 2500);
-
-
-          const mensagem = `${text[this.action]} ${text.sucess} ${this.redirect != null ? text.redirect : ''}`
-
-          this._snackBar.open(mensagem, 'X');
 
           console.log(response)
 

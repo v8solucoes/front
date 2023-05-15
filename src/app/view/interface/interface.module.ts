@@ -11,6 +11,8 @@ import { InterfaceComponent } from './interface.component';
 import { MenuComponent } from './01-menu/menu.component';
 import { MenuNavTopComponent } from './01-menu/01-menu-nav-top/menu-nav-top.component';
 import { MenuAdmComponent } from './01-menu/02-menu-adm/menu-adm.component';
+import { MenuPartnerComponent } from './01-menu/03-menu-partner/menu-partner.component';
+import { MenuClientComponent } from './01-menu/04-menu-client/menu-client.component';
 import { MenuNavFooterComponent } from './01-menu/05-menu-nav-footer/menu-nav-footer.component';
 
 import { DashboardComponent } from './02-dashboard/dashboard.component';
@@ -27,8 +29,8 @@ import { DocumentComponent } from './04-document/document.component';
 import { DocumentNavTopComponent } from './04-document/01-document-nav-top/document-nav-top.component';
 import { DocumentHeaderComponent } from './04-document/02-document-header/document-header.component';
 import { DocumentNavFooterComponent } from './04-document/03-document-nav-footer/document-nav-footer.component';
-import { MenuPartnerComponent } from './01-menu/03-menu-partner/menu-partner.component';
-import { MenuClientComponent } from './01-menu/04-menu-client/menu-client.component';
+import { TaskComponent } from '@component/task/task.component';
+
 
 
 @NgModule({
@@ -46,6 +48,8 @@ import { MenuClientComponent } from './01-menu/04-menu-client/menu-client.compon
     MenuComponent,
     MenuNavTopComponent,
     MenuAdmComponent,
+    MenuPartnerComponent,
+    MenuClientComponent,
     MenuNavFooterComponent,
   
     DashboardComponent,
@@ -62,8 +66,10 @@ import { MenuClientComponent } from './01-menu/04-menu-client/menu-client.compon
     DocumentNavTopComponent,
     DocumentHeaderComponent,
     DocumentNavFooterComponent,
-    MenuPartnerComponent,
-    MenuClientComponent,
+
+    // Settings
+    TaskComponent
+ 
   ],
   exports: [
     InterfaceComponent

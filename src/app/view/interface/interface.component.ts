@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
 import { ActivatedRoute } from '@angular/router';
 import { InterfaceService } from '@view/interface/interface.service';
 import { _debug } from '@repositoryDomain/debug';
@@ -64,6 +63,7 @@ export class InterfaceComponent implements OnInit {
         console.log(this.i.data.requestLast)
       }
       this.i.load.interface = true;
+      this.i.load.document = false;
     })
   }
 
@@ -83,6 +83,7 @@ export class InterfaceComponent implements OnInit {
         }
         case 'colectionAndDocClose': {
           this.i.load.colection = false;
+          this.i.load.colectionHeader = false;
           this.i.load.document = false;
           this.i.load.dashboard = false;
           break;

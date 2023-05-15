@@ -51,7 +51,7 @@ export class DataLocalResolver implements Resolve<Irequest> {
       
       this.data.requestLast['user'] = {
         'name': 'Local',
-        'nivel': 'adm',
+        'level': 'adm',
         'userId': 'null',
         'acessToken': 'null'
       }

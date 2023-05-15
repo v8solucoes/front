@@ -51,7 +51,7 @@ export class DocumentComponent implements OnDestroy {
       }
 
       setTimeout(() => {
-        console.log('document')
+       /*  console.log('document') */
         this.i.actionsEmitter.emit('document')
         this.i.load.colectionHeader = true;
         this.i.load.document = true
@@ -62,8 +62,8 @@ export class DocumentComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void { 
-    console.log('destroy Document')
- /*    this.i.load.document = false; */
+/*     console.log('destroy Document') */
+    this.i.load.document = false;
     this.inscription.unsubscribe()
   }
 }

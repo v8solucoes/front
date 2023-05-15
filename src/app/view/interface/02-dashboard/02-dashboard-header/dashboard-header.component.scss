@@ -1,4 +1,16 @@
 @import "/src/sass/_colection";
+title {
+  padding: 12px;
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+  display: block;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
 p {
   padding: 12px;
+/*   border-bottom-color: rgba(255, 255, 255, 0.12);
+  display: block;
+  border-bottom-width: 1px;
+  border-bottom-style: solid; */
 }
+

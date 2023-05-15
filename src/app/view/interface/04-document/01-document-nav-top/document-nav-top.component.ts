@@ -8,10 +8,13 @@ import { InterfaceService } from '@view/interface/interface.service';
 })
 export class DocumentNavTopComponent {
 
-  name: string
+  name: string = '...'
   constructor(public i: InterfaceService) { 
-
-    this.name = this.i.document.name   
+    
+    setTimeout(() => {
+       this.name = this.i.document.name
+    }, 200);
+   
   }
 
 }
