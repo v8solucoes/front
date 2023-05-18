@@ -56,6 +56,7 @@ export class ActionComponent implements OnInit {
 
       if (this.action != 'user-sig-in') {
 
+
         this.i.backand.httpCrudGeneric(this.action).subscribe(async (response: any | null) => {
 
           console.log(response.response == null)
@@ -65,11 +66,11 @@ export class ActionComponent implements OnInit {
             this._snackBar.open(mensagem, 'X');
           
             setTimeout(() => {
-
-              if (this.redirect != null) { /*   this.i.auth.router.navigate([this.redirect]) */ }
   
               this.sucess = true
-  
+              if (this.redirect != null) {
+                this.i.auth.router.navigate([this.redirect])
+              }  
             }, 200);
 
 

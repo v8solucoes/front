@@ -2,7 +2,11 @@
 
   <div class="flex">
   
-    <button mat-raised-button [routerLink]="['new', 'create']">
+    <button mat-raised-button [routerLink]="['new', 'create']"
+    (click)="[
+      i.load.colectionHeader = false,
+      i.actionsEmitter.emit('documentClose')
+      ]">
   <!--     <mat-icon>add</mat-icon> -->
       {{ i.data.language == 'en'? 'Create':'Criar'}}
     </button>

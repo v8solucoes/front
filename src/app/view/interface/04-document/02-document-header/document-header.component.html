@@ -11,4 +11,6 @@
 [model]="i.data.local.getRecursive(i.data.requestLast.document).model" [request]="i.data.requestLast">
 </app-form-group>
 
+<div *ngIf="i.load.document;">Test {{ i.data.form['user-adm'].value | json}}  </div>
+
 </section>

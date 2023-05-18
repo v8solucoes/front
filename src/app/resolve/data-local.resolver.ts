@@ -56,6 +56,11 @@ export class DataLocalResolver implements Resolve<Irequest> {
         'acessToken': 'null'
       }
       this.data.form[`${request.document}`] = this.form.createForm()
+
+      if (_debug.form) {
+        console.log('Form')
+        console.log(this.data.form[`${request.document}`])
+      }
       return of(request)
 
     } else {

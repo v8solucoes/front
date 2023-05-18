@@ -21,41 +21,57 @@ export class FirebaseAuthService {
   }
 
   async loginIn(email: string, password: string, language: Irequest['language']) {
-
-    const auth = getAuth();
-    environment.test ? connectAuthEmulator(auth, "http://localhost:9099") : ''
-
-    return signInWithEmailAndPassword(auth, email, password).then(o => {
-     
-      if (_debug.pg.firebase) {
-        console.log('Login Sucess')
-      }
+  
+    const conected = await this.loginGuard()
     
-      return true
-      
-    }).catch(o => {
-      console.log('Login Error')
-      this.router.navigate([`${language}/login/sign-in`])
-      console.log(o)
-      return
-    }).finally()
+    if (environment.test && conected) {
 
+   /*    this.router.navigate([`${language}/login/sign-in`]) */
+      return true
+    } else {
+
+      const auth = getAuth();
+      /*    environment.test ? connectAuthEmulator(auth, "http://localhost:9099") : '' */
+      connectAuthEmulator(auth, "http://127.0.0.1:9099", { disableWarnings: true })
+      return signInWithEmailAndPassword(auth, email, password).then(o => {
+
+        if (_debug.pg.firebase) {
+          console.log('Login Sucess')
+        }
+
+        return true
+
+      }).catch(o => {
+        console.log('Login Error')
+        this.router.navigate([`${language}/login/sign-in`])
+        console.log(o)
+        return
+      }).finally()
+    }
   }
   async loginOut() {
+    const test = environment.test
 
-    const auth = getAuth();
-      /*   environment.test ? connectAuthEmulator(auth, "http://localhost:9099") : ''; */
+    if (environment.test) {
 
-    return signOut(auth).then(() => {
-      console.log('signOut Sucess')
-    
-      this.router.navigate([this.data.language =='en'?'en/login/sign-in':'pt/login/sign-in'])
-    }).catch((error) => {
-      // An error happened.
-      console.log('signOut Error')
-    });
+      this.router.navigate([this.data.language == 'en' ? 'en/login/sign-in' : 'pt/login/sign-in'])
+
+    } else {
+      const auth = getAuth();
+      /*         environment.test ? connectAuthEmulator(auth, "http://localhost:9099") : ''; */
+
+      return signOut(auth).then(() => {
+
+        this.router.navigate([this.data.language == 'en' ? 'en/login/sign-in' : 'pt/login/sign-in'])
+      }).catch((error) => {
+        // An error happened.
+        console.log('signOut Error')
+      });
+
+    }
 
   }
+
   async loginGuard() {
 
     try {
@@ -65,12 +81,12 @@ export class FirebaseAuthService {
       if (user) {
         const credential = user as any
         this.data.user.acessToken = credential['accessToken']
-/*         console.log('Guard Sucess')
-        console.log(this.data.user.acessToken) */
+        /*         console.log('Guard Sucess')
+                console.log(this.data.user.acessToken) */
         return true
       } else {
         console.log('Guard Error')
-       /*  this.router.navigate([`en/login/sign-in`]) */
+        /*  this.router.navigate([`en/login/sign-in`]) */
         return false
 
       }
@@ -80,7 +96,7 @@ export class FirebaseAuthService {
 
 
   }
-  
+
   async googleAuth() {
 
     const auth = getAuth();

@@ -8,10 +8,17 @@
     </button>
 
   </ng-container>
-  <button mat-raised-button>
+<!--   <button mat-raised-button>
 
     {{ i.data.language == 'en'? 'Update':'Atualizar'}}
-  </button>
+  </button> -->
 
-  <app-action [action]="'update'"></app-action>
+  <app-action *ngIf="i.data.requestLast.action == 'create'"[action]="'update'"></app-action>
+  <app-action *ngIf="i.data.requestLast.action == 'update'"
+  [action]="'update'" 
+ ></app-action>
+<!--   <app-action *ngIf="i.data.requestLast.action == 'update'"
+  [action]="'update'" 
+  [redirect]='(i.data.language) + ("/app/") + (i.data.requestLast.document)'></app-action> -->
+  
 </div>

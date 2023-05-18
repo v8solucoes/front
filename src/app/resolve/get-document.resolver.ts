@@ -44,6 +44,11 @@ export class GetDocumentResolver implements Resolve<any> {
       if (request.action == 'create') {
 
         this.data.form[`${this.data.requestLast.document}`] = this.form.createForm()
+
+        if (_debug.form) {
+          console.log('Form Create')
+          console.log(this.data.form[`${request.document}`])
+        }
       
         return of(null) 
         

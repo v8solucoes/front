@@ -3,12 +3,15 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { DataService } from '@repository/data.service';
 import { FirebaseAuthService } from 'src/app/api/firebase-auth.service';
 import { ModalService } from '@component/modal/modal.service';
+import { _debug } from '@repositoryDomain/debug';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InterfaceService {
+ 
   actionsEmitter: EventEmitter<'menu' | 'document' | 'colectionAndDocClose' | 'documentClose'> = new EventEmitter();
+ 
   load = {
     menu: false,
     colection: false,
@@ -17,20 +20,21 @@ export class InterfaceService {
     dashboard: true,
     interface: false,
   }
+
   document = {
     name: ''
   }
-/*   loading = false; */
 
+  debug = _debug
   viewDocument = false;
   loadingDocument = false
+ 
   view = {
     phone: false,
     tablet: false,
     desktop: false
   }
 
-  webAndTablet = false;
   animate = {
     navMenu: {
       animate: true,
@@ -57,8 +61,11 @@ export class InterfaceService {
     public backand: BackandService,
     public auth: FirebaseAuthService
   ) {
+
     this.load.menu = true
+
   }
+
   startAnimation(evento: any, nameScroll: 'navMenu' | 'navColection'| 'navDashboard') {
     const scrollCurrent = evento.srcElement.scrollTop;
     const scrollLast = this.animate[nameScroll].scrollLast
@@ -68,9 +75,11 @@ export class InterfaceService {
     this.animate[nameScroll].animate = compare()
 
   }
+
   dashboardOpen() {
     this.load.dashboard = true
   }
+  
   dashboardClose() {
     this.load.dashboard = false
   }

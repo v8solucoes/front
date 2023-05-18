@@ -1,5 +1,5 @@
 {
-  "name": "angular-14",
+  "name": "v8",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -21,6 +21,7 @@
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0",
+    
     "@angular/fire": "^7.5.0",
     "@angular/material": "^15.2.9",
     "firebase": "^9.22.0",

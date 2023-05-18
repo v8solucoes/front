@@ -13,8 +13,13 @@
       i.actionsEmitter.emit('documentClose')
       ]" ></app-colection-header>
 
-    <app-colection-nav-footer [@navFooter]="i.animate.navColection.animate"></app-colection-nav-footer>
-
+    <app-colection-nav-footer [@navFooter]="i.animate.navColection.animate"
+    ></app-colection-nav-footer>
+  
+    <div *ngIf="i.load.document;"> 
+      Form {{ i.data.form['user-adm'].value | json}}<br><br>
+      Value: {{ i.data.form['user-adm'].get(['user-adm','email'])?.value}}
+     </div>
   </section>
 
 </mat-sidenav-content>
@@ -22,5 +27,7 @@
 <mat-sidenav #document mode="side" [opened]="false" position="end">
 
   <router-outlet></router-outlet>
+
+
 
 </mat-sidenav>
