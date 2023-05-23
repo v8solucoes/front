@@ -4,13 +4,13 @@
   <div class="gen-centerFlex"><mat-spinner class="gen-centerFlex"></mat-spinner></div>
 </ng-template>
 
-<section *ngIf="i.load.document; else loading">
+<section *ngIf="i.load.document else loading">
 
   <app-form-group [form]="i.data.form[i.data.requestLast.document]"
 [permission]="i.data.local.getRecursive(i.data.requestLast.document).permission"
 [model]="i.data.local.getRecursive(i.data.requestLast.document).model" [request]="i.data.requestLast">
 </app-form-group>
 
-<div *ngIf="i.load.document;">Test {{ i.data.form['user-adm'].value | json}}  </div>
+<div *ngIf="i.load.document && i.debug.form;">Test {{ i.data.form[i.data.requestLast.document].value | json}}  </div>
 
 </section>

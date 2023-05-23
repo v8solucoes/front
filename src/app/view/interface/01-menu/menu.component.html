@@ -1,12 +1,13 @@
 
 <section (scroll)="i.startAnimation($event,'navMenu')">
 
-  <app-menu-nav-top [@navTop]="i.animate.navMenu.animate"
-  (click)="[
-  i.view.phone ? i.actionsEmitter.emit('menu'):'']"></app-menu-nav-top>
+  <app-menu-nav-top 
+  [@navTop]="i.animate.navMenu.animate"
+  (click)="[i.view.phone ? i.actionsEmitter.emit('menu'):'']">
+  </app-menu-nav-top>
+
   <div (click)="[
   i.actionsEmitter.emit('documentClose'),
-  i.actionsEmitter.emit('colectionAndDocClose'),
   i.view.phone ? i.actionsEmitter.emit('menu'):'',
   ]">
     <app-menu-adm></app-menu-adm>
@@ -15,7 +16,7 @@
   </div>
 
   <div *ngIf="i.load.document && i.debug.form;"> 
-    Form {{ i.data.form['user-adm'].value | json}}
+    Form {{ i.data.form[i.data.requestLast.document].value | json}}
    </div>
   <app-menu-nav-footer [@navFooter]="i.animate.navMenu.animate"></app-menu-nav-footer>
 

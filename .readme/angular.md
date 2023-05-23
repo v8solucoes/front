@@ -6,7 +6,7 @@
 
 `npm view @angular/cli` (Versions LTS Angular)
 
-`npm install -g @angular/cli@15` (Version LTS)
+`npm install -g @angular/cli@15.2.8` (Version LTS)
 
 `npm uninstall -g @angular/cli`
 

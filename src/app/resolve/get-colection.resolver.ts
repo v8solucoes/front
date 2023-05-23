@@ -2,9 +2,10 @@ import { InterfaceService } from './../view/interface/interface.service';
 import { BackandService } from '@repository/backand.service';
 import { Injectable } from '@angular/core';
 import {
-  Router, Resolve,
+  Router, 
   RouterStateSnapshot,
-  ActivatedRouteSnapshot
+  ActivatedRouteSnapshot,
+  Resolve
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { ResolveService } from './resolve.service';
@@ -31,6 +32,7 @@ export class GetColectionResolver implements Resolve<any> {
     
     if (test == null) {
 
+      this.i.load.document = false
       return this.backand.httpColection(request)
 
     } else {

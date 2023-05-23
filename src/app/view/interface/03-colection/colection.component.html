@@ -16,9 +16,10 @@
     <app-colection-nav-footer [@navFooter]="i.animate.navColection.animate"
     ></app-colection-nav-footer>
   
-    <div *ngIf="i.load.document;"> 
-      Form {{ i.data.form['user-adm'].value | json}}<br><br>
-      Value: {{ i.data.form['user-adm'].get(['user-adm','email'])?.value}}
+    <div *ngIf="i.load.document && i.debug.form;"> 
+      {{ i.data.requestLast.document}}
+      Form {{ i.data.form[i.data.requestLast.document].value | json}}<br><br>
+      Value: {{ i.data.form[i.data.requestLast.document].get([i.data.requestLast.document,'email'])?.value}}
      </div>
   </section>
 

@@ -29,6 +29,7 @@ const routes: Routes = [
     path: ':language/app', component: InterfaceComponent,
     canActivate: [AuthGuard],
     resolve: { 'response': GetUserResolver },
+   /*  resolve: { 'response': () => inject(GetUserResolver).resolve()}, */
     children: [
       {
         path: 'dashboard', component: DashboardComponent
