@@ -19,21 +19,21 @@ export class FirebaseAuthService {
   ) {
 
   }
-
+  async setupEmulators() {
+    const authUrl = 'http://127.0.0.1:9099'
+    await fetch(authUrl)
+/*     environment.test ? connectAuthEmulator(getAuth(), "http://127.0.0.1:9099", { disableWarnings: true }) : '' */
+    // why? to make sure that emulator are loaded
+  }
   async loginIn(email: string, password: string, language: Irequest['language']) {
-  
-    const conected = await this.loginGuard()
-    
-    if (environment.test && conected) {
-
-   /*    this.router.navigate([`${language}/login/sign-in`]) */
-      return true
-    } else {
-
+   
       const auth = getAuth();
-      /*    environment.test ? connectAuthEmulator(auth, "http://localhost:9099") : '' */
-      connectAuthEmulator(auth, "http://127.0.0.1:9099", { disableWarnings: true })
-      return signInWithEmailAndPassword(auth, email, password).then(o => {
+
+      await this.setupEmulators()
+  
+         environment.test ? connectAuthEmulator(auth, "http://127.0.0.1:9099", { disableWarnings: true }) : ''
+
+      return await signInWithEmailAndPassword(auth, email, password).then(o => {
 
         if (_debug.pg.firebase) {
           console.log('Login Sucess')
@@ -47,28 +47,24 @@ export class FirebaseAuthService {
         console.log(o)
         return
       }).finally()
-    }
+    
   }
   async loginOut() {
-    const test = environment.test
+    
 
-    if (environment.test) {
-
-      this.router.navigate([this.data.language == 'en' ? 'en/login/sign-in' : 'pt/login/sign-in'])
-
-    } else {
       const auth = getAuth();
-      /*         environment.test ? connectAuthEmulator(auth, "http://localhost:9099") : ''; */
 
-      return signOut(auth).then(() => {
+             /*  environment.test ? connectAuthEmulator(auth, "http://127.0.0.1:9099", { disableWarnings: true }) : ''; */
 
+      return await signOut(auth).then(() => {
+        this.data.exit = true
         this.router.navigate([this.data.language == 'en' ? 'en/login/sign-in' : 'pt/login/sign-in'])
       }).catch((error) => {
         // An error happened.
         console.log('signOut Error')
       });
 
-    }
+    
 
   }
 

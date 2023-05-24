@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DataService } from '@repository/data.service';
 import { _debug } from '@repositoryDomain/debug';
 import { Idoc } from '@domain/interface';
-
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login-sign-in',
@@ -33,7 +33,11 @@ export class LoginSignInComponent implements OnInit {
   }
 
   ngOnInit(): void {  
-
+    if(environment.test && this.data.exit ) {
+      location.reload()
+      this.data.exit = false;
+    }
+  
   }
 
 }

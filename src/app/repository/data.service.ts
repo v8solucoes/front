@@ -13,6 +13,7 @@ export class DataService {
   errorResolve: any = null
   language!: Irequest['language']
   requestLast!: Irequest
+  exit = false
 
   time = new Date().toString()
 
