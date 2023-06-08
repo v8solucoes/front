@@ -1,26 +1,19 @@
 <mat-sidenav-content>
-  
+ 
   <section (scroll)="i.startAnimation($event,'navColection')">
 
     <app-colection-nav-top [@navTop]="i.animate.navColection.animate"></app-colection-nav-top>
-  
-    <div style="margin-top: 56px; height: 4px;">
-      <mat-progress-bar  *ngIf="!i.load.colectionHeader" mode="query"></mat-progress-bar>
-    </div>
       
-      <app-colection-header (click)="[
-      i.load.colectionHeader = false,
-      i.actionsEmitter.emit('documentClose')
-      ]" ></app-colection-header>
+      <app-colection-header> </app-colection-header>
 
-    <app-colection-nav-footer [@navFooter]="i.animate.navColection.animate"
-    ></app-colection-nav-footer>
+    <app-colection-nav-footer [@navFooter]="i.animate.navColection.animate"></app-colection-nav-footer>
   
     <div *ngIf="i.load.document && i.debug.form;"> 
       {{ i.data.requestLast.document}}
       Form {{ i.data.form[i.data.requestLast.document].value | json}}<br><br>
       Value: {{ i.data.form[i.data.requestLast.document].get([i.data.requestLast.document,'email'])?.value}}
      </div>
+     
   </section>
 
 </mat-sidenav-content>

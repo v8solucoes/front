@@ -13,7 +13,6 @@ export class InterfaceComponent implements OnInit {
 
   @ViewChild('menu') menu: any;
 
-
   constructor(
     public i: InterfaceService,
     private route: ActivatedRoute,
@@ -26,6 +25,28 @@ export class InterfaceComponent implements OnInit {
   ngOnInit(): void {
     this.breakpointView()
     this.actions()
+  }
+
+  router() {
+
+    return this.route.data.subscribe((data) => {
+
+      const db = data['response']
+      this.testDataBaseNoError(db)
+      if (_debug.pg.interface) {
+        console.log('Interface Sucess')
+        console.log(this.i.data)
+        console.log(db)
+      }
+
+      this.i.data.local.permission = db['permission']
+      this.i.data.requestLast.user = db['user']
+      this.i.data.user = db['user']
+      /*  this.i.data.local.model = db['model'] */
+    
+      this.i.load.interface = true;
+      this.i.load.document = false;
+    })
   }
 
   breakpointView() {
@@ -46,26 +67,7 @@ export class InterfaceComponent implements OnInit {
     });
   }
 
-  router() {
-
-    return this.route.data.subscribe((data) => {
-
-      const db = data['response']
-     /*   console.log(db) */
-
-      this.i.data.local.permission = db['permission']
-      /*  this.i.data.local.model = db['model'] */
-      this.i.data.requestLast.user = db['user']
-      this.i.data.user = db['user']
-
-      if (_debug.pg.interface) {
-        console.log('Interface Sucess')
-        console.log(this.i.data.requestLast)
-      }
-      this.i.load.interface = true;
-      this.i.load.document = false;
-    })
-  }
+ 
 
   actions() {
 
@@ -81,9 +83,17 @@ export class InterfaceComponent implements OnInit {
           //Page Colection open/close Document
           break;
         }
+
+        case 'documentOpen': {
+            //Page Colection open/close Document
+          break;
+        }
+        case 'documentClose': {
+            //Page Colection open/close Document
+          break;
+        }
         case 'colectionAndDocClose': {
           this.i.load.colection = false;
-          this.i.load.colectionHeader = false;
           this.i.load.document = false;
           this.i.load.dashboard = false;
           break;
@@ -101,5 +111,9 @@ export class InterfaceComponent implements OnInit {
       }
     });
   }
-
+  testDataBaseNoError(db:any) {
+    const error = db.error == undefined ? false : true
+    error ? console.log('Erro Data Base' + db.erro ): ''
+  return error
+  }
 }

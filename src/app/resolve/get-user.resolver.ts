@@ -5,11 +5,10 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 import { Irequest } from '@domain/interface';
-import { DataService } from '@repository/data.service';
+
 import { Observable, of } from 'rxjs';
 import { ResolveService } from './resolve.service';
 import { TestCompose } from '@domain/validator-local';
-import { FirebaseAuthService } from '../api/firebase-auth.service';
 import { BackandService } from '@repository/backand.service';
 import { _debug } from '../../../../domain/src/domain/repository/debug';
 
@@ -20,9 +19,7 @@ export class GetUserResolver implements Resolve<Irequest> {
   
  constructor(
     private router: Router,
-    public auth: FirebaseAuthService,
     private resolveService: ResolveService,
-    private data: DataService,
     private backand: BackandService,
 
   ) { }
@@ -34,8 +31,9 @@ export class GetUserResolver implements Resolve<Irequest> {
 
     if (test == null) {
 
-      if (_debug.pg.colection) {
+      if (_debug.resolver) {
         console.log('Resolve User Sucess')
+        console.log(request)
       }
       
       return this.backand.httpUser(request)
@@ -43,7 +41,7 @@ export class GetUserResolver implements Resolve<Irequest> {
     } else {
       console.log('Resolve User Error')
       console.log(test)
-      this.router.navigate([`${this.data.language}/login/sign-in`])
+      this.router.navigate([`${request.language}/login/sign-in`])
       return of()
     }
 

@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { _debug } from '@repositoryDomain/debug';
 import { Animates } from '@shared-angular/animations';
 import { InterfaceService } from '@view/interface/interface.service';
 
@@ -12,15 +14,21 @@ export class ColectionComponent implements OnInit {
 
   @ViewChild('document') document: any;
 
-  constructor(public i: InterfaceService) { 
+  constructor(
+    public i: InterfaceService,
+    private route: ActivatedRoute,
+    ) { 
+
+ /*      this.router() */
  
   }
 
   ngOnInit(): void {
-   
+
     this.actions()
-       this.i.load.colection = true;
+  
   }
+
  
   actions() {
 
@@ -36,14 +44,19 @@ export class ColectionComponent implements OnInit {
           this.document.toggle();
           break;
         }
-        case 'colectionAndDocClose': {
-         // Interface Component
+        case 'documentOpen': {
+          this.document.toggle(true);
           break;
         }
         case 'documentClose': {
           this.document.toggle(false);
           break;
         }
+        case 'colectionAndDocClose': {
+          this.document.toggle(false);
+          break;
+        }
+       
         default: {
           alert('Evento Document de Interface não Cadastrado: ' + action);
           console.log('Evento Document de Interface não Cadastrado: ' + action);

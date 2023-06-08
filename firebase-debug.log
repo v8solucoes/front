@@ -1,0 +1,20 @@
+[debug] [2023-05-25T19:27:40.786Z] ----------------------------------------------------------------------
+[debug] [2023-05-25T19:27:40.788Z] Command:       /home/emerson/.nvm/versions/node/v18.16.0/bin/node /home/emerson/.nvm/versions/node/v18.16.0/bin/firebase deploy
+[debug] [2023-05-25T19:27:40.788Z] CLI Version:   12.2.1
+[debug] [2023-05-25T19:27:40.788Z] Platform:      linux
+[debug] [2023-05-25T19:27:40.788Z] Node Version:  v18.16.0
+[debug] [2023-05-25T19:27:40.789Z] Time:          Thu May 25 2023 16:27:40 GMT-0300 (Brasilia Standard Time)
+[debug] [2023-05-25T19:27:40.789Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-05-25T19:27:40.841Z] Object ".emulators.hosting" in "firebase.json" has unknown property: {"additionalProperty":"source"}
+[debug] [2023-05-25T19:27:40.844Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-05-25T19:27:40.844Z] > authorizing via signed-in user (solucoesv8@gmail.com)
+[debug] [2023-05-25T19:27:40.845Z] [iam] checking project v8app-888cd for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-05-25T19:27:40.846Z] > refreshing access token with scopes: []
+[debug] [2023-05-25T19:27:40.847Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-05-25T19:27:40.847Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-25T19:27:41.094Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-05-25T19:27:41.094Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-25T19:27:41.125Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/v8app-888cd:testIamPermissions [none]
+[debug] [2023-05-25T19:27:41.125Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/v8app-888cd:testIamPermissions x-goog-quota-user=projects/v8app-888cd
+[debug] [2023-05-25T19:27:41.125Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/v8app-888cd:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]}

@@ -16,6 +16,7 @@ import { FormValidateModule } from '@component/modal/form-validate/form-validate
 // Components
 import { AppComponent } from './app.component';
 import { ComponentSharedModule } from './app.module.shared';
+import { DataService } from '@repository/data.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { ComponentSharedModule } from './app.module.shared';
   /*   schemas: [  CUSTOM_ELEMENTS_SCHEMA,
       NO_ERRORS_SCHEMA ], */
 
-/*   providers: [WindowDom], */
+  providers: [DataService],
 
   bootstrap: [AppComponent],
 })

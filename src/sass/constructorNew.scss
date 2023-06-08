@@ -20,6 +20,16 @@
 
 }
 
+%margin-section {
+  font-family: Roboto;
+  padding-right: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  text-align: left;
+  color: var(--color-text-white);
+  cursor: pointer;
+}
 %nav-font {
   font-family: Roboto;
   padding-right: 12px;
@@ -77,13 +87,13 @@
   box-sizing: border-box;
   border-radius: 16px;
 
-  @media (max-width: 360px) {
+/*   @media (max-width: 360px) {
     overflow: hidden;
 
     &:hover {
       overflow: auto;
     }
-  }
+  } */
 
   &::-webkit-scrollbar {
     width: 6px;

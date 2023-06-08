@@ -13,11 +13,10 @@ import { DataService } from '@repository/data.service';
 import { ResolveService } from './resolve.service';
 import { _debug } from '@repositoryDomain/debug';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
+
 export class DataLocalResolver implements Resolve<Irequest> {
 
   constructor(
@@ -32,35 +31,17 @@ export class DataLocalResolver implements Resolve<Irequest> {
 
     const request = this.resolveService.getRequest(route,state)
 
-    request['validator'] = {
-      id: request.page,
-      name: 'testRequest',
-      label: 'Test Request',
-      value: '',
-      language: request.language,
-      typeExecute: 'front',
-      error: null
-    }
     const test = new TestCompose(request).testRequest
 
     if (test == null) {
+
+      this.data.form[`${request.document}`] = this.form.createForm()
       
       if (_debug.resolver) {
         console.log('Local Resolver')
+        console.log(this.data)
       }
-      
-      this.data.requestLast['user'] = {
-        'name': 'Local',
-        'level': 'adm',
-        'userId': 'null',
-        'acessToken': 'null'
-      }
-      this.data.form[`${request.document}`] = this.form.createForm()
-
-      if (_debug.form) {
-        console.log('Form')
-        console.log(this.data.form[`${request.document}`])
-      }
+   
       return of(request)
 
     } else {

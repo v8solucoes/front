@@ -9,7 +9,7 @@
     <app-settings></app-settings><br>
       <img src="/assets/Logo-V8-Sites01.png" alt="V8" width="50px">
 
-    <h2>{{ data.language == 'en' ? 'App -Test': 'App Teste'}} </h2> 
+    <h2>{{ data.language == 'en' ? 'App -Test!>': 'App Teste'}} </h2> 
 
     <app-form-group [form]="data.form[document]" [permission]="data.local.getRecursive(document).permission"
       [model]="data.local.getRecursive(document).model" [request]="data.requestLast"></app-form-group>

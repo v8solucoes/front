@@ -6,15 +6,15 @@ import { UntypedFormGroup } from '@angular/forms';
 @Injectable({
   providedIn: 'root'
 })
+
 export class DataService {
 
-  user: Iuser = {'name':'Any','level':'adm','userId':'xx','acessToken':'xx'} 
+  user = {'level':'adm'} as Iuser;
   form: { [K in keyof Idoc]: UntypedFormGroup } = {} as any
   errorResolve: any = null
-  language!: Irequest['language']
-  requestLast!: Irequest
+  language = null as any as Irequest['language']
+  requestLast = {} as Irequest
   exit = false
-
   time = new Date().toString()
 
   constructor(

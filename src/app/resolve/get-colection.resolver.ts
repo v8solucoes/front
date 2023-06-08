@@ -33,6 +33,12 @@ export class GetColectionResolver implements Resolve<any> {
     if (test == null) {
 
       this.i.load.document = false
+      this.i.load.colection = false
+
+      if(this.i.view.phone) {
+    /*     this.i.actionsEmitter.emit('menu') */
+      }
+      
       return this.backand.httpColection(request)
 
     } else {

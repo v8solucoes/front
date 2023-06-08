@@ -32,7 +32,7 @@ export class ColectionHeaderComponent implements OnDestroy {
       this.modelName = i.data.local.model[i.data.requestLast.document].text[i.data.language].label
       this.i.data.local.colection[`${this.i.data.requestLast.document}`] = response
       this.colections = response
-      this.i.load.colectionHeader = true 
+      this.i.load.colection = true;
     })
   }
 

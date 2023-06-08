@@ -2,7 +2,9 @@
 
   <button mat-icon-button (click)="this.i.actionsEmitter.emit('menu')"><mat-icon>more_vert</mat-icon></button>
   
-  <span class="gen-nav-top-font"> {{ i.data.language == "en" ? "Search" : "Pesquisar" }}</span>
+  <span *ngIf="i.load.colection" class="gen-nav-top-font"> {{ i.data.language == "en" ? "Search" : "Pesquisar" }}</span>
+
+  <mat-progress-bar  *ngIf="!i.load.colection" mode="query"  style="height: 8px;"></mat-progress-bar>
   
   <button mat-icon-button ><mat-icon>search</mat-icon></button>
 

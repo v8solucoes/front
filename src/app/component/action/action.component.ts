@@ -16,7 +16,7 @@ export class ActionComponent implements OnInit {
 
   @Input() action!: 'create' | 'update' | 'user-sig-in'
   @Input() width: number = 100
-  @Input() redirect: string = null as any
+  @Input() redirect!: string
 
   text = this.i.data.local.text.action[this.i.data.language]
 
@@ -68,7 +68,10 @@ export class ActionComponent implements OnInit {
             setTimeout(() => {
   
               this.sucess = true
-              if (this.redirect != null) {
+              console.log('this.redirect')
+              console.log(this.redirect)
+              if (this.redirect != undefined) {
+    
                 this.i.auth.router.navigate([this.redirect])
               }  
             }, 200);
@@ -93,14 +96,7 @@ export class ActionComponent implements OnInit {
         const email = this.i.data.form[this.i.data.requestLast.document].get(['sign-in', 'email'])?.value
         const password = this.i.data.form[this.i.data.requestLast.document]?.get(['sign-in', 'password'])?.value
         const language = this.i.data.language
-        this.i.auth.loginIn(email, password, language).then(loged => {
-          
-          if (loged) {
-          this.i.auth.router.navigate([`${language}/app/dashboard`])
-          }
-          return
-        }).finally()
-       
+        await this.i.auth.loginIn(email, password, language)
         return 
       }
 

@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-login-sign-in',
   templateUrl: './login-sign-in.component.html',
-  styleUrls: ['./login-sign-in.component.scss']
+  styleUrls: ['./login-sign-in.component.scss'],
 })
 export class LoginSignInComponent implements OnInit {
 
@@ -22,22 +22,24 @@ export class LoginSignInComponent implements OnInit {
   ) {
     this.route.data.subscribe(req => {
 
+      if(environment.test && this.data.exit ) {
+        location.reload()
+        this.data.exit = false;
+      }
+
+      this.load = true;
+
       if (_debug.pg.login) {
-        console.log('login')
-        console.log(this.data.form)
+        console.log(this.document)
+        console.log(this.data)
       }
       
-      this.load = true;
 
     }).closed
   }
 
   ngOnInit(): void {  
-    if(environment.test && this.data.exit ) {
-      location.reload()
-      this.data.exit = false;
-    }
-  
+   
   }
 
 }

@@ -25,7 +25,7 @@ export class ResolveService {
     
     const urlSegments = root['_urlSegment']['segments'] as any
 
-    const domain = this.document.location.hostname as Irequest['domain']
+    const domain = environment.test ? this.document.location.hostname as Irequest['domain'] : 'v8app-888cd.web.app' as Irequest['domain']
     const language = urlSegments[0].path as Irequest['language']
     const page = urlSegments[1].path as Irequest['page']
     const document = urlSegments[2] ? urlSegments[2].path : `null`
@@ -41,7 +41,7 @@ export class ResolveService {
       controller: null,
       action,
       domain,
-      environment: environment.environment as Irequest['environment'],
+      environment:  environment.test ? environment.environment as Irequest['environment'] : 'prod' as Irequest['environment'],
       dateTime: new Date(),
       colection: document,
       key,
@@ -49,7 +49,8 @@ export class ResolveService {
       lastUrlNoLanguage
     }
     this.data.requestLast = request
-/*     console.log(this.data.requestLast) */
+/*     console.log('CREATE REQUEST LAST')
+    console.log(this.data) */
     return request
   }
 

@@ -13,6 +13,7 @@ import { TestCompose } from '../../../../domain/src/domain/validators/test/test-
 import { FirebaseAuthService } from '../api/firebase-auth.service';
 import { ResolveService } from './resolve.service';
 import { FormService } from '@component/form/form.service';
+import { InterfaceService } from '@view/interface/interface.service';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class GetDocumentResolver implements Resolve<any> {
     private router: Router,
     public auth: FirebaseAuthService,
     private resolveService: ResolveService,
-    private data: DataService,
+    private i: InterfaceService,
     private backand: BackandService,
     private form: FormService
 
@@ -33,21 +34,24 @@ export class GetDocumentResolver implements Resolve<any> {
 
     const request = this.resolveService.getRequest(route, state)
     const test = new TestCompose(request).testRequestDocument
-
+    
+    this.i.load.document = false
+    this.i.load.colection = false
+    
     if (test == null) {
 
       if (_debug.resolver) {
         console.log('Resolver Document')
-        console.log(request.action)
+        console.log(this.i.data)
       }   
 
       if (request.action == 'create') {
 
-        this.data.form[`${this.data.requestLast.document}`] = this.form.createForm()
+        this.i.data.form[`${this.i.data.requestLast.document}`] = this.form.createForm()
 
         if (_debug.form) {
           console.log('Form Create')
-          console.log(this.data.form[`${request.document}`])
+          console.log(this.i.data.form[`${request.document}`])
         }
       
         return of(null) 
@@ -58,7 +62,7 @@ export class GetDocumentResolver implements Resolve<any> {
 
     } else {
       console.log('Resolve Document Error')
-      this.data.errorResolve = test
+      this.i.data.errorResolve = test
       this.router.navigate([`errorResolver`])
       return of()
     }

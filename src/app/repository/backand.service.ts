@@ -1,8 +1,8 @@
-import { DataService } from '@repository/data.service';
 import { Injectable } from '@angular/core';
 import { Irequest, IresponseValidatorCompose } from '@domain/interface';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { DataService } from '@repository/data.service';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -21,6 +21,9 @@ export class BackandService {
   }
 
   httpUser(request: Irequest): Observable<any> {
+
+    console.log('REQUEST')
+    console.log(request)
 
     const req = { ...request}
 

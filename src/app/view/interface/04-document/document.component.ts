@@ -4,8 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { FormService } from '@component/form/form.service';
 import { _debug } from '@repositoryDomain/debug';
 import { InterfaceService } from '@view/interface/interface.service';
-import { Subscription } from 'rxjs';
-
 
 @Component({
   selector: 'app-document',
@@ -13,10 +11,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./document.component.scss']
 })
 
-export class DocumentComponent implements OnDestroy {
+export class DocumentComponent {
 
-  load = false
-  inscription!: Subscription
   formGroup!: UntypedFormGroup;
 
   constructor(
@@ -25,9 +21,12 @@ export class DocumentComponent implements OnDestroy {
     private form: FormService
 
   ) {
+   this.router()
+  }
 
-    this.inscription = this.route.data.subscribe(({ response }) => {    
-      this.i.load.document = false
+  router() {
+    return this.route.data.subscribe(({ response }) => {    
+    
       if (response == null) {
 
         if (_debug.pg.document) {
@@ -49,21 +48,9 @@ export class DocumentComponent implements OnDestroy {
             response
           )
       }
-
-      setTimeout(() => {
-       /*  console.log('document') */
-        this.i.actionsEmitter.emit('document')
-        this.i.load.colectionHeader = true;
-        this.i.load.document = true
-
-      }, 500);
-
+      this.i.load.document = true
+      this.i.load.colection = true
+      this.i.actionsEmitter.emit('documentOpen')
     })
-  }
-
-  ngOnDestroy(): void { 
-/*     console.log('destroy Document') */
-    this.i.load.document = false;
-    this.inscription.unsubscribe()
   }
 }

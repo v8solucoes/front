@@ -10,12 +10,11 @@ import { _debug } from '@repositoryDomain/debug';
 })
 export class InterfaceService {
  
-  actionsEmitter: EventEmitter<'menu' | 'document' | 'colectionAndDocClose' | 'documentClose'> = new EventEmitter();
+  actionsEmitter: EventEmitter<'menu' | 'document' | 'documentClose' | 'documentOpen' | 'colectionAndDocClose' | 'documentClose'> = new EventEmitter();
  
   load = {
     menu: false,
     colection: false,
-    colectionHeader: true,
     document: false,
     dashboard: true,
     interface: false,

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { DataService } from '@repository/data.service';
 import { FirebaseApp } from '@angular/fire/compat';
 import { connectAuthEmulator, getAuth, GoogleAuthProvider, signInWithCredential, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
-import { Irequest } from './../../../../domain/src/shared/interface';
+import { Irequest, Iuser } from '@domain/interface';
 import { environment } from 'src/environments/environment';
 import { _debug } from '../../../../domain/src/domain/repository/debug';
 
@@ -13,58 +13,75 @@ import { _debug } from '../../../../domain/src/domain/repository/debug';
 export class FirebaseAuthService {
 
   constructor(
-    public firebaseApp: FirebaseApp,
     private data: DataService,
+    public firebaseApp: FirebaseApp,
     public router: Router
   ) {
 
   }
-  async setupEmulators() {
-    const authUrl = 'http://127.0.0.1:9099'
-    await fetch(authUrl)
-/*     environment.test ? connectAuthEmulator(getAuth(), "http://127.0.0.1:9099", { disableWarnings: true }) : '' */
-    // why? to make sure that emulator are loaded
-  }
-  async loginIn(email: string, password: string, language: Irequest['language']) {
+
+ saveUser(user:any) {
+
+  this.data.user.acessToken = user.accessToken
+  this.data.user.userId = user.providerId
+  this.data.user.name = user.displayName
+  this.data.user.level = null as any as Iuser['level']
+
+/*   this.data.user = {
+    'acessToken': user.accessToken,
+    'userId': user.providerId,
+    'name': user.displayName as string,
+    'level': null as any as Iuser['level'],
+  } */
    
-      const auth = getAuth();
+  }
 
-      await this.setupEmulators()
-  
-         environment.test ? connectAuthEmulator(auth, "http://127.0.0.1:9099", { disableWarnings: true }) : ''
+  async loginIn(email: string, password: string, language: Irequest['language']) {
 
-      return await signInWithEmailAndPassword(auth, email, password).then(o => {
+    const auth = getAuth();
 
-        if (_debug.pg.firebase) {
-          console.log('Login Sucess')
-        }
+    environment.test ? connectAuthEmulator(auth, "http://127.0.0.1:9099", { disableWarnings: true }) : ''
 
-        return true
+    signInWithEmailAndPassword(auth, email, password).then((credential:any) => {
 
-      }).catch(o => {
-        console.log('Login Error')
-        this.router.navigate([`${language}/login/sign-in`])
-        console.log(o)
-        return
-      }).finally()
-    
+      const user = credential.user
+
+      this.data.user.acessToken = user.accessToken
+      this.data.user.userId = user.uid
+      this.data.user.name = user.displayName
+      this.data.user.level = null as any as Iuser['level']
+
+      if (_debug.auth) {
+        console.log('Login Sucess')
+        console.log(this.data)
+      }
+
+    this.router.navigate([`${language}/app/dashboard`])
+      return
+
+    }).catch(error => {
+      console.log('Login Error')
+      console.log(error)
+      this.router.navigate([`${language}/login/sign-in`])
+      return
+    }).finally()
+
+  return
+
   }
   async loginOut() {
-    
 
-      const auth = getAuth();
+    const auth = getAuth();
 
-             /*  environment.test ? connectAuthEmulator(auth, "http://127.0.0.1:9099", { disableWarnings: true }) : ''; */
+    /*  environment.test ? connectAuthEmulator(auth, "http://127.0.0.1:9099", { disableWarnings: true }) : ''; */
 
-      return await signOut(auth).then(() => {
-        this.data.exit = true
-        this.router.navigate([this.data.language == 'en' ? 'en/login/sign-in' : 'pt/login/sign-in'])
-      }).catch((error) => {
-        // An error happened.
-        console.log('signOut Error')
-      });
-
-    
+    return await signOut(auth).then(() => {
+      this.data.exit = true
+      this.router.navigate([this.data.language == 'en' ? 'en/login/sign-in' : 'pt/login/sign-in'])
+    }).catch((error) => {
+      // An error happened.
+      console.log('signOut Error')
+    });
 
   }
 
@@ -72,17 +89,20 @@ export class FirebaseAuthService {
 
     try {
 
-      const user = getAuth().currentUser;
+      const user =  getAuth().currentUser;
 
       if (user) {
-        const credential = user as any
-        this.data.user.acessToken = credential['accessToken']
-        /*         console.log('Guard Sucess')
-                console.log(this.data.user.acessToken) */
+
+        if(_debug.guard) {
+          console.log("Guard Sucess")
+          console.log(this.data)
+        }
         return true
       } else {
         console.log('Guard Error')
-        /*  this.router.navigate([`en/login/sign-in`]) */
+        console.log(false)
+        console.log(user)
+         this.router.navigate([`en/login/sign-in`])
         return false
 
       }

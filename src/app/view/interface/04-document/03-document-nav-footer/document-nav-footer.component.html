@@ -1,7 +1,8 @@
 <div class="flex">
-  <ng-container *ngIf="!i.view.desktop">
+  <ng-container>
     <button mat-raised-button 
     (click)="i.actionsEmitter.emit('documentClose')"
+    [routerLink]="['../../']" 
    >
       <!--  <mat-icon>add</mat-icon> -->
       {{ i.data.language == 'en'? 'Cancel':'Cancelar'}}
@@ -13,12 +14,7 @@
     {{ i.data.language == 'en'? 'Update':'Atualizar'}}
   </button> -->
 
-  <app-action *ngIf="i.data.requestLast.action == 'create'"[action]="'update'"></app-action>
-  <app-action *ngIf="i.data.requestLast.action == 'update'"
-  [action]="'update'" 
- ></app-action>
-<!--   <app-action *ngIf="i.data.requestLast.action == 'update'"
-  [action]="'update'" 
-  [redirect]='(i.data.language) + ("/app/") + (i.data.requestLast.document)'></app-action> -->
+  <app-action *ngIf="i.data.requestLast.action == 'create'"[action]="'create'" [redirect]='(i.data.language) + ("/app/dashboard")'></app-action>
+  <app-action *ngIf="i.data.requestLast.action == 'update'"[action]="'update'" [redirect]='(i.data.language) + ("/app/dashboard")'></app-action>
   
 </div>

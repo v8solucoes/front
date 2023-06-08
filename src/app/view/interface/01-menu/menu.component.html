@@ -1,5 +1,9 @@
+<ng-template #loading>
+  <div class="gen-centerFlex">{{ i.data.language == 'en'? 'Progress...': 'Carregando...'}}</div>
+  <div class="gen-centerFlex"><mat-spinner class="gen-centerFlex"></mat-spinner></div>
+</ng-template>
 
-<section (scroll)="i.startAnimation($event,'navMenu')">
+<section *ngIf="i.load.menu; else loading" (scroll)="i.startAnimation($event,'navMenu')">
 
   <app-menu-nav-top 
   [@navTop]="i.animate.navMenu.animate"
