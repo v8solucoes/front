@@ -23,13 +23,15 @@ export class FormService {
     model = this.data.local.getRecursive(this.data.requestLast.document).model,
     data = this.data.local.getRecursive(this.data.requestLast.document).document
   ): UntypedFormGroup {
-  /*   console.log(data) */
+/*     console.log(data)
+    console.log(permissions)
+    console.log(model) */
     const language = this.data.language    
   
     let group: any = {};
 
     for (const permission of permissions) {
-
+      /* console.log(permission.id) */
       const modelControl = model[permission.id];
 
       const recursive = () =>

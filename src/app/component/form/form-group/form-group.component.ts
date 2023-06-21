@@ -29,7 +29,7 @@ export class FormGroupComponent implements OnInit {
   }
   setLabel(id:string) {
  
-  this.i.document.name = this.form.get(id)?.value
+/*   this.i.document.name = this.form.get(id)?.value */
 
   }
   getFormObject(id: string): UntypedFormGroup {

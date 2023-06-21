@@ -10,7 +10,7 @@ export class TaskComponent implements OnInit {
 
   @Input() title = 'Título'
   @Input() description = 'Descrição'
-  @Input() status:number = 100
+  @Input() status:any = 100
 
   color: string = 'blue';
 

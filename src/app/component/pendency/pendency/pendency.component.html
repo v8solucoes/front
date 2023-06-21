@@ -1,0 +1,20 @@
+<div class="pendency-padding" (click)="status()" matRipple>
+
+    <div class="pendency"  [style]="{'background-color': pendency ? 'green' : 'red' }">
+  
+      <div class="pendency-item-left">
+        <div class="pendency-status" 
+        [ngStyle]="{'background-color':pendency ? 'green' : 'red' }"> 
+            {{pendency ? 'Concluído' : 'Pendente'}}</div>
+      </div>
+  
+      <div>
+        <div class="pendency-title"> {{ title }} </div>
+      <!--   <div class="pendencia-description"> {{ description }}</div> -->
+      </div>
+  
+  <!--     <mat-icon class="task-item-right">chevron_right</mat-icon> -->
+  
+    </div>
+  
+  </div>

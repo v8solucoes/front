@@ -14,9 +14,41 @@
   i.actionsEmitter.emit('documentClose'),
   i.view.phone ? i.actionsEmitter.emit('menu'):'',
   ]">
-    <app-menu-adm></app-menu-adm>
+<!--   [ 'send-message', 'pendency', 'client-adm',
+  'developing-one', 'developing-two', 'account-adm-new',
+  'client-developing-one', 'client-developing-two', 'client-developing-three',
+  'partner-developing-three', 'partner-developing-one', 'partner-developing-two',
+  'dashboard', 'recursive', 'sign-in', 'user-adm', 'null'] -->
+
+    <app-menu-create [title]="'Clientes'" [margin]="true" [document]="[
+    {name: 'Clientes Ativos', id:'client-adm', iconLeft: 'person', count: 900,  documentSub: 'pendency' },
+    {name: 'Clientes Inativos',id:'client-adm', iconLeft: 'person_off',  count: 700,  documentSub: 'pendency'}
+    ]"></app-menu-create>
+    <app-menu-create [title]="'Comercial Aguardando:'" [document]="[
+    {name: 'Primeiro Contato', id:'client-adm', iconLeft: 'perm_phone_msg', documentSub: 'pendency', count: 50 },
+    {name: 'Proposta Rápida',id:'client-adm', iconLeft: 'description', count: 36,  documentSub: 'pendency'},
+    {name: 'Proposta Completa',id:'client-adm', iconLeft: 'article', count: 25,  documentSub: 'pendency'},
+    {name: 'Documentos',id:'client-adm', iconLeft: 'document_scanner', count: 30,  documentSub: 'pendency'},
+    {name: 'Assinatura',id:'client-adm', iconLeft: 'assignment', count: 18,  documentSub: 'pendency'},
+    {name: 'Vistoria',id:'client-adm', iconLeft: 'visibility', count: 11,  documentSub: 'pendency'},
+    {name: 'Pagamento',id:'client-adm', iconLeft: 'paid', count: 50,  documentSub: 'pendency'},
+    ]"></app-menu-create>
+    <app-menu-create [title]="'Financeiro'" [document]="[
+    {name: 'Comissões Funcionários', id:'client-adm', iconLeft: 'attach_money', },
+    {name: 'Comissões Consultores', id:'client-adm', iconLeft: 'attach_money', },
+    {name: 'Contas a Pagar',id:'client-adm', iconLeft: 'currency_exchange'},
+    {name: 'Contas a Receber',id:'client-adm', iconLeft: 'currency_exchange'}
+    ]"></app-menu-create>
+    <app-menu-create [title]="'Marketing Origem'" [document]="[
+    {name: 'Indicação', id:'client-adm', iconLeft: 'perm_phone_msg', count: 57},
+    {name: 'Ticktok',id:'client-adm', iconLeft: 'perm_phone_msg', count: 38},
+    {name: 'Google',id:'client-adm', iconLeft: 'perm_phone_msg', count: 40},
+    {name: 'Facebook',id:'client-adm', iconLeft: 'perm_phone_msg',count: 30},
+    {name: 'Instagram',id:'client-adm', iconLeft: 'perm_phone_msg',count: 20 },
+    ]"></app-menu-create>
+<!--     <app-menu-adm></app-menu-adm>
     <app-menu-partner></app-menu-partner>
-    <app-menu-client></app-menu-client>
+    <app-menu-client></app-menu-client> -->
   </div>
 
   <div *ngIf="i.load.document && i.debug.form;"> 

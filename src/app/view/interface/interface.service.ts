@@ -4,6 +4,8 @@ import { DataService } from '@repository/data.service';
 import { FirebaseAuthService } from 'src/app/api/firebase-auth.service';
 import { ModalService } from '@component/modal/modal.service';
 import { _debug } from '@repositoryDomain/debug';
+import { NameProperty } from '@domain/typscript';
+import { Idoc } from '@domain/interface';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +20,6 @@ export class InterfaceService {
     document: false,
     dashboard: true,
     interface: false,
-  }
-
-  document = {
-    name: ''
   }
 
   debug = _debug
@@ -74,7 +72,21 @@ export class InterfaceService {
     this.animate[nameScroll].animate = compare()
 
   }
+ get docOrDocSub():NameProperty<Idoc> {
 
+  const req = this.data.requestLast
+  const document = req.documentSub === 'null' ? req.document : req.documentSub
+  return document
+
+ }
+/*  get docIsSub():boolean {
+
+  const req = this.data.requestLast
+  console.log(req.documentSub)
+  const document = req.documentSub == 'null' ? false : true
+  return document
+
+ } */
   dashboardOpen() {
     this.load.dashboard = true
   }

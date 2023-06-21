@@ -11,15 +11,19 @@
   <div class="colection-header-padding">
 
     <div *ngFor="
-    let colection of i.data.local.colection[i.data.requestLast.document] | keyvalue; index as indice;"
-      routerLinkActive="colection-header-active" [routerLink]="[colection.key, 'update']" class="colection-header">
+    let colection of i.data.local.colection[i.data.subColectionOrName] | keyvalue; index as indice;"
+      routerLinkActive="colection-header-active" 
+      [routerLink]="[colection.key, 'update']"
+      [queryParams]="{ subMenu: 'null' }"
+
+      class="colection-header">
       <div class="colection-header-item-left">
         <div class="colection-header-userColor" [ngStyle]="{'background-color': colors[indice]}"></div>
       </div>
 
       <app-colection-group class="colection-header-description" [permission]="
-        i.data.local.getRecursive(i.data.requestLast.document).permission
-      " [model]="i.data.local.getRecursive(i.data.requestLast.document).model" [request]="i.data.requestLast"
+        i.data.local.getRecursive(i.data.subColectionOrName).permission
+      " [model]="i.data.local.getRecursive(i.data.subColectionOrName).model" [request]="i.data.requestLast"
         [colection]="colection.value">
       </app-colection-group>
 

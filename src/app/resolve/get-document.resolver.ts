@@ -34,16 +34,16 @@ export class GetDocumentResolver implements Resolve<any> {
 
     const request = this.resolveService.getRequest(route, state)
     const test = new TestCompose(request).testRequestDocument
-    
+
     this.i.load.document = false
     this.i.load.colection = false
-    
+
     if (test == null) {
 
       if (_debug.resolver) {
         console.log('Resolver Document')
         console.log(this.i.data)
-      }   
+      }
 
       if (request.action == 'create') {
 
@@ -52,11 +52,20 @@ export class GetDocumentResolver implements Resolve<any> {
         if (_debug.form) {
           console.log('Form Create')
           console.log(this.i.data.form[`${request.document}`])
+          console.log('Form Permission')
+          console.log(this.i.data.local.permission)
+
         }
-      
-        return of(null) 
-        
+
+        return of(null)
+
       } else {
+
+        if (_debug.form) {
+          console.log('Form Permission')
+          console.log(this.i.data.local.permission)
+        }
+
         return this.backand.httpDocument(request)
       }
 

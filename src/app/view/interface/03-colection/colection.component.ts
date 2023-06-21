@@ -14,16 +14,31 @@ export class ColectionComponent implements OnInit {
 
   @ViewChild('document') document: any;
 
+  loading = false
+
   constructor(
     public i: InterfaceService,
     private route: ActivatedRoute,
     ) { 
-
- /*      this.router() */
  
   }
 
   ngOnInit(): void {
+
+    this.route.queryParams.subscribe(param=> {
+ 
+      if(param['subColection']) {
+        let paramIsNull = param['subColection'] ? param['subColection'] : 'null'
+        this.i.data.subColectionIsTrue = paramIsNull == 'null' ? false : true
+        this.i.data.subColectionName = paramIsNull
+        this.i.data.subColectionOrName = paramIsNull == 'null' 
+        ? this.i.data.documentName :  this.i.data.subColectionName
+        this.loading = true
+/*         console.log('Query Parms')
+        console.log(this.i.data.subColectionIsTrue +' / ' + paramIsNull) */
+      }
+      
+    })
 
     this.actions()
   

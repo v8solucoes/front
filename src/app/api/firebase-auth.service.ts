@@ -17,8 +17,8 @@ export class FirebaseAuthService {
     public firebaseApp: FirebaseApp,
     public router: Router
   ) {
-
-  }
+/*     environment.test ? connectAuthEmulator(getAuth(), "http://127.0.0.1:9099", { disableWarnings: true }) : ''
+ */  }
 
  saveUser(user:any) {
 

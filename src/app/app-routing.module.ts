@@ -42,6 +42,11 @@ const routes: Routes = [
             path: ':id/:action', component: DocumentComponent,
             canActivate: [AuthGuard],
             resolve: { 'response': GetDocumentResolver }
+          },
+          {
+            path: ':id/:action/:menu', component: DocumentComponent,
+            canActivate: [AuthGuard],
+            resolve: { 'response': GetDocumentResolver }
           }
         ]
       },

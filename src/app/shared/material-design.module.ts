@@ -14,6 +14,7 @@ import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-c
 import { MatIconModule } from '@angular/material/icon';
 import { MatLegacyListModule as MatListModule } from '@angular/material/legacy-list';
 import { MatExpansionModule } from '@angular/material/expansion';
+import {MatBadgeModule} from '@angular/material/badge';
 import { MatLegacyMenuModule as MatMenuModule } from '@angular/material/legacy-menu';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
@@ -49,6 +50,7 @@ import { MatLegacySlideToggleModule as MatSlideToggleModule } from '@angular/mat
     MatExpansionModule,
     MatSelectModule,
     MatSidenavModule,
+    MatBadgeModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
     MatSliderModule,

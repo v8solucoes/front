@@ -9,20 +9,21 @@
     width: 100%;
   } */
 }
-.task {
+.pendency {
 
   display: flex;
   flex-direction: row;
   border-radius: 40px;
   height: 56px;
-  margin-bottom: 2px;
+  margin-bottom: 6px;
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
+  opacity: 0.9;
 
-  &-margin {
+/*   &-margin {
     margin-top: 56px;
-  }
+  } */
 
   &-padding {
     padding-left: 8px;
@@ -31,12 +32,12 @@
 
   &-status {
     text-align: center;
-    width: 40px;
+    width: 80px;
     padding: 4px;
     border-radius: 100px;
     background: var(--color-surface-1);
     box-shadow: var(--color-surface-1-shadow);
-    opacity: 0.9;
+/*     opacity: 0.9; */
   }
 
   &-font {
@@ -44,7 +45,8 @@
     letter-spacing: 0.15px;
     text-align: left;
     width: 100%;
-    color: var(--color-text-white);
+    color: white;
+    opacity: 0.9;
   }
 
   &-title {
@@ -94,7 +96,6 @@
     padding-left: 8px;
     padding-right: 12px;
   }
-
 
   &-active {
     background: var(--color-active);

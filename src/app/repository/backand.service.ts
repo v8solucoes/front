@@ -22,8 +22,8 @@ export class BackandService {
 
   httpUser(request: Irequest): Observable<any> {
 
-    console.log('REQUEST')
-    console.log(request)
+/*     console.log('REQUEST')
+    console.log(request) */
 
     const req = { ...request}
 

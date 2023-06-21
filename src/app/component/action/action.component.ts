@@ -31,9 +31,9 @@ export class ActionComponent implements OnInit {
     public i: InterfaceService,
     private _snackBar: MatSnackBar
   ) {
-    this.document = this.i.data.form[this.i.data.requestLast.document]
-    this.erros = this.i.data.form[this.i.data.requestLast.document].errors
-    this.model = i.data.local.model[this.i.data.requestLast.document]._group
+    this.document = this.i.data.form[i.docOrDocSub]
+    this.erros = this.i.data.form[i.docOrDocSub].errors
+    this.model = i.data.local.model[i.docOrDocSub]._group
     this.action = this.action
   }
 
@@ -59,7 +59,7 @@ export class ActionComponent implements OnInit {
 
         this.i.backand.httpCrudGeneric(this.action).subscribe(async (response: any | null) => {
 
-          console.log(response.response == null)
+   /*        console.log(response.response == null) */
 
           if (response.response === null) {
             const mensagem = `${text[this.action]} ${text.sucess} ${this.redirect != null ? text.redirect : ''}`
@@ -68,8 +68,8 @@ export class ActionComponent implements OnInit {
             setTimeout(() => {
   
               this.sucess = true
-              console.log('this.redirect')
-              console.log(this.redirect)
+/*               console.log('this.redirect') */
+    /*           console.log(this.redirect) */
               if (this.redirect != undefined) {
     
                 this.i.auth.router.navigate([this.redirect])
@@ -86,7 +86,7 @@ export class ActionComponent implements OnInit {
            /*  throw new this.erros */
             }
 
-          console.log(response)
+       /*    console.log(response) */
 
         })
       }
@@ -106,7 +106,7 @@ export class ActionComponent implements OnInit {
       const mensagem = `${text[this.action]} ${JSON.stringify(error)}`
 
       this._snackBar.open(mensagem, 'X');
-
+/*       this.i.auth.router.navigate([]) */
       console.log(error)
     }
 

@@ -20,7 +20,7 @@ import { DataService } from '@repository/data.service';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     // Not Remove
@@ -35,7 +35,6 @@ import { DataService } from '@repository/data.service';
     ComponentSharedModule,
     LoginModule,
     InterfaceModule,
-
   ],
   /*   schemas: [  CUSTOM_ELEMENTS_SCHEMA,
       NO_ERRORS_SCHEMA ], */

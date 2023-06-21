@@ -1,4 +1,5 @@
 # Documentation
+## V8 API > CREATE NEW COLECTIONS - [See More](../../front/.readme/createNewColections.md)
 
 ## [Debug](../../domain/src/domain/repository/debug.ts)
 
@@ -21,3 +22,5 @@
 ## [Form Reactive Action Button](../src/app/component/action/action.component.ts)
 
 ## [Settings](../src/app/component/settings/settings.component.ts)
+
+

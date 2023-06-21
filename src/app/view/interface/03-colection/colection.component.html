@@ -3,16 +3,17 @@
   <section (scroll)="i.startAnimation($event,'navColection')">
 
     <app-colection-nav-top [@navTop]="i.animate.navColection.animate"></app-colection-nav-top>
-      
-      <app-colection-header> </app-colection-header>
+   
+    <app-colection-header *ngIf="!i.data.subColectionIsTrue"> </app-colection-header>
+    <app-colection-menu *ngIf="i.data.subColectionIsTrue"> </app-colection-menu> 
 
     <app-colection-nav-footer [@navFooter]="i.animate.navColection.animate"></app-colection-nav-footer>
   
-    <div *ngIf="i.load.document && i.debug.form;"> 
-      {{ i.data.requestLast.document}}
-      Form {{ i.data.form[i.data.requestLast.document].value | json}}<br><br>
-      Value: {{ i.data.form[i.data.requestLast.document].get([i.data.requestLast.document,'email'])?.value}}
-     </div>
+  <!--   <div *ngIf="i.load.document && i.debug.form;"> 
+      {{ i.data.subColectionIsTrue ? i.data.subColectionName: i.data.documentName}}
+      Form {{ i.data.form[ i.data.subColectionIsTrue ? i.data.subColectionName: i.data.documentName].value | json}}<br><br>
+      Value: {{ i.data.form[ i.data.subColectionIsTrue ? i.data.subColectionName: i.data.documentName].get([ i.data.subColectionIsTrue ? i.data.subColectionName: i.data.documentName,'email'])?.value}}
+     </div> -->
      
   </section>
 

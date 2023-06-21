@@ -1,0 +1,69 @@
+<div style="margin-top: 56px;">
+
+  <div class="colection-header-padding">
+    <div class="colection-header-title ">
+      <div class="colection-header-font">
+        {{ modelName }}
+      </div>
+    </div>
+  </div>
+
+  <div class="colection-header-padding">
+
+    <div *ngFor="
+      let colection of i.data.local.colection[i.data.subColectionOrName] | keyvalue; index as indice;"
+      routerLinkActive="colection-header-active" class="colection-header">
+      <div class="colection-header-item-left">
+        <div class="colection-header-userColor" [ngStyle]="{'background-color': colors[indice]}"></div>
+      </div>
+
+      <app-colection-group class="colection-header-description" [permission]="
+          i.data.local.getRecursive(i.data.subColectionOrName).permission
+        " [model]="i.data.local.getRecursive(i.data.subColectionOrName).model" 
+        [request]="i.data.requestLast"
+        
+        [colection]="colection.value">
+      </app-colection-group>
+
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Sub Menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item 
+        [routerLink]="[colection.key, 'update']"
+        [queryParams]="{ subMenu: 'null' }">
+          <mat-icon>edit</mat-icon>
+          <span>Editar</span>
+        </button>
+        <button mat-menu-item mat-menu-item 
+        [routerLink]="[colection.key, 'update']"
+        [queryParams]="{ subMenu: 'pendency' }">
+          <mat-icon>check</mat-icon>
+          <span>Pendencia</span>
+        </button>
+        <button mat-menu-item mat-menu-item 
+        [routerLink]="[colection.key, 'update']"
+        [queryParams]="{ subMenu: 'send-message' }">
+          <mat-icon>perm_phone_msg</mat-icon>
+          <span>Enviar Mensagem</span>
+        </button>
+
+
+        <!--             <a mat-menu-item target="_blank"
+             href='https://wa.me//5511981231940?text=Tenho%20interesse%20em%20comprar%20seu%20carro'
+> -->
+
+
+        <a mat-menu-item target="_blank"
+          href='https://sicoop.com.br/#/home/proposals?text=2206-39328&type=&skip=0&size=10'>
+          <mat-icon>link</mat-icon>
+          <span>Acessar AutoBem</span>
+        </a>
+
+      </mat-menu>
+
+    </div>
+
+  </div>
+
+</div>

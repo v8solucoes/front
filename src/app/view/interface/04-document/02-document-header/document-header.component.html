@@ -6,11 +6,41 @@
 
 <section *ngIf="i.load.document else loading">
 
-  <app-form-group [form]="i.data.form[i.data.requestLast.document]"
-[permission]="i.data.local.getRecursive(i.data.requestLast.document).permission"
-[model]="i.data.local.getRecursive(i.data.requestLast.document).model" [request]="i.data.requestLast">
-</app-form-group>
+  <ng-container [ngSwitch]="i.data.subMenuOrName">
 
-<div *ngIf="i.load.document && i.debug.form;">Test {{ i.data.form[i.data.requestLast.document].value | json}}  </div>
+    <ng-container *ngSwitchCase="'pendency'">
+
+      <title>PENDÊNCIAS</title>
+      <app-pendency [pendency]="true" [title]="'Primeiro Contato'"> </app-pendency>
+      <app-pendency [pendency]="true" [title]="'Proposta Simples'"> </app-pendency>
+      <app-pendency [pendency]="true" [title]="'Documentos'"> </app-pendency>
+      <app-pendency [pendency]="false" [title]="'Proposta Completa'"> </app-pendency>
+      <app-pendency [pendency]="false" [title]="'Assinatura'"> </app-pendency>
+      <app-pendency [pendency]="false" [title]="'Vistoria'"> </app-pendency>
+      <app-pendency [pendency]="false" [title]="'Pagamento'"> </app-pendency>
+
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'send-message'">
+
+      <title>Enviar Mensagem</title>
+      
+      <app-send-message [title]="'Primeiro Contato'" [message]="'Olá #nomeCompleto, tudo bem com você? Gostaria de saber se você já possui uma proteção para seu caminhão'"> </app-send-message>
+      <app-send-message [title]="'Proposta'" [message]="'Olá #nomeCompleto, conforme combinado segue proposta'"> </app-send-message>
+      <app-send-message [title]="'Documentos'" [message]="'Olá #nomeCompleto, os seguinte documentos são necessários para para dar continuidade com sua proteção: *Fotos da: CNH e Documento do Veículo*'"> </app-send-message>
+    
+    </ng-container>
+
+    <ng-container *ngSwitchDefault>
+      <app-form-group
+        [form]="i.data.form[i.data.subMenuOrName]"
+        [permission]="i.data.local.getRecursive(i.data.subMenuOrName).permission"
+        [model]="i.data.local.getRecursive(i.data.subMenuOrName).model" [request]="i.data.requestLast">
+      </app-form-group>
+    </ng-container>
+
+  </ng-container>
+
+  <div *ngIf="i.load.document && i.debug.form;">Test {{ i.data.form[i.data.subMenuOrName].value | json}} </div>
 
 </section>

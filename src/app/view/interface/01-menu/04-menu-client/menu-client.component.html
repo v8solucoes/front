@@ -15,6 +15,7 @@
       let last
     "
     [routerLink]="[permission.id]"
+    [queryParams]="{ 'sub': permission.documentSub }"
   >
     <mat-icon class="gen-menu-item-left">panorama_fish_eye</mat-icon>
     <div class="gen-menu-font">

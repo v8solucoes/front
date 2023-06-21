@@ -18,7 +18,8 @@ export class ResolveService {
   ) { }
 
   getRequest(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Irequest {
-
+/*     console.log(route)
+console.log(route.queryParams) */
     const root = route as any
     const lastUrl = state.url
     const lastUrlNoLanguage = state.url.slice(3)    
@@ -31,13 +32,16 @@ export class ResolveService {
     const document = urlSegments[2] ? urlSegments[2].path : `null`
     const key = urlSegments[3] ? urlSegments[3].path : null
     const action = urlSegments[4] ? urlSegments[4].path : `null`
+    const documentSub = route.queryParams['sub'] ? route.queryParams['sub'] : `null`
 
     this.data.language = language
-
+    this.data.documentName = document
+   
     const request: Irequest = {
       language,
       page,
       document,
+      documentSub,
       controller: null,
       action,
       domain,

@@ -2,6 +2,8 @@
 
 ## V8 API > Informations - [See More](.readme/v8-app-info.md)
 
+## V8 API > CREATE NEW COLECTIONS - [See More](.readme/createNewColections.md)
+
 ## ANGULAR - [Install / Update](.readme/angular.md)
 
 ## FIREBASE FrontEnd - [Install / Update](../front/.readme/firebase-frontend.md)

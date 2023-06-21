@@ -1,0 +1,42 @@
+<div class="gen-menu-margin" *ngIf="false"></div>
+<!-- Title -->
+<div *ngIf="title" class="gen-menu-padding">
+    <div class="gen-menu-title gen-menu-font">
+      
+    <div class="font">{{ title }}</div>
+  </div>
+</div>
+<!-- <div
+  [ngClass]="falseActive[2] ? 'gen-menu gen-menu-font gen-menu-active': 'gen-menu gen-menu-font'"
+  (click)="[falseLinkActive(2),i.dashboardClose()]"
+  routerLinkActive="gen-menu-active"
+-->
+<div *ngIf="document" class="gen-menu-padding">
+  <div
+     *ngFor="
+      let doc of document;
+      let in = index;
+      let first;
+      let last
+    "
+    [ngClass]="falseActive[in] ? 'gen-menu gen-menu-font gen-menu-active': 'gen-menu gen-menu-font'"
+    (click)="[falseLinkActive(in)]"
+    [routerLink]="[doc.id]"
+    [queryParams]="{ 'subColection': doc.documentSub ? doc.documentSub : 'null' }"
+  >
+  
+
+    <mat-icon
+     class="gen-menu-item-left">{{ doc.iconLeft ? doc.iconLeft:''}}
+    </mat-icon>
+    
+    <div *ngIf="!doc.count" class="gen-menu-font">
+      {{ doc.name ? doc.name: i.data.local.model[doc.id].text[i.data.language].label }}
+    </div>
+    <div *ngIf="doc.count" class="gen-menu-font" matBadge="{{doc.count}}" matBadgeOverlap="true" color="accent">
+      {{ doc.name ? doc.name: i.data.local.model[doc.id].text[i.data.language].label }}
+    </div>
+    
+    <mat-icon class="gen-menu-item-right">{{doc.iconRight ? doc.iconRight :''}}</mat-icon>
+  </div>
+</div>

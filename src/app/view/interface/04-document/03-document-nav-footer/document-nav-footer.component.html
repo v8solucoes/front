@@ -2,7 +2,7 @@
   <ng-container>
     <button mat-raised-button 
     (click)="i.actionsEmitter.emit('documentClose')"
-    [routerLink]="['../../']" 
+    [routerLink]="[i.data.subColectionOrName ? '../../../' : '../../']" 
    >
       <!--  <mat-icon>add</mat-icon> -->
       {{ i.data.language == 'en'? 'Cancel':'Cancelar'}}

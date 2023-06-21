@@ -1,0 +1,15 @@
+<div class="message" *ngIf="loading">
+
+    <div class="message-title"> {{ title }} </div>
+
+    <textarea [formControl]="formMessage" (keydown)="edit()" class="message-description" matInput placeholder="Editi suas mensagem...">Olá, tudo bem com você? Gostaria de saber se você já possui uma proteção para seu caminhão</textarea>
+  
+    <div class="message-send">
+        <a mat-raised-button color="accent" class="message-buttom"
+        target="_blank"
+        href="{{link}}">
+            <mat-icon>send</mat-icon>
+        </a>
+    </div>
+
+</div>
