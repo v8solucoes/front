@@ -1,12 +1,12 @@
-# ANGULAR - Last Update 15-05-23
+# ANGULAR - Last Update 13-07-23
 
 ## [README](./../README.md)
 
-`ng version` (Angula CLI: 15.2.8 era 14.2.10)
+`ng version` (Angula CLI: 16.1.4  era/ 15.2.8 / 14.2.10)
 
 `npm view @angular/cli` (Versions LTS Angular)
 
-`npm install -g @angular/cli@15.2.8` (Version LTS)
+`npm install -g @angular/16.1.4` (Version LTS)
 
 `npm uninstall -g @angular/cli`
 
