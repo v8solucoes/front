@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Router, Resolve,
-  RouterStateSnapshot,
-  ActivatedRouteSnapshot
-} from '@angular/router';
+import { Router, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { Irequest } from '@domain/interface';
 
 import { Observable, of } from 'rxjs';
@@ -15,7 +11,7 @@ import { _debug } from '../../../../domain/src/domain/repository/debug';
 @Injectable({
   providedIn: 'root'
 })
-export class GetUserResolver implements Resolve<Irequest> {
+export class GetUserResolver  {
   
  constructor(
     private router: Router,

@@ -1,10 +1,6 @@
 import { FormService } from '@component/form/form.service';
 import { Injectable } from '@angular/core';
-import {
-  Router, Resolve,
-  RouterStateSnapshot,
-  ActivatedRouteSnapshot
-} from '@angular/router';
+import { Router, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 
 import { Irequest } from '@domain/interface';
 import { Observable, of } from 'rxjs';
@@ -17,7 +13,7 @@ import { _debug } from '@repositoryDomain/debug';
   providedIn: 'root'
 })
 
-export class DataLocalResolver implements Resolve<Irequest> {
+export class DataLocalResolver  {
 
   constructor(
     private router: Router,

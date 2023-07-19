@@ -2,11 +2,7 @@ import { _debug } from './../../../../domain/src/domain/repository/debug';
 
 import { BackandService } from '@repository/backand.service';
 import { Injectable } from '@angular/core';
-import {
-  Router, Resolve,
-  RouterStateSnapshot,
-  ActivatedRouteSnapshot
-} from '@angular/router';
+import { Router, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { DataService } from '@repository/data.service';
 import { Observable, of } from 'rxjs';
 import { TestCompose } from '../../../../domain/src/domain/validators/test/test-compose';
@@ -18,7 +14,7 @@ import { InterfaceService } from '@view/interface/interface.service';
 @Injectable({
   providedIn: 'root'
 })
-export class GetDocumentResolver implements Resolve<any> {
+export class GetDocumentResolver  {
 
   constructor(
     private router: Router,

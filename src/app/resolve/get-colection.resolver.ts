@@ -1,12 +1,7 @@
 import { InterfaceService } from './../view/interface/interface.service';
 import { BackandService } from '@repository/backand.service';
 import { Injectable } from '@angular/core';
-import {
-  Router, 
-  RouterStateSnapshot,
-  ActivatedRouteSnapshot,
-  Resolve
-} from '@angular/router';
+import { Router, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { ResolveService } from './resolve.service';
 import { TestCompose } from '@domain/validator-local';
@@ -16,7 +11,7 @@ import { _debug } from '../../../../domain/src/domain/repository/debug';
 @Injectable({
   providedIn: 'root'
 })
-export class GetColectionResolver implements Resolve<any> {
+export class GetColectionResolver  {
   constructor(
     private router: Router,
     public auth: FirebaseAuthService,

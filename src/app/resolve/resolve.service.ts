@@ -18,13 +18,13 @@ export class ResolveService {
   ) { }
 
   getRequest(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Irequest {
-/*     console.log(route)
-console.log(route.queryParams) */
+    console.log(route)
+console.log(route.queryParams)
     const root = route as any
     const lastUrl = state.url
     const lastUrlNoLanguage = state.url.slice(3)    
     
-    const urlSegments = root['_urlSegment']['segments'] as any
+    const urlSegments = root['url'] as any;
 
     const domain = environment.test ? this.document.location.hostname as Irequest['domain'] : 'v8app-888cd.web.app' as Irequest['domain']
     const language = urlSegments[0].path as Irequest['language']

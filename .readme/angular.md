@@ -2,6 +2,8 @@
 
 ## [README](./../README.md)
 
+`sudo npm install -g @angular/cli` (Instalar ANGULAR CLI)
+
 `ng version` (Angula CLI: 16.1.4  era/ 15.2.8 / 14.2.10)
 
 `npm view @angular/cli` (Versions LTS Angular)
